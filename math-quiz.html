@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a6fb0">
+<title>تحدي الرياضيات مع يوسف — الصف الثامن 8/1 🧮</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--l1:#e08a1e;--l2:#1f8a70;--l3:#2a7ab0;--l4:#1aa3c7;--l5:#8a5a2b;--l6:#c2417e;--l7:#5a6b7d;--l8:#d0632a;--u1:#2f9e5a;--u2:#e0702a;--u3:#c2304a;--mix:#7b5cd6;--ink:#2b2350;--bg:#fdf6ff;--ok:#1f9d55;--okbg:#e6f8ee;--bad:#e0435a;--badbg:#fdecef;--accent:var(--mix)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic","Droid Arabic Naskh",Tahoma,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);background-image:radial-gradient(circle at 10% 0%,#e3f6ff 0,transparent 40%),radial-gradient(circle at 100% 30%,#e3f0ff 0,transparent 40%);
+  min-height:100vh;line-height:1.6;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:14px 14px calc(28px + env(safe-area-inset-bottom))}
+bdi.n,bdi.m{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+bdi.n{white-space:nowrap}
+bdi.m{font-weight:700}
+.hidden{display:none!important}
+button{font-family:inherit;cursor:pointer;border:none;touch-action:manipulation}
+h1{font-size:28px;margin:4px 0 2px;line-height:1.3;text-align:center}
+.sub{text-align:center;color:#6b6290;margin:0 0 14px;font-size:16px}
+.hero{text-align:center;font-size:52px;line-height:1;margin-top:6px}
+.card{background:#fff;border-radius:22px;box-shadow:0 6px 22px rgba(80,50,140,.10);padding:16px;margin:12px 0}
+.label{font-weight:700;margin:0 2px 8px;font-size:17px}
+.units{display:grid;grid-template-columns:1fr;gap:10px}
+.unitbtn{display:flex;align-items:center;gap:12px;text-align:right;width:100%;min-height:64px;padding:10px 14px;border-radius:18px;background:#f6f3ff;color:var(--ink);font-size:17px;border:3px solid transparent;transition:transform .1s}
+.unitbtn .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:22px;font-weight:800}
+.unitbtn b{display:block;font-size:17px}.unitbtn small{display:block;color:#6b6290;font-size:14px;line-height:1.4}
+.unitbtn.sel{border-color:var(--c);background:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
+.unitbtn:active{transform:scale(.98)}
+.counts{display:flex;gap:10px}
+.countbtn{flex:1;min-height:56px;border-radius:16px;background:#f6f3ff;font-size:20px;font-weight:800;color:var(--ink);border:3px solid transparent}
+.countbtn.sel{border-color:var(--mix);background:#fff}
+.big-btn{display:block;width:100%;min-height:60px;border-radius:20px;font-size:22px;font-weight:800;color:#fff;background:linear-gradient(135deg,#ff6fa8,#7b5cd6);box-shadow:0 6px 16px rgba(123,92,214,.35);margin-top:6px}
+.big-btn:active{transform:translateY(2px)}
+.best{text-align:center;color:#6b6290;font-size:15px;margin-top:10px;min-height:1em}
+.exam{background:#fff7e0;border:2px dashed #f2b705;border-radius:16px;padding:8px 12px;font-size:15px;text-align:center;margin-top:12px}
+/* quiz */
+.top{position:sticky;top:0;z-index:5;background:rgba(253,246,255,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);margin:-14px -14px 0;padding:10px 14px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:15px;font-weight:700;flex-wrap:wrap}
+.pill{background:#fff;border-radius:999px;padding:4px 12px;box-shadow:0 2px 8px rgba(80,50,140,.08);white-space:nowrap}
+.bar{height:12px;background:#ece6ff;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7b5cd6,#ff6fa8);border-radius:999px;transition:width .35s}
+.home{background:#fff;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px rgba(80,50,140,.08)}
+.qcard{border-top:8px solid var(--accent)}
+.chip{display:inline-block;color:#fff;background:var(--accent);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:700;margin-bottom:8px}
+.qtext{font-size:20px;line-height:1.85;overflow-wrap:anywhere}
+.qtext b{color:var(--accent)}
+.big{font-size:26px;text-align:center;margin:12px 0 4px;line-height:1.6}
+.big.words{white-space:normal;font-weight:700;font-size:21px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.opts.wide{grid-template-columns:1fr}
+.opt{min-height:60px;border-radius:16px;background:#f6f3ff;border:3px solid #e2dbff;font-size:21px;color:var(--ink);padding:8px 10px;line-height:1.5;transition:transform .08s}
+.opt:active{transform:scale(.97)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#9b1c30}
+.opt[disabled]{cursor:default}
+.opt.dim{opacity:.55}
+.numrow{display:flex;gap:10px;margin-top:16px;align-items:stretch}
+.numrow input{flex:1;min-width:0;font-size:26px;font-weight:700;text-align:center;direction:ltr;border:3px solid #e2dbff;border-radius:16px;padding:10px;font-family:inherit;color:var(--ink);background:#fff;outline:none;-webkit-appearance:none;appearance:none}
+.numrow input:focus{border-color:var(--accent)}
+.numrow input.ok{border-color:var(--ok);background:var(--okbg)}.numrow input.bad{border-color:var(--bad);background:var(--badbg)}
+.check{flex:none;min-width:104px;border-radius:16px;background:var(--accent);color:#fff;font-size:20px;font-weight:800;padding:0 14px}
+.check[disabled]{opacity:.5}
+.hint{color:var(--bad);font-size:15px;min-height:1.4em;margin-top:6px;text-align:center}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(6px)}50%{transform:translateX(-6px)}75%{transform:translateX(4px)}}
+.fb{border-radius:20px;padding:14px 16px;margin-top:12px;animation:pop .25s ease-out}
+.fb.ok{background:var(--okbg);border:3px solid var(--ok)}.fb.bad{background:var(--badbg);border:3px solid var(--bad)}
+.fb h3{margin:0 0 4px;font-size:21px}.fb.ok h3{color:#11643a}.fb.bad h3{color:#9b1c30}
+.fb .ans{font-size:18px;margin:2px 0}.fb .ex{font-size:16px;color:#4a4070;line-height:1.8;overflow-wrap:anywhere}
+.next{margin-top:12px}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.barmodel{margin:12px 0 2px;display:grid;gap:6px}
+.barmodel .row{display:flex;align-items:center;gap:8px}
+.barmodel .lbl{flex:none;width:58px;font-size:15px;font-weight:700}
+.barmodel .cells{display:flex;direction:ltr;flex-wrap:nowrap}
+.barmodel .cells span{display:inline-block;min-width:42px;text-align:center;border:2px solid var(--u3);background:#ffe8cc;font-size:15px;font-weight:700;margin-left:-2px;padding:1px 4px}
+/* finish */
+.score-big{text-align:center;font-size:56px;font-weight:900;line-height:1.1;margin:4px 0}
+.stars{text-align:center;font-size:40px;letter-spacing:6px;direction:ltr}
+.msg{text-align:center;font-size:20px;font-weight:700;margin:6px 0 2px}
+.ub{display:grid;gap:10px}
+.ub .r{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;font-size:16px}
+.ub .t{height:12px;background:#eee;border-radius:999px;overflow:hidden;grid-column:1/-1}
+.ub .t i{display:block;height:100%;border-radius:999px}
+.missed{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.missed li{background:#fff8fa;border:2px solid #f6c9d2;border-radius:16px;padding:10px 12px;font-size:16px;line-height:1.8;overflow-wrap:anywhere}
+.missed .q .big{font-size:18px;margin:2px 0;text-align:right}
+.missed .q .barmodel{display:none}
+.missed .yours{color:#9b1c30}.missed .right{color:#11643a;font-weight:700}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.btn2{min-height:56px;border-radius:18px;font-size:18px;font-weight:800;color:#fff;background:var(--mix)}
+.btn2.alt{background:#fff;color:var(--mix);border:3px solid var(--mix)}
+.perfect{text-align:center;font-size:18px;color:#11643a;font-weight:700}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.confetti span{position:absolute;top:-40px;font-size:26px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (min-width:600px){.units{grid-template-columns:1fr 1fr}.qtext{font-size:22px}h1{font-size:34px}}
+@media (max-width:360px){.opts{grid-template-columns:1fr}.qtext{font-size:19px}.big{font-size:23px}.check{min-width:88px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.ay{font-family:"KFGQPC HAFS Uthmanic Script","KFGQPC Uthman Taha Naskh","Amiri Quran","Amiri","Scheherazade New","Traditional Arabic","Noto Naskh Arabic","Geeza Pro",serif;color:#13703e;font-weight:600;font-size:1.08em;line-height:2.1}
+.hd{font-family:"Amiri","Traditional Arabic","Noto Naskh Arabic","Geeza Pro",serif;color:#8a1f5c;font-weight:700;font-size:1.05em;line-height:2.1}
+.qtext{line-height:2.05}
+.opt{line-height:1.9;font-size:19px;text-align:center}
+.opts.wide .opt{text-align:right;padding:10px 14px}
+.opt .ay,.opt .hd{font-size:1.05em}
+.typechip{display:inline-block;background:#f1ecff;color:#5a4a8a;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin:0 6px 8px 0}
+.lessons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lessons .unitbtn{min-height:58px;padding:8px 10px;gap:8px}
+.lessons .unitbtn .ic{width:38px;height:38px;font-size:20px;border-radius:12px}
+.lessons .unitbtn b{font-size:15.5px;line-height:1.35}
+.group-title{font-weight:800;font-size:15px;color:#6b6290;margin:14px 2px 8px}
+.note2{background:#eef8f1;border:2px dashed #2f9e5a;border-radius:16px;padding:8px 12px;font-size:15px;text-align:center;margin-top:10px}
+.missed .q{font-weight:600}
+.missed .q .ay,.missed .q .hd{font-size:1em}
+@media (max-width:360px){.lessons .unitbtn b{font-size:14.5px}.opt{font-size:18px}}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.15;margin:0 2px;font-size:.9em;direction:ltr}
+.fr>span:first-child{border-bottom:2px solid currentColor;padding:0 3px}
+.rt{white-space:nowrap}.rad{border-top:2px solid currentColor;padding:0 2px}.ix{font-size:.6em;vertical-align:super;margin-right:-4px}
+.ov{text-decoration:overline}
+bdi.m{font-family:-apple-system,"SF Pro Text","Segoe UI","Noto Sans",Arial,sans-serif;white-space:nowrap}
+.unitbtn .ic{font-size:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section id="start">
+    <div class="hero">🧮📐</div>
+    <h1>تحدي الرياضيات مع يوسف</h1>
+    <p class="sub">مراجعة اختبار منتصف الفصل الأول — الصف الثامن (الشعبة <bdi class="n" dir="ltr">8/1</bdi>) — الوحدتان الأولى والثانية</p>
+    <div class="card">
+      <div class="label">١) اختر ما تريد مراجعته:</div>
+      <div class="units" id="units">
+        <button class="unitbtn sel" data-s="all" style="--c:var(--mix)"><span class="ic" style="background:var(--mix)">★</span><span><b>مراجعة شاملة</b><small>كل مواضيع أوراق التدريبات الإثرائية</small></span></button>
+        <button class="unitbtn" data-s="u1" style="--c:var(--u1)"><span class="ic" style="background:var(--u1)">1</span><span><b>الوحدة الأولى: الأعداد والجذور والأسس</b><small>الكسور الدورية • النسبي وغير النسبي • الجذور • الأسس • الصيغة العلمية</small></span></button>
+        <button class="unitbtn" data-s="u2" style="--c:var(--u2)"><span class="ic" style="background:var(--u2)">2</span><span><b>الوحدة الثانية: حل المعادلات</b><small>تجميع الحدود المتشابهة</small></span></button>
+      </div>
+      <div class="group-title">أو اختر موضوعًا واحدًا:</div>
+      <div class="units lessons" id="lessons"></div>
+    </div>
+    <div class="card">
+      <div class="label">٢) عدد الأسئلة:</div>
+      <div class="counts" id="counts">
+        <button class="countbtn" data-n="10">10</button>
+        <button class="countbtn sel" data-n="20">20</button>
+        <button class="countbtn" data-n="all">الكل (50)</button>
+      </div>
+    </div>
+    <button class="big-btn" id="go">ابدأ التحدي 🚀</button>
+    <div class="best" id="best"></div>
+    <div class="exam">📅 اختبار منتصف الفصل في الرياضيات: الأربعاء <bdi class="n" dir="ltr">14</bdi> أكتوبر <bdi class="n" dir="ltr">2026</bdi> (الحصتان الثانية والثالثة) — بالتوفيق يا يوسف! 💙</div>
+    <div class="note2">📄 الأسئلة على نمط أوراق التدريبات الإثرائية للمدرسة لكن بأرقام جديدة، لتتدرّب على المهارات نفسها. الأوراق لا تغني عن الكتاب المدرسي.</div>
+  </section>
+
+  <section id="quiz" class="hidden">
+    <div class="top">
+      <div class="stats">
+        <button class="home" id="home" aria-label="الرئيسية">🏠</button>
+        <span class="pill" id="qnum"></span>
+        <span class="pill" id="score"></span>
+        <span class="pill" id="streak"></span>
+      </div>
+      <div class="bar"><i id="prog"></i></div>
+    </div>
+    <div class="card qcard" id="qcard">
+      <span class="chip" id="chip"></span><span class="typechip" id="tchip"></span>
+      <div class="qtext" id="qtext"></div>
+      <div id="answerArea"></div>
+    </div>
+    <div id="fb"></div>
+  </section>
+
+  <section id="finish" class="hidden">
+    <div class="card" style="text-align:center">
+      <div class="hero" id="fEmoji">🏆</div>
+      <div class="stars" id="fStars"></div>
+      <div class="score-big"><bdi class="n" dir="ltr" id="fScore"></bdi></div>
+      <div style="font-size:20px;font-weight:700">النسبة: <bdi class="n" dir="ltr" id="fPct"></bdi></div>
+      <div class="msg" id="fMsg"></div>
+      <div class="best" id="fBest"></div>
+    </div>
+    <div class="btns">
+      <button class="btn2" id="again">🔁 حاول مرة أخرى</button>
+      <button class="btn2 alt" id="other">📚 اختر موضوعًا آخر</button>
+    </div>
+    <div class="card">
+      <div class="label">النتيجة حسب الموضوع:</div>
+      <div class="ub" id="fUnits"></div>
+    </div>
+    <div class="card">
+      <div class="label" id="fMissedTitle">الأسئلة التي تحتاج مراجعة:</div>
+      <ul class="missed" id="fMissed"></ul>
+    </div>
+  </section>
+</div>
+
+<script id="bank">
+/* Generated by gen_bank.py — Grade 8 math quiz for Yusuf: questions modelled on the school enrichment sheet with changed numbers (all answers verified in Python). */
+var BANK = [
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "ما صورة الكسر العشري الدوري <bdi class=\"m\">0.<span class=\"ov\">5</span></bdi> في صورة كسر اعتيادي؟",
+"a": "<bdi class=\"m\"><span class=\"fr\"><span>5</span><span>9</span></span></bdi>",
+"o": [
+"<bdi class=\"m\"><span class=\"fr\"><span>1</span><span>5</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>5</span><span>10</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>5</span><span>99</span></span></bdi>"
+],
+"ex": "نفرض <bdi class=\"m\">x = 0.555…</bdi>، فيكون <bdi class=\"m\">10x = 5.555…</bdi>. بالطرح: <bdi class=\"m\">9x = 5</bdi> إذن <bdi class=\"m\"><bdi class=\"m\">x = </bdi><bdi class=\"m\"><span class=\"fr\"><span>5</span><span>9</span></span></bdi></bdi>."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "ما صورة الكسر العشري الدوري <bdi class=\"m\">0.<span class=\"ov\">41</span></bdi> في صورة كسر اعتيادي؟",
+"a": "<bdi class=\"m\"><span class=\"fr\"><span>41</span><span>99</span></span></bdi>",
+"o": [
+"<bdi class=\"m\"><span class=\"fr\"><span>41</span><span>100</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>41</span><span>9</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>4</span><span>9</span></span></bdi>"
+],
+"ex": "الدورة رقمان فنضرب في 100: <bdi class=\"m\">100x = 41.4141…</bdi>، وبالطرح <bdi class=\"m\">99x = 41</bdi> إذن <bdi class=\"m\"><bdi class=\"m\">x = </bdi><bdi class=\"m\"><span class=\"fr\"><span>41</span><span>99</span></span></bdi></bdi>."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "ما صورة الكسر العشري الدوري <bdi class=\"m\">2.<span class=\"ov\">7</span></bdi> في صورة عدد كسري؟",
+"a": "<bdi class=\"m\">2<span class=\"fr\"><span>7</span><span>9</span></span></bdi>",
+"o": [
+"<bdi class=\"m\">2<span class=\"fr\"><span>7</span><span>10</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>27</span><span>99</span></span></bdi>",
+"<bdi class=\"m\">2<span class=\"fr\"><span>7</span><span>99</span></span></bdi>"
+],
+"ex": "الجزء الصحيح 2، و<bdi class=\"m\"><bdi class=\"m\">0.<span class=\"ov\">7</span> = </bdi><bdi class=\"m\"><span class=\"fr\"><span>7</span><span>9</span></span></bdi></bdi>، إذن <bdi class=\"m\"><bdi class=\"m\">2.<span class=\"ov\">7</span> = 2</bdi><bdi class=\"m\"><span class=\"fr\"><span>7</span><span>9</span></span></bdi></bdi>."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "اكتب العدد <bdi class=\"m\">0.1<span class=\"ov\">6</span></bdi> (الدورة على الرقم 6 فقط) في صورة كسر.",
+"a": "<bdi class=\"m\"><span class=\"fr\"><span>1</span><span>6</span></span></bdi>",
+"o": [
+"<bdi class=\"m\"><span class=\"fr\"><span>16</span><span>99</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>16</span><span>90</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>1</span><span>9</span></span></bdi>"
+],
+"ex": "<bdi class=\"m\">x = 0.1666…</bdi>، <bdi class=\"m\">10x = 1.666…</bdi>، <bdi class=\"m\">100x = 16.666…</bdi>. بالطرح: <bdi class=\"m\">90x = 15</bdi> إذن <bdi class=\"m\"><bdi class=\"m\">x = </bdi><bdi class=\"m\"><span class=\"fr\"><span>15</span><span>90</span></span></bdi><bdi class=\"m\"> = </bdi><bdi class=\"m\"><span class=\"fr\"><span>1</span><span>6</span></span></bdi></bdi>."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "ما صورة الكسر العشري الدوري <bdi class=\"m\">0.252525…</bdi> في صورة كسر اعتيادي؟",
+"a": "<bdi class=\"m\"><span class=\"fr\"><span>25</span><span>99</span></span></bdi>",
+"o": [
+"<bdi class=\"m\"><span class=\"fr\"><span>52</span><span>99</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>25</span><span>100</span></span></bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>1</span><span>4</span></span></bdi>"
+],
+"ex": "الدورة هي 25: <bdi class=\"m\">100x = 25.2525…</bdi>، وبالطرح <bdi class=\"m\">99x = 25</bdi> إذن <bdi class=\"m\"><bdi class=\"m\">x = </bdi><bdi class=\"m\"><span class=\"fr\"><span>25</span><span>99</span></span></bdi></bdi>."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "أيّ الأعداد الآتية يمثّل عددًا غير نسبي؟",
+"a": "<bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">20</span></span></bdi>",
+"o": [
+"<bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">36</span></span></bdi>",
+"<bdi class=\"m\">2.75</bdi>",
+"<bdi class=\"m\">0.<span class=\"ov\">3</span></bdi>"
+],
+"ex": "20 ليس مربعًا كاملًا فجذره عشري غير منتهٍ وغير دوري. أما <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">36</span></span> = 6</bdi> و2.75 (منتهٍ) و<bdi class=\"m\">0.<span class=\"ov\">3</span></bdi> (دوري) فكلها نسبية."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "أيّ الأعداد الآتية يمثّل عددًا غير نسبي؟",
+"a": "<bdi class=\"m\">π + 2</bdi>",
+"o": [
+"<bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">49</span></span></bdi>",
+"<bdi class=\"m\">−8</bdi>",
+"<bdi class=\"m\"><span class=\"fr\"><span>5</span><span>6</span></span></bdi>"
+],
+"ex": "π غير نسبي، وجمع عدد نسبي عليه يبقى غير نسبي. أما <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">49</span></span> = 7</bdi> و−8 و<bdi class=\"m\"><span class=\"fr\"><span>5</span><span>6</span></span></bdi> فنسبية."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "أيّ الأعداد الآتية يمثّل عددًا غير نسبي؟",
+"a": "<bdi class=\"m\">2.535535553…</bdi>",
+"o": [
+"<bdi class=\"m\">2.<span class=\"ov\">53</span></bdi>",
+"<bdi class=\"m\">2.53</bdi>",
+"<bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">81</span></span></bdi>"
+],
+"ex": "في <bdi class=\"m\">2.535535553…</bdi> يزداد عدد الخمسات كل مرة فلا توجد دورة ثابتة ← غير نسبي. أما <bdi class=\"m\">2.<span class=\"ov\">53</span></bdi> فدوري، و2.53 منتهٍ، و<bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">81</span></span> = 9</bdi>."
+},
+{
+"l": 2,
+"s": "w",
+"t": "tf",
+"q": "العدد <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">17</span></span></bdi> عدد نسبي.",
+"a": false,
+"o": [],
+"ex": "خطأ؛ 17 ليس مربعًا كاملًا (بين 16 و25)، فـ <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">17</span></span> ≈ 4.123…</bdi> عشري غير منتهٍ وغير دوري، إذن هو غير نسبي."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "أيّ الأعداد التالية نسبية؟ &nbsp; a. <bdi class=\"m\">3.444…</bdi> &nbsp; b. <bdi class=\"m\">0.75</bdi> &nbsp; c. <bdi class=\"m\">3.010010001…</bdi>",
+"a": "a و b",
+"o": [
+"a فقط",
+"b فقط",
+"c فقط"
+],
+"ex": "a دوري (الرقم 4 يتكرر) ← نسبي. b منتهٍ ← نسبي. c عدد الأصفار يزداد فلا دورة ثابتة ← غير نسبي."
+},
+{
+"l": 2,
+"s": "w",
+"t": "tf",
+"q": "قاعة مربعة مساحتها <bdi class=\"m\">169 m²</bdi>، طول ضلعها عدد نسبي.",
+"a": true,
+"o": [],
+"ex": "صحيح؛ <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">169</span></span> = 13</bdi> عدد صحيح، والأعداد الصحيحة نسبية."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "ما أقرب عدد كلي للعدد <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">30</span></span></bdi>؟",
+"a": "5",
+"o": [
+"4",
+"6",
+"15"
+],
+"ex": "<bdi class=\"m\">5² = 25</bdi> و<bdi class=\"m\">6² = 36</bdi>، و30 أقرب إلى 25 (الفرق 5) من 36 (الفرق 6)، إذن <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">30</span></span> ≈ 5.48</bdi> وأقرب عدد كلي 5."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "ما العددان الكليان المتتاليان اللذان يقع بينهما العدد <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">40</span></span></bdi>؟",
+"a": "6 و 7",
+"o": [
+"5 و 6",
+"7 و 8",
+"20 و 21"
+],
+"ex": "<bdi class=\"m\">36 < 40 < 49</bdi> إذن <bdi class=\"m\">6 < <span class=\"rt\">√<span class=\"rad\">40</span></span> < 7</bdi>."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "ما القيمة التقريبية للعدد <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">55</span></span></bdi>؟",
+"a": "<bdi class=\"m\">7.4</bdi>",
+"o": [
+"<bdi class=\"m\">6.5</bdi>",
+"<bdi class=\"m\">8.1</bdi>",
+"<bdi class=\"m\">27.5</bdi>"
+],
+"ex": "الجذر بين 7 و8 (<bdi class=\"m\">49 < 55 < 64</bdi>). نجرّب: <bdi class=\"m\">7.4² = 54.76</bdi> وهو قريب جدًا من 55."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "ما أقرب عدد كلي للعدد <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">62</span></span></bdi>؟",
+"a": "8",
+"o": [
+"7",
+"9",
+"31"
+],
+"ex": "<bdi class=\"m\">7² = 49</bdi> و<bdi class=\"m\">8² = 64</bdi>، و62 أقرب إلى 64، إذن <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">62</span></span> ≈ 7.87</bdi> وأقرب عدد كلي 8."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "بين أيّ عددين كليين متتاليين يقع <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">90</span></span></bdi>؟",
+"a": "9 و 10",
+"o": [
+"8 و 9",
+"10 و 11",
+"45 و 46"
+],
+"ex": "<bdi class=\"m\">81 < 90 < 100</bdi> إذن <bdi class=\"m\">9 < <span class=\"rt\">√<span class=\"rad\">90</span></span> < 10</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "أيّ الأعداد الآتية يُعدّ عددًا مربعًا كاملًا؟",
+"a": "36",
+"o": [
+"24",
+"50",
+"72"
+],
+"ex": "<bdi class=\"m\">36 = 6 × 6 = 6²</bdi>. الأعداد 24 و50 و72 ليست مربعات كاملة."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "أيّ الأعداد الآتية يُعدّ عددًا مكعبًا كاملًا؟",
+"a": "64",
+"o": [
+"16",
+"36",
+"81"
+],
+"ex": "<bdi class=\"m\">64 = 4 × 4 × 4 = 4³</bdi>. أما 16 و36 و81 فمربعات وليست مكعبات."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "ما قيمة n التي تجعل <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">40 + n</span></span></bdi> عددًا نسبيًا؟",
+"a": "9",
+"o": [
+"6",
+"8",
+"10"
+],
+"ex": "يجب أن يكون <bdi class=\"m\">40 + n</bdi> مربعًا كاملًا: <bdi class=\"m\">40 + 9 = 49 = 7²</bdi>. أما 46 و48 و50 فليست مربعات."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "ما قيمة <bdi class=\"m\"><span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">343</span></span></bdi>؟",
+"a": "7",
+"o": [
+"6",
+"8",
+"49"
+],
+"ex": "<bdi class=\"m\">7 × 7 × 7 = 343</bdi> إذن <bdi class=\"m\"><span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">343</span></span> = 7</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "ما قيمة <bdi class=\"m\"><span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">−64</span></span></bdi>؟",
+"a": "<bdi class=\"m\">−4</bdi>",
+"o": [
+"<bdi class=\"m\">4</bdi>",
+"<bdi class=\"m\">−8</bdi>",
+"<bdi class=\"m\">8</bdi>"
+],
+"ex": "<bdi class=\"m\">(−4) × (−4) × (−4) = −64</bdi>، والجذر التكعيبي لعدد سالب سالب."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "ما حل المعادلة <bdi class=\"m\">x² = 49</bdi>؟",
+"a": "<bdi class=\"m\">±7</bdi>",
+"o": [
+"<bdi class=\"m\">7</bdi>",
+"<bdi class=\"m\">−7</bdi>",
+"<bdi class=\"m\">±24.5</bdi>"
+],
+"ex": "<bdi class=\"m\">7² = 49</bdi> و<bdi class=\"m\">(−7)² = 49</bdi>، إذن للمعادلة التربيعية حلان <bdi class=\"m\">x = ±7</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "ما حل المعادلة <bdi class=\"m\">x³ = 64</bdi>؟",
+"a": "<bdi class=\"m\">4</bdi>",
+"o": [
+"<bdi class=\"m\">±4</bdi>",
+"<bdi class=\"m\">−4</bdi>",
+"<bdi class=\"m\">8</bdi>"
+],
+"ex": "<bdi class=\"m\">4³ = 64</bdi>، أما <bdi class=\"m\">(−4)³ = −64</bdi> فليس حلًا. للمعادلة التكعيبية حل واحد: <bdi class=\"m\">x = 4</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "هل العدد 729 مربع كامل أم مكعب كامل؟",
+"a": "كلاهما",
+"o": [
+"مربع كامل فقط",
+"مكعب كامل فقط",
+"ليس أيًّا منهما"
+],
+"ex": "<bdi class=\"m\">27² = 729</bdi> و<bdi class=\"m\">9³ = 729</bdi>، إذن هو مربع كامل ومكعب كامل."
+},
+{
+"l": 4,
+"s": "w",
+"t": "tf",
+"q": "يقول خالد إن <bdi class=\"m\"><span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">216</span></span></bdi> و<bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">36</span></span></bdi> متكافئان.",
+"a": true,
+"o": [],
+"ex": "صحيح؛ <bdi class=\"m\"><span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">216</span></span> = 6</bdi> و<bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">36</span></span> = 6</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "tf",
+"q": "يقول سالم إن <bdi class=\"m\"><span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">27</span></span></bdi> و<bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">27</span></span></bdi> متكافئان.",
+"a": false,
+"o": [],
+"ex": "خطأ؛ <bdi class=\"m\"><span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">27</span></span> = 3</bdi> بينما <bdi class=\"m\"><span class=\"rt\">√<span class=\"rad\">27</span></span> ≈ 5.2</bdi> (27 ليس مربعًا كاملًا)."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "ساعة حائط مربعة الشكل مساحتها <bdi class=\"m\">196 cm²</bdi>، فما طول ضلعها؟",
+"a": "<bdi class=\"m\">14 cm</bdi>",
+"o": [
+"<bdi class=\"m\">49 cm</bdi>",
+"<bdi class=\"m\">98 cm</bdi>",
+"<bdi class=\"m\">16 cm</bdi>"
+],
+"ex": "<bdi class=\"m\">s² = 196</bdi> ← <bdi class=\"m\">s = <span class=\"rt\">√<span class=\"rad\">196</span></span> = 14 cm</bdi>. (خطأ شائع: القسمة على 4 تعطي 49 وهو المحيط لا الضلع.)"
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "حوض أسماك مكعب الشكل حجمه <bdi class=\"m\">512 cm³</bdi>، فما طول حرفه؟",
+"a": "<bdi class=\"m\">8 cm</bdi>",
+"o": [
+"<bdi class=\"m\">16 cm</bdi>",
+"<bdi class=\"m\">22.6 cm</bdi>",
+"<bdi class=\"m\">170.7 cm</bdi>"
+],
+"ex": "<bdi class=\"m\">s³ = 512</bdi> ← <bdi class=\"m\">s = <span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">512</span></span> = 8 cm</bdi> لأن <bdi class=\"m\">8 × 8 × 8 = 512</bdi>."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "مجلس مربع الشكل مساحته <bdi class=\"m\">64 m²</bdi>، فما طول ضلعه؟",
+"a": "<bdi class=\"m\">8 m</bdi>",
+"o": [
+"<bdi class=\"m\">±8 m</bdi>",
+"<bdi class=\"m\">16 m</bdi>",
+"<bdi class=\"m\">4 m</bdi>"
+],
+"ex": "<bdi class=\"m\">s² = 64</bdi> ← <bdi class=\"m\">s = 8 m</bdi>. لا نكتب ±8 لأن الطول لا يكون سالبًا."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "صندوق مكعب الشكل حجمه <bdi class=\"m\">27 cm³</bdi>، فما طول ضلعه؟",
+"a": "<bdi class=\"m\">3 cm</bdi>",
+"o": [
+"<bdi class=\"m\">9 cm</bdi>",
+"<bdi class=\"m\">5.2 cm</bdi>",
+"<bdi class=\"m\">13.5 cm</bdi>"
+],
+"ex": "<bdi class=\"m\">s³ = 27</bdi> ← <bdi class=\"m\">s = <span class=\"rt\"><sup class=\"ix\">3</sup>√<span class=\"rad\">27</span></span> = 3 cm</bdi>. (9 خطأ شائع من القسمة على 3.)"
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "شريحة مربعة الشكل مساحتها <bdi class=\"m\">121 cm²</bdi>، فما طول ضلعها؟",
+"a": "<bdi class=\"m\">11 cm</bdi>",
+"o": [
+"<bdi class=\"m\">12 cm</bdi>",
+"<bdi class=\"m\">60.5 cm</bdi>",
+"<bdi class=\"m\">30.25 cm</bdi>"
+],
+"ex": "<bdi class=\"m\">s² = 121</bdi> ← <bdi class=\"m\">s = 11 cm</bdi>."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "ما المقدار المكافئ للمقدار <bdi class=\"m\">3⁴ × 3²</bdi>؟",
+"a": "<bdi class=\"m\">3⁶</bdi>",
+"o": [
+"<bdi class=\"m\">3⁸</bdi>",
+"<bdi class=\"m\">9⁶</bdi>",
+"<bdi class=\"m\">6⁶</bdi>"
+],
+"ex": "عند الضرب مع تساوي الأساسات نجمع الأسس: <bdi class=\"m\">3⁴⁺² = 3⁶</bdi>."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "ما المقدار المكافئ للمقدار <bdi class=\"m\">6⁹ ÷ 6⁴</bdi>؟",
+"a": "<bdi class=\"m\">6⁵</bdi>",
+"o": [
+"<bdi class=\"m\">6¹³</bdi>",
+"<bdi class=\"m\">1⁵</bdi>",
+"<bdi class=\"m\">6³⁶</bdi>"
+],
+"ex": "عند القسمة نطرح الأسس: <bdi class=\"m\">6⁹−⁴ = 6⁵</bdi>."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "ما المقدار المكافئ للمقدار <bdi class=\"m\">(2³)⁵</bdi>؟",
+"a": "<bdi class=\"m\">2¹⁵</bdi>",
+"o": [
+"<bdi class=\"m\">2⁸</bdi>",
+"<bdi class=\"m\">10³</bdi>",
+"<bdi class=\"m\">2³⁵</bdi>"
+],
+"ex": "قوة القوة: نضرب الأسس <bdi class=\"m\">3 × 5 = 15</bdi>، إذن <bdi class=\"m\">2¹⁵</bdi>."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "ما المقدار المكافئ للمقدار <bdi class=\"m\">4⁻²</bdi>؟",
+"a": "<bdi class=\"m\"><span class=\"fr\"><span>1</span><span><bdi class=\"m\">4²</bdi></span></span></bdi>",
+"o": [
+"<bdi class=\"m\">4²</bdi>",
+"<bdi class=\"m\">−8</bdi>",
+"<bdi class=\"m\">−16</bdi>"
+],
+"ex": "الأس السالب يعني المقلوب: <bdi class=\"m\">4⁻² = </bdi><bdi class=\"m\"><span class=\"fr\"><span>1</span><span><bdi class=\"m\">4²</bdi></span></span></bdi><bdi class=\"m\"><bdi class=\"m\"> = </bdi><bdi class=\"m\"><span class=\"fr\"><span>1</span><span>16</span></span></bdi></bdi>."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "ما قيمة <bdi class=\"m\">8⁰</bdi>؟",
+"a": "<bdi class=\"m\">1</bdi>",
+"o": [
+"<bdi class=\"m\">0</bdi>",
+"<bdi class=\"m\">8</bdi>",
+"<bdi class=\"m\">80</bdi>"
+],
+"ex": "أي عدد غير الصفر أُسّه صفر يساوي 1."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "إذا كانت <bdi class=\"m\">m = 2</bdi>، فما قيمة المقدار <bdi class=\"m\">24m⁻³</bdi>؟",
+"a": "<bdi class=\"m\">3</bdi>",
+"o": [
+"<bdi class=\"m\">192</bdi>",
+"<bdi class=\"m\">−48</bdi>",
+"<bdi class=\"m\">4</bdi>"
+],
+"ex": "<bdi class=\"m\"><bdi class=\"m\">24 × 2⁻³ = 24 × </bdi><bdi class=\"m\"><span class=\"fr\"><span>1</span><span>8</span></span></bdi><bdi class=\"m\"> = 3</bdi></bdi>."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "إذا كانت <bdi class=\"m\">a = 3 ، b = 4</bdi>، فما قيمة المقدار <bdi class=\"m\">2a²b⁰</bdi>؟",
+"a": "<bdi class=\"m\">18</bdi>",
+"o": [
+"<bdi class=\"m\">72</bdi>",
+"<bdi class=\"m\">36</bdi>",
+"<bdi class=\"m\">0</bdi>"
+],
+"ex": "<bdi class=\"m\">2 × 3² × 4⁰ = 2 × 9 × 1 = 18</bdi>. (تذكّر <bdi class=\"m\">b⁰ = 1</bdi> وليس 0.)"
+},
+{
+"l": 6,
+"s": "w",
+"t": "tf",
+"q": "المقدار <bdi class=\"m\">a¹⁰ ÷ a²</bdi> مكافئ للمقدار <bdi class=\"m\">a⁵ × a³</bdi>.",
+"a": true,
+"o": [],
+"ex": "صحيح؛ <bdi class=\"m\">a¹⁰ ÷ a² = a⁸</bdi> و<bdi class=\"m\">a⁵ × a³ = a⁸</bdi>."
+},
+{
+"l": 7,
+"s": "w",
+"t": "mc",
+"q": "ما الصيغة العلمية للعدد <bdi class=\"m\">4800000</bdi>؟",
+"a": "<bdi class=\"m\">4.8 × 10⁶</bdi>",
+"o": [
+"<bdi class=\"m\">4.8 × 10⁵</bdi>",
+"<bdi class=\"m\">48 × 10⁵</bdi>",
+"<bdi class=\"m\">4.8 × 10⁷</bdi>"
+],
+"ex": "نضع الفاصلة بعد أول رقم: 4.8، والفاصلة تحركت 6 منازل، إذن <bdi class=\"m\">4.8 × 10⁶</bdi>. (48 × 10⁵ ليست صيغة علمية لأن 48 > 10.)"
+},
+{
+"l": 7,
+"s": "w",
+"t": "mc",
+"q": "طول خلية <bdi class=\"m\">3.6 × 10⁻⁵</bdi> متر. ما طولها بالصيغة القياسية؟",
+"a": "<bdi class=\"m\">0.000036</bdi>",
+"o": [
+"<bdi class=\"m\">0.0000036</bdi>",
+"<bdi class=\"m\">0.00036</bdi>",
+"<bdi class=\"m\">360000</bdi>"
+],
+"ex": "الأس −5: نحرّك الفاصلة 5 منازل إلى اليسار: <bdi class=\"m\">0.000036</bdi>."
+},
+{
+"l": 7,
+"s": "w",
+"t": "mc",
+"q": "ما الصيغة العلمية للعدد <bdi class=\"m\">0.00072</bdi>؟",
+"a": "<bdi class=\"m\">7.2 × 10⁻⁴</bdi>",
+"o": [
+"<bdi class=\"m\">7.2 × 10⁻³</bdi>",
+"<bdi class=\"m\">72 × 10⁻⁵</bdi>",
+"<bdi class=\"m\">7.2 × 10⁴</bdi>"
+],
+"ex": "نحرّك الفاصلة 4 منازل إلى اليمين لنحصل على 7.2، فالأس <bdi class=\"m\">−4</bdi>."
+},
+{
+"l": 7,
+"s": "w",
+"t": "mc",
+"q": "يبعد كوكب <bdi class=\"m\">2.3 × 10⁸</bdi> كيلومتر. ما هذا البعد بالصيغة القياسية؟",
+"a": "<bdi class=\"m\">230000000</bdi>",
+"o": [
+"<bdi class=\"m\">23000000</bdi>",
+"<bdi class=\"m\">2300000000</bdi>",
+"<bdi class=\"m\">2300000</bdi>"
+],
+"ex": "نحرّك الفاصلة 8 منازل إلى اليمين: <bdi class=\"m\">230000000</bdi> (23 يليه 7 أصفار)."
+},
+{
+"l": 8,
+"s": "w",
+"t": "mc",
+"q": "ما حل المعادلة <bdi class=\"m\">3.6x + 2.4x = 42</bdi>؟",
+"a": "<bdi class=\"m\">x = 7</bdi>",
+"o": [
+"<bdi class=\"m\">x = 6</bdi>",
+"<bdi class=\"m\">x = 35</bdi>",
+"<bdi class=\"m\">x = 252</bdi>"
+],
+"ex": "<bdi class=\"m\">6x = 42</bdi> ← <bdi class=\"m\">x = 7</bdi>."
+},
+{
+"l": 8,
+"s": "w",
+"t": "mc",
+"q": "ما حل المعادلة <bdi class=\"m\">6.5x − 2.5x = 28</bdi>؟",
+"a": "<bdi class=\"m\">x = 7</bdi>",
+"o": [
+"<bdi class=\"m\">x = 3.1</bdi>",
+"<bdi class=\"m\">x = 4</bdi>",
+"<bdi class=\"m\">x = 112</bdi>"
+],
+"ex": "<bdi class=\"m\">4x = 28</bdi> ← <bdi class=\"m\">x = 7</bdi>."
+},
+{
+"l": 8,
+"s": "w",
+"t": "mc",
+"q": "ما حل المعادلة <bdi class=\"m\">7x + 3 = 5x + 15</bdi>؟",
+"a": "<bdi class=\"m\">x = 6</bdi>",
+"o": [
+"<bdi class=\"m\">x = 9</bdi>",
+"<bdi class=\"m\">x = 1.5</bdi>",
+"<bdi class=\"m\">x = 12</bdi>"
+],
+"ex": "<bdi class=\"m\">7x − 5x = 15 − 3</bdi> ← <bdi class=\"m\">2x = 12</bdi> ← <bdi class=\"m\">x = 6</bdi>. تحقق: <bdi class=\"m\">45 = 45</bdi> ✓"
+},
+{
+"l": 8,
+"s": "w",
+"t": "mc",
+"q": "ما حل المعادلة <bdi class=\"m\"><bdi class=\"m\"><span class=\"fr\"><span>3</span><span>4</span></span></bdi><bdi class=\"m\">x + </bdi><bdi class=\"m\"><span class=\"fr\"><span>1</span><span>2</span></span></bdi><bdi class=\"m\">x = 10</bdi></bdi>؟",
+"a": "<bdi class=\"m\">x = 8</bdi>",
+"o": [
+"<bdi class=\"m\">x = 4</bdi>",
+"<bdi class=\"m\">x = 12.5</bdi>",
+"<bdi class=\"m\">x = 10</bdi>"
+],
+"ex": "نوحّد المقامات: <bdi class=\"m\"><bdi class=\"m\"><span class=\"fr\"><span>3</span><span>4</span></span></bdi><bdi class=\"m\"> + </bdi><bdi class=\"m\"><span class=\"fr\"><span>2</span><span>4</span></span></bdi><bdi class=\"m\"> = </bdi><bdi class=\"m\"><span class=\"fr\"><span>5</span><span>4</span></span></bdi></bdi>، <bdi class=\"m\"><bdi class=\"m\"><span class=\"fr\"><span>5</span><span>4</span></span></bdi><bdi class=\"m\">x = 10</bdi></bdi> ← <bdi class=\"m\"><bdi class=\"m\">x = 10 × </bdi><bdi class=\"m\"><span class=\"fr\"><span>4</span><span>5</span></span></bdi><bdi class=\"m\"> = 8</bdi></bdi>."
+},
+{
+"l": 8,
+"s": "w",
+"t": "mc",
+"q": "ما حل المعادلة <bdi class=\"m\"><bdi class=\"m\"><span class=\"fr\"><span>9</span><span>5</span></span></bdi><bdi class=\"m\">x + 2 = </bdi><bdi class=\"m\"><span class=\"fr\"><span>4</span><span>5</span></span></bdi><bdi class=\"m\">x + 7</bdi></bdi>؟",
+"a": "<bdi class=\"m\">x = 5</bdi>",
+"o": [
+"<bdi class=\"m\">x = 9</bdi>",
+"<bdi class=\"m\">x = 1</bdi>",
+"<bdi class=\"m\">x = 25</bdi>"
+],
+"ex": "<bdi class=\"m\"><bdi class=\"m\"><span class=\"fr\"><span>9</span><span>5</span></span></bdi><bdi class=\"m\">x − </bdi><bdi class=\"m\"><span class=\"fr\"><span>4</span><span>5</span></span></bdi><bdi class=\"m\">x = 7 − 2</bdi></bdi> ← <bdi class=\"m\">x = 5</bdi> (لأن <bdi class=\"m\"><bdi class=\"m\"><span class=\"fr\"><span>5</span><span>5</span></span></bdi><bdi class=\"m\"> = 1</bdi></bdi>)."
+},
+{
+"l": 8,
+"s": "w",
+"t": "tf",
+"q": "تقول أمل إن حل المعادلة <bdi class=\"m\">6x + 4x + 9 = 9x + 12</bdi> هو <bdi class=\"m\">x = 3</bdi>.",
+"a": true,
+"o": [],
+"ex": "صحيح؛ <bdi class=\"m\">10x + 9 = 9x + 12</bdi> ← <bdi class=\"m\">x = 3</bdi>. تحقق: <bdi class=\"m\">39 = 39</bdi> ✓"
+},
+{
+"l": 8,
+"s": "w",
+"t": "tf",
+"q": "يقول علي إن حل المعادلة <bdi class=\"m\">4x + 3x + 5 = 6x + 11</bdi> هو <bdi class=\"m\">x = 2</bdi>.",
+"a": false,
+"o": [],
+"ex": "خطأ؛ <bdi class=\"m\">7x + 5 = 6x + 11</bdi> ← <bdi class=\"m\">x = 6</bdi>. تحقق من x = 2: <bdi class=\"m\">19 ≠ 23</bdi>."
+}
+];
+
+
+</script>
+<script id="engine">
+/* ===== Quiz engine (pure, no DOM) — adapted for Yusuf's Grade 8 math quiz ===== */
+var QE = (function () {
+  'use strict';
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  var LESSONS = {
+    1: { name: 'الكسور العشرية الدورية', unit: 1, icon: '🔁' },
+    2: { name: 'النسبي وغير النسبي', unit: 1, icon: '🔢' },
+    3: { name: 'تقدير الجذور', unit: 1, icon: '≈' },
+    4: { name: 'المربعات والمكعبات والجذور', unit: 1, icon: '√' },
+    5: { name: 'مسائل المساحة والحجم', unit: 1, icon: '📐' },
+    6: { name: 'قوانين الأسس', unit: 1, icon: 'xⁿ' },
+    7: { name: 'الصيغة العلمية', unit: 1, icon: '🔬' },
+    8: { name: 'حل المعادلات', unit: 2, icon: '⚖️' }
+  };
+  var TYPE = { mc: 'اختيار من متعدد', tf: 'صح أم خطأ' };
+  var SRC = { w: '📄 على نمط أوراق المدرسة', b: '📘 من الكتاب المدرسي' };
+  var GOOD = ['أحسنت يا يوسف! 🌟', 'ممتاز يا يوسف! 💪', 'إجابة صحيحة، أحسنت! ✨', 'رائع يا يوسف! 👏', 'عبقري رياضيات! 🧮', 'بارك الله فيك! 🚀'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا معلومة جديدة 💪', 'قريب! ركّز في السؤال القادم 🔍', 'لا تقلق، الخطأ طريق التعلّم 🌱', 'حاول في السؤال التالي، أنت قادر! 💙'];
+  var TF = [{ h: 'صح ✔', k: 'T' }, { h: 'خطأ ✘', k: 'F' }];
+  function make(b, idx) {
+    var q = { id: idx, lesson: b.l, src: b.s, type: b.t, q: b.q, ex: b.ex };
+    if (b.t === 'tf') { q.opts = TF.slice(); q.ans = b.a ? 'T' : 'F'; }
+    else { q.opts = shuffle([b.a].concat(b.o).map(function (h, i) { return { h: h, k: 'o' + i }; })); q.ans = 'o0'; }
+    q.ansH = q.opts.filter(function (o) { return o.k === q.ans; })[0].h;
+    q.wide = q.opts.some(function (o) { return o.h.replace(/<[^>]+>/g, '').length > 16; });
+    return q;
+  }
+  // scope: 1..8 (topic), 'u1', 'u2', 'all'
+  function lessonsFor(scope) { return scope === 'u1' ? [1, 2, 3, 4, 5, 6, 7] : scope === 'u2' ? [8] : scope === 'all' ? [1, 2, 3, 4, 5, 6, 7, 8] : [scope]; }
+  // Balanced pick across lessons from an index pool (round-robin over shuffled lessons).
+  function balanced(idxs, n, bank, ls) {
+    var pools = {}; ls.forEach(function (l) { pools[l] = shuffle(idxs.filter(function (i) { return bank[i].l === l; })); });
+    var order = shuffle(ls), out = [], guard = 0;
+    while (out.length < n && guard++ < 1000) {
+      var left = order.filter(function (l) { return pools[l].length; }); if (!left.length) break;
+      left.forEach(function (l) { if (out.length < n && pools[l].length) out.push(pools[l].shift()); });
+    }
+    return out;
+  }
+  // School-sheet questions always come first and are the majority; textbook questions complete the set.
+  function buildQuiz(scope, n, bank) {
+    bank = bank || BANK;
+    var ls = lessonsFor(scope), all = bank.map(function (b, i) { return i; }).filter(function (i) { return ls.indexOf(bank[i].l) >= 0; });
+    var W = all.filter(function (i) { return bank[i].s === 'w'; }), B = all.filter(function (i) { return bank[i].s !== 'w'; });
+    if (n === 'all' || n >= all.length) n = all.length;
+    var nb = Math.min(B.length, Math.floor(n * 0.3)), nw = Math.min(W.length, n - nb); nb = Math.min(B.length, n - nw);
+    var w = shuffle(balanced(W, nw, bank, ls)), b = shuffle(balanced(B, nb, bank, ls));
+    return w.concat(b).map(function (i) { return make(bank[i], i); });
+  }
+  return { LESSONS: LESSONS, TYPE: TYPE, SRC: SRC, GOOD: GOOD, BAD: BAD, make: make, buildQuiz: buildQuiz, lessonsFor: lessonsFor, shuffle: shuffle, pick: pick };
+})();
+
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var L = QE.LESSONS;
+  var COL = { 1: 'var(--l1)', 2: 'var(--l2)', 3: 'var(--l3)', 4: 'var(--l4)', 5: 'var(--l5)', 6: 'var(--l6)', 7: 'var(--l7)', 8: 'var(--l8)', u1: 'var(--u1)', u2: 'var(--u2)', u3: 'var(--u3)', all: 'var(--mix)' };
+  var state = { scope: 'all', n: 20, qs: [], i: 0, score: 0, streak: 0, bestStreak: 0, answered: false, results: [] };
+  // lesson buttons
+  $('lessons').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8].map(function (l) {
+    return '<button class="unitbtn" data-s="' + l + '" style="--c:' + COL[l] + '"><span class="ic" style="background:' + COL[l] + '">' + L[l].icon + '</span><span><b>' + L[l].name + '</b></span></button>';
+  }).join('');
+  function store(get, val) { try { if (get) return JSON.parse(localStorage.getItem('yusufMathBest') || '{}'); localStorage.setItem('yusufMathBest', JSON.stringify(val)); } catch (e) { return {}; } }
+  function bestKey() { return state.scope + '-' + state.n; }
+  function showBest() { var b = store(true) || {}, k = bestKey(); $('best').textContent = b[k] != null ? '🏅 أفضل نتيجة لك هنا: ' + b[k] + '%' : ''; }
+  function show(id) { ['start', 'quiz', 'finish'].forEach(function (s) { $(s).classList.toggle('hidden', s !== id); }); window.scrollTo(0, 0); }
+  function selScope(s) { Array.prototype.forEach.call(document.querySelectorAll('#units .unitbtn, #lessons .unitbtn'), function (b) { b.classList.toggle('sel', b.getAttribute('data-s') === String(s)); }); }
+  function onScope(e) { var b = e.target.closest('.unitbtn'); if (!b) return; var s = b.dataset.s; state.scope = /^\d$/.test(s) ? +s : s; selScope(s); showBest(); }
+  $('units').addEventListener('click', onScope); $('lessons').addEventListener('click', onScope);
+  $('counts').addEventListener('click', function (e) { var b = e.target.closest('.countbtn'); if (!b) return; state.n = b.dataset.n === 'all' ? 'all' : +b.dataset.n; Array.prototype.forEach.call($('counts').children, function (x) { x.classList.toggle('sel', x === b); }); showBest(); });
+  $('go').addEventListener('click', start); $('again').addEventListener('click', start);
+  $('other').addEventListener('click', function () { show('start'); showBest(); });
+  $('home').addEventListener('click', function () { if ((state.i === 0 && !state.answered) || confirm('هل تريد الخروج من التحدي؟')) { show('start'); showBest(); } });
+
+  function start() {
+    state.qs = QE.buildQuiz(state.scope, state.n); state.i = 0; state.score = 0; state.streak = 0; state.bestStreak = 0; state.results = [];
+    show('quiz'); render();
+  }
+  function updateTop() {
+    var n = state.qs.length;
+    $('qnum').innerHTML = 'السؤال <bdi class="n" dir="ltr">' + (state.i + 1) + '</bdi> من <bdi class="n" dir="ltr">' + n + '</bdi>';
+    $('score').innerHTML = '⭐ <bdi class="n" dir="ltr">' + state.score + '</bdi>';
+    $('streak').innerHTML = '🔥 <bdi class="n" dir="ltr">' + state.streak + '</bdi>';
+    $('prog').style.width = ((state.i + (state.answered ? 1 : 0)) / n * 100) + '%';
+  }
+  function render() {
+    var q = state.qs[state.i]; state.answered = false;
+    $('qcard').style.setProperty('--accent', COL[q.lesson]);
+    $('chip').textContent = L[q.lesson].icon + ' ' + L[q.lesson].name;
+    $('tchip').textContent = QE.TYPE[q.type] + ' • ' + QE.SRC[q.src];
+    $('qtext').innerHTML = q.q; $('fb').innerHTML = '';
+    var g = document.createElement('div'); g.className = 'opts' + (q.wide ? ' wide' : '');
+    q.opts.forEach(function (o) { var b = document.createElement('button'); b.className = 'opt'; b.innerHTML = o.h; b.dataset.k = o.k; b.addEventListener('click', function () { answer(o.k, b); }); g.appendChild(b); });
+    var area = $('answerArea'); area.innerHTML = ''; area.appendChild(g);
+    updateTop();
+  }
+  function answer(k, el) {
+    if (state.answered) return; state.answered = true;
+    var q = state.qs[state.i], ok = k === q.ans;
+    Array.prototype.forEach.call(document.querySelectorAll('.opt'), function (b) { b.disabled = true; if (b.dataset.k === q.ans) b.classList.add('ok'); else if (b === el) b.classList.add('bad'); else b.classList.add('dim'); });
+    if (ok) { state.score++; state.streak++; state.bestStreak = Math.max(state.bestStreak, state.streak); } else state.streak = 0;
+    state.results.push({ q: q, ok: ok, yourH: el.innerHTML });
+    var last = state.i === state.qs.length - 1, msg = ok ? QE.pick(QE.GOOD) : QE.pick(QE.BAD);
+    if (ok && state.streak >= 3 && state.streak % 3 === 0) msg = '🔥 ' + state.streak + ' إجابات صحيحة متتالية! أنت نجم يا يوسف';
+    $('fb').innerHTML = '<div class="fb ' + (ok ? 'ok' : 'bad') + '" role="status"><h3>' + (ok ? '✅ ' : '❌ ') + msg + '</h3>' +
+      (ok ? '' : '<div class="ans">الإجابة الصحيحة: <b>' + q.ansH + '</b></div>') +
+      '<div class="ex">💡 ' + q.ex + '</div></div>' +
+      '<button class="big-btn next" id="next">' + (last ? 'عرض النتيجة 🎉' : 'السؤال التالي ⬅') + '</button>';
+    updateTop();
+    $('next').addEventListener('click', function () { if (last) finish(); else { state.i++; render(); window.scrollTo(0, 0); } });
+    setTimeout(function () { var fb = $('fb'); if (fb.scrollIntoView) fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60);
+  }
+  function finish() {
+    var n = state.qs.length, pct = Math.round(state.score / n * 100);
+    var stars = pct >= 90 ? 3 : pct >= 70 ? 2 : pct >= 50 ? 1 : 0;
+    $('fStars').textContent = '★★★'.slice(0, stars) + '☆☆☆'.slice(0, 3 - stars);
+    $('fEmoji').textContent = ['💪', '🌱', '🌟', '🏆'][stars];
+    $('fScore').textContent = state.score + ' / ' + n;
+    $('fPct').textContent = pct + '%';
+    $('fMsg').textContent = ['لا بأس يا يوسف! راجع الأخطاء وجرّب مرة أخرى 💙', 'بداية جيدة يا يوسف! استمر في المراجعة 🌱', 'أحسنت يا يوسف! أداء رائع 🌟', 'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆'][stars];
+    var b = store(true) || {}, k = bestKey(), prev = b[k], isNew = prev == null || pct > prev;
+    if (isNew) { b[k] = pct; store(false, b); }
+    $('fBest').textContent = isNew && prev != null ? '🎉 رقم قياسي جديد! (السابق ' + prev + '%)' : prev != null ? '🏅 أفضل نتيجة: ' + Math.max(prev, pct) + '%' : '';
+    if (state.bestStreak >= 3) $('fBest').textContent += '  •  🔥 أطول سلسلة: ' + state.bestStreak;
+    $('fUnits').innerHTML = QE.lessonsFor(state.scope).map(function (l) {
+      var rs = state.results.filter(function (r) { return r.q.lesson === l; }), c = rs.filter(function (r) { return r.ok; }).length, p = rs.length ? Math.round(c / rs.length * 100) : 0;
+      return '<div class="r"><span>' + L[l].icon + ' ' + L[l].name + '</span><b><bdi class="n" dir="ltr">' + c + ' / ' + rs.length + '</bdi></b><div class="t"><i style="width:' + p + '%;background:' + COL[l] + '"></i></div></div>';
+    }).join('');
+    var missed = state.results.filter(function (r) { return !r.ok; });
+    $('fMissedTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة (' + missed.length + '):' : 'لا توجد أخطاء! 🎉';
+    $('fMissed').innerHTML = missed.length ? missed.map(function (r) {
+      return '<li><div class="q">' + L[r.q.lesson].icon + ' ' + r.q.q + '</div><div class="yours">إجابتك: ' + r.yourH + '</div><div class="right">الصحيح: ' + r.q.ansH + '</div><div class="ex" style="font-size:15px;color:#4a4070">💡 ' + r.q.ex + '</div></li>';
+    }).join('') : '<li class="perfect" style="background:#e6f8ee;border-color:#9ee0b9">كل الإجابات صحيحة — بارك الله فيك يا بطل! 👑</li>';
+    show('finish');
+    if (stars >= 2) confetti();
+  }
+  function confetti() {
+    var c = document.createElement('div'); c.className = 'confetti'; var em = ['🌟', '🧮', '📐', '➗', '✨', '💯'];
+    for (var i = 0; i < 26; i++) { var s = document.createElement('span'); s.textContent = em[i % em.length]; s.style.left = Math.random() * 100 + '%'; s.style.animationDuration = (2 + Math.random() * 2.5) + 's'; s.style.animationDelay = Math.random() * 0.8 + 's'; c.appendChild(s); }
+    document.body.appendChild(c); setTimeout(function () { c.remove(); }, 5600);
+  }
+  showBest();
+  window.__quiz = state;
+})();
+</script>
+</body>
+</html>
