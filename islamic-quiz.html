@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a6fb0">
+<title>تحدي التربية الإسلامية مع يوسف — الصف الثامن 8/1</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--l1:#e08a1e;--l2:#1f8a70;--l3:#2a7ab0;--l4:#1aa3c7;--l5:#8a5a2b;--l6:#c2417e;--l7:#5a6b7d;--l8:#d0632a;--u1:#2f9e5a;--u2:#e0702a;--u3:#c2304a;--mix:#7b5cd6;--ink:#2b2350;--bg:#fdf6ff;--ok:#1f9d55;--okbg:#e6f8ee;--bad:#e0435a;--badbg:#fdecef;--accent:var(--mix)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic","Droid Arabic Naskh",Tahoma,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);background-image:radial-gradient(circle at 10% 0%,#e3f6ff 0,transparent 40%),radial-gradient(circle at 100% 30%,#e3f0ff 0,transparent 40%);
+  min-height:100vh;line-height:1.6;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:14px 14px calc(28px + env(safe-area-inset-bottom))}
+bdi.n,bdi.m{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+bdi.n{white-space:nowrap}
+bdi.m{font-weight:700}
+.hidden{display:none!important}
+button{font-family:inherit;cursor:pointer;border:none;touch-action:manipulation}
+h1{font-size:28px;margin:4px 0 2px;line-height:1.3;text-align:center}
+.sub{text-align:center;color:#6b6290;margin:0 0 14px;font-size:16px}
+.hero{text-align:center;font-size:52px;line-height:1;margin-top:6px}
+.card{background:#fff;border-radius:22px;box-shadow:0 6px 22px rgba(80,50,140,.10);padding:16px;margin:12px 0}
+.label{font-weight:700;margin:0 2px 8px;font-size:17px}
+.units{display:grid;grid-template-columns:1fr;gap:10px}
+.unitbtn{display:flex;align-items:center;gap:12px;text-align:right;width:100%;min-height:64px;padding:10px 14px;border-radius:18px;background:#f6f3ff;color:var(--ink);font-size:17px;border:3px solid transparent;transition:transform .1s}
+.unitbtn .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:22px;font-weight:800}
+.unitbtn b{display:block;font-size:17px}.unitbtn small{display:block;color:#6b6290;font-size:14px;line-height:1.4}
+.unitbtn.sel{border-color:var(--c);background:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
+.unitbtn:active{transform:scale(.98)}
+.counts{display:flex;gap:10px}
+.countbtn{flex:1;min-height:56px;border-radius:16px;background:#f6f3ff;font-size:20px;font-weight:800;color:var(--ink);border:3px solid transparent}
+.countbtn.sel{border-color:var(--mix);background:#fff}
+.big-btn{display:block;width:100%;min-height:60px;border-radius:20px;font-size:22px;font-weight:800;color:#fff;background:linear-gradient(135deg,#ff6fa8,#7b5cd6);box-shadow:0 6px 16px rgba(123,92,214,.35);margin-top:6px}
+.big-btn:active{transform:translateY(2px)}
+.best{text-align:center;color:#6b6290;font-size:15px;margin-top:10px;min-height:1em}
+.exam{background:#fff7e0;border:2px dashed #f2b705;border-radius:16px;padding:8px 12px;font-size:15px;text-align:center;margin-top:12px}
+/* quiz */
+.top{position:sticky;top:0;z-index:5;background:rgba(253,246,255,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);margin:-14px -14px 0;padding:10px 14px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:15px;font-weight:700;flex-wrap:wrap}
+.pill{background:#fff;border-radius:999px;padding:4px 12px;box-shadow:0 2px 8px rgba(80,50,140,.08);white-space:nowrap}
+.bar{height:12px;background:#ece6ff;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7b5cd6,#ff6fa8);border-radius:999px;transition:width .35s}
+.home{background:#fff;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px rgba(80,50,140,.08)}
+.qcard{border-top:8px solid var(--accent)}
+.chip{display:inline-block;color:#fff;background:var(--accent);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:700;margin-bottom:8px}
+.qtext{font-size:20px;line-height:1.85;overflow-wrap:anywhere}
+.qtext b{color:var(--accent)}
+.big{font-size:26px;text-align:center;margin:12px 0 4px;line-height:1.6}
+.big.words{white-space:normal;font-weight:700;font-size:21px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.opts.wide{grid-template-columns:1fr}
+.opt{min-height:60px;border-radius:16px;background:#f6f3ff;border:3px solid #e2dbff;font-size:21px;color:var(--ink);padding:8px 10px;line-height:1.5;transition:transform .08s}
+.opt:active{transform:scale(.97)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#9b1c30}
+.opt[disabled]{cursor:default}
+.opt.dim{opacity:.55}
+.numrow{display:flex;gap:10px;margin-top:16px;align-items:stretch}
+.numrow input{flex:1;min-width:0;font-size:26px;font-weight:700;text-align:center;direction:ltr;border:3px solid #e2dbff;border-radius:16px;padding:10px;font-family:inherit;color:var(--ink);background:#fff;outline:none;-webkit-appearance:none;appearance:none}
+.numrow input:focus{border-color:var(--accent)}
+.numrow input.ok{border-color:var(--ok);background:var(--okbg)}.numrow input.bad{border-color:var(--bad);background:var(--badbg)}
+.check{flex:none;min-width:104px;border-radius:16px;background:var(--accent);color:#fff;font-size:20px;font-weight:800;padding:0 14px}
+.check[disabled]{opacity:.5}
+.hint{color:var(--bad);font-size:15px;min-height:1.4em;margin-top:6px;text-align:center}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(6px)}50%{transform:translateX(-6px)}75%{transform:translateX(4px)}}
+.fb{border-radius:20px;padding:14px 16px;margin-top:12px;animation:pop .25s ease-out}
+.fb.ok{background:var(--okbg);border:3px solid var(--ok)}.fb.bad{background:var(--badbg);border:3px solid var(--bad)}
+.fb h3{margin:0 0 4px;font-size:21px}.fb.ok h3{color:#11643a}.fb.bad h3{color:#9b1c30}
+.fb .ans{font-size:18px;margin:2px 0}.fb .ex{font-size:16px;color:#4a4070;line-height:1.8;overflow-wrap:anywhere}
+.next{margin-top:12px}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.barmodel{margin:12px 0 2px;display:grid;gap:6px}
+.barmodel .row{display:flex;align-items:center;gap:8px}
+.barmodel .lbl{flex:none;width:58px;font-size:15px;font-weight:700}
+.barmodel .cells{display:flex;direction:ltr;flex-wrap:nowrap}
+.barmodel .cells span{display:inline-block;min-width:42px;text-align:center;border:2px solid var(--u3);background:#ffe8cc;font-size:15px;font-weight:700;margin-left:-2px;padding:1px 4px}
+/* finish */
+.score-big{text-align:center;font-size:56px;font-weight:900;line-height:1.1;margin:4px 0}
+.stars{text-align:center;font-size:40px;letter-spacing:6px;direction:ltr}
+.msg{text-align:center;font-size:20px;font-weight:700;margin:6px 0 2px}
+.ub{display:grid;gap:10px}
+.ub .r{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;font-size:16px}
+.ub .t{height:12px;background:#eee;border-radius:999px;overflow:hidden;grid-column:1/-1}
+.ub .t i{display:block;height:100%;border-radius:999px}
+.missed{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.missed li{background:#fff8fa;border:2px solid #f6c9d2;border-radius:16px;padding:10px 12px;font-size:16px;line-height:1.8;overflow-wrap:anywhere}
+.missed .q .big{font-size:18px;margin:2px 0;text-align:right}
+.missed .q .barmodel{display:none}
+.missed .yours{color:#9b1c30}.missed .right{color:#11643a;font-weight:700}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.btn2{min-height:56px;border-radius:18px;font-size:18px;font-weight:800;color:#fff;background:var(--mix)}
+.btn2.alt{background:#fff;color:var(--mix);border:3px solid var(--mix)}
+.perfect{text-align:center;font-size:18px;color:#11643a;font-weight:700}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.confetti span{position:absolute;top:-40px;font-size:26px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (min-width:600px){.units{grid-template-columns:1fr 1fr}.qtext{font-size:22px}h1{font-size:34px}}
+@media (max-width:360px){.opts{grid-template-columns:1fr}.qtext{font-size:19px}.big{font-size:23px}.check{min-width:88px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.ay{font-family:"KFGQPC HAFS Uthmanic Script","KFGQPC Uthman Taha Naskh","Amiri Quran","Amiri","Scheherazade New","Traditional Arabic","Noto Naskh Arabic","Geeza Pro",serif;color:#13703e;font-weight:600;font-size:1.08em;line-height:2.1}
+.ay .br{font-family:"Noto Sans Arabic","Geeza Pro","Segoe UI",sans-serif;font-weight:400;color:#13703e}
+.hd{font-family:"Amiri","Traditional Arabic","Noto Naskh Arabic","Geeza Pro",serif;color:#8a1f5c;font-weight:700;font-size:1.05em;line-height:2.1}
+.qtext{line-height:2.05}
+.opt{line-height:1.9;font-size:19px;text-align:center}
+.opts.wide .opt{text-align:right;padding:10px 14px}
+.opt .ay,.opt .hd{font-size:1.05em}
+.typechip{display:inline-block;background:#f1ecff;color:#5a4a8a;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin:0 6px 8px 0}
+.lessons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lessons .unitbtn{min-height:58px;padding:8px 10px;gap:8px}
+.lessons .unitbtn .ic{width:38px;height:38px;font-size:20px;border-radius:12px}
+.lessons .unitbtn b{font-size:15.5px;line-height:1.35}
+.group-title{font-weight:800;font-size:15px;color:#6b6290;margin:14px 2px 8px}
+.note2{background:#eef8f1;border:2px dashed #2f9e5a;border-radius:16px;padding:8px 12px;font-size:15px;text-align:center;margin-top:10px}
+.missed .q{font-weight:600}
+.missed .q .ay,.missed .q .hd{font-size:1em}
+@media (max-width:360px){.lessons .unitbtn b{font-size:14.5px}.opt{font-size:18px}}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.15;margin:0 2px;font-size:.9em;direction:ltr}
+.fr>span:first-child{border-bottom:2px solid currentColor;padding:0 3px}
+.rt{white-space:nowrap}.rad{border-top:2px solid currentColor;padding:0 2px}.ix{font-size:.6em;vertical-align:super;margin-right:-4px}
+.ov{text-decoration:overline}
+bdi.m{font-family:-apple-system,"SF Pro Text","Segoe UI","Noto Sans",Arial,sans-serif;white-space:nowrap}
+.unitbtn .ic{font-size:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section id="start">
+    <div class="hero">🕌📖</div>
+    <h1>تحدي التربية الإسلامية مع يوسف</h1>
+    <p class="sub">مراجعة اختبار منتصف الفصل الأول — الصف الثامن (الشعبة <bdi class="n" dir="ltr">8/1</bdi>) — التربية الإسلامية</p>
+    <div class="card">
+      <div class="label">١) اختر ما تريد مراجعته:</div>
+      <div class="units" id="units">
+        <button class="unitbtn sel" data-s="all" style="--c:var(--mix)"><span class="ic" style="background:var(--mix)">★</span><span><b>مراجعة شاملة</b><small>كل مواضيع أوراق التدريبات الإثرائية</small></span></button>
+        <button class="unitbtn" data-s="u1" style="--c:var(--u1)"><span class="ic" style="background:var(--u1)">1</span><span><b>القرآن الكريم والحديث الشريف</b><small>ثواب المتقين (سورة الصف 1–9) • من خصال الإيمان</small></span></button>
+        <button class="unitbtn" data-s="u2" style="--c:var(--u2)"><span class="ic" style="background:var(--u2)">2</span><span><b>العقيدة والفقه</b><small>القرآن الكريم • المسح على الخفين والجبيرة</small></span></button>
+        <button class="unitbtn" data-s="u3" style="--c:var(--u3)"><span class="ic" style="background:var(--u3)">3</span><span><b>السيرة والآداب</b><small>يوما خيبر ومؤتة • الإخلاص في القول والعمل</small></span></button>
+      </div>
+      <div class="group-title">أو اختر موضوعًا واحدًا:</div>
+      <div class="units lessons" id="lessons"></div>
+    </div>
+    <div class="card">
+      <div class="label">٢) عدد الأسئلة:</div>
+      <div class="counts" id="counts">
+        <button class="countbtn" data-n="10">10</button>
+        <button class="countbtn" data-n="20">20</button>
+        <button class="countbtn sel" data-n="all">الكل (<bdi class="n" dir="ltr">40</bdi>)</button>
+      </div>
+    </div>
+    <button class="big-btn" id="go">ابدأ التحدي 🚀</button>
+    <div class="best" id="best"></div>
+    <div class="exam">📅 اختبار منتصف الفصل في التربية الإسلامية: الخميس <bdi class="n" dir="ltr">15</bdi> أكتوبر <bdi class="n" dir="ltr">2026</bdi> (الحصتان الثانية والثالثة) — بالتوفيق يا يوسف! 💙</div>
+    <div class="note2">📄 أسئلة جديدة على موضوعات أوراق العمل التعزيزية ومهاراتها (ليست نسخة منها)، وكل حكم وآية وحديث مطابق للكتاب المدرسي. الأوراق لا تغني عن الكتاب المدرسي.</div>
+  </section>
+
+  <section id="quiz" class="hidden">
+    <div class="top">
+      <div class="stats">
+        <button class="home" id="home" aria-label="الرئيسية">🏠</button>
+        <span class="pill" id="qnum"></span>
+        <span class="pill" id="score"></span>
+        <span class="pill" id="streak"></span>
+      </div>
+      <div class="bar"><i id="prog"></i></div>
+    </div>
+    <div class="card qcard" id="qcard">
+      <span class="chip" id="chip"></span><span class="typechip" id="tchip"></span>
+      <div class="qtext" id="qtext"></div>
+      <div id="answerArea"></div>
+    </div>
+    <div id="fb"></div>
+  </section>
+
+  <section id="finish" class="hidden">
+    <div class="card" style="text-align:center">
+      <div class="hero" id="fEmoji">🏆</div>
+      <div class="stars" id="fStars"></div>
+      <div class="score-big"><bdi class="n" dir="ltr" id="fScore"></bdi></div>
+      <div style="font-size:20px;font-weight:700">النسبة: <bdi class="n" dir="ltr" id="fPct"></bdi></div>
+      <div class="msg" id="fMsg"></div>
+      <div class="best" id="fBest"></div>
+    </div>
+    <div class="btns">
+      <button class="btn2" id="again">🔁 حاول مرة أخرى</button>
+      <button class="btn2 alt" id="other">📚 اختر موضوعًا آخر</button>
+    </div>
+    <div class="card">
+      <div class="label">النتيجة حسب الموضوع:</div>
+      <div class="ub" id="fUnits"></div>
+    </div>
+    <div class="card">
+      <div class="label" id="fMissedTitle">الأسئلة التي تحتاج مراجعة:</div>
+      <ul class="missed" id="fMissed"></ul>
+    </div>
+  </section>
+</div>
+
+<script id="bank">
+/* Generated by gen_bank.py — Grade 8 Islamic Education quiz for Yusuf: new questions on the enrichment-sheet topics, checked against the MOEHE textbook. */
+var BANK = [
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "معنى كلمة <span class=\"ay\"><span class=\"br\">﴿</span>مقتا<span class=\"br\">﴾</span></span> في قوله تعالى <span class=\"ay\"><span class=\"br\">﴿</span>كبر مقتا عند الله أن تقولوا ما لا تفعلون<span class=\"br\">﴾</span></span>:",
+"a": "بُغضًا شديدًا",
+"o": [
+"عَظُمَ",
+"مالوا عن الحق",
+"الخارجين عن الطاعة"
+],
+"ex": "«مقتًا»: بغضًا شديدًا، و«كَبُرَ»: عَظُمَ (الكتاب ص23)."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "معنى كلمة <span class=\"ay\"><span class=\"br\">﴿</span>زاغوا<span class=\"br\">﴾</span></span> في قوله تعالى <span class=\"ay\"><span class=\"br\">﴿</span>فلما زاغوا أزاغ الله قلوبهم<span class=\"br\">﴾</span></span>:",
+"a": "مالوا عن الحق",
+"o": [
+"بُغضًا شديدًا",
+"عَظُمَ",
+"الخارجين عن الطاعة"
+],
+"ex": "«زاغوا»: مالوا عن الحق، و«الفاسقين»: الخارجين عن الطاعة (الكتاب ص23)."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "بماذا بشّر عيسى ابن مريم عليه السلام بني إسرائيل كما في سورة الصف؟",
+"a": "برسول يأتي من بعده اسمه أحمد ﷺ",
+"o": [
+"بنزول التوراة على موسى",
+"بانتصار الروم على الفرس",
+"بفتح خيبر"
+],
+"ex": "قال تعالى: <span class=\"ay\"><span class=\"br\">﴿</span>ومبشرا برسول يأتي من بعدي اسمه أحمد<span class=\"br\">﴾</span></span>، وأحمد هو محمد ﷺ خاتم الأنبياء والمرسلين (الكتاب ص26)."
+},
+{
+"l": 1,
+"s": "w",
+"t": "tf",
+"q": "سبب نزول أول سورة الصف أن نفرًا من الصحابة تذاكروا فقالوا: لو نعلم أي الأعمال أحب إلى الله لعملناه.",
+"a": true,
+"ex": "رواه الترمذي عن عبد الله بن سلام رضي الله عنه (الكتاب ص24)."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "الحكمة من تشبيه المقاتلين في سبيل الله صفًّا بالبنيان المرصوص:",
+"a": "بيان ثباتهم واجتماع كلمتهم وصدق يقينهم، فلا يستطيع أحد أن يهدّه",
+"o": [
+"بيان كثرة عددهم وعتادهم",
+"بيان أنهم يبنون الحصون في أثناء القتال",
+"بيان أنهم لا يتحركون من أماكنهم أبدًا"
+],
+"ex": "«كأنهم في ثباتهم واجتماع كلمتهم وصدق يقينهم بنيان قد التصق بعضه ببعض، فلا يستطيع أحد أن يهدّه أو يدمّره» (الكتاب ص25)."
+},
+{
+"l": 1,
+"s": "w",
+"t": "tf",
+"q": "يُستفاد من قوله تعالى <span class=\"ay\"><span class=\"br\">﴿</span>ومن أظلم ممن افترى على الله الكذب<span class=\"br\">﴾</span></span> أن أشد أنواع الظلم الكذب على الله ﷻ.",
+"a": true,
+"ex": "من الدروس المستفادة في الكتاب ص28: «أشد أنواع الظلم الكذب على الله ﷻ»."
+},
+{
+"l": 1,
+"s": "b",
+"t": "mc",
+"q": "سورة الصف سورة:",
+"a": "مدنية، وعدد آياتها 14 آية",
+"o": [
+"مكية، وعدد آياتها 14 آية",
+"مدنية، وعدد آياتها 9 آيات",
+"مكية، وعدد آياتها 9 آيات"
+],
+"ex": "«سورة الصف سورة مدنية، وعدد آياتها 14 آية» — والمقرر تفسير الآيات 1–9 (الكتاب ص22)."
+},
+{
+"l": 1,
+"s": "b",
+"t": "tf",
+"q": "معنى <span class=\"ay\"><span class=\"br\">﴿</span>نور الله<span class=\"br\">﴾</span></span> في قوله تعالى <span class=\"ay\"><span class=\"br\">﴿</span>يريدون ليطفئوا نور الله بأفواههم<span class=\"br\">﴾</span></span>: الشمس والقمر.",
+"a": false,
+"ex": "معنى «نور الله»: دينه وشريعته (الكتاب ص23)؛ فالكافرون لا يستطيعون إبطال الحق الذي جاء به النبي ﷺ (ص27)."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "راوي حديث <span class=\"hd\">«من كان يؤمن بالله واليوم الآخر فليقل خيرا أو ليصمت»</span> هو:",
+"a": "أبو هريرة رضي الله عنه",
+"o": [
+"عبد الله بن عمرو رضي الله عنهما",
+"المغيرة بن شعبة رضي الله عنه",
+"عبد الله بن سلام رضي الله عنه"
+],
+"ex": "الحديث عن أبي هريرة رضي الله عنه، متفق عليه (الكتاب ص34)."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "المقصود بقوله ﷺ: «فليقل خيرًا»:",
+"a": "فليتكلّم بحق، وبكلام حسن",
+"o": [
+"الإيمان الكامل الذي ينجّي من عذاب الله",
+"فليسكت عن الكلام كله",
+"فليُكثر من الكلام في كل مجلس"
+],
+"ex": "معاني المفردات (الكتاب ص35). أما «من كان يؤمن» فمعناها: الإيمان الكامل الذي ينجّي من عذاب الله."
+},
+{
+"l": 2,
+"s": "w",
+"t": "tf",
+"q": "كلام اللغو الذي لا فائدة منه حرام.",
+"a": false,
+"ex": "كلام اللغو مكروه لا حرام؛ ويُكره لئلا يجرّ إلى كلام الشر. أما كلام الشر والمعصية فهو الحرام (الكتاب ص36)."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "علّل: لا ينبغي للضيف أن يطيل الإقامة عند مضيفه.",
+"a": "حتى لا يشقّ على المضيف",
+"o": [
+"لأن الضيافة محرّمة",
+"حتى لا يتعلّم أهل البيت عاداته",
+"لأن الضيف لا يُكرَم إلا يومًا واحدًا"
+],
+"ex": "من آداب الضيف: «ألا يطيل في الإقامة؛ حتى لا يشقّ على المضيف» (الكتاب ص37)."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "من الآداب التي يتأدّب بها الضيف:",
+"a": "الجلوس في الموضع الذي يختاره له المضيف",
+"o": [
+"أن يختار المكان الذي يعجبه في البيت",
+"أن يتطلّع إلى أركان البيت وغرفه",
+"أن يطيل في الإقامة ليُظهر محبته"
+],
+"ex": "آداب الضيف (الكتاب ص37): الجلوس في الموضع الذي يختاره له المضيف، وألا يتطلّع إلى عورات البيت، وأن يدعو لمضيفه بالخير والبركة، وألا يطيل الإقامة."
+},
+{
+"l": 2,
+"s": "w",
+"t": "tf",
+"q": "إكرام الجار يكون ببذل الخير والإحسان إليه، سواء أكان مسلمًا أم كافرًا.",
+"a": true,
+"ex": "«الجار هو المجاور في الدار، سواء أكان مسلمًا أم كافرًا، وإكرامه يكون ببذل الخير والإحسان إليه» (الكتاب ص36)."
+},
+{
+"l": 2,
+"s": "b",
+"t": "mc",
+"q": "اسم الصحابي أبي هريرة رضي الله عنه:",
+"a": "عبد الرحمن بن صخر الدوسي",
+"o": [
+"عبد الله بن عمرو",
+"زيد بن حارثة",
+"الحارث بن عمير الأزدي"
+],
+"ex": "اسمه عبد الرحمن بن صخر الدوسي، من قبيلة دوس باليمن، وكنّاه النبي ﷺ أبا هريرة (الكتاب ص35)."
+},
+{
+"l": 2,
+"s": "b",
+"t": "tf",
+"q": "أسلم أبو هريرة رضي الله عنه في اليمن، وهاجر إلى المدينة المنورة عام 7هـ، وتوفي عام 59هـ ودُفن في البقيع.",
+"a": true,
+"ex": "كما في التعريف بالراوي (الكتاب ص35)، وقد استعمله عمر بن الخطاب رضي الله عنه واليًا على البحرين."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "أكمل تعريف القرآن الكريم: «كلام الله تعالى المعجز، المنزّل على نبينا محمد ﷺ بواسطة جبريل عليه السلام، المتعبَّد بتلاوته، ...».",
+"a": "المنقول إلينا بالتواتر",
+"o": [
+"المكتوب في الصحف فقط",
+"المنقول إلينا عن شخص واحد",
+"المحفوظ عند العلماء دون غيرهم"
+],
+"ex": "التعريف كاملًا في الكتاب ص52."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "معنى عبارة «المنقول إلينا بالتواتر»:",
+"a": "نُقل عن طريق الجمع الكثير من الصحابة إلى الجمع الكثير من التابعين، وهكذا جيلًا بعد جيل",
+"o": [
+"أن قراءته عبادة يتقرّب بها المؤمن إلى خالقه",
+"أن الله تحدّى الإنس والجن أن يأتوا بمثله",
+"أنه نزل على النبي ﷺ دفعة واحدة"
+],
+"ex": "الكتاب ص52. والخياران الأولان هما معنى «المتعبّد بتلاوته» و«المعجز»."
+},
+{
+"l": 3,
+"s": "w",
+"t": "tf",
+"q": "أوكل الله تعالى حفظ القرآن الكريم إلى البشر، كما أوكل إليهم حفظ الكتب السابقة.",
+"a": false,
+"ex": "تكفّل الله ﷻ بحفظ القرآن: <span class=\"ay\"><span class=\"br\">﴿</span>إنا نحن نزلنا الذكر وإنا له لحافظون<span class=\"br\">﴾</span></span>، بينما أوكل حفظ الكتب السابقة للبشر فحرّفوا وبدّلوا (الكتاب ص53)."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "إخبار القرآن الكريم بانتصار الروم على الفرس في بضع سنين يدل على وجه من وجوه الإعجاز هو:",
+"a": "الإخبار بالغيب",
+"o": [
+"الإعجاز البياني",
+"الإشارات العلمية",
+"تعدد أسماء القرآن"
+],
+"ex": "وقد كان ما أخبرت عنه الآية؛ فتغلّب الروم على الفرس في بضع سنين (الكتاب ص55)."
+},
+{
+"l": 3,
+"s": "b",
+"t": "mc",
+"q": "قوله تعالى <span class=\"ay\"><span class=\"br\">﴿</span>ومن يرد أن يضله يجعل صدره ضيقا حرجا كأنما يصعد في السماء<span class=\"br\">﴾</span></span> [الأنعام: 125] مثال على:",
+"a": "الإشارات العلمية في القرآن",
+"o": [
+"الإخبار بانتصار الروم",
+"الإعجاز البياني وحده",
+"قصص الأنبياء السابقين"
+],
+"ex": "الإنسان كلما ارتفع عن سطح الأرض ضاق صدره؛ لقلة الأكسجين وانخفاض الضغط، وهذا لم يُعرف إلا بالعلم الحديث (الكتاب ص55)."
+},
+{
+"l": 3,
+"s": "b",
+"t": "tf",
+"q": "من الفروق بين القرآن الكريم والكتب السابقة أن القرآن للناس كافة، والكتب السابقة نزلت لأقوام بأعيانهم.",
+"a": true,
+"ex": "الكتاب ص53، قال تعالى: <span class=\"ay\"><span class=\"br\">﴿</span>وما أرسلناك إلا كافة للناس بشيرا ونذيرا<span class=\"br\">﴾</span></span> [سبأ: 28]."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "مدة المسح على الخفين للمسافر:",
+"a": "ثلاثة أيام بلياليها",
+"o": [
+"يوم وليلة",
+"يومان بليلتيهما",
+"ليس لها مدة محددة"
+],
+"ex": "مدة المسح للمقيم يوم وليلة، وللمسافر ثلاثة أيام بلياليها (الكتاب ص61)."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "لبس خالد خفّيه بعد أن توضأ، ثم نزع أحدهما بعد ساعات. ما حكم مسحه عليهما بعد ذلك؟",
+"a": "لا يجوز حتى يتطهّر ويلبسهما من جديد؛ لأن نزع الخف ناقض للمسح",
+"o": [
+"يجوز؛ لأن الخف الآخر ما زال ملبوسًا",
+"يجوز حتى تنتهي مدة المسح",
+"مكروه فقط ولا يبطل المسح"
+],
+"ex": "من نواقض المسح: انتهاء المدة، ونزع الخفين أو حتى أحدهما، والحدث الأكبر (الكتاب ص62)."
+},
+{
+"l": 4,
+"s": "w",
+"t": "tf",
+"q": "يُشترط لصحة المسح على الجبيرة أن تكون قد وُضعت على طهارة.",
+"a": false,
+"ex": "«ولا يُشترط وضع الجبيرة على طهارة» بخلاف الخفين (الكتاب ص63)."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "من شروط المسح على الخفين:",
+"a": "ستر موضع الوضوء (القدمين والكعبين)",
+"o": [
+"أن يكون اللابس مسافرًا",
+"أن يكون الخفان جديدين",
+"أن يُمسح ظاهر القدم وباطنها ثلاث مرات"
+],
+"ex": "شروط المسح على الخفين: لبسهما على طهارة، وطهارة الخفين، وستر موضع الوضوء (الكتاب ص62)."
+},
+{
+"l": 4,
+"s": "b",
+"t": "mc",
+"q": "الجبيرة هي:",
+"a": "ما يوضع على العضو المصاب حتى يلتئم",
+"o": [
+"ما يُلبس على الرجلين من جلد يستر القدمين والكعبين",
+"ما يُلبس على الرجلين على هيئة الخف من غير الجلد",
+"إمرار اليد المبلّلة على الخفين"
+],
+"ex": "الجبيرة مثل: الجبس، والرباط الضاغط، والأقمشة الطبية (الكتاب ص63). والخيارات الأخرى تعريف الخف والجورب والمسح (ص61)."
+},
+{
+"l": 4,
+"s": "b",
+"t": "tf",
+"q": "إذا عجز المصاب عن الغسل والمسح معًا على العضو، فإنه يتيمّم عمّا عجز عن مسحه.",
+"a": true,
+"ex": "الكتاب ص64: «ولو عجز عن الغسل والمسح معًا، فإنه يتيمّم عما عجز عن مسحه»."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "أمّر النبي ﷺ على جيش مؤتة أولًا:",
+"a": "زيد بن حارثة رضي الله عنه",
+"o": [
+"خالد بن الوليد رضي الله عنه",
+"جعفر بن أبي طالب رضي الله عنه",
+"عبد الله بن رواحة رضي الله عنه"
+],
+"ex": "قال ﷺ: <span class=\"hd\">«إن قتل زيد فجعفر، وإن قتل جعفر فعبد الله بن رواحة»</span> [رواه البخاري] (الكتاب ص77)."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "من الذي قتل الحارث بن عمير الأزدي رضي الله عنه رسولَ النبي ﷺ، فكان ذلك سبب يوم مؤتة؟",
+"a": "شرحبيل بن عمرو الغساني",
+"o": [
+"هرقل ملك الروم",
+"يهود خيبر",
+"حاكم بصرى نفسه"
+],
+"ex": "اعترضه شرحبيل بن عمرو الغساني — من أمراء قيصر على الشام — فأوثقه وضرب عنقه، ولم يُقتل لرسول الله ﷺ رسول غيره (الكتاب ص77)."
+},
+{
+"l": 5,
+"s": "w",
+"t": "tf",
+"q": "من خطة خالد بن الوليد رضي الله عنه في الانسحاب يوم مؤتة أنه غيّر ترتيب الجيش، فجعل المقدّمة مؤخّرة والميمنة ميسرة.",
+"a": true,
+"ex": "فظنّ الروم أن مددًا كبيرًا وصل إلى المسلمين فهبطت معنوياتهم. ومن خطته أيضًا تحريك الخيل ليلًا لإثارة الغبار، وتشكيل مؤخّرة قوية (الكتاب ص79)."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "حرص النبي ﷺ في وصيته لعلي بن أبي طالب رضي الله عنه يوم خيبر على:",
+"a": "دعوتهم إلى الإسلام قبل القتال",
+"o": [
+"قتلهم جميعًا",
+"جمع الغنائم أولًا",
+"عقد هدنة طويلة معهم"
+],
+"ex": "قال ﷺ: <span class=\"hd\">«ثم ادعهم إلى الإسلام وأخبرهم بما يجب عليهم؛ فوالله لأن يهدي الله بك رجلا خيرا لك من أن يكون لك حمر النعم»</span> (الكتاب ص72)."
+},
+{
+"l": 5,
+"s": "b",
+"t": "mc",
+"q": "أول ما سقط من حصون خيبر — وهو أقوى حصونها — حصن:",
+"a": "ناعم",
+"o": [
+"القموص",
+"الوطيح",
+"السلالم"
+],
+"ex": "«وكان أول ما سقط من حصونهم حصن ناعم وهو أقوى حصون خيبر» (الكتاب ص72)."
+},
+{
+"l": 5,
+"s": "b",
+"t": "tf",
+"q": "لما عاد جيش مؤتة قال النبي ﷺ عنهم: «ليسوا بالفرار؛ ولكنهم الكرار إن شاء الله تعالى».",
+"a": true,
+"ex": "قالها ﷺ ردًّا على من قال لهم: يا فرّار (الكتاب ص79)."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "«أن يقصد العبد بأقواله وأفعاله رضا غير الله سبحانه وتعالى» هذا تعريف:",
+"a": "الرياء",
+"o": [
+"الإخلاص",
+"الإتقان",
+"التوكل"
+],
+"ex": "الرياء من الشرك الذي يحبط العمل. أما الإخلاص فهو إفراد الله بالقصد في الطاعة (الكتاب ص87)."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "طالب يجتهد في طلب العلم ليتفاخر على زملائه ويجادلهم. أيّ صور الإخلاص فاتته؟",
+"a": "الإخلاص في العلم",
+"o": [
+"الإخلاص في العبادة",
+"الإخلاص في العمل",
+"لم يفته شيء"
+],
+"ex": "«على المسلم ألا يكون اجتهاده في طلب العلم من أجل الفخر والمباهاة، ولا من أجل الجدال والتعالي على الناس» (الكتاب ص88)."
+},
+{
+"l": 6,
+"s": "w",
+"t": "tf",
+"q": "قوله ﷺ: <span class=\"hd\">«إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى»</span> دليل على أن الإخلاص أساس قبول الطاعات.",
+"a": true,
+"ex": "أي أن قبول الأعمال متوقّف على النيات، وكل امرئ يُجازى على حسب نيته (الكتاب ص87)."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "من فوائد الإخلاص:",
+"a": "رقيّ الأمة وتقدّمها",
+"o": [
+"الإخلاص في العبادة",
+"الشهرة ومدح الناس",
+"كثرة المال"
+],
+"ex": "فوائد الإخلاص (الكتاب ص89): التحرر من الأهواء والشهوات، والدفع إلى إتقان العمل، ورقي الأمة وتقدمها. و«الإخلاص في العبادة» صورة من صوره لا فائدة."
+},
+{
+"l": 6,
+"s": "b",
+"t": "mc",
+"q": "الرياء من الشرك الذي:",
+"a": "يحبط العمل",
+"o": [
+"يضاعف الأجر",
+"يرفع الدرجات",
+"لا يؤثر في العمل"
+],
+"ex": "الكتاب ص87، وفي الحديث القدسي: <span class=\"hd\">«أنا أغنى الشركاء عن الشرك، من عمل عملا أشرك فيه معي غيري تركته وشركه»</span> [رواه مسلم]."
+},
+{
+"l": 6,
+"s": "b",
+"t": "tf",
+"q": "من فضل الإخلاص أنه نجاة من الشرك، ويرفع الدرجات.",
+"a": true,
+"ex": "فضل الإخلاص (الكتاب ص87): أساس قبول الطاعات، ونجاة من الشرك، ويرفع الدرجات."
+}
+];
+
+</script>
+<script id="engine">
+/* ===== Quiz engine (pure, no DOM) — adapted for Yusuf's Grade 8 Islamic Education quiz ===== */
+var QE = (function () {
+  'use strict';
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  var LESSONS = {
+    1: { name: 'ثواب المتقين (سورة الصف)', unit: 1, icon: '📖' },
+    2: { name: 'من خصال الإيمان (حديث)', unit: 1, icon: '🤝' },
+    3: { name: 'القرآن الكريم (عقيدة)', unit: 2, icon: '🕋' },
+    4: { name: 'المسح على الخفين والجبيرة', unit: 2, icon: '💧' },
+    5: { name: 'يوما خيبر ومؤتة (سيرة)', unit: 3, icon: '🏇' },
+    6: { name: 'الإخلاص في القول والعمل', unit: 3, icon: '💚' }
+  };
+  var TYPE = { mc: 'اختيار من متعدد', tf: 'صح أم خطأ' };
+  var SRC = { w: '📄 على نمط أوراق المدرسة', b: '📘 من الكتاب المدرسي' };
+  var GOOD = ['أحسنت يا يوسف! 🌟', 'ممتاز يا يوسف! 💪', 'إجابة صحيحة، أحسنت! ✨', 'رائع يا يوسف! 👏', 'ما شاء الله عليك! 🌙', 'بارك الله فيك! 🚀'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا معلومة جديدة 💪', 'قريب! ركّز في السؤال القادم 🔍', 'لا تقلق، الخطأ طريق التعلّم 🌱', 'حاول في السؤال التالي، أنت قادر! 💙'];
+  var TF = [{ h: 'صح ✔', k: 'T' }, { h: 'خطأ ✘', k: 'F' }];
+  function make(b, idx) {
+    var q = { id: idx, lesson: b.l, src: b.s, type: b.t, q: b.q, ex: b.ex };
+    if (b.t === 'tf') { q.opts = TF.slice(); q.ans = b.a ? 'T' : 'F'; }
+    else { q.opts = shuffle([b.a].concat(b.o).map(function (h, i) { return { h: h, k: 'o' + i }; })); q.ans = 'o0'; }
+    q.ansH = q.opts.filter(function (o) { return o.k === q.ans; })[0].h;
+    q.wide = q.opts.some(function (o) { return o.h.replace(/<[^>]+>/g, '').length > 16; });
+    return q;
+  }
+  // scope: 1..6 (lesson), 'u1', 'u2', 'u3', 'all'
+  function lessonsFor(scope) { return scope === 'u1' ? [1, 2] : scope === 'u2' ? [3, 4] : scope === 'u3' ? [5, 6] : scope === 'all' ? [1, 2, 3, 4, 5, 6] : [scope]; }
+  // Balanced pick across lessons from an index pool (round-robin over shuffled lessons).
+  function balanced(idxs, n, bank, ls) {
+    var pools = {}; ls.forEach(function (l) { pools[l] = shuffle(idxs.filter(function (i) { return bank[i].l === l; })); });
+    var order = shuffle(ls), out = [], guard = 0;
+    while (out.length < n && guard++ < 1000) {
+      var left = order.filter(function (l) { return pools[l].length; }); if (!left.length) break;
+      left.forEach(function (l) { if (out.length < n && pools[l].length) out.push(pools[l].shift()); });
+    }
+    return out;
+  }
+  // School-sheet questions always come first and are the majority; textbook questions complete the set.
+  function buildQuiz(scope, n, bank) {
+    bank = bank || BANK;
+    var ls = lessonsFor(scope), all = bank.map(function (b, i) { return i; }).filter(function (i) { return ls.indexOf(bank[i].l) >= 0; });
+    var W = all.filter(function (i) { return bank[i].s === 'w'; }), B = all.filter(function (i) { return bank[i].s !== 'w'; });
+    if (n === 'all' || n >= all.length) n = all.length;
+    var nb = Math.min(B.length, Math.floor(n * 0.3)), nw = Math.min(W.length, n - nb); nb = Math.min(B.length, n - nw);
+    var w = shuffle(balanced(W, nw, bank, ls)), b = shuffle(balanced(B, nb, bank, ls));
+    return w.concat(b).map(function (i) { return make(bank[i], i); });
+  }
+  return { LESSONS: LESSONS, TYPE: TYPE, SRC: SRC, GOOD: GOOD, BAD: BAD, make: make, buildQuiz: buildQuiz, lessonsFor: lessonsFor, shuffle: shuffle, pick: pick };
+})();
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var L = QE.LESSONS;
+  var COL = { 1: 'var(--l1)', 2: 'var(--l2)', 3: 'var(--l3)', 4: 'var(--l4)', 5: 'var(--l5)', 6: 'var(--l6)', 7: 'var(--l7)', 8: 'var(--l8)', u1: 'var(--u1)', u2: 'var(--u2)', u3: 'var(--u3)', all: 'var(--mix)' };
+  var state = { scope: 'all', n: 'all', qs: [], i: 0, score: 0, streak: 0, bestStreak: 0, answered: false, results: [] };
+  // lesson buttons
+  $('lessons').innerHTML = [1, 2, 3, 4, 5, 6].map(function (l) {
+    return '<button class="unitbtn" data-s="' + l + '" style="--c:' + COL[l] + '"><span class="ic" style="background:' + COL[l] + '">' + L[l].icon + '</span><span><b>' + L[l].name + '</b></span></button>';
+  }).join('');
+  function store(get, val) { try { if (get) return JSON.parse(localStorage.getItem('yusufIslamicBest') || '{}'); localStorage.setItem('yusufIslamicBest', JSON.stringify(val)); } catch (e) { return {}; } }
+  function bestKey() { return state.scope + '-' + state.n; }
+  function showBest() { var b = store(true) || {}, k = bestKey(); $('best').textContent = b[k] != null ? '🏅 أفضل نتيجة لك هنا: ' + b[k] + '%' : ''; }
+  function show(id) { ['start', 'quiz', 'finish'].forEach(function (s) { $(s).classList.toggle('hidden', s !== id); }); window.scrollTo(0, 0); }
+  function selScope(s) { Array.prototype.forEach.call(document.querySelectorAll('#units .unitbtn, #lessons .unitbtn'), function (b) { b.classList.toggle('sel', b.getAttribute('data-s') === String(s)); }); }
+  function onScope(e) { var b = e.target.closest('.unitbtn'); if (!b) return; var s = b.dataset.s; state.scope = /^\d$/.test(s) ? +s : s; selScope(s); showBest(); }
+  $('units').addEventListener('click', onScope); $('lessons').addEventListener('click', onScope);
+  $('counts').addEventListener('click', function (e) { var b = e.target.closest('.countbtn'); if (!b) return; state.n = b.dataset.n === 'all' ? 'all' : +b.dataset.n; Array.prototype.forEach.call($('counts').children, function (x) { x.classList.toggle('sel', x === b); }); showBest(); });
+  $('go').addEventListener('click', start); $('again').addEventListener('click', start);
+  $('other').addEventListener('click', function () { show('start'); showBest(); });
+  $('home').addEventListener('click', function () { if ((state.i === 0 && !state.answered) || confirm('هل تريد الخروج من التحدي؟')) { show('start'); showBest(); } });
+
+  function start() {
+    state.qs = QE.buildQuiz(state.scope, state.n); state.i = 0; state.score = 0; state.streak = 0; state.bestStreak = 0; state.results = [];
+    show('quiz'); render();
+  }
+  function updateTop() {
+    var n = state.qs.length;
+    $('qnum').innerHTML = 'السؤال <bdi class="n" dir="ltr">' + (state.i + 1) + '</bdi> من <bdi class="n" dir="ltr">' + n + '</bdi>';
+    $('score').innerHTML = '⭐ <bdi class="n" dir="ltr">' + state.score + '</bdi>';
+    $('streak').innerHTML = '🔥 <bdi class="n" dir="ltr">' + state.streak + '</bdi>';
+    $('prog').style.width = ((state.i + (state.answered ? 1 : 0)) / n * 100) + '%';
+  }
+  function render() {
+    var q = state.qs[state.i]; state.answered = false;
+    $('qcard').style.setProperty('--accent', COL[q.lesson]);
+    $('chip').textContent = L[q.lesson].icon + ' ' + L[q.lesson].name;
+    $('tchip').textContent = QE.TYPE[q.type] + ' • ' + QE.SRC[q.src];
+    $('qtext').innerHTML = q.q; $('fb').innerHTML = '';
+    var g = document.createElement('div'); g.className = 'opts' + (q.wide ? ' wide' : '');
+    q.opts.forEach(function (o) { var b = document.createElement('button'); b.className = 'opt'; b.innerHTML = o.h; b.dataset.k = o.k; b.addEventListener('click', function () { answer(o.k, b); }); g.appendChild(b); });
+    var area = $('answerArea'); area.innerHTML = ''; area.appendChild(g);
+    updateTop();
+  }
+  function answer(k, el) {
+    if (state.answered) return; state.answered = true;
+    var q = state.qs[state.i], ok = k === q.ans;
+    Array.prototype.forEach.call(document.querySelectorAll('.opt'), function (b) { b.disabled = true; if (b.dataset.k === q.ans) b.classList.add('ok'); else if (b === el) b.classList.add('bad'); else b.classList.add('dim'); });
+    if (ok) { state.score++; state.streak++; state.bestStreak = Math.max(state.bestStreak, state.streak); } else state.streak = 0;
+    state.results.push({ q: q, ok: ok, yourH: el.innerHTML });
+    var last = state.i === state.qs.length - 1, msg = ok ? QE.pick(QE.GOOD) : QE.pick(QE.BAD);
+    if (ok && state.streak >= 3 && state.streak % 3 === 0) msg = '🔥 ' + state.streak + ' إجابات صحيحة متتالية! أنت نجم يا يوسف';
+    $('fb').innerHTML = '<div class="fb ' + (ok ? 'ok' : 'bad') + '" role="status"><h3>' + (ok ? '✅ ' : '❌ ') + msg + '</h3>' +
+      (ok ? '' : '<div class="ans">الإجابة الصحيحة: <b>' + q.ansH + '</b></div>') +
+      '<div class="ex">💡 ' + q.ex + '</div></div>' +
+      '<button class="big-btn next" id="next">' + (last ? 'عرض النتيجة 🎉' : 'السؤال التالي ⬅') + '</button>';
+    updateTop();
+    $('next').addEventListener('click', function () { if (last) finish(); else { state.i++; render(); window.scrollTo(0, 0); } });
+    setTimeout(function () { var fb = $('fb'); if (fb.scrollIntoView) fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60);
+  }
+  function finish() {
+    var n = state.qs.length, pct = Math.round(state.score / n * 100);
+    var stars = pct >= 90 ? 3 : pct >= 70 ? 2 : pct >= 50 ? 1 : 0;
+    $('fStars').textContent = '★★★'.slice(0, stars) + '☆☆☆'.slice(0, 3 - stars);
+    $('fEmoji').textContent = ['💪', '🌱', '🌟', '🏆'][stars];
+    $('fScore').textContent = state.score + ' / ' + n;
+    $('fPct').textContent = pct + '%';
+    $('fMsg').textContent = ['لا بأس يا يوسف! راجع الأخطاء وجرّب مرة أخرى 💙', 'بداية جيدة يا يوسف! استمر في المراجعة 🌱', 'أحسنت يا يوسف! أداء رائع 🌟', 'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆'][stars];
+    var b = store(true) || {}, k = bestKey(), prev = b[k], isNew = prev == null || pct > prev;
+    if (isNew) { b[k] = pct; store(false, b); }
+    $('fBest').textContent = isNew && prev != null ? '🎉 رقم قياسي جديد! (السابق ' + prev + '%)' : prev != null ? '🏅 أفضل نتيجة: ' + Math.max(prev, pct) + '%' : '';
+    if (state.bestStreak >= 3) $('fBest').textContent += '  •  🔥 أطول سلسلة: ' + state.bestStreak;
+    $('fUnits').innerHTML = QE.lessonsFor(state.scope).map(function (l) {
+      var rs = state.results.filter(function (r) { return r.q.lesson === l; }), c = rs.filter(function (r) { return r.ok; }).length, p = rs.length ? Math.round(c / rs.length * 100) : 0;
+      return '<div class="r"><span>' + L[l].icon + ' ' + L[l].name + '</span><b><bdi class="n" dir="ltr">' + c + ' / ' + rs.length + '</bdi></b><div class="t"><i style="width:' + p + '%;background:' + COL[l] + '"></i></div></div>';
+    }).join('');
+    var missed = state.results.filter(function (r) { return !r.ok; });
+    $('fMissedTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة (' + missed.length + '):' : 'لا توجد أخطاء! 🎉';
+    $('fMissed').innerHTML = missed.length ? missed.map(function (r) {
+      return '<li><div class="q">' + L[r.q.lesson].icon + ' ' + r.q.q + '</div><div class="yours">إجابتك: ' + r.yourH + '</div><div class="right">الصحيح: ' + r.q.ansH + '</div><div class="ex" style="font-size:15px;color:#4a4070">💡 ' + r.q.ex + '</div></li>';
+    }).join('') : '<li class="perfect" style="background:#e6f8ee;border-color:#9ee0b9">كل الإجابات صحيحة — بارك الله فيك يا بطل! 👑</li>';
+    show('finish');
+    if (stars >= 2) confetti();
+  }
+  function confetti() {
+    var c = document.createElement('div'); c.className = 'confetti'; var em = ['🌟', '🌙', '📖', '💚', '✨', '💯'];
+    for (var i = 0; i < 26; i++) { var s = document.createElement('span'); s.textContent = em[i % em.length]; s.style.left = Math.random() * 100 + '%'; s.style.animationDuration = (2 + Math.random() * 2.5) + 's'; s.style.animationDelay = Math.random() * 0.8 + 's'; c.appendChild(s); }
+    document.body.appendChild(c); setTimeout(function () { c.remove(); }, 5600);
+  }
+  showBest();
+  window.__quiz = state;
+})();
+</script>
+</body>
+</html>
