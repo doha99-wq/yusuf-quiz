@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a6fb0">
+<title>تحدي العلوم 2 مع يوسف — الصف الثامن 8/1 🔬</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--l1:#e08a1e;--l2:#1f8a70;--l3:#2a7ab0;--l4:#1aa3c7;--l5:#8a5a2b;--l6:#c2417e;--u1:#2f9e5a;--u2:#e0702a;--u3:#c2304a;--mix:#7b5cd6;--ink:#2b2350;--bg:#fdf6ff;--ok:#1f9d55;--okbg:#e6f8ee;--bad:#e0435a;--badbg:#fdecef;--accent:var(--mix)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic","Droid Arabic Naskh",Tahoma,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);background-image:radial-gradient(circle at 10% 0%,#e3f6ff 0,transparent 40%),radial-gradient(circle at 100% 30%,#e3f0ff 0,transparent 40%);
+  min-height:100vh;line-height:1.6;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:14px 14px calc(28px + env(safe-area-inset-bottom))}
+bdi.n,bdi.m{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+bdi.n{white-space:nowrap}
+bdi.m{font-weight:700}
+.hidden{display:none!important}
+button{font-family:inherit;cursor:pointer;border:none;touch-action:manipulation}
+h1{font-size:28px;margin:4px 0 2px;line-height:1.3;text-align:center}
+.sub{text-align:center;color:#6b6290;margin:0 0 14px;font-size:16px}
+.hero{text-align:center;font-size:52px;line-height:1;margin-top:6px}
+.card{background:#fff;border-radius:22px;box-shadow:0 6px 22px rgba(80,50,140,.10);padding:16px;margin:12px 0}
+.label{font-weight:700;margin:0 2px 8px;font-size:17px}
+.units{display:grid;grid-template-columns:1fr;gap:10px}
+.unitbtn{display:flex;align-items:center;gap:12px;text-align:right;width:100%;min-height:64px;padding:10px 14px;border-radius:18px;background:#f6f3ff;color:var(--ink);font-size:17px;border:3px solid transparent;transition:transform .1s}
+.unitbtn .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:22px;font-weight:800}
+.unitbtn b{display:block;font-size:17px}.unitbtn small{display:block;color:#6b6290;font-size:14px;line-height:1.4}
+.unitbtn.sel{border-color:var(--c);background:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
+.unitbtn:active{transform:scale(.98)}
+.counts{display:flex;gap:10px}
+.countbtn{flex:1;min-height:56px;border-radius:16px;background:#f6f3ff;font-size:20px;font-weight:800;color:var(--ink);border:3px solid transparent}
+.countbtn.sel{border-color:var(--mix);background:#fff}
+.big-btn{display:block;width:100%;min-height:60px;border-radius:20px;font-size:22px;font-weight:800;color:#fff;background:linear-gradient(135deg,#ff6fa8,#7b5cd6);box-shadow:0 6px 16px rgba(123,92,214,.35);margin-top:6px}
+.big-btn:active{transform:translateY(2px)}
+.best{text-align:center;color:#6b6290;font-size:15px;margin-top:10px;min-height:1em}
+.exam{background:#fff7e0;border:2px dashed #f2b705;border-radius:16px;padding:8px 12px;font-size:15px;text-align:center;margin-top:12px}
+/* quiz */
+.top{position:sticky;top:0;z-index:5;background:rgba(253,246,255,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);margin:-14px -14px 0;padding:10px 14px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:15px;font-weight:700;flex-wrap:wrap}
+.pill{background:#fff;border-radius:999px;padding:4px 12px;box-shadow:0 2px 8px rgba(80,50,140,.08);white-space:nowrap}
+.bar{height:12px;background:#ece6ff;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7b5cd6,#ff6fa8);border-radius:999px;transition:width .35s}
+.home{background:#fff;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px rgba(80,50,140,.08)}
+.qcard{border-top:8px solid var(--accent)}
+.chip{display:inline-block;color:#fff;background:var(--accent);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:700;margin-bottom:8px}
+.qtext{font-size:20px;line-height:1.85;overflow-wrap:anywhere}
+.qtext b{color:var(--accent)}
+.big{font-size:26px;text-align:center;margin:12px 0 4px;line-height:1.6}
+.big.words{white-space:normal;font-weight:700;font-size:21px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.opts.wide{grid-template-columns:1fr}
+.opt{min-height:60px;border-radius:16px;background:#f6f3ff;border:3px solid #e2dbff;font-size:21px;color:var(--ink);padding:8px 10px;line-height:1.5;transition:transform .08s}
+.opt:active{transform:scale(.97)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#9b1c30}
+.opt[disabled]{cursor:default}
+.opt.dim{opacity:.55}
+.numrow{display:flex;gap:10px;margin-top:16px;align-items:stretch}
+.numrow input{flex:1;min-width:0;font-size:26px;font-weight:700;text-align:center;direction:ltr;border:3px solid #e2dbff;border-radius:16px;padding:10px;font-family:inherit;color:var(--ink);background:#fff;outline:none;-webkit-appearance:none;appearance:none}
+.numrow input:focus{border-color:var(--accent)}
+.numrow input.ok{border-color:var(--ok);background:var(--okbg)}.numrow input.bad{border-color:var(--bad);background:var(--badbg)}
+.check{flex:none;min-width:104px;border-radius:16px;background:var(--accent);color:#fff;font-size:20px;font-weight:800;padding:0 14px}
+.check[disabled]{opacity:.5}
+.hint{color:var(--bad);font-size:15px;min-height:1.4em;margin-top:6px;text-align:center}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(6px)}50%{transform:translateX(-6px)}75%{transform:translateX(4px)}}
+.fb{border-radius:20px;padding:14px 16px;margin-top:12px;animation:pop .25s ease-out}
+.fb.ok{background:var(--okbg);border:3px solid var(--ok)}.fb.bad{background:var(--badbg);border:3px solid var(--bad)}
+.fb h3{margin:0 0 4px;font-size:21px}.fb.ok h3{color:#11643a}.fb.bad h3{color:#9b1c30}
+.fb .ans{font-size:18px;margin:2px 0}.fb .ex{font-size:16px;color:#4a4070;line-height:1.8;overflow-wrap:anywhere}
+.next{margin-top:12px}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.barmodel{margin:12px 0 2px;display:grid;gap:6px}
+.barmodel .row{display:flex;align-items:center;gap:8px}
+.barmodel .lbl{flex:none;width:58px;font-size:15px;font-weight:700}
+.barmodel .cells{display:flex;direction:ltr;flex-wrap:nowrap}
+.barmodel .cells span{display:inline-block;min-width:42px;text-align:center;border:2px solid var(--u3);background:#ffe8cc;font-size:15px;font-weight:700;margin-left:-2px;padding:1px 4px}
+/* finish */
+.score-big{text-align:center;font-size:56px;font-weight:900;line-height:1.1;margin:4px 0}
+.stars{text-align:center;font-size:40px;letter-spacing:6px;direction:ltr}
+.msg{text-align:center;font-size:20px;font-weight:700;margin:6px 0 2px}
+.ub{display:grid;gap:10px}
+.ub .r{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;font-size:16px}
+.ub .t{height:12px;background:#eee;border-radius:999px;overflow:hidden;grid-column:1/-1}
+.ub .t i{display:block;height:100%;border-radius:999px}
+.missed{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.missed li{background:#fff8fa;border:2px solid #f6c9d2;border-radius:16px;padding:10px 12px;font-size:16px;line-height:1.8;overflow-wrap:anywhere}
+.missed .q .big{font-size:18px;margin:2px 0;text-align:right}
+.missed .q .barmodel{display:none}
+.missed .yours{color:#9b1c30}.missed .right{color:#11643a;font-weight:700}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.btn2{min-height:56px;border-radius:18px;font-size:18px;font-weight:800;color:#fff;background:var(--mix)}
+.btn2.alt{background:#fff;color:var(--mix);border:3px solid var(--mix)}
+.perfect{text-align:center;font-size:18px;color:#11643a;font-weight:700}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.confetti span{position:absolute;top:-40px;font-size:26px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (min-width:600px){.units{grid-template-columns:1fr 1fr}.qtext{font-size:22px}h1{font-size:34px}}
+@media (max-width:360px){.opts{grid-template-columns:1fr}.qtext{font-size:19px}.big{font-size:23px}.check{min-width:88px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.ay{font-family:"KFGQPC HAFS Uthmanic Script","KFGQPC Uthman Taha Naskh","Amiri Quran","Amiri","Scheherazade New","Traditional Arabic","Noto Naskh Arabic","Geeza Pro",serif;color:#13703e;font-weight:600;font-size:1.08em;line-height:2.1}
+.hd{font-family:"Amiri","Traditional Arabic","Noto Naskh Arabic","Geeza Pro",serif;color:#8a1f5c;font-weight:700;font-size:1.05em;line-height:2.1}
+.qtext{line-height:2.05}
+.opt{line-height:1.9;font-size:19px;text-align:center}
+.opts.wide .opt{text-align:right;padding:10px 14px}
+.opt .ay,.opt .hd{font-size:1.05em}
+.typechip{display:inline-block;background:#f1ecff;color:#5a4a8a;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin:0 6px 8px 0}
+.lessons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lessons .unitbtn{min-height:58px;padding:8px 10px;gap:8px}
+.lessons .unitbtn .ic{width:38px;height:38px;font-size:20px;border-radius:12px}
+.lessons .unitbtn b{font-size:15.5px;line-height:1.35}
+.group-title{font-weight:800;font-size:15px;color:#6b6290;margin:14px 2px 8px}
+.note2{background:#eef8f1;border:2px dashed #2f9e5a;border-radius:16px;padding:8px 12px;font-size:15px;text-align:center;margin-top:10px}
+.missed .q{font-weight:600}
+.missed .q .ay,.missed .q .hd{font-size:1em}
+@media (max-width:360px){.lessons .unitbtn b{font-size:14.5px}.opt{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section id="start">
+    <div class="hero">🔬⚛️</div>
+    <h1>تحدي العلوم 2 مع يوسف</h1>
+    <p class="sub">مراجعة اختبار منتصف الفصل الأول — الصف الثامن (الشعبة <bdi class="n" dir="ltr">8/1</bdi>) — الوحدات الثلاث الأولى</p>
+    <div class="card">
+      <div class="label">١) اختر ما تريد مراجعته:</div>
+      <div class="units" id="units">
+        <button class="unitbtn sel" data-s="all" style="--c:var(--mix)"><span class="ic" style="background:var(--mix)">★</span><span><b>مراجعة شاملة</b><small>الوحدات الثلاث: طبيعة المادة • التغيرات الكيميائية • الجهاز الدوري</small></span></button>
+        <button class="unitbtn" data-s="u1" style="--c:var(--u1)"><span class="ic" style="background:var(--u1)">1</span><span><b>الوحدة الأولى: طبيعة المادة ومكوّناتها</b><small>نماذج الذرة • العناصر والمركّبات والجزيئات</small></span></button>
+        <button class="unitbtn" data-s="u2" style="--c:var(--u2)"><span class="ic" style="background:var(--u2)">2</span><span><b>الوحدة الثانية: التغيّرات الكيميائية</b><small>التغيّر الفيزيائي والكيميائي • أنواع التفاعلات</small></span></button>
+        <button class="unitbtn" data-s="u3" style="--c:var(--u3)"><span class="ic" style="background:var(--u3)">3</span><span><b>الوحدة الثالثة: الجهاز الدوري</b><small>القلب والدورة الدموية • الأوعية الدموية</small></span></button>
+      </div>
+      <div class="group-title">أو اختر موضوعًا واحدًا:</div>
+      <div class="units lessons" id="lessons"></div>
+    </div>
+    <div class="card">
+      <div class="label">٢) عدد الأسئلة:</div>
+      <div class="counts" id="counts">
+        <button class="countbtn" data-n="10">10</button>
+        <button class="countbtn" data-n="20">20</button>
+        <button class="countbtn sel" data-n="all">الكل</button>
+      </div>
+    </div>
+    <button class="big-btn" id="go">ابدأ التحدي 🚀</button>
+    <div class="best" id="best"></div>
+    <div class="exam">📅 اختبار منتصف الفصل في العلوم: الأحد <bdi class="n" dir="ltr">18</bdi> أكتوبر <bdi class="n" dir="ltr">2026</bdi> (الحصتان الثانية والثالثة) — بالتوفيق يا يوسف! 💙</div>
+    <div class="note2">📄 أسئلة أوراق العمل الإثرائية والعلاجية للمدرسة تأتي أولًا، ثم أسئلة مكمّلة من الكتاب المدرسي 📘. الأوراق لا تغني عن الكتاب المدرسي.</div>
+  </section>
+
+  <section id="quiz" class="hidden">
+    <div class="top">
+      <div class="stats">
+        <button class="home" id="home" aria-label="الرئيسية">🏠</button>
+        <span class="pill" id="qnum"></span>
+        <span class="pill" id="score"></span>
+        <span class="pill" id="streak"></span>
+      </div>
+      <div class="bar"><i id="prog"></i></div>
+    </div>
+    <div class="card qcard" id="qcard">
+      <span class="chip" id="chip"></span><span class="typechip" id="tchip"></span>
+      <div class="qtext" id="qtext"></div>
+      <div id="answerArea"></div>
+    </div>
+    <div id="fb"></div>
+  </section>
+
+  <section id="finish" class="hidden">
+    <div class="card" style="text-align:center">
+      <div class="hero" id="fEmoji">🏆</div>
+      <div class="stars" id="fStars"></div>
+      <div class="score-big"><bdi class="n" dir="ltr" id="fScore"></bdi></div>
+      <div style="font-size:20px;font-weight:700">النسبة: <bdi class="n" dir="ltr" id="fPct"></bdi></div>
+      <div class="msg" id="fMsg"></div>
+      <div class="best" id="fBest"></div>
+    </div>
+    <div class="btns">
+      <button class="btn2" id="again">🔁 حاول مرة أخرى</button>
+      <button class="btn2 alt" id="other">📚 اختر موضوعًا آخر</button>
+    </div>
+    <div class="card">
+      <div class="label">النتيجة حسب الموضوع:</div>
+      <div class="ub" id="fUnits"></div>
+    </div>
+    <div class="card">
+      <div class="label" id="fMissedTitle">الأسئلة التي تحتاج مراجعة:</div>
+      <ul class="missed" id="fMissed"></ul>
+    </div>
+  </section>
+</div>
+
+<script id="bank">
+/* ===== Question bank — Grade 8 Science, Term 1 midterm (Qatar MOEHE), Yusuf 8/1 =====
+   Fields: l = lesson (1..6), s = source ('w' = school enrichment sheets, 'b' = textbook),
+   t = type (mc | tf), q = question HTML, a = correct answer (tf: true/false), o = wrong options, ex = explanation. */
+var F = function (s) { return '<bdi class="m" dir="ltr">' + s + '</bdi>'; };
+var N = function (s) { return '<bdi class="n" dir="ltr">' + s + '</bdi>'; };
+var BANK = [
+/* ===== الوحدة 1 — الدرس 1: نماذج الذرة وتركيبها (ورقة المدرسة) ===== */
+{l:1,s:'w',t:'mc',q:'ما أصغر جزء في المادة لا يمكن تجزئته (حسب ورقة المدرسة)؟',a:'الذرة',o:['العنصر','المركّب','المخلوط'],ex:'الذرة هي أصغر جزء في المادة يحمل خواصها.'},
+{l:1,s:'w',t:'mc',q:'أيّ مكوّنات الذرة يحمل شحنة سالبة ويوجد خارج النواة؟',a:'الإلكترونات',o:['البروتونات','النيوترونات','النيوكليدات'],ex:'الإلكترونات سالبة الشحنة وتدور حول النواة في مستويات الطاقة.'},
+{l:1,s:'w',t:'mc',q:'أيّ النماذج الذرية شبّه الذرة بكرة موجبة تنتشر فيها الإلكترونات السالبة (فطيرة الزبيب)؟',a:'نموذج طومسون',o:['نموذج دالتون','نموذج رذرفورد','نموذج بور'],ex:'نموذج طومسون = فطيرة الزبيب.'},
+{l:1,s:'w',t:'mc',q:'مَن العالِم الذي أثبت وجود جسيمات متعادلة داخل النواة وسمّاها نيوترونات؟',a:'تشادويك',o:['طومسون','رذرفورد','نيلز بور'],ex:'اكتشف تشادويك النيوترونات المتعادلة في النواة.'},
+{l:1,s:'w',t:'mc',q:'أيّ عالِم أثبت أن الإلكترونات تدور حول النواة في أغلفة تُعرف بمستويات الطاقة؟',a:'نيلز بور',o:['تشادويك','دالتون','طومسون'],ex:'نموذج بور: الإلكترونات في مستويات طاقة محددة حول النواة.'},
+{l:1,s:'w',t:'mc',q:'من أهم النتائج التي توصّل إليها رذرفورد عن الذرة:',a:'للذرة نواة موجبة الشحنة، ومعظم حجم الذرة فراغ',o:['الذرة كرة مصمتة لا تتجزأ','الذرة كرة موجبة تنتشر فيها الإلكترونات','الإلكترونات داخل النواة'],ex:'تجربة رقائق الذهب: نواة صغيرة موجبة ومعظم الذرة فراغ تدور فيه الإلكترونات.'},
+{l:1,s:'w',t:'mc',q:'مَن العالِم الذي اكتشف الإلكترونات (الشحنات السالبة)؟',a:'طومسون',o:['رذرفورد','تشادويك','دالتون'],ex:'حسب ورقة المدرسة: الإلكترونات اكتشفها طومسون.'},
+{l:1,s:'w',t:'mc',q:'العدد الذري لعنصر هو:',a:'عدد البروتونات الموجبة في الذرة',o:['عدد النيوترونات في النواة','مجموع البروتونات والنيوترونات','عدد مستويات الطاقة'],ex:'العدد الذري = عدد البروتونات.'},
+{l:1,s:'w',t:'mc',q:'إذا كان العدد الذري لعنصر (Y) يساوي '+N('17')+'، فكم عدد إلكتروناته في الذرة المتعادلة؟',a:N('17'),o:[N('34'),N('8'),N('18')],ex:'في الذرة المتعادلة: الإلكترونات = البروتونات = العدد الذري = '+N('17')+'.'},
+{l:1,s:'w',t:'mc',q:'نواة ذرة المغنيسيوم تحتوي على '+N('12')+' بروتونًا. ما عددها الذري؟',a:N('12'),o:[N('24'),N('6'),N('13')],ex:'العدد الذري = عدد البروتونات = '+N('12')+'.'},
+{l:1,s:'w',t:'mc',q:'عنصر الأرجون '+F('Ar')+' عدده الذري '+N('18')+'. كم عدد البروتونات وعدد الإلكترونات؟',a:N('18')+' و '+N('18'),o:[N('18')+' و '+N('9'),N('9')+' و '+N('18'),N('36')+' و '+N('18')],ex:'البروتونات = الإلكترونات = '+N('18')+'.'},
+{l:1,s:'w',t:'mc',q:'ذرة متعادلة فيها '+N('19')+' إلكترونًا، ما عددها الذري؟',a:N('19'),o:[N('38'),N('20'),N('9')],ex:'الذرة المتعادلة: الإلكترونات = البروتونات = العدد الذري.'},
+{l:1,s:'w',t:'mc',q:'عنصر الألومنيوم '+F('Al')+' فيه '+N('13')+' إلكترونًا. كم بروتونًا في نواته؟',a:N('13'),o:[N('26'),N('14'),N('27')],ex:'عدد البروتونات = عدد الإلكترونات في الذرة المتعادلة.'},
+{l:1,s:'w',t:'tf',q:'تتركّز معظم كتلة الذرة في النواة؛ لأن كتلة الإلكترونات مهملة.',a:true,ex:'صحيح، كما في حل المدرسة.'},
+{l:1,s:'w',t:'mc',q:'في نموذج طومسون، ما اسم الشحنات الموجبة؟',a:'بروتونات',o:['إلكترونات','نيوترونات','أيونات'],ex:'الشحنات الموجبة = البروتونات.'},
+/* ===== الدرس 2: العناصر والمركّبات والجزيئات ===== */
+{l:2,s:'w',t:'mc',q:'ما المادة النقية التي تتكوّن من اتحاد عنصرين أو أكثر؟',a:'المركّب',o:['العنصر','المخلوط','الذرة'],ex:'المركّب = عنصران أو أكثر متحدان كيميائيًا.'},
+{l:2,s:'w',t:'mc',q:'ما الصيغة الكيميائية للماء؟',a:F('H<sub>2</sub>O'),o:[F('H<sub>3</sub>O'),F('H<sub>2</sub>O<sub>2</sub>'),F('H<sub>2</sub>S')],ex:'الماء: ذرتا هيدروجين وذرة أكسجين.'},
+{l:2,s:'w',t:'mc',q:'ما الجزيء الذي يتكوّن من ذرات متماثلة (من نفس النوع)؟',a:'جزيء العنصر',o:['جزيء المركّب','جزيء المخلوط','جزيء الماء'],ex:'مثل '+F('O<sub>2</sub>')+': ذرتان من نفس النوع.'},
+{l:2,s:'w',t:'mc',q:'ما الجزيء الذي يتكوّن من ذرات عناصر مختلفة؟',a:'جزيء المركّب',o:['جزيء العنصر','جزيء المخلوط','الذرة'],ex:'مثل '+F('CO<sub>2</sub>')+' و'+F('H<sub>2</sub>O')+'.'},
+{l:2,s:'w',t:'mc',q:'صيغة السكر (الجلوكوز) في قطر '+F('C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>')+'. ما صيغته في اليابان؟',a:F('C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>'),o:[F('C<sub>6</sub>H<sub>6</sub>'),F('C<sub>6</sub>H<sub>6</sub>O<sub>6</sub>'),F('C<sub>6</sub>H<sub>5</sub>OH')],ex:'المركّب له التركيب نفسه في أي مكان.'},
+{l:2,s:'w',t:'mc',q:'أيّ مما يلي <b>عنصر</b>؟',a:F('Cu'),o:[F('NH<sub>3</sub>'),F('CH<sub>4</sub>'),F('H<sub>2</sub>O')],ex:'النحاس '+F('Cu')+' نوع واحد من الذرات.'},
+{l:2,s:'w',t:'mc',q:'أيّ مما يلي <b>عنصر</b> رغم أنه جزيء؟',a:F('O<sub>2</sub>'),o:[F('CO<sub>2</sub>'),F('H<sub>2</sub>O'),F('NH<sub>3</sub>')],ex:F('O<sub>2</sub>')+' ذرتا أكسجين متماثلتان، فهو جزيء عنصر.'},
+{l:2,s:'w',t:'tf',q:F('CH<sub>4</sub>')+' (الميثان) مركّب.',a:true,ex:'يتكوّن من كربون وهيدروجين، عنصرين مختلفين.'},
+{l:2,s:'w',t:'mc',q:'مركّب الأمونيا '+F('NH<sub>3</sub>')+' يتكوّن من عنصرَي:',a:'النيتروجين والهيدروجين',o:['النيتروجين والأكسجين','الهيدروجين والأكسجين','الكربون والهيدروجين'],ex:'N = نيتروجين، H = هيدروجين.'},
+{l:2,s:'w',t:'mc',q:'جهاز هوفمان يُستخدم في:',a:'التحليل الكهربائي للماء',o:['التحليل الكهربائي للميثان','تقطير الماء','تحضير الأمونيا'],ex:'تصحيح الورقة: للماء وليس للميثان.'},
+{l:2,s:'w',t:'mc',q:'في التحليل الكهربائي للماء، عند أيّ قطب يتصاعد غاز الهيدروجين؟',a:'القطب السالب',o:['القطب الموجب','القطبين معًا','لا يتصاعد'],ex:'الهيدروجين عند السالب، والأكسجين عند الموجب.'},
+{l:2,s:'w',t:'mc',q:'في التحليل الكهربائي للماء، عند أيّ قطب يتصاعد غاز الأكسجين؟',a:'القطب الموجب',o:['القطب السالب','القطبين معًا','لا يتصاعد'],ex:'الأكسجين عند القطب الموجب.'},
+{l:2,s:'w',t:'mc',q:'كيف نكشف عن غاز الهيدروجين؟',a:'يُحدث فرقعة عند تقريب عود مشتعل',o:['يُطفئ العود المتوهج','يُشعل العود المتوهج','يعكّر ماء الجير'],ex:'الهيدروجين يحترق بفرقعة.'},
+{l:2,s:'w',t:'mc',q:'كيف نكشف عن غاز الأكسجين؟',a:'يُشعل عود خشب متوهج',o:['يُطفئ عود خشب متوهج','يُحدث فرقعة','يعكّر ماء الجير'],ex:'تصحيح الورقة: الأكسجين يسبب اشتعال العود المتوهج لا إطفاءه.'},
+{l:2,s:'w',t:'mc',q:'في جهاز هوفمان كان حجم غاز الهيدروجين '+N('60')+' مل. كم يكون حجم الأكسجين؟',a:N('30')+' مل',o:[N('120')+' مل',N('60')+' مل',N('20')+' مل'],ex:'حجم الهيدروجين ضعف حجم الأكسجين (لأن '+F('H<sub>2</sub>O')+')، إذن '+N('60')+' ÷ '+N('2')+' = '+N('30')+'.'},
+{l:2,s:'w',t:'mc',q:'في جهاز هوفمان تجمّع '+N('15')+' مل من الأكسجين. كم مل من الهيدروجين تجمّع؟',a:N('30')+' مل',o:[N('15')+' مل',N('7.5')+' مل',N('45')+' مل'],ex:'الهيدروجين = '+N('2')+' × الأكسجين = '+N('30')+' مل.'},
+{l:2,s:'w',t:'mc',q:'ما أنواع نماذج الجزيئات التي درستها؟',a:'نموذج الكرة والعصا ونموذج ملء الفراغ',o:['نموذج بور ونموذج طومسون','نموذج الذرة والنواة','النموذج الكهربائي'],ex:'والهدف منها تبسيط وفهم تركيب المادة.'},
+{l:2,s:'w',t:'mc',q:'ما الهدف من استخدام نماذج الجزيئات؟',a:'تبسيط وفهم تركيب المادة',o:['قياس كتلة الذرة','فصل العناصر','تسريع التفاعل'],ex:'النماذج تساعدنا على تخيّل تركيب الجزيئات.'},
+/* ===== الوحدة 2 — الدرس 3: التغيّر الفيزيائي والكيميائي ===== */
+{l:3,s:'w',t:'mc',q:'أيّ مما يلي مثال على تفاعل احتراق؟',a:'اشتعال غاز الهيدروجين',o:['صدأ الحديد','تعفّن الفواكه','تجمّد الماء'],ex:'الاحتراق تفاعل مع الأكسجين ينطلق منه ضوء وحرارة.'},
+{l:3,s:'w',t:'mc',q:'أيّ التغيرات التالية ينتج عنه مادة جديدة؟',a:'انفجار الألعاب النارية',o:['انفجار بالون','كسر طاولة خشبية','انصهار الثلج'],ex:'الألعاب النارية تغيّر كيميائي.'},
+{l:3,s:'w',t:'mc',q:'غليان الماء داخل غلاية تغيّر:',a:'فيزيائي',o:['كيميائي','تفكك حراري','أكسدة'],ex:'لا تتكوّن مادة جديدة.'},
+{l:3,s:'w',t:'mc',q:'تغيّر شكل زجاجة بلاستيكية بالضغط عليها باليد تغيّر:',a:'فيزيائي',o:['كيميائي','احتراق','تعادل'],ex:'تغيّر في الشكل فقط.'},
+{l:3,s:'w',t:'mc',q:'ترك مسامير حديد في جو رطب معرّض للهواء يؤدي إلى تغيّر:',a:'كيميائي',o:['فيزيائي','انصهار','تبخّر'],ex:'يتكوّن الصدأ (مادة جديدة).'},
+{l:3,s:'w',t:'mc',q:'تسخين مسحوق مادة فنتج عنها مادة جديدة يُعدّ تغيّرًا:',a:'كيميائيًا',o:['فيزيائيًا','انصهارًا','تكاثفًا'],ex:'تكوّن مادة جديدة = تغيّر كيميائي.'},
+{l:3,s:'w',t:'mc',q:'انصهار المثلجات (الآيس كريم) تغيّر:',a:'فيزيائي',o:['كيميائي','أكسدة','احتراق'],ex:'تحوّل من صلب إلى سائل فقط.'},
+{l:3,s:'w',t:'mc',q:'تحوّل المادة الصلبة إلى سائلة بالتسخين، وهو قابل للانعكاس، يسمّى:',a:'الانصهار',o:['التبخّر','التكاثف','التفكك الحراري'],ex:'الانصهار تغيّر فيزيائي.'},
+{l:3,s:'w',t:'mc',q:'أيّ الأزواج التالية فيه تغيّر كيميائي ثم تغيّر فيزيائي؟',a:'طهي الطعام / ذوبان الثلج',o:['ذوبان الثلج / طهي الطعام','تبخّر الماء / تجمّد الماء','صدأ الحديد / احتراق الورق'],ex:'كما في حل المدرسة: طهي الطعام كيميائي، وذوبان الثلج فيزيائي.'},
+/* ===== الدرس 4: أنواع التفاعلات والمعادلات ===== */
+{l:4,s:'w',t:'mc',q:'أيّ المتفاعلات التالية يكوّن أكسيد النحاس؟',a:'أكسجين + نحاس',o:['أكسجين + كبريت','حديد + كبريت','كلور + نحاس'],ex:'الفلز + الأكسجين ← أكسيد الفلز.'},
+{l:4,s:'w',t:'mc',q:'أيّ مما يلي <b>لا</b> ينطلق منه ضوء وحرارة؟',a:'صدأ الحديد',o:['احتراق فتيل شمعة','احتراق الخشب','اشتعال غاز الهيدروجين'],ex:'الصدأ أكسدة بطيئة دون ضوء.'},
+{l:4,s:'w',t:'mc',q:'فلز + أكسجين ← (X). ما المادة X؟',a:'أكسيد الفلز',o:['كلوريد الفلز','كربونات الفلز','ثاني أكسيد الكربون'],ex:'يتّحد الفلز بالأكسجين مكوّنًا أكسيد الفلز.'},
+{l:4,s:'w',t:'mc',q:'ألومنيوم + أكسجين ← أكسيد الألومنيوم. ما المواد المتفاعلة؟',a:'الأكسجين والألومنيوم',o:['أكسيد الألومنيوم','الأكسجين فقط','الألومنيوم فقط'],ex:'المتفاعلات قبل السهم.'},
+{l:4,s:'w',t:'mc',q:'كالسيوم + كلور ← كلوريد الكالسيوم. ما المادة الناتجة؟',a:'كلوريد الكالسيوم',o:['الكلور فقط','الكالسيوم فقط','الكلور والكالسيوم'],ex:'النواتج بعد السهم.'},
+{l:4,s:'w',t:'mc',q:'ما نوع التفاعل في: ألومنيوم + أكسجين ← أكسيد الألومنيوم (حسب حل المدرسة)؟',a:'أكسدة',o:['تعادل','تفكك حراري','ترسيب'],ex:'تفاعل مع الأكسجين، وحل المدرسة: أكسدة.'},
+{l:4,s:'w',t:'mc',q:'كربونات الخارصين ← أكسيد الخارصين + ثاني أكسيد الكربون. نوع التفاعل:',a:'تفكك حراري',o:['أكسدة','احتراق','تعادل'],ex:'مادة واحدة تتفكك بالحرارة إلى مادتين.'},
+{l:4,s:'w',t:'mc',q:'ما نواتج التفكك الحراري لكربونات الخارصين؟',a:'أكسيد الخارصين وثاني أكسيد الكربون',o:['الخارصين والأكسجين','أكسيد الخارصين والماء','كلوريد الخارصين والماء'],ex:'الكربونات تتفكك إلى أكسيد + '+F('CO<sub>2</sub>')+'.'},
+{l:4,s:'w',t:'mc',q:'ما نواتج تفاعل حمض الهيدروكلوريك مع هيدروكسيد المغنيسيوم؟',a:'كلوريد المغنيسيوم (ملح) وماء',o:['أكسيد المغنيسيوم وهيدروجين','مغنيسيوم وكلور','ثاني أكسيد الكربون وماء'],ex:'حمض + قلوي ← ملح + ماء.'},
+{l:4,s:'w',t:'mc',q:'المعادلة العامة لتفاعل التعادل:',a:'حمض + مادة قلوية ← ملح + ماء',o:['فلز + أكسجين ← أكسيد الفلز','مادة ← مادتان أو أكثر','وقود + أكسجين ← ضوء وحرارة'],ex:'التعادل = حمض + قلوي.'},
+{l:4,s:'w',t:'mc',q:'تفاعل المادة مع الأكسجين <b>دون</b> انطلاق حرارة أو ضوء يسمّى:',a:'أكسدة',o:['احتراق','تعادل','تفكك حراري'],ex:'مثل صدأ الحديد.'},
+{l:4,s:'w',t:'mc',q:'تفاعل المادة مع الأكسجين <b>مع</b> انطلاق حرارة وضوء يسمّى:',a:'احتراق',o:['أكسدة','تعادل','ترسيب'],ex:'مثل احتراق الخشب.'},
+{l:4,s:'w',t:'mc',q:'تفاعل تتفكك فيه مادة واحدة بالحرارة لتنتج مادتين أو أكثر:',a:'التفكك الحراري',o:['التعادل','الاحتراق','الأكسدة'],ex:'مثل تفكك الكربونات.'},
+{l:4,s:'w',t:'mc',q:'مركّبات تنتج من اتحاد الفلزات مع الأكسجين:',a:'أكاسيد الفلزات',o:['الأملاح','الأحماض','الكربونات'],ex:'مثل أكسيد النحاس وأكسيد الألومنيوم.'},
+{l:4,s:'w',t:'mc',q:'عند تسخين كربونات النحاس، الغاز المتصاعد هو:',a:'ثاني أكسيد الكربون',o:['الأكسجين','الهيدروجين','بخار الماء'],ex:'نفس فكرة الورقة: الكربونات تُطلق '+F('CO<sub>2</sub>')+' بالتفكك الحراري.'},
+{l:4,s:'w',t:'mc',q:'كيف نتعرّف على غاز ثاني أكسيد الكربون؟',a:'يعكّر ماء الجير',o:['يُحدث فرقعة','يُشعل العود المتوهج','لونه بنّي'],ex:''+F('CO<sub>2</sub>')+' يعكّر ماء الجير.'},
+/* ===== الوحدة 3 — الدرس 5: القلب والدورة الدموية ===== */
+{l:5,s:'w',t:'mc',q:'ما الذي يوجد في الأوردة الكبيرة والقلب ويسمح بسريان الدم في اتجاه واحد؟',a:'الصمامات',o:['الأذين','البطين','الحاجز'],ex:'الصمامات تمنع رجوع الدم.'},
+{l:5,s:'w',t:'mc',q:'أيّ أجزاء القلب يستقبل الدم غير المؤكسج من الجسم؟',a:'الأذين الأيمن فقط',o:['الأذين الأيسر فقط','الأذينان الأيمن والأيسر','البطينان'],ex:'الدم غير المؤكسج يعود عبر الوريد الأجوف إلى الأذين الأيمن.'},
+{l:5,s:'w',t:'mc',q:'أيّ مما يلي <b>غير صحيح</b> عن الشريان الأبهر (الأورطي)؟',a:'ينقل دمًا غير مؤكسج',o:['أكبر شريان في الجسم','ينقل دمًا مؤكسجًا','ينقل الدم المؤكسج لجميع أجزاء الجسم'],ex:'الأبهر ينقل دمًا مؤكسجًا.'},
+{l:5,s:'w',t:'mc',q:'يختلف الوريد الرئوي عن معظم الأوردة لأنه:',a:'يحتوي على دم غني بالأكسجين',o:['لا يتّصل بالقلب','لا يحتوي على دم','يحتوي على دم قليل الأكسجين'],ex:'ينقل الدم المؤكسج من الرئتين إلى الأذين الأيسر.'},
+{l:5,s:'w',t:'mc',q:'الجزء الذي يتدفّق الدم خلاله لينتقل من الأذين الأيمن إلى الشريان الرئوي:',a:'البطين الأيمن',o:['البطين الأيسر','الأذين الأيسر','الوريد الأجوف'],ex:'أذين أيمن ← بطين أيمن ← شريان رئوي.'},
+{l:5,s:'w',t:'mc',q:'نوع الدم في البطين الأيمن:',a:'غير مؤكسج',o:['مؤكسج','مختلط','لا يوجد دم'],ex:'الجانب الأيمن للدم غير المؤكسج.'},
+{l:5,s:'w',t:'mc',q:'ما الشريان الذي يوزّع الدم للجسم بعد انقباض البطين الأيسر؟',a:'الشريان الأبهر (الأورطي)',o:['الشريان الرئوي','الوريد الرئوي','الوريد الأجوف'],ex:'الأبهر يخرج من البطين الأيسر.'},
+{l:5,s:'w',t:'mc',q:'ما أهمية الحاجز في القلب؟',a:'يمنع اختلاط الدم المؤكسج بغير المؤكسج',o:['يضخ الدم إلى الرئتين','يمنع رجوع الدم للأذين','يصنع خلايا الدم'],ex:'الحاجز يفصل الجانبين الأيمن والأيسر.'},
+{l:5,s:'w',t:'mc',q:'لماذا جدار البطين الأيمن أقل سُمكًا من جدار البطين الأيسر؟',a:'لأن الأيمن يضخ الدم إلى الرئتين فقط، والأيسر لجميع أنحاء الجسم',o:['لأن الأيمن يضخ دمًا مؤكسجًا','لأن الأيمن أكبر حجمًا','لأن الأيسر يستقبل الدم من الجسم'],ex:'المسافة الأطول تحتاج ضغطًا أكبر وعضلة أسمك.'},
+{l:5,s:'w',t:'mc',q:'ما دور الصمامات؟',a:'تسمح بمرور الدم في اتجاه واحد وتمنع عودته',o:['تضخ الدم','تبادل الغازات','تفصل الأذينين عن الرئتين'],ex:'أمثلة: الصمامات الهلالية والأذينية-البطينية.'},
+{l:5,s:'w',t:'mc',q:'أيّ مما يلي مثال على صمامات القلب؟',a:'الصمام الهلالي والصمام الأذيني-البطيني',o:['الحاجز والأذين','الشريان الرئوي والأبهر','الوريد الأجوف والرئوي'],ex:'كما في حل المدرسة.'},
+{l:5,s:'w',t:'mc',q:'أيّ وعاء يُدخل الدم غير المؤكسج من الجسم إلى الأذين الأيمن؟',a:'الوريد الأجوف',o:['الوريد الرئوي','الشريان الأبهر','الشريان الرئوي'],ex:'من رسم القلب في الورقة.'},
+{l:5,s:'w',t:'mc',q:'الوريد الرئوي يصبّ الدم في:',a:'الأذين الأيسر',o:['الأذين الأيمن','البطين الأيمن','البطين الأيسر'],ex:'رئتان ← وريد رئوي ← أذين أيسر.'},
+/* ===== الدرس 6: الأوعية الدموية ===== */
+{l:6,s:'w',t:'mc',q:'أيّ الأوعية تعيد الدم إلى القلب وتحتوي على صمامات تمنع تدفّقه عكسيًا؟',a:'الأوردة',o:['الشرايين','الشعيرات الدموية','الحاجز'],ex:'الأوردة ضغطها منخفض فتحتاج صمامات.'},
+{l:6,s:'w',t:'mc',q:'أيّ الأوعية جدرانها رقيقة لتسمح بتبادل الغازات؟',a:'الشعيرات الدموية',o:['الشرايين','الأوردة','الشريان الأبهر'],ex:'جدار الشعيرة خلية واحدة.'},
+{l:6,s:'w',t:'mc',q:'اتجاه الدم في الشعيرات الدموية:',a:'من الشريان إلى الوريد',o:['من الوريد إلى الشريان','من القلب إلى الرئتين فقط','لا يتحرك'],ex:'الشعيرات تربط الشرايين بالأوردة.'},
+{l:6,s:'w',t:'mc',q:'لماذا جدار الشريان سميك ومرن؟',a:'لتحمّل الضغط العالي',o:['لتبادل الغازات','لمنع رجوع الدم','لتخزين الدم'],ex:'الشريان يضخ الدم بعيدًا عن القلب بضغط مرتفع.'},
+{l:6,s:'w',t:'mc',q:'الوعاء (B) ينقل الدم من القلب إلى العضلات. ما نوعه؟',a:'شريان',o:['وريد','شعيرة دموية','صمام'],ex:'الشرايين تنقل الدم بعيدًا عن القلب.'},
+{l:6,s:'w',t:'mc',q:'الوعاء الذي ينقل الدم من الكلية عائدًا إلى القلب:',a:'وريد',o:['شريان','شعيرة','صمام'],ex:'نفس الفكرة: كل ما يعود للقلب وريد.'},
+/* ===== من الكتاب المدرسي ===== */
+{l:1,s:'b',t:'tf',q:'النيوترونات متعادلة الشحنة وتوجد داخل النواة.',a:true,ex:'صحيح.'},
+{l:2,s:'b',t:'tf',q:'خواص المركّب تشبه دائمًا خواص العناصر المكوّنة له.',a:false,ex:'خطأ؛ الماء مثلًا يختلف عن الهيدروجين والأكسجين.'},
+{l:3,s:'b',t:'mc',q:'أيّ مما يلي دليل على حدوث تغيّر كيميائي؟',a:'تصاعد غاز وتغيّر اللون',o:['تغيّر الشكل','تغيّر الحالة من صلب إلى سائل','تقطيع المادة'],ex:'من أدلة التفاعل: تغيّر اللون، تصاعد غاز، تكوّن راسب، تغيّر الحرارة.'},
+{l:5,s:'b',t:'mc',q:'الدورة الدموية الكبرى تكون بين:',a:'القلب وأجزاء الجسم',o:['القلب والرئتين','الرئتين والكلى','الأذين والبطين'],ex:'الكبرى: من البطين الأيسر إلى الجسم ثم إلى الأذين الأيمن.'},
+{l:6,s:'b',t:'tf',q:'الدم في الشرايين يتدفّق بنبضات يمكن الإحساس بها في الرسغ.',a:true,ex:'صحيح، هذا هو النبض.'}
+];
+
+
+</script>
+<script id="engine">
+/* ===== Quiz engine (pure, no DOM) — adapted for Yusuf's Grade 8 science quiz ===== */
+var QE = (function () {
+  'use strict';
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  var LESSONS = {
+    1: { name: 'نماذج الذرة وتركيبها', unit: 1, icon: '⚛️' },
+    2: { name: 'العناصر والمركّبات', unit: 1, icon: '🧪' },
+    3: { name: 'التغيّر الفيزيائي والكيميائي', unit: 2, icon: '🧊' },
+    4: { name: 'أنواع التفاعلات', unit: 2, icon: '🔥' },
+    5: { name: 'القلب والدورة الدموية', unit: 3, icon: '❤️' },
+    6: { name: 'الأوعية الدموية', unit: 3, icon: '🩸' }
+  };
+  var TYPE = { mc: 'اختيار من متعدد', tf: 'صح أم خطأ' };
+  var SRC = { w: '📄 من أوراق المدرسة', b: '📘 من الكتاب المدرسي' };
+  var GOOD = ['أحسنت يا يوسف! 🌟', 'ممتاز يا يوسف! 💪', 'إجابة صحيحة، أحسنت! ✨', 'رائع يا يوسف! 👏', 'عالِم صغير! 🔬', 'بارك الله فيك! 🚀'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا معلومة جديدة 💪', 'قريب! ركّز في السؤال القادم 🔍', 'لا تقلق، الخطأ طريق التعلّم 🌱', 'حاول في السؤال التالي، أنت قادر! 💙'];
+  var TF = [{ h: 'صح ✔', k: 'T' }, { h: 'خطأ ✘', k: 'F' }];
+  function make(b, idx) {
+    var q = { id: idx, lesson: b.l, src: b.s, type: b.t, q: b.q, ex: b.ex };
+    if (b.t === 'tf') { q.opts = TF.slice(); q.ans = b.a ? 'T' : 'F'; }
+    else { q.opts = shuffle([b.a].concat(b.o).map(function (h, i) { return { h: h, k: 'o' + i }; })); q.ans = 'o0'; }
+    q.ansH = q.opts.filter(function (o) { return o.k === q.ans; })[0].h;
+    q.wide = q.opts.some(function (o) { return o.h.replace(/<[^>]+>/g, '').length > 16; });
+    return q;
+  }
+  // scope: 1..6 (lesson), 'u1', 'u2', 'u3', 'all'
+  function lessonsFor(scope) { return scope === 'u1' ? [1, 2] : scope === 'u2' ? [3, 4] : scope === 'u3' ? [5, 6] : scope === 'all' ? [1, 2, 3, 4, 5, 6] : [scope]; }
+  // Balanced pick across lessons from an index pool (round-robin over shuffled lessons).
+  function balanced(idxs, n, bank, ls) {
+    var pools = {}; ls.forEach(function (l) { pools[l] = shuffle(idxs.filter(function (i) { return bank[i].l === l; })); });
+    var order = shuffle(ls), out = [], guard = 0;
+    while (out.length < n && guard++ < 1000) {
+      var left = order.filter(function (l) { return pools[l].length; }); if (!left.length) break;
+      left.forEach(function (l) { if (out.length < n && pools[l].length) out.push(pools[l].shift()); });
+    }
+    return out;
+  }
+  // School-sheet questions always come first and are the majority; textbook questions complete the set.
+  function buildQuiz(scope, n, bank) {
+    bank = bank || BANK;
+    var ls = lessonsFor(scope), all = bank.map(function (b, i) { return i; }).filter(function (i) { return ls.indexOf(bank[i].l) >= 0; });
+    var W = all.filter(function (i) { return bank[i].s === 'w'; }), B = all.filter(function (i) { return bank[i].s !== 'w'; });
+    if (n === 'all' || n >= all.length) n = all.length;
+    var nb = Math.min(B.length, Math.floor(n * 0.3)), nw = Math.min(W.length, n - nb); nb = Math.min(B.length, n - nw);
+    var w = shuffle(balanced(W, nw, bank, ls)), b = shuffle(balanced(B, nb, bank, ls));
+    return w.concat(b).map(function (i) { return make(bank[i], i); });
+  }
+  return { LESSONS: LESSONS, TYPE: TYPE, SRC: SRC, GOOD: GOOD, BAD: BAD, make: make, buildQuiz: buildQuiz, lessonsFor: lessonsFor, shuffle: shuffle, pick: pick };
+})();
+
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var L = QE.LESSONS;
+  var COL = { 1: 'var(--l1)', 2: 'var(--l2)', 3: 'var(--l3)', 4: 'var(--l4)', 5: 'var(--l5)', 6: 'var(--l6)', u1: 'var(--u1)', u2: 'var(--u2)', u3: 'var(--u3)', all: 'var(--mix)' };
+  var state = { scope: 'all', n: 'all', qs: [], i: 0, score: 0, streak: 0, bestStreak: 0, answered: false, results: [] };
+  // lesson buttons
+  $('lessons').innerHTML = [1, 2, 3, 4, 5, 6].map(function (l) {
+    return '<button class="unitbtn" data-s="' + l + '" style="--c:' + COL[l] + '"><span class="ic" style="background:' + COL[l] + '">' + L[l].icon + '</span><span><b>' + L[l].name + '</b></span></button>';
+  }).join('');
+  function store(get, val) { try { if (get) return JSON.parse(localStorage.getItem('yusufScienceBest') || '{}'); localStorage.setItem('yusufScienceBest', JSON.stringify(val)); } catch (e) { return {}; } }
+  function bestKey() { return state.scope + '-' + state.n; }
+  function showBest() { var b = store(true) || {}, k = bestKey(); $('best').textContent = b[k] != null ? '🏅 أفضل نتيجة لك هنا: ' + b[k] + '%' : ''; }
+  function show(id) { ['start', 'quiz', 'finish'].forEach(function (s) { $(s).classList.toggle('hidden', s !== id); }); window.scrollTo(0, 0); }
+  function selScope(s) { Array.prototype.forEach.call(document.querySelectorAll('#units .unitbtn, #lessons .unitbtn'), function (b) { b.classList.toggle('sel', b.getAttribute('data-s') === String(s)); }); }
+  function onScope(e) { var b = e.target.closest('.unitbtn'); if (!b) return; var s = b.dataset.s; state.scope = /^\d$/.test(s) ? +s : s; selScope(s); showBest(); }
+  $('units').addEventListener('click', onScope); $('lessons').addEventListener('click', onScope);
+  $('counts').addEventListener('click', function (e) { var b = e.target.closest('.countbtn'); if (!b) return; state.n = b.dataset.n === 'all' ? 'all' : +b.dataset.n; Array.prototype.forEach.call($('counts').children, function (x) { x.classList.toggle('sel', x === b); }); showBest(); });
+  $('go').addEventListener('click', start); $('again').addEventListener('click', start);
+  $('other').addEventListener('click', function () { show('start'); showBest(); });
+  $('home').addEventListener('click', function () { if ((state.i === 0 && !state.answered) || confirm('هل تريد الخروج من التحدي؟')) { show('start'); showBest(); } });
+
+  function start() {
+    state.qs = QE.buildQuiz(state.scope, state.n); state.i = 0; state.score = 0; state.streak = 0; state.bestStreak = 0; state.results = [];
+    show('quiz'); render();
+  }
+  function updateTop() {
+    var n = state.qs.length;
+    $('qnum').innerHTML = 'السؤال <bdi class="n" dir="ltr">' + (state.i + 1) + '</bdi> من <bdi class="n" dir="ltr">' + n + '</bdi>';
+    $('score').innerHTML = '⭐ <bdi class="n" dir="ltr">' + state.score + '</bdi>';
+    $('streak').innerHTML = '🔥 <bdi class="n" dir="ltr">' + state.streak + '</bdi>';
+    $('prog').style.width = ((state.i + (state.answered ? 1 : 0)) / n * 100) + '%';
+  }
+  function render() {
+    var q = state.qs[state.i]; state.answered = false;
+    $('qcard').style.setProperty('--accent', COL[q.lesson]);
+    $('chip').textContent = L[q.lesson].icon + ' ' + L[q.lesson].name;
+    $('tchip').textContent = QE.TYPE[q.type] + ' • ' + QE.SRC[q.src];
+    $('qtext').innerHTML = q.q; $('fb').innerHTML = '';
+    var g = document.createElement('div'); g.className = 'opts' + (q.wide ? ' wide' : '');
+    q.opts.forEach(function (o) { var b = document.createElement('button'); b.className = 'opt'; b.innerHTML = o.h; b.dataset.k = o.k; b.addEventListener('click', function () { answer(o.k, b); }); g.appendChild(b); });
+    var area = $('answerArea'); area.innerHTML = ''; area.appendChild(g);
+    updateTop();
+  }
+  function answer(k, el) {
+    if (state.answered) return; state.answered = true;
+    var q = state.qs[state.i], ok = k === q.ans;
+    Array.prototype.forEach.call(document.querySelectorAll('.opt'), function (b) { b.disabled = true; if (b.dataset.k === q.ans) b.classList.add('ok'); else if (b === el) b.classList.add('bad'); else b.classList.add('dim'); });
+    if (ok) { state.score++; state.streak++; state.bestStreak = Math.max(state.bestStreak, state.streak); } else state.streak = 0;
+    state.results.push({ q: q, ok: ok, yourH: el.innerHTML });
+    var last = state.i === state.qs.length - 1, msg = ok ? QE.pick(QE.GOOD) : QE.pick(QE.BAD);
+    if (ok && state.streak >= 3 && state.streak % 3 === 0) msg = '🔥 ' + state.streak + ' إجابات صحيحة متتالية! أنت نجم يا يوسف';
+    $('fb').innerHTML = '<div class="fb ' + (ok ? 'ok' : 'bad') + '" role="status"><h3>' + (ok ? '✅ ' : '❌ ') + msg + '</h3>' +
+      (ok ? '' : '<div class="ans">الإجابة الصحيحة: <b>' + q.ansH + '</b></div>') +
+      '<div class="ex">💡 ' + q.ex + '</div></div>' +
+      '<button class="big-btn next" id="next">' + (last ? 'عرض النتيجة 🎉' : 'السؤال التالي ⬅') + '</button>';
+    updateTop();
+    $('next').addEventListener('click', function () { if (last) finish(); else { state.i++; render(); window.scrollTo(0, 0); } });
+    setTimeout(function () { var fb = $('fb'); if (fb.scrollIntoView) fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60);
+  }
+  function finish() {
+    var n = state.qs.length, pct = Math.round(state.score / n * 100);
+    var stars = pct >= 90 ? 3 : pct >= 70 ? 2 : pct >= 50 ? 1 : 0;
+    $('fStars').textContent = '★★★'.slice(0, stars) + '☆☆☆'.slice(0, 3 - stars);
+    $('fEmoji').textContent = ['💪', '🌱', '🌟', '🏆'][stars];
+    $('fScore').textContent = state.score + ' / ' + n;
+    $('fPct').textContent = pct + '%';
+    $('fMsg').textContent = ['لا بأس يا يوسف! راجع الأخطاء وجرّب مرة أخرى 💙', 'بداية جيدة يا يوسف! استمر في المراجعة 🌱', 'أحسنت يا يوسف! أداء رائع 🌟', 'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆'][stars];
+    var b = store(true) || {}, k = bestKey(), prev = b[k], isNew = prev == null || pct > prev;
+    if (isNew) { b[k] = pct; store(false, b); }
+    $('fBest').textContent = isNew && prev != null ? '🎉 رقم قياسي جديد! (السابق ' + prev + '%)' : prev != null ? '🏅 أفضل نتيجة: ' + Math.max(prev, pct) + '%' : '';
+    if (state.bestStreak >= 3) $('fBest').textContent += '  •  🔥 أطول سلسلة: ' + state.bestStreak;
+    $('fUnits').innerHTML = QE.lessonsFor(state.scope).map(function (l) {
+      var rs = state.results.filter(function (r) { return r.q.lesson === l; }), c = rs.filter(function (r) { return r.ok; }).length, p = rs.length ? Math.round(c / rs.length * 100) : 0;
+      return '<div class="r"><span>' + L[l].icon + ' ' + L[l].name + '</span><b><bdi class="n" dir="ltr">' + c + ' / ' + rs.length + '</bdi></b><div class="t"><i style="width:' + p + '%;background:' + COL[l] + '"></i></div></div>';
+    }).join('');
+    var missed = state.results.filter(function (r) { return !r.ok; });
+    $('fMissedTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة (' + missed.length + '):' : 'لا توجد أخطاء! 🎉';
+    $('fMissed').innerHTML = missed.length ? missed.map(function (r) {
+      return '<li><div class="q">' + L[r.q.lesson].icon + ' ' + r.q.q + '</div><div class="yours">إجابتك: ' + r.yourH + '</div><div class="right">الصحيح: ' + r.q.ansH + '</div><div class="ex" style="font-size:15px;color:#4a4070">💡 ' + r.q.ex + '</div></li>';
+    }).join('') : '<li class="perfect" style="background:#e6f8ee;border-color:#9ee0b9">كل الإجابات صحيحة — بارك الله فيك يا بطل! 👑</li>';
+    show('finish');
+    if (stars >= 2) confetti();
+  }
+  function confetti() {
+    var c = document.createElement('div'); c.className = 'confetti'; var em = ['🌟', '🔬', '⚛️', '🧪', '✨', '❤️'];
+    for (var i = 0; i < 26; i++) { var s = document.createElement('span'); s.textContent = em[i % em.length]; s.style.left = Math.random() * 100 + '%'; s.style.animationDuration = (2 + Math.random() * 2.5) + 's'; s.style.animationDelay = Math.random() * 0.8 + 's'; c.appendChild(s); }
+    document.body.appendChild(c); setTimeout(function () { c.remove(); }, 5600);
+  }
+  showBest();
+  window.__quiz = state;
+})();
+</script>
+</body>
+</html>
