@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a6fb0">
+<title>تحدي الحوسبة مع يوسف — الصف الثامن 8/1</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--l1:#e08a1e;--l2:#1f8a70;--l3:#2a7ab0;--l4:#1aa3c7;--l5:#8a5a2b;--l6:#c2417e;--l7:#5a6b7d;--l8:#d0632a;--u1:#2f9e5a;--u2:#e0702a;--u3:#c2304a;--mix:#7b5cd6;--ink:#2b2350;--bg:#fdf6ff;--ok:#1f9d55;--okbg:#e6f8ee;--bad:#e0435a;--badbg:#fdecef;--accent:var(--mix)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic","Droid Arabic Naskh",Tahoma,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);background-image:radial-gradient(circle at 10% 0%,#e3f6ff 0,transparent 40%),radial-gradient(circle at 100% 30%,#e3f0ff 0,transparent 40%);
+  min-height:100vh;line-height:1.6;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:14px 14px calc(28px + env(safe-area-inset-bottom))}
+bdi.n,bdi.m{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+bdi.n{white-space:nowrap}
+bdi.m{font-weight:700}
+.hidden{display:none!important}
+button{font-family:inherit;cursor:pointer;border:none;touch-action:manipulation}
+h1{font-size:28px;margin:4px 0 2px;line-height:1.3;text-align:center}
+.sub{text-align:center;color:#6b6290;margin:0 0 14px;font-size:16px}
+.hero{text-align:center;font-size:52px;line-height:1;margin-top:6px}
+.card{background:#fff;border-radius:22px;box-shadow:0 6px 22px rgba(80,50,140,.10);padding:16px;margin:12px 0}
+.label{font-weight:700;margin:0 2px 8px;font-size:17px}
+.units{display:grid;grid-template-columns:1fr;gap:10px}
+.unitbtn{display:flex;align-items:center;gap:12px;text-align:right;width:100%;min-height:64px;padding:10px 14px;border-radius:18px;background:#f6f3ff;color:var(--ink);font-size:17px;border:3px solid transparent;transition:transform .1s}
+.unitbtn .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:22px;font-weight:800}
+.unitbtn b{display:block;font-size:17px}.unitbtn small{display:block;color:#6b6290;font-size:14px;line-height:1.4}
+.unitbtn.sel{border-color:var(--c);background:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
+.unitbtn:active{transform:scale(.98)}
+.counts{display:flex;gap:10px}
+.countbtn{flex:1;min-height:56px;border-radius:16px;background:#f6f3ff;font-size:20px;font-weight:800;color:var(--ink);border:3px solid transparent}
+.countbtn.sel{border-color:var(--mix);background:#fff}
+.big-btn{display:block;width:100%;min-height:60px;border-radius:20px;font-size:22px;font-weight:800;color:#fff;background:linear-gradient(135deg,#ff6fa8,#7b5cd6);box-shadow:0 6px 16px rgba(123,92,214,.35);margin-top:6px}
+.big-btn:active{transform:translateY(2px)}
+.best{text-align:center;color:#6b6290;font-size:15px;margin-top:10px;min-height:1em}
+.exam{background:#fff7e0;border:2px dashed #f2b705;border-radius:16px;padding:8px 12px;font-size:15px;text-align:center;margin-top:12px}
+/* quiz */
+.top{position:sticky;top:0;z-index:5;background:rgba(253,246,255,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);margin:-14px -14px 0;padding:10px 14px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:15px;font-weight:700;flex-wrap:wrap}
+.pill{background:#fff;border-radius:999px;padding:4px 12px;box-shadow:0 2px 8px rgba(80,50,140,.08);white-space:nowrap}
+.bar{height:12px;background:#ece6ff;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7b5cd6,#ff6fa8);border-radius:999px;transition:width .35s}
+.home{background:#fff;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px rgba(80,50,140,.08)}
+.qcard{border-top:8px solid var(--accent)}
+.chip{display:inline-block;color:#fff;background:var(--accent);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:700;margin-bottom:8px}
+.qtext{font-size:20px;line-height:1.85;overflow-wrap:anywhere}
+.qtext b{color:var(--accent)}
+.big{font-size:26px;text-align:center;margin:12px 0 4px;line-height:1.6}
+.big.words{white-space:normal;font-weight:700;font-size:21px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.opts.wide{grid-template-columns:1fr}
+.opt{min-height:60px;border-radius:16px;background:#f6f3ff;border:3px solid #e2dbff;font-size:21px;color:var(--ink);padding:8px 10px;line-height:1.5;transition:transform .08s}
+.opt:active{transform:scale(.97)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#9b1c30}
+.opt[disabled]{cursor:default}
+.opt.dim{opacity:.55}
+.numrow{display:flex;gap:10px;margin-top:16px;align-items:stretch}
+.numrow input{flex:1;min-width:0;font-size:26px;font-weight:700;text-align:center;direction:ltr;border:3px solid #e2dbff;border-radius:16px;padding:10px;font-family:inherit;color:var(--ink);background:#fff;outline:none;-webkit-appearance:none;appearance:none}
+.numrow input:focus{border-color:var(--accent)}
+.numrow input.ok{border-color:var(--ok);background:var(--okbg)}.numrow input.bad{border-color:var(--bad);background:var(--badbg)}
+.check{flex:none;min-width:104px;border-radius:16px;background:var(--accent);color:#fff;font-size:20px;font-weight:800;padding:0 14px}
+.check[disabled]{opacity:.5}
+.hint{color:var(--bad);font-size:15px;min-height:1.4em;margin-top:6px;text-align:center}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(6px)}50%{transform:translateX(-6px)}75%{transform:translateX(4px)}}
+.fb{border-radius:20px;padding:14px 16px;margin-top:12px;animation:pop .25s ease-out}
+.fb.ok{background:var(--okbg);border:3px solid var(--ok)}.fb.bad{background:var(--badbg);border:3px solid var(--bad)}
+.fb h3{margin:0 0 4px;font-size:21px}.fb.ok h3{color:#11643a}.fb.bad h3{color:#9b1c30}
+.fb .ans{font-size:18px;margin:2px 0}.fb .ex{font-size:16px;color:#4a4070;line-height:1.8;overflow-wrap:anywhere}
+.next{margin-top:12px}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.barmodel{margin:12px 0 2px;display:grid;gap:6px}
+.barmodel .row{display:flex;align-items:center;gap:8px}
+.barmodel .lbl{flex:none;width:58px;font-size:15px;font-weight:700}
+.barmodel .cells{display:flex;direction:ltr;flex-wrap:nowrap}
+.barmodel .cells span{display:inline-block;min-width:42px;text-align:center;border:2px solid var(--u3);background:#ffe8cc;font-size:15px;font-weight:700;margin-left:-2px;padding:1px 4px}
+/* finish */
+.score-big{text-align:center;font-size:56px;font-weight:900;line-height:1.1;margin:4px 0}
+.stars{text-align:center;font-size:40px;letter-spacing:6px;direction:ltr}
+.msg{text-align:center;font-size:20px;font-weight:700;margin:6px 0 2px}
+.ub{display:grid;gap:10px}
+.ub .r{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;font-size:16px}
+.ub .t{height:12px;background:#eee;border-radius:999px;overflow:hidden;grid-column:1/-1}
+.ub .t i{display:block;height:100%;border-radius:999px}
+.missed{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.missed li{background:#fff8fa;border:2px solid #f6c9d2;border-radius:16px;padding:10px 12px;font-size:16px;line-height:1.8;overflow-wrap:anywhere}
+.missed .q .big{font-size:18px;margin:2px 0;text-align:right}
+.missed .q .barmodel{display:none}
+.missed .yours{color:#9b1c30}.missed .right{color:#11643a;font-weight:700}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.btn2{min-height:56px;border-radius:18px;font-size:18px;font-weight:800;color:#fff;background:var(--mix)}
+.btn2.alt{background:#fff;color:var(--mix);border:3px solid var(--mix)}
+.perfect{text-align:center;font-size:18px;color:#11643a;font-weight:700}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.confetti span{position:absolute;top:-40px;font-size:26px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (min-width:600px){.units{grid-template-columns:1fr 1fr}.qtext{font-size:22px}h1{font-size:34px}}
+@media (max-width:360px){.opts{grid-template-columns:1fr}.qtext{font-size:19px}.big{font-size:23px}.check{min-width:88px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.ay{font-family:"KFGQPC HAFS Uthmanic Script","KFGQPC Uthman Taha Naskh","Amiri Quran","Amiri","Scheherazade New","Traditional Arabic","Noto Naskh Arabic","Geeza Pro",serif;color:#13703e;font-weight:600;font-size:1.08em;line-height:2.1}
+.ay .br{font-family:"Noto Sans Arabic","Geeza Pro","Segoe UI",sans-serif;font-weight:400;color:#13703e}
+.hd{font-family:"Amiri","Traditional Arabic","Noto Naskh Arabic","Geeza Pro",serif;color:#8a1f5c;font-weight:700;font-size:1.05em;line-height:2.1}
+.qtext{line-height:2.05}
+.opt{line-height:1.9;font-size:19px;text-align:center}
+.opts.wide .opt{text-align:right;padding:10px 14px}
+.opt .ay,.opt .hd{font-size:1.05em}
+.typechip{display:inline-block;background:#f1ecff;color:#5a4a8a;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin:0 6px 8px 0}
+.lessons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lessons .unitbtn{min-height:58px;padding:8px 10px;gap:8px}
+.lessons .unitbtn .ic{width:38px;height:38px;font-size:20px;border-radius:12px}
+.lessons .unitbtn b{font-size:15.5px;line-height:1.35}
+.group-title{font-weight:800;font-size:15px;color:#6b6290;margin:14px 2px 8px}
+.note2{background:#eef8f1;border:2px dashed #2f9e5a;border-radius:16px;padding:8px 12px;font-size:15px;text-align:center;margin-top:10px}
+.missed .q{font-weight:600}
+.missed .q .ay,.missed .q .hd{font-size:1em}
+@media (max-width:360px){.lessons .unitbtn b{font-size:14.5px}.opt{font-size:18px}}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.15;margin:0 2px;font-size:.9em;direction:ltr}
+.fr>span:first-child{border-bottom:2px solid currentColor;padding:0 3px}
+.rt{white-space:nowrap}.rad{border-top:2px solid currentColor;padding:0 2px}.ix{font-size:.6em;vertical-align:super;margin-right:-4px}
+.ov{text-decoration:overline}
+bdi.m{font-family:-apple-system,"SF Pro Text","Segoe UI","Noto Sans",Arial,sans-serif;white-space:nowrap}
+.unitbtn .ic{font-size:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section id="start">
+    <div class="hero">💻🎬</div>
+    <h1>تحدي الحوسبة مع يوسف</h1>
+    <p class="sub">مراجعة اختبار منتصف الفصل الأول — الصف الثامن (الشعبة <bdi class="n" dir="ltr">8/1</bdi>) — الحوسبة (الحاسوب)</p>
+    <div class="card">
+      <div class="label">١) اختر ما تريد مراجعته:</div>
+      <div class="units" id="units">
+        <button class="unitbtn sel" data-s="all" style="--c:var(--mix)"><span class="ic" style="background:var(--mix)">★</span><span><b>مراجعة شاملة</b><small>كل مواضيع أوراق التدريبات الإثرائية</small></span></button>
+        <button class="unitbtn" data-s="u1" style="--c:var(--u1)"><span class="ic" style="background:var(--u1)">1</span><span><b>صناعة الأفلام – القصص المصورة</b><small>السيناريو • تجزئة المشهد • القصة المصورة</small></span></button>
+        <button class="unitbtn" data-s="u2" style="--c:var(--u2)"><span class="ic" style="background:var(--u2)">2</span><span><b>ملفات الوسائط المتعددة</b><small>الامتدادات • الفيديو والترميز • الصور • الصوت</small></span></button>
+      </div>
+      <div class="group-title">أو اختر موضوعًا واحدًا:</div>
+      <div class="units lessons" id="lessons"></div>
+    </div>
+    <div class="card">
+      <div class="label">٢) عدد الأسئلة:</div>
+      <div class="counts" id="counts">
+        <button class="countbtn" data-n="10">10</button>
+        <button class="countbtn" data-n="20">20</button>
+        <button class="countbtn sel" data-n="all">الكل (<bdi class="n" dir="ltr">70</bdi>)</button>
+      </div>
+    </div>
+    <button class="big-btn" id="go">ابدأ التحدي 🚀</button>
+    <div class="best" id="best"></div>
+    <div class="exam">📅 اختبار منتصف الفصل في الحوسبة: الثلاثاء <bdi class="n" dir="ltr">20</bdi> أكتوبر <bdi class="n" dir="ltr">2026</bdi> (الحصتان الثانية والثالثة) — بالتوفيق يا يوسف! 💙</div>
+    <div class="note2">📄 معظم الأسئلة من ورقة التدريبات الإثرائية للمدرسة (الإجابات حسب حلّ المدرسة)، والباقي من الكتاب المدرسي. الأوراق لا تغني عن الكتاب المدرسي (الوحدة الأولى، الصفحات <bdi class="n" dir="ltr">10–33</bdi>).</div>
+  </section>
+
+  <section id="quiz" class="hidden">
+    <div class="top">
+      <div class="stats">
+        <button class="home" id="home" aria-label="الرئيسية">🏠</button>
+        <span class="pill" id="qnum"></span>
+        <span class="pill" id="score"></span>
+        <span class="pill" id="streak"></span>
+      </div>
+      <div class="bar"><i id="prog"></i></div>
+    </div>
+    <div class="card qcard" id="qcard">
+      <span class="chip" id="chip"></span><span class="typechip" id="tchip"></span>
+      <div class="qtext" id="qtext"></div>
+      <div id="answerArea"></div>
+    </div>
+    <div id="fb"></div>
+  </section>
+
+  <section id="finish" class="hidden">
+    <div class="card" style="text-align:center">
+      <div class="hero" id="fEmoji">🏆</div>
+      <div class="stars" id="fStars"></div>
+      <div class="score-big"><bdi class="n" dir="ltr" id="fScore"></bdi></div>
+      <div style="font-size:20px;font-weight:700">النسبة: <bdi class="n" dir="ltr" id="fPct"></bdi></div>
+      <div class="msg" id="fMsg"></div>
+      <div class="best" id="fBest"></div>
+    </div>
+    <div class="btns">
+      <button class="btn2" id="again">🔁 حاول مرة أخرى</button>
+      <button class="btn2 alt" id="other">📚 اختر موضوعًا آخر</button>
+    </div>
+    <div class="card">
+      <div class="label">النتيجة حسب الموضوع:</div>
+      <div class="ub" id="fUnits"></div>
+    </div>
+    <div class="card">
+      <div class="label" id="fMissedTitle">الأسئلة التي تحتاج مراجعة:</div>
+      <ul class="missed" id="fMissed"></ul>
+    </div>
+  </section>
+</div>
+
+<script id="bank">
+var BANK = [
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "الخطوة الأولى لصنع الفيلم هي:",
+"a": "السيناريو",
+"o": [
+"القصة المصورة",
+"الحوار",
+"التجزئة"
+],
+"ex": "نبدأ بكتابة السيناريو، ثم تجزئة المشهد، ثم القصة المصورة."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "ليس جزءًا من السيناريو:",
+"a": "التجزئة",
+"o": [
+"الأبطال",
+"الأحداث",
+"الحوار"
+],
+"ex": "عناصر السيناريو: الأبطال والأحداث والحوار. أما التجزئة فمرحلة تأتي بعد السيناريو."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "القصة في السيناريو مجزأة إلى:",
+"a": "مشاهد وكل مشهد ينقسم إلى لقطات",
+"o": [
+"لقطات وكل لقطة تنقسم إلى مشاهد",
+"أحداث وكل حدث ينقسم إلى لقطات",
+"لقطات وكل لقطة تنقسم إلى أحداث"
+],
+"ex": "القصة ← مشاهد ← لقطات."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "الشخص/مجموعة الأشخاص الذين لديهم الكلمة الأخيرة حول المشهد:",
+"a": "المخرج",
+"o": [
+"مصمم موقع التصوير",
+"الممثلون",
+"أي عضو في فريق العمل"
+],
+"ex": "المخرج هو صاحب الكلمة الأخيرة، ويتشاور مع مدير التصوير ومهندس الصوت ومصمم الديكور."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "يتكون السيناريو من ثلاثة عناصر هي: الأبطال و ....... و .......",
+"a": "الأحداث – الحوار",
+"o": [
+"اللقطات – المشاهد",
+"الكاميرا – الإضاءة",
+"التجزئة – القصة المصورة"
+],
+"ex": "عناصر السيناريو الثلاثة: الأبطال والأحداث والحوار."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "يُكتب الحدث في السيناريو بالزمن:",
+"a": "المضارع",
+"o": [
+"الماضي",
+"الأمر",
+"المستقبل"
+],
+"ex": "يُكتب الحدث بالمضارع لأنه يصف ما يحدث في لحظة معيّنة."
+},
+{
+"l": 1,
+"s": "w",
+"t": "tf",
+"q": "يُكتب الحدث في السيناريو بالزمن الماضي.",
+"a": false,
+"ex": "خطأ، والتصحيح: يُكتب بالزمن المضارع."
+},
+{
+"l": 1,
+"s": "w",
+"t": "mc",
+"q": "....... هو الحدث الذي يحصل في مكان ووقت محدد.",
+"a": "<bdi dir=\"ltr\">Scene</bdi> المشهد",
+"o": [
+"اللقطة",
+"الحوار",
+"السيناريو"
+],
+"ex": "المشهد <bdi dir=\"ltr\">Scene</bdi> هو الحدث الذي يحصل في مكان ووقت محدد."
+},
+{
+"l": 1,
+"s": "b",
+"t": "mc",
+"q": "العنصر الذي يوضّح كل ما تقوله الشخصيات في السيناريو:",
+"a": "الحوار",
+"o": [
+"الأبطال",
+"الأحداث",
+"اللقطة"
+],
+"ex": "الحوار يوضّح كل ما تقوله الشخصيات."
+},
+{
+"l": 1,
+"s": "b",
+"t": "mc",
+"q": "«الأبطال» في السيناريو هم:",
+"a": "الشخصيات الأساسية في الفيلم",
+"o": [
+"فريق التصوير",
+"جمهور الفيلم",
+"المخرج ومساعدوه"
+],
+"ex": "الأبطال هم الشخصيات الأساسية في الفيلم."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "....... هي مرحلة التخطيط لكيفية ظهور كل مشهد بشكل تفصيلي.",
+"a": "تجزئة المشهد <bdi dir=\"ltr\">Découpage</bdi>",
+"o": [
+"القصة المصورة <bdi dir=\"ltr\">Storyboard</bdi>",
+"السيناريو",
+"المونتاج"
+],
+"ex": "تجزئة المشهد <bdi dir=\"ltr\">D</bdi>é<bdi dir=\"ltr\">coupage</bdi>: التخطيط لكيفية ظهور كل مشهد بالتفصيل بعد تجهيز السيناريو، بتقسيمه إلى لقطات."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "آخر خطوة من خطوات التخطيط للفيلم هي:",
+"a": "القصة المصورة <bdi dir=\"ltr\">Storyboard</bdi>",
+"o": [
+"السيناريو",
+"تجزئة المشهد",
+"كتابة الحوار"
+],
+"ex": "القصة المصورة <bdi dir=\"ltr\">Storyboard</bdi> هي آخر خطوة في التخطيط."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "الترتيب الصحيح لخطوات إنتاج فيلم ذي جودة عالية:",
+"a": "السيناريو ← تجزئة المشهد ← القصة المصورة",
+"o": [
+"القصة المصورة ← السيناريو ← تجزئة المشهد",
+"تجزئة المشهد ← السيناريو ← القصة المصورة",
+"السيناريو ← القصة المصورة ← تجزئة المشهد"
+],
+"ex": "حسب حل المدرسة: 1 السيناريو، 2 تجزئة المشهد، 3 القصة المصورة."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "المقصود بتجزئة المشهد <bdi dir=\"ltr\">(Découpage)</bdi>:",
+"a": "التخطيط لكيفية ظهور كل مشهد بالتفصيل بتقسيمه إلى لقطات",
+"o": [
+"رسم كل لقطة على شكل صورة مع أسهم الحركة",
+"كتابة الحوار بين الشخصيات",
+"ضغط ملف الفيديو لتصغير حجمه"
+],
+"ex": "هي مرحلة التخطيط لكيفية ظهور كل مشهد بشكل تفصيلي بعد تجهيز السيناريو، وذلك بتقسيم كل مشهد إلى لقطات."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "المقصود بالقصة المصورة <bdi dir=\"ltr\">(Storyboard)</bdi>:",
+"a": "رسم تفاصيل كل لقطة على شكل صورة مع التعليمات أو الأسهم التي توضح تسلسل الحركة",
+"o": [
+"تقسيم القصة إلى مشاهد",
+"كتابة أسماء الأبطال",
+"اختيار امتداد ملف الفيديو"
+],
+"ex": "هي آخر خطوة في التخطيط، نرسم فيها كل لقطة كصورة مع أسهم وتعليمات الحركة."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "من التفاصيل الإضافية التي يفيد كتابتها لكل لقطة:",
+"a": "تحديد مسافة الكاميرا وزاويتها وحركتها",
+"o": [
+"اسم امتداد الملف",
+"حجم الملف بالميجابايت",
+"نوع برنامج التشغيل"
+],
+"ex": "التفاصيل: مسافة الكاميرا من كل شخصية، وزاوية الكاميرا (من الأعلى أم الأسفل)، وحركة الكاميرا وما يتضمنه المشهد من أشياء أو أصوات."
+},
+{
+"l": 2,
+"s": "w",
+"t": "mc",
+"q": "«تحديد زاوية الكاميرا» عند تجزئة المشهد يعني:",
+"a": "هل التصوير من الأعلى أم من الأسفل",
+"o": [
+"عدد الميجابكسل في الكاميرا",
+"نوع امتداد الفيديو",
+"عدد الممثلين في المشهد"
+],
+"ex": "زاوية الكاميرا: كالتصوير من الأعلى أم من الأسفل."
+},
+{
+"l": 2,
+"s": "b",
+"t": "mc",
+"q": "تبدأ اللقطة منذ لحظة:",
+"a": "الضغط على زر بدء التسجيل حتى الضغط على زر الإيقاف",
+"o": [
+"كتابة السيناريو حتى رسم القصة المصورة",
+"دخول الممثل حتى خروجه من المكان",
+"بداية الفيلم حتى نهايته"
+],
+"ex": "اللقطة تبدأ بالضغط على زر التسجيل وتنتهي بالضغط على زر الإيقاف."
+},
+{
+"l": 2,
+"s": "b",
+"t": "tf",
+"q": "يجب أن تكتب في تجزئة المشهد كل تفاصيل البيئة الخاصة بالمشهد.",
+"a": false,
+"ex": "خطأ: هذه وظيفة المخرج بالتشاور مع مدير التصوير ومهندس الصوت ومصمم الديكور."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "تُصنَّف ملفات الوسائط إلى الصور و ....... ومقاطع الفيديو.",
+"a": "الصوت",
+"o": [
+"النصوص",
+"البرامج",
+"الجداول"
+],
+"ex": "ملفات الوسائط: صور وصوت وفيديو."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "امتداد الملف يُظهر:",
+"a": "نوع الملف ومحتواه",
+"o": [
+"حجم الملف",
+"تاريخ إنشاء الملف",
+"اسم صاحب الملف"
+],
+"ex": "الامتداد يدل على نوع الملف ومحتواه، مثل <bdi dir=\"ltr\">.jpg</bdi> للصورة."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "لكل ملف:",
+"a": "اسم وامتداد",
+"o": [
+"اسم فقط",
+"اسمان وامتداد",
+"اسمان وامتدادان"
+],
+"ex": "مثال: <bdi dir=\"ltr\">museum.jpg</bdi> اسمه <bdi dir=\"ltr\">museum</bdi> وامتداده <bdi dir=\"ltr\">.jpg</bdi>"
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "أي من التالية يُعد امتدادًا لصورة؟",
+"a": "<bdi dir=\"ltr\">.gif</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.aac</bdi>",
+"<bdi dir=\"ltr\">.avi</bdi>",
+"<bdi dir=\"ltr\">.mp4</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">.gif</bdi> صورة، <bdi dir=\"ltr\">.aac</bdi> صوت، <bdi dir=\"ltr\">.avi</bdi> و <bdi dir=\"ltr\">.mp4</bdi> فيديو."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "أي من الامتدادات التالية لملف صوتي؟",
+"a": "<bdi dir=\"ltr\">.mp3</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.gif</bdi>",
+"<bdi dir=\"ltr\">.jpg</bdi>",
+"<bdi dir=\"ltr\">.avi</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">.mp3</bdi> صوت، <bdi dir=\"ltr\">.gif</bdi> و <bdi dir=\"ltr\">.jpg</bdi> صور، <bdi dir=\"ltr\">.avi</bdi> فيديو."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "من امتدادات ملفات الصور:",
+"a": "<bdi dir=\"ltr\">.jpg</bdi> و <bdi dir=\"ltr\">.png</bdi> و <bdi dir=\"ltr\">.gif</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.mp3</bdi> و <bdi dir=\"ltr\">.wav</bdi> و <bdi dir=\"ltr\">.wma</bdi>",
+"<bdi dir=\"ltr\">.avi</bdi> و <bdi dir=\"ltr\">.mp4</bdi> و <bdi dir=\"ltr\">.mkv</bdi>",
+"<bdi dir=\"ltr\">.jpg</bdi> و <bdi dir=\"ltr\">.mp3</bdi> و <bdi dir=\"ltr\">.avi</bdi>"
+],
+"ex": "ملفات الصور: <bdi dir=\"ltr\">.jpg</bdi> <bdi dir=\"ltr\">.png</bdi> <bdi dir=\"ltr\">.gif</bdi> <bdi dir=\"ltr\">.bmp</bdi> <bdi dir=\"ltr\">.tif</bdi>"
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "من امتدادات ملفات الصوت:",
+"a": "<bdi dir=\"ltr\">.mp3</bdi> و <bdi dir=\"ltr\">.wav</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.jpg</bdi> و <bdi dir=\"ltr\">.png</bdi>",
+"<bdi dir=\"ltr\">.avi</bdi> و <bdi dir=\"ltr\">.mkv</bdi>",
+"<bdi dir=\"ltr\">.tif</bdi> و <bdi dir=\"ltr\">.bmp</bdi>"
+],
+"ex": "ملفات الصوت: <bdi dir=\"ltr\">.mp3</bdi> <bdi dir=\"ltr\">.wav</bdi> <bdi dir=\"ltr\">.wma</bdi>"
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "من امتدادات ملفات الفيديو:",
+"a": "<bdi dir=\"ltr\">.avi</bdi> و <bdi dir=\"ltr\">.mp4</bdi> و <bdi dir=\"ltr\">.mkv</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.mp3</bdi> و <bdi dir=\"ltr\">.wav</bdi> و <bdi dir=\"ltr\">.wma</bdi>",
+"<bdi dir=\"ltr\">.jpg</bdi> و <bdi dir=\"ltr\">.gif</bdi> و <bdi dir=\"ltr\">.png</bdi>",
+"<bdi dir=\"ltr\">.bmp</bdi> و <bdi dir=\"ltr\">.tif</bdi> و <bdi dir=\"ltr\">.mp3</bdi>"
+],
+"ex": "ملفات الفيديو: <bdi dir=\"ltr\">.avi</bdi> <bdi dir=\"ltr\">.wmv</bdi> <bdi dir=\"ltr\">.mpg</bdi> <bdi dir=\"ltr\">.mp4</bdi> <bdi dir=\"ltr\">.mkv</bdi>"
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "الامتداد <bdi dir=\"ltr\">.wma</bdi> يدل على ملف:",
+"a": "صوت",
+"o": [
+"صورة",
+"فيديو",
+"نص"
+],
+"ex": "<bdi dir=\"ltr\">.wma</bdi> من ملفات الصوت (مع <bdi dir=\"ltr\">.mp3</bdi> و <bdi dir=\"ltr\">.wav</bdi>)."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "الامتداد <bdi dir=\"ltr\">.bmp</bdi> يدل على ملف:",
+"a": "صورة",
+"o": [
+"صوت",
+"فيديو",
+"برنامج"
+],
+"ex": "<bdi dir=\"ltr\">.bmp</bdi> من ملفات الصور."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "الامتداد <bdi dir=\"ltr\">.wmv</bdi> يدل على ملف:",
+"a": "فيديو",
+"o": [
+"صوت",
+"صورة",
+"نص"
+],
+"ex": "<bdi dir=\"ltr\">.wmv</bdi> من ملفات الفيديو."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "الامتداد <bdi dir=\"ltr\">.mpg</bdi> يدل على ملف:",
+"a": "فيديو",
+"o": [
+"صوت",
+"صورة",
+"عرض تقديمي"
+],
+"ex": "<bdi dir=\"ltr\">.mpg</bdi> من ملفات الفيديو."
+},
+{
+"l": 3,
+"s": "w",
+"t": "mc",
+"q": "أي مجموعة كلها ملفات صور؟",
+"a": "<bdi dir=\"ltr\">.tif</bdi> <bdi dir=\"ltr\">.bmp</bdi> <bdi dir=\"ltr\">.png</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.tif</bdi> <bdi dir=\"ltr\">.wav</bdi> <bdi dir=\"ltr\">.png</bdi>",
+"<bdi dir=\"ltr\">.gif</bdi> <bdi dir=\"ltr\">.mkv</bdi> <bdi dir=\"ltr\">.jpg</bdi>",
+"<bdi dir=\"ltr\">.bmp</bdi> <bdi dir=\"ltr\">.wma</bdi> <bdi dir=\"ltr\">.jpg</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">.wav</bdi> و <bdi dir=\"ltr\">.wma</bdi> صوت، <bdi dir=\"ltr\">.mkv</bdi> فيديو."
+},
+{
+"l": 3,
+"s": "b",
+"t": "mc",
+"q": "في الملف <bdi dir=\"ltr\">museum.jpg</bdi> اسم الملف هو:",
+"a": "<bdi dir=\"ltr\">museum</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.jpg</bdi>",
+"<bdi dir=\"ltr\">JPEG</bdi>",
+"<bdi dir=\"ltr\">museum.jpg</bdi>"
+],
+"ex": "الاسم <bdi dir=\"ltr\">museum</bdi> والامتداد <bdi dir=\"ltr\">.jpg</bdi> ويدل على صورة بتنسيق <bdi dir=\"ltr\">JPEG</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "<bdi dir=\"ltr\">AVI</bdi> هو أحد تنسيقات ملفات:",
+"a": "الفيديو",
+"o": [
+"الصور",
+"الصوت",
+"النصوص"
+],
+"ex": "<bdi dir=\"ltr\">AVI</bdi> (تداخل الصوت والفيديو) من تنسيقات الفيديو."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "أكثر أنواع ملفات الفيديو شيوعًا بسبب توافقها مع الأجهزة المحمولة:",
+"a": "<bdi dir=\"ltr\">avi</bdi> و <bdi dir=\"ltr\">mp4</bdi>",
+"o": [
+"<bdi dir=\"ltr\">mkv</bdi> و <bdi dir=\"ltr\">wmv</bdi>",
+"<bdi dir=\"ltr\">mp3</bdi> و <bdi dir=\"ltr\">wav</bdi>",
+"<bdi dir=\"ltr\">mpg</bdi> و <bdi dir=\"ltr\">mkv</bdi>"
+],
+"ex": "أكثر ملفات الفيديو شيوعًا <bdi dir=\"ltr\">avi</bdi> و <bdi dir=\"ltr\">mp4</bdi> لتوافقها مع الأجهزة المحمولة."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "تنسيق الفيديو <bdi dir=\"ltr\">Matroska</bdi> امتداده:",
+"a": "<bdi dir=\"ltr\">.mkv</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.avi</bdi>",
+"<bdi dir=\"ltr\">.mp4</bdi>",
+"<bdi dir=\"ltr\">.wmv</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">Matroska</bdi> امتداده <bdi dir=\"ltr\">.mkv</bdi>"
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "نظام الترميز المستخدم لملفات الفيديو عالية الجودة وبث الفيديو عبر الإنترنت:",
+"a": "<bdi dir=\"ltr\">H.264</bdi>",
+"o": [
+"<bdi dir=\"ltr\">MPEG-2</bdi>",
+"<bdi dir=\"ltr\">VC-1</bdi>",
+"<bdi dir=\"ltr\">MP3</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">H.264</bdi> للفيديو عالي الجودة والبث عبر الإنترنت."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "نظام الترميز <bdi dir=\"ltr\">MPEG-2</bdi> هو تنسيق:",
+"a": "للأفلام المحفوظة على أقراص <bdi dir=\"ltr\">DVD</bdi>",
+"o": [
+"لملفات الفيديو عالية الجودة والبث عبر الإنترنت",
+"لأقراص <bdi dir=\"ltr\">Blu-ray</bdi> وألعاب الفيديو ووسائط <bdi dir=\"ltr\">Windows</bdi>",
+"لضغط ملفات الصوت فقط"
+],
+"ex": "<bdi dir=\"ltr\">MPEG-2</bdi> ← (ب) أفلام أقراص <bdi dir=\"ltr\">DVD</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "نظام الترميز <bdi dir=\"ltr\">VC-1</bdi> يُستخدم في:",
+"a": "أقراص <bdi dir=\"ltr\">Blu-ray</bdi> وألعاب الفيديو ووسائط نظام <bdi dir=\"ltr\">Windows</bdi>",
+"o": [
+"الأفلام المحفوظة على أقراص <bdi dir=\"ltr\">DVD</bdi>",
+"ملفات الفيديو عالية الجودة والبث عبر الإنترنت",
+"ملفات الصور المتحركة"
+],
+"ex": "<bdi dir=\"ltr\">VC-1</bdi> ← (ج) <bdi dir=\"ltr\">Blu-ray</bdi> وألعاب الفيديو ووسائط <bdi dir=\"ltr\">Windows</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "تتميز مقاطع الفيديو عالية الدقة <bdi dir=\"ltr\">HD</bdi> بجودة أعلى من مقاطع الفيديو:",
+"a": "العادية <bdi dir=\"ltr\">SD</bdi>",
+"o": [
+"المضغوطة <bdi dir=\"ltr\">MP3</bdi>",
+"المتحركة <bdi dir=\"ltr\">GIF</bdi>",
+"الصوتية <bdi dir=\"ltr\">WAV</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">HD</bdi> (<bdi dir=\"ltr\">High</bdi> <bdi dir=\"ltr\">Definition</bdi>) أعلى جودة من <bdi dir=\"ltr\">SD</bdi> (<bdi dir=\"ltr\">Standard</bdi> <bdi dir=\"ltr\">Definition</bdi>)."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "حجم مقطع الفيديو <bdi dir=\"ltr\">HD</bdi> ....... حجم مقطع فيديو <bdi dir=\"ltr\">SD</bdi>.",
+"a": "أكبر من",
+"o": [
+"أصغر من",
+"يساوي",
+"نصف"
+],
+"ex": "<bdi dir=\"ltr\">HD</bdi> يتطلب مساحة تخزينية أكبر بكثير من <bdi dir=\"ltr\">SD</bdi>."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "يحتوي ملف الفيديو على ترميز الفيديو وترميز الصوت و .......",
+"a": "الترجمة والتعليقات",
+"o": [
+"البكسلات فقط",
+"امتداد الصورة",
+"سرعة المعاينة"
+],
+"ex": "ملف الفيديو: ترميز فيديو + ترميز صوت + ترجمة وتعليقات (<bdi dir=\"ltr\">subtitles</bdi>, <bdi dir=\"ltr\">captions</bdi>)."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "من برامج تشغيل الوسائط التي تدعم الكثير من أنظمة الترميز برنامج:",
+"a": "<bdi dir=\"ltr\">VLC</bdi>",
+"o": [
+"<bdi dir=\"ltr\">Audacity</bdi>",
+"<bdi dir=\"ltr\">Word</bdi>",
+"<bdi dir=\"ltr\">Paint</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">VLC</bdi> مشغل وسائط يدعم الكثير من أنظمة الترميز."
+},
+{
+"l": 4,
+"s": "w",
+"t": "tf",
+"q": "يجمع ملف الفيديو صورًا وأصواتًا ونصوصًا مختلفة، لكل منها ترميزه الخاص به.",
+"a": true,
+"ex": "صحيح: لكل من الصور والأصوات والترجمة ترميز مستقل."
+},
+{
+"l": 4,
+"s": "w",
+"t": "tf",
+"q": "الفيديو الملتقط بكاميرا الهاتف المحمول أوضح من الملتقط بكاميرا الفيديو الرقمية.",
+"a": false,
+"ex": "خطأ، والتصحيح: الفيديو الملتقط بكاميرا الفيديو الرقمية أوضح."
+},
+{
+"l": 4,
+"s": "w",
+"t": "mc",
+"q": "لماذا يبدو الفيديو الملتقط بكاميرا الفيديو الرقمية أوضح من الملتقط بكاميرا الهاتف المحمول؟",
+"a": "لأن الهاتف معدّ لمهام متعددة بحجمه وإمكانياته المحدودة، والجهاز الملتقط يحدد الجودة",
+"o": [
+"لأن الهاتف لا يستطيع حفظ الفيديو",
+"لأن كاميرا الفيديو تصوّر بالأبيض والأسود",
+"لأن الهاتف يستخدم امتداد <bdi dir=\"ltr\">.mp3</bdi>"
+],
+"ex": "الهاتف معدّ لمهام متعددة في ذات الوقت بحجمه وإمكانياته المحدودة، والجهاز المستخدم يلعب الدور الأساسي في تحديد الجودة."
+},
+{
+"l": 4,
+"s": "b",
+"t": "mc",
+"q": "يُطلق على طرق الضغط التي تجعل الفيديو أصغر حجمًا اسم:",
+"a": "الترميز <bdi dir=\"ltr\">codecs</bdi>",
+"o": [
+"البكسل",
+"القصة المصورة",
+"الامتداد"
+],
+"ex": "طرق ضغط الفيديو تُسمّى الترميز (<bdi dir=\"ltr\">codecs</bdi>)."
+},
+{
+"l": 4,
+"s": "b",
+"t": "tf",
+"q": "يُعد <bdi dir=\"ltr\">MPEG-4</bdi> تنسيقًا أحدث وأفضل بكثير من <bdi dir=\"ltr\">MPEG-2</bdi>.",
+"a": true,
+"ex": "صحيح حسب الكتاب."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "تتكون الصورة الرقمية من مربعات صغيرة ملونة يُطلق على كل منها اسم:",
+"a": "البكسل",
+"o": [
+"الامتداد",
+"اللقطة",
+"الترميز"
+],
+"ex": "البكسل: مربع صغير ملون تتكون منه الصورة الرقمية."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "كلما زاد عدد الميجا بكسل وكانت عدسة الكاميرا أفضل زادت:",
+"a": "درجة وضوح الصورة",
+"o": [
+"حجم الكاميرا",
+"مدة الفيديو",
+"سرعة المعاينة"
+],
+"ex": "ميجابكسل أكثر + عدسة أفضل = صورة أوضح."
+},
+{
+"l": 5,
+"s": "w",
+"t": "tf",
+"q": "كلما زاد عدد الميجا بكسل وكانت عدسة الكاميرا أفضل زادت درجة وضوح الصورة.",
+"a": true,
+"ex": "صحيح."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "عبارة <bdi dir=\"ltr\">14</bdi> ميغابكسل على الكاميرا تعني أن الصورة تحتوي على:",
+"a": "<bdi dir=\"ltr\">14</bdi> مليون بكسل",
+"o": [
+"<bdi dir=\"ltr\">14</bdi> ألف بكسل",
+"<bdi dir=\"ltr\">14</bdi> بكسل فقط",
+"<bdi dir=\"ltr\">14</bdi> صورة في الثانية"
+],
+"ex": "ميغا = مليون، فالصورة فيها 14 مليون بكسل."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "تنسيق صور يدعم الشفافية وينتج ملفات صغيرة الحجم مع الحفاظ على الجودة:",
+"a": "<bdi dir=\"ltr\">.png</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.jpg</bdi>",
+"<bdi dir=\"ltr\">.tif</bdi>",
+"<bdi dir=\"ltr\">.wav</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">PNG</bdi> يدعم الشفافية بحجم صغير وجودة عالية، ممتاز للمواقع والعروض التقديمية."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "تنسيق صور غير مضغوط مناسب للمنشورات المتخصصة والطباعة كبيرة الحجم:",
+"a": "<bdi dir=\"ltr\">.tif</bdi>",
+"o": [
+"<bdi dir=\"ltr\">.jpg</bdi>",
+"<bdi dir=\"ltr\">.gif</bdi>",
+"<bdi dir=\"ltr\">.mp3</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">TIFF</bdi> غير مضغوط (أو مضغوط بلا فقد) وجيد للطباعة الكبيرة."
+},
+{
+"l": 5,
+"s": "w",
+"t": "tf",
+"q": "يعتبر <bdi dir=\"ltr\">TIF</bdi> امتدادًا لملف صورة بحجم أكبر من <bdi dir=\"ltr\">JPEG</bdi> وبجودة أعلى.",
+"a": true,
+"ex": "صحيح."
+},
+{
+"l": 5,
+"s": "w",
+"t": "tf",
+"q": "تتميز صيغة <bdi dir=\"ltr\">GIF</bdi> بخاصية الحركة، وغالبًا ما تُستعمل لإنشاء الصور المتحركة.",
+"a": true,
+"ex": "صحيح."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "امتداد <bdi dir=\"ltr\">.jpg</bdi> مقارنة بامتداد <bdi dir=\"ltr\">.tif</bdi>:",
+"a": "أصغر حجمًا (مضغوط) وقد يفقد بعض الجودة",
+"o": [
+"أكبر حجمًا وأعلى جودة",
+"غير مضغوط ومناسب للطباعة الكبيرة",
+"يدعم الحركة فقط"
+],
+"ex": "<bdi dir=\"ltr\">.jpg</bdi> مضغوط أصغر ويستخدم للويب والبريد والعروض، و<bdi dir=\"ltr\">.tif</bdi> أكبر وأعلى جودة للطباعة."
+},
+{
+"l": 5,
+"s": "w",
+"t": "mc",
+"q": "الاستخدام المناسب لصور <bdi dir=\"ltr\">.jpg</bdi>:",
+"a": "مواقع الويب والبريد الإلكتروني والعروض التقديمية",
+"o": [
+"المنشورات المتخصصة والطباعة كبيرة الحجم",
+"الصور المتحركة فقط",
+"تسجيل الصوت"
+],
+"ex": "حسب حل المدرسة: <bdi dir=\"ltr\">JPEG</bdi> للويب والبريد الإلكتروني والعروض التقديمية."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "ملفات الصوت المضغوطة:",
+"a": "أصغر في الحجم وتفقد بعضًا من جودتها",
+"o": [
+"أصغر في الحجم ولا تفقد شيئًا من جودتها",
+"أكبر في الحجم وتفقد بعضًا من جودتها",
+"أكبر في الحجم ولا تفقد شيئًا من جودتها"
+],
+"ex": "المضغوطة أصغر بكثير لكنها تفقد بعضًا من جودتها."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "أكثر ملفات الصوت المضغوطة شيوعًا:",
+"a": "<bdi dir=\"ltr\">MP3</bdi>",
+"o": [
+"<bdi dir=\"ltr\">WAV</bdi>",
+"<bdi dir=\"ltr\">AVI</bdi>",
+"<bdi dir=\"ltr\">PNG</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">MP3</bdi> الأكثر شيوعًا لأنه يشغل مساحة أقل."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "أكثر تنسيقات الصوت غير المضغوطة شيوعًا:",
+"a": "<bdi dir=\"ltr\">WAV</bdi>",
+"o": [
+"<bdi dir=\"ltr\">MP3</bdi>",
+"<bdi dir=\"ltr\">WMA</bdi>",
+"<bdi dir=\"ltr\">MKV</bdi>"
+],
+"ex": "<bdi dir=\"ltr\">WAV</bdi> أشهر تنسيق صوت غير مضغوط."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "حجم الملف الأصلي ....... من حجم الملف المضغوط.",
+"a": "أكبر",
+"o": [
+"أصغر",
+"يساوي",
+"لا يُقارن"
+],
+"ex": "الضغط يصغّر الحجم، فالأصلي أكبر."
+},
+{
+"l": 6,
+"s": "w",
+"t": "tf",
+"q": "جودة الملفات الصوتية غير المضغوطة تبقى تمامًا كما تم تسجيلها وهي صغيرة جدًا في الحجم.",
+"a": false,
+"ex": "خطأ، والتصحيح: وهي كبيرة الحجم."
+},
+{
+"l": 6,
+"s": "w",
+"t": "tf",
+"q": "أكثر ملفات الصوت المضغوطة شيوعًا هي <bdi dir=\"ltr\">MP3</bdi> و <bdi dir=\"ltr\">WMA</bdi>.",
+"a": true,
+"ex": "صحيح."
+},
+{
+"l": 6,
+"s": "w",
+"t": "tf",
+"q": "من غير الممكن ضغط الملف لتصغير حجمه دون إحداث تأثير على جودته.",
+"a": false,
+"ex": "خطأ، والتصحيح: من الممكن ذلك، فقد تطورت طرق الضغط."
+},
+{
+"l": 6,
+"s": "w",
+"t": "tf",
+"q": "تبقى الملفات الصوتية غير المضغوطة محتفظة بجودتها ولكنها تأخذ حيزًا كبيرًا من المساحة عند الحفظ.",
+"a": true,
+"ex": "صحيح."
+},
+{
+"l": 6,
+"s": "w",
+"t": "tf",
+"q": "كلما زادت سرعة المعاينة ومعدل النقل زادت جودة الصوت وزاد حجم الملف الصوتي.",
+"a": true,
+"ex": "صحيح."
+},
+{
+"l": 6,
+"s": "w",
+"t": "mc",
+"q": "مثال على ملفات الصوت غير المضغوطة:",
+"a": "<bdi dir=\"ltr\">WAV</bdi>",
+"o": [
+"<bdi dir=\"ltr\">MP3</bdi>",
+"<bdi dir=\"ltr\">WMA</bdi>",
+"<bdi dir=\"ltr\">JPG</bdi>"
+],
+"ex": "حسب حل المدرسة: غير المضغوط <bdi dir=\"ltr\">WAV</bdi>، والمضغوط <bdi dir=\"ltr\">MP3</bdi> و <bdi dir=\"ltr\">WMA</bdi>."
+},
+{
+"l": 6,
+"s": "b",
+"t": "mc",
+"q": "<bdi dir=\"ltr\">Bit Rate</bdi> (معدل النقل بالبت) يحدد:",
+"a": "درجة ضغط الملف الصوتي",
+"o": [
+"عدد البكسلات",
+"زاوية الكاميرا",
+"امتداد الملف"
+],
+"ex": "كلما قلّ معدل النقل صغر حجم الملف."
+},
+{
+"l": 6,
+"s": "b",
+"t": "mc",
+"q": "إذا أردت بث ملف صوتي عبر الإنترنت أو إرساله لصديق فالأفضل أن يكون:",
+"a": "صغير الحجم (مضغوطًا)",
+"o": [
+"كبير الحجم",
+"بامتداد صورة",
+"بدون امتداد"
+],
+"ex": "للبث أو الإرسال من المهم أن يكون حجم الملف صغيرًا."
+}
+];
+
+</script>
+<script id="engine">
+/* ===== Quiz engine (pure, no DOM) — adapted for Yusuf's Grade 8 Computing quiz ===== */
+var QE = (function () {
+  'use strict';
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  var LESSONS = {
+    1: { name: 'السيناريو', unit: 1, icon: '📝' },
+    2: { name: 'تجزئة المشهد والقصة المصورة', unit: 1, icon: '🎬' },
+    3: { name: 'أنواع الملفات والامتدادات', unit: 2, icon: '🗂️' },
+    4: { name: 'ملفات الفيديو والترميز', unit: 2, icon: '🎥' },
+    5: { name: 'ملفات الصور والبكسل', unit: 2, icon: '🖼️' },
+    6: { name: 'ملفات الصوت والضغط', unit: 2, icon: '🎧' }
+  };
+  var TYPE = { mc: 'اختيار من متعدد', tf: 'صح أم خطأ' };
+  var SRC = { w: '📄 على نمط أوراق المدرسة', b: '📘 من الكتاب المدرسي' };
+  var GOOD = ['أحسنت يا يوسف! 🌟', 'ممتاز يا يوسف! 💪', 'إجابة صحيحة، أحسنت! ✨', 'رائع يا يوسف! 👏', 'ما شاء الله عليك! 🌙', 'بارك الله فيك! 🚀'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا معلومة جديدة 💪', 'قريب! ركّز في السؤال القادم 🔍', 'لا تقلق، الخطأ طريق التعلّم 🌱', 'حاول في السؤال التالي، أنت قادر! 💙'];
+  var TF = [{ h: 'صح ✔', k: 'T' }, { h: 'خطأ ✘', k: 'F' }];
+  function make(b, idx) {
+    var q = { id: idx, lesson: b.l, src: b.s, type: b.t, q: b.q, ex: b.ex };
+    if (b.t === 'tf') { q.opts = TF.slice(); q.ans = b.a ? 'T' : 'F'; }
+    else { q.opts = shuffle([b.a].concat(b.o).map(function (h, i) { return { h: h, k: 'o' + i }; })); q.ans = 'o0'; }
+    q.ansH = q.opts.filter(function (o) { return o.k === q.ans; })[0].h;
+    q.wide = q.opts.some(function (o) { return o.h.replace(/<[^>]+>/g, '').length > 16; });
+    return q;
+  }
+  // scope: 1..6 (lesson), 'u1', 'u2', 'u3', 'all'
+  function lessonsFor(scope) { return scope === 'u1' ? [1, 2] : scope === 'u2' ? [3, 4, 5, 6] : scope === 'all' ? [1, 2, 3, 4, 5, 6] : [scope]; }
+  // Balanced pick across lessons from an index pool (round-robin over shuffled lessons).
+  function balanced(idxs, n, bank, ls) {
+    var pools = {}; ls.forEach(function (l) { pools[l] = shuffle(idxs.filter(function (i) { return bank[i].l === l; })); });
+    var order = shuffle(ls), out = [], guard = 0;
+    while (out.length < n && guard++ < 1000) {
+      var left = order.filter(function (l) { return pools[l].length; }); if (!left.length) break;
+      left.forEach(function (l) { if (out.length < n && pools[l].length) out.push(pools[l].shift()); });
+    }
+    return out;
+  }
+  // School-sheet questions always come first and are the majority; textbook questions complete the set.
+  function buildQuiz(scope, n, bank) {
+    bank = bank || BANK;
+    var ls = lessonsFor(scope), all = bank.map(function (b, i) { return i; }).filter(function (i) { return ls.indexOf(bank[i].l) >= 0; });
+    var W = all.filter(function (i) { return bank[i].s === 'w'; }), B = all.filter(function (i) { return bank[i].s !== 'w'; });
+    if (n === 'all' || n >= all.length) n = all.length;
+    var nb = Math.min(B.length, Math.floor(n * 0.3)), nw = Math.min(W.length, n - nb); nb = Math.min(B.length, n - nw);
+    var w = shuffle(balanced(W, nw, bank, ls)), b = shuffle(balanced(B, nb, bank, ls));
+    return w.concat(b).map(function (i) { return make(bank[i], i); });
+  }
+  return { LESSONS: LESSONS, TYPE: TYPE, SRC: SRC, GOOD: GOOD, BAD: BAD, make: make, buildQuiz: buildQuiz, lessonsFor: lessonsFor, shuffle: shuffle, pick: pick };
+})();
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var L = QE.LESSONS;
+  var COL = { 1: 'var(--l1)', 2: 'var(--l2)', 3: 'var(--l3)', 4: 'var(--l4)', 5: 'var(--l5)', 6: 'var(--l6)', 7: 'var(--l7)', 8: 'var(--l8)', u1: 'var(--u1)', u2: 'var(--u2)', u3: 'var(--u3)', all: 'var(--mix)' };
+  var state = { scope: 'all', n: 'all', qs: [], i: 0, score: 0, streak: 0, bestStreak: 0, answered: false, results: [] };
+  // lesson buttons
+  $('lessons').innerHTML = [1, 2, 3, 4, 5, 6].map(function (l) {
+    return '<button class="unitbtn" data-s="' + l + '" style="--c:' + COL[l] + '"><span class="ic" style="background:' + COL[l] + '">' + L[l].icon + '</span><span><b>' + L[l].name + '</b></span></button>';
+  }).join('');
+  function store(get, val) { try { if (get) return JSON.parse(localStorage.getItem('yusufComputingBest') || '{}'); localStorage.setItem('yusufComputingBest', JSON.stringify(val)); } catch (e) { return {}; } }
+  function bestKey() { return state.scope + '-' + state.n; }
+  function showBest() { var b = store(true) || {}, k = bestKey(); $('best').textContent = b[k] != null ? '🏅 أفضل نتيجة لك هنا: ' + b[k] + '%' : ''; }
+  function show(id) { ['start', 'quiz', 'finish'].forEach(function (s) { $(s).classList.toggle('hidden', s !== id); }); window.scrollTo(0, 0); }
+  function selScope(s) { Array.prototype.forEach.call(document.querySelectorAll('#units .unitbtn, #lessons .unitbtn'), function (b) { b.classList.toggle('sel', b.getAttribute('data-s') === String(s)); }); }
+  function onScope(e) { var b = e.target.closest('.unitbtn'); if (!b) return; var s = b.dataset.s; state.scope = /^\d$/.test(s) ? +s : s; selScope(s); showBest(); }
+  $('units').addEventListener('click', onScope); $('lessons').addEventListener('click', onScope);
+  $('counts').addEventListener('click', function (e) { var b = e.target.closest('.countbtn'); if (!b) return; state.n = b.dataset.n === 'all' ? 'all' : +b.dataset.n; Array.prototype.forEach.call($('counts').children, function (x) { x.classList.toggle('sel', x === b); }); showBest(); });
+  $('go').addEventListener('click', start); $('again').addEventListener('click', start);
+  $('other').addEventListener('click', function () { show('start'); showBest(); });
+  $('home').addEventListener('click', function () { if ((state.i === 0 && !state.answered) || confirm('هل تريد الخروج من التحدي؟')) { show('start'); showBest(); } });
+
+  function start() {
+    state.qs = QE.buildQuiz(state.scope, state.n); state.i = 0; state.score = 0; state.streak = 0; state.bestStreak = 0; state.results = [];
+    show('quiz'); render();
+  }
+  function updateTop() {
+    var n = state.qs.length;
+    $('qnum').innerHTML = 'السؤال <bdi class="n" dir="ltr">' + (state.i + 1) + '</bdi> من <bdi class="n" dir="ltr">' + n + '</bdi>';
+    $('score').innerHTML = '⭐ <bdi class="n" dir="ltr">' + state.score + '</bdi>';
+    $('streak').innerHTML = '🔥 <bdi class="n" dir="ltr">' + state.streak + '</bdi>';
+    $('prog').style.width = ((state.i + (state.answered ? 1 : 0)) / n * 100) + '%';
+  }
+  function render() {
+    var q = state.qs[state.i]; state.answered = false;
+    $('qcard').style.setProperty('--accent', COL[q.lesson]);
+    $('chip').textContent = L[q.lesson].icon + ' ' + L[q.lesson].name;
+    $('tchip').textContent = QE.TYPE[q.type] + ' • ' + QE.SRC[q.src];
+    $('qtext').innerHTML = q.q; $('fb').innerHTML = '';
+    var g = document.createElement('div'); g.className = 'opts' + (q.wide ? ' wide' : '');
+    q.opts.forEach(function (o) { var b = document.createElement('button'); b.className = 'opt'; b.innerHTML = o.h; b.dataset.k = o.k; b.addEventListener('click', function () { answer(o.k, b); }); g.appendChild(b); });
+    var area = $('answerArea'); area.innerHTML = ''; area.appendChild(g);
+    updateTop();
+  }
+  function answer(k, el) {
+    if (state.answered) return; state.answered = true;
+    var q = state.qs[state.i], ok = k === q.ans;
+    Array.prototype.forEach.call(document.querySelectorAll('.opt'), function (b) { b.disabled = true; if (b.dataset.k === q.ans) b.classList.add('ok'); else if (b === el) b.classList.add('bad'); else b.classList.add('dim'); });
+    if (ok) { state.score++; state.streak++; state.bestStreak = Math.max(state.bestStreak, state.streak); } else state.streak = 0;
+    state.results.push({ q: q, ok: ok, yourH: el.innerHTML });
+    var last = state.i === state.qs.length - 1, msg = ok ? QE.pick(QE.GOOD) : QE.pick(QE.BAD);
+    if (ok && state.streak >= 3 && state.streak % 3 === 0) msg = '🔥 ' + state.streak + ' إجابات صحيحة متتالية! أنت نجم يا يوسف';
+    $('fb').innerHTML = '<div class="fb ' + (ok ? 'ok' : 'bad') + '" role="status"><h3>' + (ok ? '✅ ' : '❌ ') + msg + '</h3>' +
+      (ok ? '' : '<div class="ans">الإجابة الصحيحة: <b>' + q.ansH + '</b></div>') +
+      '<div class="ex">💡 ' + q.ex + '</div></div>' +
+      '<button class="big-btn next" id="next">' + (last ? 'عرض النتيجة 🎉' : 'السؤال التالي ⬅') + '</button>';
+    updateTop();
+    $('next').addEventListener('click', function () { if (last) finish(); else { state.i++; render(); window.scrollTo(0, 0); } });
+    setTimeout(function () { var fb = $('fb'); if (fb.scrollIntoView) fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60);
+  }
+  function finish() {
+    var n = state.qs.length, pct = Math.round(state.score / n * 100);
+    var stars = pct >= 90 ? 3 : pct >= 70 ? 2 : pct >= 50 ? 1 : 0;
+    $('fStars').textContent = '★★★'.slice(0, stars) + '☆☆☆'.slice(0, 3 - stars);
+    $('fEmoji').textContent = ['💪', '🌱', '🌟', '🏆'][stars];
+    $('fScore').textContent = state.score + ' / ' + n;
+    $('fPct').textContent = pct + '%';
+    $('fMsg').textContent = ['لا بأس يا يوسف! راجع الأخطاء وجرّب مرة أخرى 💙', 'بداية جيدة يا يوسف! استمر في المراجعة 🌱', 'أحسنت يا يوسف! أداء رائع 🌟', 'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆'][stars];
+    var b = store(true) || {}, k = bestKey(), prev = b[k], isNew = prev == null || pct > prev;
+    if (isNew) { b[k] = pct; store(false, b); }
+    $('fBest').textContent = isNew && prev != null ? '🎉 رقم قياسي جديد! (السابق ' + prev + '%)' : prev != null ? '🏅 أفضل نتيجة: ' + Math.max(prev, pct) + '%' : '';
+    if (state.bestStreak >= 3) $('fBest').textContent += '  •  🔥 أطول سلسلة: ' + state.bestStreak;
+    $('fUnits').innerHTML = QE.lessonsFor(state.scope).map(function (l) {
+      var rs = state.results.filter(function (r) { return r.q.lesson === l; }), c = rs.filter(function (r) { return r.ok; }).length, p = rs.length ? Math.round(c / rs.length * 100) : 0;
+      return '<div class="r"><span>' + L[l].icon + ' ' + L[l].name + '</span><b><bdi class="n" dir="ltr">' + c + ' / ' + rs.length + '</bdi></b><div class="t"><i style="width:' + p + '%;background:' + COL[l] + '"></i></div></div>';
+    }).join('');
+    var missed = state.results.filter(function (r) { return !r.ok; });
+    $('fMissedTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة (' + missed.length + '):' : 'لا توجد أخطاء! 🎉';
+    $('fMissed').innerHTML = missed.length ? missed.map(function (r) {
+      return '<li><div class="q">' + L[r.q.lesson].icon + ' ' + r.q.q + '</div><div class="yours">إجابتك: ' + r.yourH + '</div><div class="right">الصحيح: ' + r.q.ansH + '</div><div class="ex" style="font-size:15px;color:#4a4070">💡 ' + r.q.ex + '</div></li>';
+    }).join('') : '<li class="perfect" style="background:#e6f8ee;border-color:#9ee0b9">كل الإجابات صحيحة — بارك الله فيك يا بطل! 👑</li>';
+    show('finish');
+    if (stars >= 2) confetti();
+  }
+  function confetti() {
+    var c = document.createElement('div'); c.className = 'confetti'; var em = ['🌟', '💻', '🎬', '💚', '✨', '💯'];
+    for (var i = 0; i < 26; i++) { var s = document.createElement('span'); s.textContent = em[i % em.length]; s.style.left = Math.random() * 100 + '%'; s.style.animationDuration = (2 + Math.random() * 2.5) + 's'; s.style.animationDelay = Math.random() * 0.8 + 's'; c.appendChild(s); }
+    document.body.appendChild(c); setTimeout(function () { c.remove(); }, 5600);
+  }
+  showBest();
+  window.__quiz = state;
+})();
+</script>
+</body>
+</html>
