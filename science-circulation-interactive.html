@@ -1,0 +1,209 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>كتاب يوسف التفاعلي — الجهاز الدوري</title>
+<style>
+:root{--bg:#f4f1fb;--ink:#2b2540;--red:#e5484d;--blue:#3e63dd;--green:#30a46c;--y:#fff6d6;--p:#efe7ff;--c:#e6f6ff;--pk:#ffe8ef;--mint:#e3f8ee}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,"SF Arabic","Noto Naskh Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+header{background:linear-gradient(135deg,#7c5cff,#e5484d);color:#fff;padding:18px 16px 22px;border-radius:0 0 26px 26px}
+header h1{margin:0;font-size:22px}header p{margin:4px 0 0;opacity:.9;font-size:14px}
+nav{display:flex;gap:6px;overflow-x:auto;padding:10px;position:sticky;top:0;background:var(--bg);z-index:5}
+nav button{flex:0 0 auto;border:0;border-radius:99px;padding:8px 14px;background:#fff;font:inherit;font-size:14px;font-weight:700;color:var(--ink)}
+nav button.on{background:#7c5cff;color:#fff}
+main{max-width:1100px;margin:auto;padding:0 10px 40px}
+.sec{display:none}.sec.on{display:block}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:820px){.split{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:20px;padding:14px 16px;margin-bottom:12px;box-shadow:0 2px 8px #0000000d}
+.card.y{background:var(--y)}.card.p{background:var(--p)}.card.c{background:var(--c)}.card.pk{background:var(--pk)}.card.m{background:var(--mint)}
+h2{font-size:20px;margin:6px 0 10px}h3{margin:0 0 6px;font-size:17px}
+.pg{font-size:12px;background:#0001;border-radius:8px;padding:1px 8px}
+canvas{width:100%;background:#fff;border-radius:20px;display:block;touch-action:none}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.seg button,.btn{border:0;border-radius:14px;padding:10px 14px;font:inherit;font-weight:800;background:#fff}
+.seg{display:flex;background:#fff;border-radius:14px;padding:3px;gap:3px}.seg button{padding:8px 12px}.seg button.on{background:#7c5cff;color:#fff}
+.btn.go{background:var(--red);color:#fff}.btn.gr{background:#ddd}
+.gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.g{background:#fff;border-radius:16px;padding:8px;text-align:center;font-size:13px}
+.tube{height:90px;width:34px;margin:6px auto;border:3px solid #cfc8e6;border-radius:0 0 14px 14px;position:relative;overflow:hidden}
+.tube i{position:absolute;bottom:0;left:0;right:0;transition:height .4s}
+.g b{font-size:20px;display:block;direction:ltr}
+.pred label{display:block;background:#fff;border-radius:12px;padding:8px 10px;margin:6px 0;border:2px solid transparent}
+.pred label.ok{border-color:var(--green);background:#eafbf1}.pred label.no{border-color:var(--red);background:#fff0f0}
+.why{display:none;color:#1d7a4c;font-weight:700;margin-top:6px}.why.on{display:block}
+.reveal{position:relative;border-radius:14px;overflow:hidden;margin-top:8px;background:#fff;padding:10px}
+.reveal .lid{position:absolute;inset:0;background:repeating-linear-gradient(45deg,#ffd76a,#ffd76a 10px,#ffe39a 10px,#ffe39a 20px);display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer;transition:transform .5s}
+.reveal.open .lid{transform:translateY(-105%)}
+.chip{display:inline-block;border-radius:12px;padding:8px 12px;margin:4px;background:#fff;border:2px solid #ddd;font-weight:700;cursor:pointer}
+.chip.sel{border-color:#7c5cff}.chip.done{background:#eafbf1;border-color:var(--green);opacity:.7}.chip.bad{border-color:var(--red)}
+.blank{display:inline-block;min-width:80px;border-bottom:3px solid #7c5cff;text-align:center;color:#7c5cff;font-weight:800}
+.score{font-weight:800;color:#7c5cff}
+.n{unicode-bidi:isolate;direction:ltr}
+</style></head><body>
+<header><h1>📗 كتاب يوسف التفاعلي: الجهاز الدوري</h1><p>علوم الصف الثامن، الفصل الأول (الجزء الثاني)، الدروس 5-3 و6-3 و7-3</p></header>
+<nav id="nav"><button data-s="s1" class="on">🏃 النبض والرياضة</button><button data-s="s2">🩸 مكوّنات الدم</button><button data-s="s3">💚 صحة الجهاز الدوري</button><button data-s="s4">🎯 تحدّى نفسك</button></nav>
+<main>
+<!-- S1 -->
+<section class="sec on" id="s1"><h2>لماذا يدقّ قلبك أسرع عندما تجري يا يوسف؟ <span class="pg">ص146</span></h2>
+<div class="split"><div>
+<canvas id="cv1" width="600" height="420"></canvas>
+<div class="ctrl"><div class="seg" id="act"><button data-v="0" class="on">😌 راحة</button><button data-v="1">🚶 مشي</button><button data-v="2">🏃 جري</button></div></div>
+<div class="ctrl"><div class="seg" id="ath"><button data-v="0" class="on">شخص عادي</button><button data-v="1">رياضي متدرّب</button></div>
+<button class="btn go" id="run1">▶ ابدأ النبض</button><button class="btn gr" id="cmp1">⚖️ قارن راحة/جري</button><button class="btn gr" id="clr1">🧽 امسح</button></div>
+<div class="gauges"><div class="g">❤️ نبض القلب<div class="tube"><i id="gB" style="background:#e5484d"></i></div><b id="vB">0</b>دقة/دقيقة</div>
+<div class="g">🫁 معدل التنفس<div class="tube"><i id="gR" style="background:#3e63dd"></i></div><b id="vR">0</b>نفس/دقيقة</div>
+<div class="g">⚡ حاجة العضلات للأكسجين<div class="tube"><i id="gO" style="background:#30a46c"></i></div><b id="vO">0%</b></div></div>
+<div class="card" id="log1" style="margin-top:10px;font-size:14px">سجلّ التجارب: لا شيء بعد.</div>
+</div><div>
+<div class="card y pred" id="p1"><h3>🔮 توقّع قبل أن تجرّب</h3>ماذا يحدث لمعدل النبض عندما ينتقل يوسف من الراحة إلى الجري؟
+<label><input type="radio" name="p1"> يقلّ</label><label data-ok><input type="radio" name="p1"> يزداد</label><label><input type="radio" name="p1"> لا يتغيّر</label>
+<div class="why">✅ صحيح! العضلات تتنفّس أكثر فتحتاج المزيد من الجلوكوز والأكسجين، فيدق القلب أسرع لينقل الدم هذه المواد بسرعة أكبر.</div></div>
+<div class="card c"><h3>📖 ما النبض؟</h3>النبض موجة صادمة في جدران الشرايين سببها دقات القلب، ونحسّ به على الرسغ أو الرقبة. <b>معدل النبض</b> هو عدد النبضات في الدقيقة، وغالبًا يساوي معدل دقات القلب.<br>المدى الطبيعي لقلب البالغ عند الراحة: <b class="n">60–100</b> دقة/دقيقة.</div>
+<div class="card p"><h3>🧪 معادلة التنفّس الخلوي</h3><div style="text-align:center;font-weight:800">جلوكوز + أكسجين ← ثاني أكسيد الكربون + ماء + <span style="color:#e5484d">طاقة</span></div>
+<div class="reveal"><div class="lid">👆 ارفع الورقة لترى الإجابة</div><b>لماذا نتنفّس أسرع أثناء الرياضة؟</b><br>لنحصل على المزيد من الأكسجين للتنفّس الخلوي في العضلات، ولنتخلّص من ثاني أكسيد الكربون الزائد.</div></div>
+<div class="card y pred" id="p1b"><h3>🔮 توقّع: رياضي متدرّب وهو مرتاح</h3>
+<label data-ok><input type="radio" name="p1b"> نبضه أقل من الشخص العادي</label><label><input type="radio" name="p1b"> نبضه أعلى</label>
+<div class="why">✅ صحيح! عضلة قلبه أقوى فتضخّ دمًا أكثر مع كل نبضة، فيحتاج نبضات أقل (ص166). جرّب «رياضي متدرّب» وشاهد.</div></div>
+</div></div></section>
+<!-- S2 -->
+<section class="sec" id="s2"><h2>رحلة داخل قطرة دم <span class="pg">ص156</span></h2>
+<div class="split"><div>
+<canvas id="cv2" width="600" height="420"></canvas>
+<div class="ctrl"><div class="seg" id="view"><button data-v="flow" class="on">🔁 الدورة</button><button data-v="cut">🩹 جرح</button><button data-v="germ">🦠 جراثيم</button></div>
+<button class="btn go" id="run2">▶ شغّل</button><button class="btn gr" id="trail">〰️ الأثر</button><button class="btn gr" id="clr2">🧽 امسح</button></div>
+<div class="gauges"><div class="g">🔴 تشبّع بالأكسجين<div class="tube"><i id="gS" style="background:#e5484d"></i></div><b id="vS">0%</b></div>
+<div class="g">⚪ خلايا بيضاء نشطة<div class="tube"><i id="gW" style="background:#b4a7d6"></i></div><b id="vW">0</b></div>
+<div class="g">🟡 صفائح متجمّعة<div class="tube"><i id="gP" style="background:#f5a524"></i></div><b id="vP">0</b></div></div>
+<div class="card" style="font-size:13px;margin-top:8px">🔴 دم مؤكسج يخرج من الرئتين إلى الجسم • 🔵 دم غير مؤكسج يرجع من الجسم إلى الرئتين</div>
+</div><div>
+<div class="card y pred"><h3>🔮 توقّع قبل أن تجرّب «جرح»</h3>أي مكوّن يوقف النزف؟
+<label><input type="radio" name="p2"> خلايا الدم الحمراء</label><label data-ok><input type="radio" name="p2"> الصفائح الدموية</label><label><input type="radio" name="p2"> البلازما</label>
+<div class="why">✅ صحيح! الصفائح قطع من خلايا بلا نوى، تصبح لاصقة عند القطع فتكوّن جلطة وتوقف النزف.</div></div>
+<div class="card pk"><h3>🔴 خلايا الدم الحمراء</h3>أقراص مقعّرة الوجهين بلا نوى، فيها <b>الهيموجلوبين</b> الغني بالحديد الذي يحمل الأكسجين.
+<div class="reveal"><div class="lid">👆 ارفع الورقة لترى الإجابة</div><b>كيف يتلاءم شكلها مع وظيفتها؟</b><br>الشكل المقعّر يعطي مساحة سطحية كبيرة لدخول الأكسجين ومغادرته بسرعة، وعدم وجود نواة وعضيات يترك مكانًا أكبر للهيموجلوبين.</div></div>
+<div class="card p"><h3>⚪ خلايا الدم البيضاء</h3>عديمة اللون ولها نوى كبيرة. بعضها مرن يغيّر شكله ليمر عبر الأنسجة ويحيط بالجراثيم ويهضمها، وبعضها ينتج <b>الأجسام المضادة</b>.</div>
+<div class="card y"><h3>🟡 الصفائح والبلازما</h3><b>الصفائح:</b> تكوّن جلطة عند الجرح.<br><b>البلازما:</b> سائل أصفر باهت يشكّل معظم الدم، وينقل الخلايا والمواد المذابة مثل الجلوكوز وثاني أكسيد الكربون.</div>
+</div></div></section>
+<!-- S3 -->
+<section class="sec" id="s3"><h2>كيف يحافظ يوسف على قلبه؟ <span class="pg">ص166</span></h2>
+<div class="split"><div>
+<canvas id="cv3" width="600" height="420"></canvas>
+<div class="ctrl"><div class="seg" id="diet"><button data-v="0" class="on">🥗 غذاء قليل الدهون</button><button data-v="1">🍟 غذاء كثير الدهون</button></div></div>
+<div class="ctrl"><div class="seg" id="ex3"><button data-v="1" class="on">🏃 رياضة منتظمة</button><button data-v="0">🛋️ بدون رياضة</button></div>
+<button class="btn go" id="run3">▶ مرّر السنوات</button><button class="btn gr" id="clr3">🧽 امسح</button></div>
+<div class="gauges"><div class="g">🧈 الترسبات<div class="tube"><i id="gT" style="background:#f5a524"></i></div><b id="vT">0%</b></div>
+<div class="g">🩸 تدفّق الدم<div class="tube"><i id="gF" style="background:#e5484d"></i></div><b id="vF">100%</b></div>
+<div class="g">📅 العمر<div class="tube"><i id="gA" style="background:#7c5cff"></i></div><b id="vA">14</b>سنة</div></div>
+<div class="card" id="msg3" style="margin-top:8px">اختر نمط الحياة ثم اضغط «مرّر السنوات».</div>
+</div><div>
+<div class="card y pred"><h3>🔮 توقّع قبل أن تجرّب</h3>ماذا يحدث للشريان مع غذاء كثير الدهون وبدون رياضة؟
+<label data-ok><input type="radio" name="p3"> تتجمّع فيه ترسبات دهنية ويضيق</label><label><input type="radio" name="p3"> يصبح أوسع</label><label><input type="radio" name="p3"> لا يتأثر</label>
+<div class="why">✅ صحيح! الترسبات الصفائحية مادة دهنية تتجمّع داخل الشرايين، وقد تسدّها.</div></div>
+<div class="card m"><h3>💪 الرياضة</h3>تقوّي عضلة القلب وتساعد على تنظيف الشرايين، لذلك يكون نبض الرياضيين وقت الراحة أقل غالبًا.</div>
+<div class="card pk"><h3>⚠️ عندما ينسدّ الشريان</h3>
+<div class="reveal"><div class="lid">👆 ارفع الورقة لترى الإجابة</div>إذا انسدّ شريان يغذّي <b>القلب</b> تحدث <b>نوبة قلبية</b>.<br>إذا انسدّ شريان يغذّي <b>الدماغ</b> تحدث <b>سكتة دماغية</b>.</div></div>
+<div class="card c"><h3>🥬 الحديد وفقر الدم</h3>الحديد ضروري لصنع الهيموجلوبين، ونقصه قد يسبب <b>فقر الدم</b> والشعور بالتعب. الغذاء الصحي غني بالفواكه والخضروات والحديد.</div>
+</div></div></section>
+<!-- S4 -->
+<section class="sec" id="s4"><h2>🎯 تحدّى نفسك يا يوسف</h2>
+<div class="split"><div>
+<div class="card p"><h3>🔗 طابق <span class="score" id="mS"></span></h3><div style="font-size:13px">اضغط على المصطلح ثم على وصفه.</div><div id="mA"></div><hr><div id="mB"></div><button class="btn gr" id="mNew">🔄 مجموعة جديدة</button></div>
+<div class="card c"><h3>🎧 اسمع واختر <span class="score" id="lS"></span></h3><button class="btn go" id="say">🔊 اسمع الجملة</button><div id="lQ" style="margin-top:8px"></div></div>
+</div><div>
+<div class="card y"><h3>✏️ أكمل الفراغ <span class="score" id="cS"></span></h3><div id="cQ"></div></div>
+</div></div></section>
+</main>
+<script>
+(function(){'use strict';
+var $=function(i){return document.getElementById(i)};
+function seg(id,cb){var b=$(id).querySelectorAll('button');b.forEach(function(x){x.onclick=function(){b.forEach(function(y){y.classList.remove('on')});x.classList.add('on');cb&&cb(x.dataset.v)}});}
+function val(id){return $(id).querySelector('.on').dataset.v}
+function gauge(g,v,txt,pct){$('g'+g).style.height=Math.max(0,Math.min(100,pct))+'%';$('v'+g).textContent=txt}
+// nav
+document.querySelectorAll('#nav button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#nav button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.querySelectorAll('.sec').forEach(function(s){s.classList.toggle('on',s.id==b.dataset.s)});window.scrollTo(0,0)}});
+// predictions
+document.querySelectorAll('.pred').forEach(function(p){p.querySelectorAll('label').forEach(function(l){l.onclick=function(){p.querySelectorAll('label').forEach(function(x){x.classList.remove('ok','no')});if(l.hasAttribute('data-ok')){l.classList.add('ok');p.querySelector('.why').classList.add('on')}else{l.classList.add('no');p.querySelector('.why').classList.remove('on')}}})});
+document.querySelectorAll('.reveal').forEach(function(r){r.onclick=function(){r.classList.toggle('open')}});
+function fit(c){var x=c.getContext('2d');return x}
+/* ===== S1 heart sim ===== */
+var c1=$('cv1'),x1=fit(c1),BPM=[[72,95,150],[58,80,125]],RR=[14,20,40],OX=[15,45,90];
+var s1={on:false,bpm:0,tbpm:0,t:0,beat:0,trace:[],cmp:null};
+seg('act');seg('ath');
+$('run1').onclick=function(){var a=+val('act'),t=+val('ath');s1.on=true;s1.tbpm=BPM[t][a];s1.rr=RR[a];s1.ox=OX[a];s1.cmp=null;
+ var n=['راحة','مشي','جري'][a]+' ('+(t?'رياضي':'عادي')+')';var L=$('log1');if(L.textContent.indexOf('لا شيء')>=0)L.innerHTML='سجلّ التجارب:';L.innerHTML+='<br>• '+n+': <b class="n">'+s1.tbpm+'</b> دقة/دقيقة';};
+$('cmp1').onclick=function(){var t=+val('ath');s1.cmp=[BPM[t][0],BPM[t][2]];s1.on=true;s1.tbpm=BPM[t][2];s1.rr=RR[2];s1.ox=OX[2]};
+$('clr1').onclick=function(){s1={on:false,bpm:0,tbpm:0,t:0,beat:0,trace:[],cmp:null};$('log1').textContent='سجلّ التجارب: لا شيء بعد.';gauge('B',0,'0',0);gauge('R',0,'0',0);gauge('O',0,'0%',0)};
+function heart(x,cx,cy,s,col){x.save();x.translate(cx,cy);x.scale(s,s);x.fillStyle=col;x.beginPath();x.moveTo(0,30);x.bezierCurveTo(-60,-10,-30,-60,0,-28);x.bezierCurveTo(30,-60,60,-10,0,30);x.fill();x.restore()}
+var last=performance.now();
+function d1(dt){var x=x1,W=600,H=420;x.clearRect(0,0,W,H);
+ if(s1.on){s1.bpm+=(s1.tbpm-s1.bpm)*Math.min(1,dt*1.5);gauge('B',0,Math.round(s1.bpm)+'',s1.bpm/1.8);gauge('R',0,Math.round(s1.rr*s1.bpm/Math.max(1,s1.tbpm))+'',s1.rr*2.2);gauge('O',0,s1.ox+'%',s1.ox)}
+ var per=s1.bpm>0?60/s1.bpm:999;s1.t+=dt;s1.beat=(s1.t%per)/per;var pump=s1.bpm>0?Math.exp(-s1.beat*8):0;
+ // vessels loop
+ x.lineWidth=16;x.strokeStyle='#ffd0d3';x.beginPath();x.ellipse(300,170,230,120,0,Math.PI,2*Math.PI);x.stroke();x.strokeStyle='#cfdcff';x.beginPath();x.ellipse(300,170,230,120,0,0,Math.PI);x.stroke();
+ x.font='bold 18px sans-serif';x.fillStyle='#2b2540';x.textAlign='center';x.fillText('🫁 الرئتان',300,40);x.fillText('💪 العضلات',300,310);
+ // cells
+ var sp=s1.bpm/60;for(var i=0;i<22;i++){var a=(i/22*2*Math.PI+s1.t*sp*0.5)%(2*Math.PI);var px=300+230*Math.cos(a),py=170+120*Math.sin(a);x.fillStyle=Math.sin(a)<0?'#e5484d':'#3e63dd';x.beginPath();x.arc(px,py,6,0,7);x.fill()}
+ heart(x,300,170,1.1+pump*0.25,'#e5484d');x.fillStyle='#fff';x.font='bold 22px sans-serif';x.fillText(Math.round(s1.bpm),300,175);
+ // ECG trace
+ s1.trace.push(s1.bpm>0?(s1.beat<0.06?-40*Math.sin(s1.beat/0.06*Math.PI):0):0);if(s1.trace.length>300)s1.trace.shift();
+ x.strokeStyle='#e5484d';x.lineWidth=2.5;x.beginPath();s1.trace.forEach(function(v,i){var px=W-20-i*1.9;i?x.lineTo(px,370+v):x.moveTo(px,370+v)});x.stroke();
+ if(s1.cmp){x.font='bold 15px sans-serif';[0,1].forEach(function(k){x.fillStyle=k?'#e5484d':'#30a46c';x.fillRect(40,345-k*0,0,0);x.fillRect(20,60+k*28,s1.cmp[k],18);x.fillStyle='#2b2540';x.textAlign='left';x.fillText((k?'جري ':'راحة ')+s1.cmp[k],30+s1.cmp[k],75+k*28)});x.textAlign='center'}
+}
+/* ===== S2 blood ===== */
+var c2=$('cv2'),x2=fit(c2),s2={on:false,mode:'flow',t:0,trail:false,cells:[],clot:0,germs:[],eaten:0};
+seg('view',function(v){s2.mode=v;reset2()});
+function reset2(){s2.cells=[];for(var i=0;i<40;i++)s2.cells.push({p:Math.random(),k:Math.random()<.8?'r':(Math.random()<.5?'w':'p'),dy:(Math.random()-.5)*30});s2.clot=0;s2.eaten=0;s2.germs=[];for(i=0;i<6;i++)s2.germs.push({x:330+Math.random()*200,y:200+Math.random()*150,a:1});}
+reset2();$('run2').onclick=function(){s2.on=true};$('trail').onclick=function(){s2.trail=!s2.trail};$('clr2').onclick=function(){s2.on=false;reset2();x2.clearRect(0,0,600,420);gauge('S',0,'0%',0);gauge('W',0,'0',0);gauge('P',0,'0',0)};
+function d2(dt){var x=x2;if(s2.trail){x.fillStyle='rgba(255,255,255,.25)';x.fillRect(0,0,600,420)}else x.clearRect(0,0,600,420);
+ if(s2.on)s2.t+=dt;var m=s2.mode;
+ x.fillStyle='#fff3f0';x.fillRect(0,130,600,140);x.strokeStyle='#f3b8b0';x.lineWidth=6;x.strokeRect(-5,130,610,140);
+ x.font='bold 16px sans-serif';x.fillStyle='#2b2540';x.textAlign='center';
+ if(m=='flow'){x.fillText('🫁 رئتان: يدخل الأكسجين',100,110);x.fillText('💪 أنسجة: يُترك الأكسجين',480,110)}
+ if(m=='cut'){x.fillStyle='#fff';x.fillRect(280,262,40,20);x.fillStyle='#2b2540';x.fillText('🩹 جرح في جدار الوعاء',300,320);if(s2.on&&s2.clot<20)s2.clot+=dt*4}
+ if(m=='germ'){x.fillText('🦠 جراثيم دخلت الأنسجة',430,110)}
+ var sat=0,n=0;s2.cells.forEach(function(c){if(s2.on){c.p=(c.p+dt*0.12)%1}var X=c.p*600,Y=200+c.dy;
+  if(c.k=='r'){var ox=m=='flow'?(X<300?Math.min(1,X/150):Math.max(0,1-(X-300)/250)):1;sat+=ox;n++;x.fillStyle=ox>.5?'#e5484d':'#3e63dd';x.beginPath();x.ellipse(X,Y,11,7,0,0,7);x.fill();x.fillStyle='rgba(255,255,255,.35)';x.beginPath();x.ellipse(X,Y,5,3,0,0,7);x.fill()}
+  else if(c.k=='w'){x.fillStyle='#ece8f8';x.beginPath();x.arc(X,Y,12,0,7);x.fill();x.fillStyle='#9b8ac9';x.beginPath();x.arc(X,Y,6,0,7);x.fill()}
+  else{x.fillStyle='#f5a524';x.beginPath();x.arc(X,Y,4,0,7);x.fill()}});
+ if(m=='cut')for(var i=0;i<s2.clot;i++){x.fillStyle='#f5a524';x.beginPath();x.arc(285+(i*7)%30,265+((i*13)%14),4,0,7);x.fill()}
+ if(m=='germ'){s2.germs.forEach(function(g){if(!g.a)return;x.font='22px sans-serif';x.fillText('🦠',g.x,g.y);if(s2.on&&Math.random()<dt*0.5){g.a=0;s2.eaten++}});if(s2.on){x.fillStyle='#ece8f8';x.beginPath();x.arc(330+Math.sin(s2.t)*60,300,16+Math.sin(s2.t*3)*3,0,7);x.fill()}}
+ if(s2.on){var S=Math.round(sat/Math.max(1,n)*100);gauge('S',0,S+'%',S);gauge('W',0,m=='germ'?s2.eaten+'':'0',m=='germ'?s2.eaten*16:0);gauge('P',0,Math.round(s2.clot)+'',s2.clot*5)}
+}
+/* ===== S3 artery ===== */
+var c3=$('cv3'),x3=fit(c3),s3={on:false,age:14,plaque:0,t:0};seg('diet');seg('ex3');
+$('run3').onclick=function(){s3={on:true,age:14,plaque:0,t:0}};$('clr3').onclick=function(){s3={on:false,age:14,plaque:0,t:0};$('msg3').textContent='اختر نمط الحياة ثم اضغط «مرّر السنوات».'};
+function d3(dt){var x=x3;x.clearRect(0,0,600,420);var d=+val('diet'),e=+val('ex3');
+ if(s3.on&&s3.age<60){s3.age+=dt*6;s3.plaque=Math.min(85,s3.plaque+dt*6*(d?1.4:0.15)*(e?0.5:1.3))}
+ s3.t+=dt;var r=90,pq=s3.plaque/100*r;
+ x.fillStyle='#ffd0d3';x.fillRect(0,210-r-18,600,2*r+36);x.fillStyle='#fff3f0';x.fillRect(0,210-r,600,2*r);
+ x.fillStyle='#f5c26b';x.beginPath();x.ellipse(300,210-r,180,pq,0,0,Math.PI);x.fill();x.beginPath();x.ellipse(320,210+r,160,pq*.8,0,Math.PI,2*Math.PI);x.fill();
+ var flow=Math.max(5,100-s3.plaque*1.1);for(var i=0;i<16;i++){var X=((i*40+s3.t*flow*1.5)%640)-20,Y=210+Math.sin(i*1.7)*(r-pq-10)*0.7;x.fillStyle='#e5484d';x.beginPath();x.ellipse(X,Y,10,6,0,0,7);x.fill()}
+ x.fillStyle='#2b2540';x.font='bold 16px sans-serif';x.textAlign='center';x.fillText('مقطع في شريان',300,30);
+ gauge('T',0,Math.round(s3.plaque)+'%',s3.plaque);gauge('F',0,Math.round(flow)+'%',flow);gauge('A',0,Math.round(s3.age)+'',(s3.age-14)/46*100);
+ if(s3.on&&s3.age>=60)$('msg3').innerHTML=s3.plaque>50?'⚠️ الشريان ضاق كثيرًا بسبب الترسبات الدهنية. لو كان يغذّي القلب ممكن تحدث <b>نوبة قلبية</b>، ولو كان يغذّي الدماغ ممكن تحدث <b>سكتة دماغية</b>.':'✅ ممتاز يا يوسف! الشريان بقي مفتوحًا تقريبًا، لأن الرياضة والغذاء قليل الدهون يحميان الجهاز الدوري.';
+}
+function loop(now){var dt=Math.min(.05,(now-last)/1000);last=now;var a=document.querySelector('.sec.on').id;if(a=='s1')d1(dt);if(a=='s2')d2(dt);if(a=='s3')d3(dt);requestAnimationFrame(loop)}requestAnimationFrame(loop);
+/* ===== S4 activities ===== */
+var MATCH=[[['خلايا الدم الحمراء','حمل الأكسجين بالهيموجلوبين'],['خلايا الدم البيضاء','محاربة الكائنات الدقيقة'],['الصفائح الدموية','تجلّط الدم ووقف النزف'],['البلازما','نقل الخلايا والمواد المذابة']],
+[['النبض','موجة صادمة في جدران الشرايين'],['معدل النبض','عدد النبضات في الدقيقة'],['التنفّس الخلوي','جلوكوز + أكسجين ← طاقة'],['الهيموجلوبين','مادة غنية بالحديد تحمل الأكسجين']],
+[['الترسبات الصفائحية','مادة دهنية داخل الشرايين'],['النوبة القلبية','انسداد شريان يغذّي القلب'],['السكتة الدماغية','انسداد شريان يغذّي الدماغ'],['فقر الدم','غالبًا بسبب نقص الحديد']]];
+var mi=0,sel=null,mok=0;function sh(a){return a.map(function(v){return[Math.random(),v]}).sort(function(p,q){return p[0]-q[0]}).map(function(p){return p[1]})}
+function mBuild(){var P=MATCH[mi%3];mok=0;sel=null;$('mS').textContent='';$('mA').innerHTML='';$('mB').innerHTML='';
+ sh(P).forEach(function(p){var c=document.createElement('span');c.className='chip';c.textContent=p[0];c.dataset.k=p[0];c.onclick=function(){if(c.classList.contains('done'))return;document.querySelectorAll('#mA .chip').forEach(function(z){z.classList.remove('sel')});c.classList.add('sel');sel=c};$('mA').appendChild(c)});
+ sh(P).forEach(function(p){var c=document.createElement('span');c.className='chip';c.textContent=p[1];c.onclick=function(){if(!sel||c.classList.contains('done'))return;if(sel.dataset.k==p[0]){sel.classList.add('done');c.classList.add('done');sel=null;mok++;if(mok==4)$('mS').textContent='🎉 أحسنت يا يوسف!'}else{c.classList.add('bad');setTimeout(function(){c.classList.remove('bad')},600)}};$('mB').appendChild(c)});}
+$('mNew').onclick=function(){mi++;mBuild()};mBuild();
+var LIS=[['النبض موجة صادمة في جدران الشرايين سببها دقات القلب','ما النبض؟','موجة صادمة في جدران الشرايين',['سائل أصفر يحمل الجلوكوز','مادة دهنية في الشرايين']],
+['يزداد معدل النبض أثناء التمارين لأن العضلات تحتاج المزيد من الطاقة','لماذا يزداد النبض أثناء التمرين؟','العضلات تحتاج طاقة أكثر',['القلب يتوقف لحظيًا','الحديد ينقص فورًا']],
+['الصفائح الدموية قطع من الخلايا تساعد الدم على التجلط','ما وظيفة الصفائح؟','تجلّط الدم',['حمل الأكسجين','إنتاج الجلوكوز']],
+['البلازما سائل أصفر باهت يحمل الخلايا والمواد الذائبة','ما لون البلازما؟','أصفر باهت',['أحمر قانٍ','أزرق']],
+['نقص الحديد قد يسبب فقر الدم','ماذا يسبب نقص الحديد؟','فقر الدم',['كسر العظام','زيادة الطول']]];
+var li=0,ls=0;function lBuild(){var q=LIS[li%LIS.length];$('lQ').innerHTML='<b>'+q[1]+'</b><br>';sh([q[2]].concat(q[3])).forEach(function(o){var c=document.createElement('span');c.className='chip';c.textContent=o;c.onclick=function(){if(o==q[2]){c.classList.add('done');ls++;$('lS').textContent=ls+' ✅';setTimeout(function(){li++;lBuild()},900)}else c.classList.add('bad')};$('lQ').appendChild(c)})}
+$('say').onclick=function(){try{var u=new SpeechSynthesisUtterance(LIS[li%LIS.length][0]);u.lang='ar-SA';u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){alert(LIS[li%LIS.length][0])}};lBuild();
+var CL=[['النبض ___ صادمة في جدران الشرايين.','موجة',['موجة','خلية','صمام']],['تحتاج العضلات أثناء التمرين المزيد من ___ والأكسجين.','الجلوكوز',['الجلوكوز','الحديد','الملح']],
+['خلايا الدم الحمراء ليس لها ___.','نوى',['نوى','لون','هيموجلوبين']],['الهيموجلوبين غني بعنصر ___.','الحديد',['الحديد','الكالسيوم','الصوديوم']],
+['تصبح ___ لاصقة عند الجرح فتكوّن جلطة.','الصفائح',['الصفائح','البلازما','الحمراء']],['تنتج بعض خلايا الدم البيضاء ___ المضادة.','الأجسام',['الأجسام','الصفائح','الهرمونات']],
+['الترسبات الصفائحية مادة ___ داخل الشرايين.','دهنية',['دهنية','حديدية','مائية']],['انسداد شريان يغذّي الدماغ قد يسبب ___ دماغية.','سكتة',['سكتة','نوبة','جلطة جلدية']],
+['الرياضة المنتظمة ___ عضلة القلب.','تقوّي',['تقوّي','تضعف','تصغّر']]];
+var ci=0,cs=0;function cBuild(){if(ci>=CL.length){$('cQ').innerHTML='🎉 خلّصت كل الفراغات يا يوسف! النتيجة: '+cs+' / '+CL.length+'<br><button class="btn go" id="cR">🔄 من جديد</button>';$('cR').onclick=function(){ci=0;cs=0;cBuild()};return}
+ var q=CL[ci],tried=false;$('cS').textContent=(ci+1)+' / '+CL.length;$('cQ').innerHTML='<div style="font-size:18px">'+q[0].replace('___','<span class="blank" id="bk">؟</span>')+'</div>';
+ sh(q[2]).forEach(function(o){var c=document.createElement('span');c.className='chip';c.textContent=o;c.onclick=function(){if(o==q[1]){$('bk').textContent=o;c.classList.add('done');if(!tried)cs++;setTimeout(function(){ci++;cBuild()},900)}else{tried=true;c.classList.add('bad')}};$('cQ').appendChild(c)})}
+cBuild();
+})();
+</script></body></html>
