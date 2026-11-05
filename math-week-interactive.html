@@ -1,0 +1,145 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>كتاب يوسف التفاعلي — المعادلات</title>
+<style>
+:root{--bg:#f4f1fb;--ink:#2b2540;--red:#e5484d;--blue:#3e63dd;--green:#30a46c;--y:#fff6d6;--p:#efe7ff;--c:#e6f6ff;--pk:#ffe8ef;--mint:#e3f8ee}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,"SF Arabic","Noto Naskh Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+header{background:linear-gradient(135deg,#7c5cff,#e5484d);color:#fff;padding:18px 16px 22px;border-radius:0 0 26px 26px}
+header h1{margin:0;font-size:22px}header p{margin:4px 0 0;opacity:.9;font-size:14px}
+nav{display:flex;gap:6px;overflow-x:auto;padding:10px;position:sticky;top:0;background:var(--bg);z-index:5}
+nav button{flex:0 0 auto;border:0;border-radius:99px;padding:8px 14px;background:#fff;font:inherit;font-size:14px;font-weight:700;color:var(--ink)}
+nav button.on{background:#7c5cff;color:#fff}
+main{max-width:1100px;margin:auto;padding:0 10px 40px}
+.sec{display:none}.sec.on{display:block}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:820px){.split{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:20px;padding:14px 16px;margin-bottom:12px;box-shadow:0 2px 8px #0000000d}
+.card.y{background:var(--y)}.card.p{background:var(--p)}.card.c{background:var(--c)}.card.pk{background:var(--pk)}.card.m{background:var(--mint)}
+h2{font-size:20px;margin:6px 0 10px}h3{margin:0 0 6px;font-size:17px}
+.pg{font-size:12px;background:#0001;border-radius:8px;padding:1px 8px}
+canvas{width:100%;background:#fff;border-radius:20px;display:block;touch-action:none}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.seg button,.btn{border:0;border-radius:14px;padding:10px 14px;font:inherit;font-weight:800;background:#fff}
+.seg{display:flex;background:#fff;border-radius:14px;padding:3px;gap:3px}.seg button{padding:8px 12px}.seg button.on{background:#7c5cff;color:#fff}
+.btn.go{background:var(--red);color:#fff}.btn.gr{background:#ddd}
+.gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.g{background:#fff;border-radius:16px;padding:8px;text-align:center;font-size:13px}
+.tube{height:90px;width:34px;margin:6px auto;border:3px solid #cfc8e6;border-radius:0 0 14px 14px;position:relative;overflow:hidden}
+.tube i{position:absolute;bottom:0;left:0;right:0;transition:height .4s}
+.g b{font-size:20px;display:block;direction:ltr}
+.pred label{display:block;background:#fff;border-radius:12px;padding:8px 10px;margin:6px 0;border:2px solid transparent}
+.pred label.ok{border-color:var(--green);background:#eafbf1}.pred label.no{border-color:var(--red);background:#fff0f0}
+.why{display:none;color:#1d7a4c;font-weight:700;margin-top:6px}.why.on{display:block}
+.reveal{position:relative;border-radius:14px;overflow:hidden;margin-top:8px;background:#fff;padding:10px}
+.reveal .lid{position:absolute;inset:0;background:repeating-linear-gradient(45deg,#ffd76a,#ffd76a 10px,#ffe39a 10px,#ffe39a 20px);display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer;transition:transform .5s}
+.reveal.open .lid{transform:translateY(-105%)}
+.chip{display:inline-block;border-radius:12px;padding:8px 12px;margin:4px;background:#fff;border:2px solid #ddd;font-weight:700;cursor:pointer}
+.chip.sel{border-color:#7c5cff}.chip.done{background:#eafbf1;border-color:var(--green);opacity:.7}.chip.bad{border-color:var(--red)}
+.blank{display:inline-block;min-width:80px;border-bottom:3px solid #7c5cff;text-align:center;color:#7c5cff;font-weight:800}
+.score{font-weight:800;color:#7c5cff}
+.n{unicode-bidi:isolate;direction:ltr}
+</style></head><body>
+<style>.eq{font-size:26px;font-weight:800;text-align:center;direction:ltr;background:#fff;border-radius:16px;padding:10px;margin:8px 0}
+input.n{width:80px;font:inherit;font-size:18px;padding:8px;border-radius:12px;border:2px solid #ccc;text-align:center;direction:ltr}
+.log{direction:ltr;text-align:left;font-family:monospace;font-size:15px;background:#fff;border-radius:12px;padding:8px;min-height:40px}
+.m{direction:ltr;unicode-bidi:isolate;font-weight:800}.res{font-weight:800;font-size:18px;margin-top:8px}
+select{font:inherit;padding:8px;border-radius:12px}</style></head><body>
+<header><h1>كتاب يوسف التفاعلي — المعادلات</h1><p>رياضيات الصف الثامن · أسبوع 1–5 نوفمبر · الدرسان 2-3 و2-4</p></header>
+<nav><button class="on" data-s="s1">⚖️ الميزان</button><button data-s="s2">🔍 عدد الحلول</button><button data-s="s3">📘 أمثلة الكتاب</button><button data-s="s4">🧩 طابق وأكمل</button></nav>
+<main>
+<section id="s1" class="sec on"><div class="split">
+<div><canvas id="cv" width="600" height="330"></canvas>
+<div class="eq" id="eqv"></div>
+<div class="gauges"><div class="g">معامل x يسار<b id="g1"></b></div><div class="g">معامل x يمين<b id="g2"></b></div><div class="g">عدد الخطوات<b id="g3"></b></div></div>
+<div class="ctrl"><div class="seg" id="ops"><button class="on" data-o="+">+</button><button data-o="-">−</button><button data-o="*">×</button><button data-o="/">÷</button></div>
+<input class="n" id="num" value="3" inputmode="decimal"><select id="what"><option value="c">عدد</option><option value="x">x</option></select>
+<button class="btn go" id="apply">طبّق على الطرفين</button><button class="btn gr" id="undo">تراجع</button></div>
+<div class="log" id="log"></div><div class="res" id="res"></div></div>
+<div><div class="card y"><h3>الفكرة <span class="pg">ص95</span></h3>المعادلة مثل الميزان: أي عملية تعملها على طرف لازم تعملها على الطرف الثاني عشان يبقى متوازن. الهدف: x لوحده في طرف.</div>
+<div class="card p"><h3>اختر معادلة</h3><select id="pick" style="width:100%"></select></div>
+<div class="card c pred"><h3>🤔 توقّع قبل أن تجرب</h3><div id="pq"></div><div class="why" id="pw"></div></div>
+<div class="card m"><h3>خطوات الحل <span class="pg">ملخص ص96</span></h3>1) وزّع وأزل الأقواس. 2) اجمع الحدود المتشابهة في كل طرف. 3) انقل حدود x لطرف واحد (اطرح). 4) انقل الأعداد للطرف الآخر. 5) اقسم على معامل x. 6) تحقّق بالتعويض.</div></div>
+</div></section>
+<section id="s2" class="sec"><div class="split"><div>
+<div class="card"><h3>اختبر المعادلة</h3><div class="eq" id="ceq"></div>
+<div class="pred" id="cpred"></div><div class="ctrl"><button class="btn go" id="ctry">جرّب: بسّط الطرفين</button><button class="btn gr" id="cnext">معادلة ثانية ←</button></div>
+<div class="log" id="clog"></div>
+<div class="gauges"><div class="g">x=0<b id="h0"></b></div><div class="g">x=1<b id="h1"></b></div><div class="g">x=5<b id="h5"></b></div></div>
+<div class="res" id="cres"></div><div class="g">نتيجتك: <b id="cscore">0 / 0</b></div></div></div>
+<div><div class="card y"><h3>عدد الحلول <span class="pg">ص102</span></h3>بعد التبسيط:<br>• معامل x مختلف في الطرفين ← <b>حل واحد</b>.<br>• نفس المعامل وعدد مختلف (مثل 5 = 3) ← جملة خاطئة ← <b>ليس لها حل</b> (∅).<br>• الطرفان متطابقان (مثل 4 = 4) ← متطابقة ← <b>عدد لانهائي من الحلول</b>.</div>
+<div class="card pk"><h3>العدادات</h3>عوّض قيم x في الطرفين: إذا الفرق ثابت ولا يصير صفر ← بلا حل. إذا دائماً متساويين ← لا نهائي.</div></div></div></section>
+<section id="s3" class="sec" ><div id="ex"></div></section>
+<section id="s4" class="sec"><div class="split"><div class="card"><h3>طابق المصطلح بمعناه</h3><div id="ma"></div><div id="mb" style="margin-top:8px"></div><div class="res" id="mres"></div></div>
+<div class="card"><h3>أكمل الفراغ</h3><div id="cz"></div></div></div></section>
+</main>
+<script>
+const $=i=>document.getElementById(i);
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button,.sec').forEach(e=>e.classList.remove('on'));b.classList.add('on');$(b.dataset.s).classList.add('on')});
+const f=n=>{n=Math.round(n*1000)/1000;return (n<0?'−':'')+Math.abs(n)};
+const side=(a,b)=>{let s='';if(a){s=(a==1?'':a==-1?'−':f(a))+'x'}if(b||!a){s+=s?(b<0?' − ':' + ')+f(Math.abs(b)):f(b)}return s};
+// [label, a,b,c,d] ax+b=cx+d after distribution (book form shown)
+const E=[["واجب ص96 س5: 27 = 7x − 3(x − 1)",0,27,4,3],["واجب ص97 س10: 3(x − 6) + 6 = 5x − 6",3,-12,5,-6],["واجب ص97 س12: 2(x + 5) = 3(x + 2)",2,10,3,6],["مثال ص96: 35 + 14x + x = 65",15,35,0,65],["واجب ص103 س5: 2(5x − 4) = 8 − 3x + 7x",10,-8,4,8],["4x + 3 = 4x + 7 (بلا حل)",4,3,4,7]];
+let st,hist,steps,op='+';
+E.forEach((e,i)=>$('pick').add(new Option(e[0],i)));
+function load(i){const e=E[i];st=e.slice(1);hist=[];steps=0;$('log').textContent='بعد التوزيع والتجميع: '+side(st[0],st[1])+' = '+side(st[2],st[3]);$('res').textContent='';draw();pred(i)}
+$('pick').onchange=e=>load(+e.target.value);
+$('ops').onclick=e=>{if(!e.target.dataset.o)return;op=e.target.dataset.o;[...$('ops').children].forEach(b=>b.classList.toggle('on',b==e.target))};
+$('apply').onclick=()=>{let n=parseFloat($('num').value);if(isNaN(n))return;let [a,b,c,d]=st,isx=$('what').value=='x';
+ if((op=='*'||op=='/')&&isx){$('res').textContent='اضرب أو اقسم على عدد فقط';return}
+ if(op=='/'&&n==0){$('res').textContent='ما نقدر نقسم على صفر!';return}
+ hist.push(st.slice());
+ if(op=='+'){isx?(a+=n,c+=n):(b+=n,d+=n)}if(op=='-'){isx?(a-=n,c-=n):(b-=n,d-=n)}
+ if(op=='*'){a*=n;b*=n;c*=n;d*=n}if(op=='/'){a/=n;b/=n;c/=n;d/=n}
+ st=[a,b,c,d];steps++;
+ $('log').textContent+='\n'+({'+':'+','-':'−','*':'×','/':'÷'})[op]+' '+f(n)+(isx?'x':'')+' للطرفين → '+side(a,b)+' = '+side(c,d);$('log').style.whiteSpace='pre-line';check();draw()};
+$('undo').onclick=()=>{if(hist.length){st=hist.pop();steps--;draw();check()}};
+function check(){const [a,b,c,d]=st;let r='';
+ if(a==1&&c==0&&b==0||c==1&&a==0&&d==0)r='🎉 أحسنت يا يوسف! x = '+f(a?d:b)+' — تحقّق بالتعويض.';
+ else if(a==c&&b!=d)r='⚠️ اختفت x وبقيت جملة خاطئة '+f(b)+' = '+f(d)+' ← ليس لها حل.';
+ else if(a==c&&b==d)r='♾️ الطرفان متطابقان ← عدد لانهائي من الحلول.';
+ $('res').textContent=r}
+function draw(){const [a,b,c,d]=st;$('eqv').textContent=side(a,b)+' = '+side(c,d);$('g1').textContent=f(a);$('g2').textContent=f(c);$('g3').textContent=steps;
+ const x=$('cv').getContext('2d');x.clearRect(0,0,600,330);x.fillStyle='#7c5cff';x.fillRect(290,120,20,180);x.fillRect(220,295,160,14);
+ x.save();x.translate(300,120);x.fillStyle='#3e63dd';x.fillRect(-250,-6,500,12);
+ [[-180,a,b,'#e5484d'],[180,c,d,'#30a46c']].forEach(([px,k,m,col])=>{x.strokeStyle='#999';x.beginPath();x.moveTo(px,0);x.lineTo(px-60,90);x.moveTo(px,0);x.lineTo(px+60,90);x.stroke();
+  x.fillStyle='#ddd';x.fillRect(px-80,90,160,10);let k2=Math.min(Math.abs(k),6),m2=Math.min(Math.round(Math.abs(m)/5)||(m?1:0),6);
+  for(let i=0;i<k2;i++){x.fillStyle=k<0?'#999':col;x.fillRect(px-75+i*25,62,22,26);x.fillStyle='#fff';x.font='bold 16px sans-serif';x.fillText('x',px-69+i*25,81)}
+  for(let i=0;i<m2;i++){x.fillStyle=m<0?'#bbb':'#ffd76a';x.beginPath();x.arc(px-66+i*25,45,10,0,7);x.fill()}
+  x.fillStyle='#2b2540';x.font='bold 18px sans-serif';x.textAlign='center';x.fillText(side(k,m),px,130);x.textAlign='start'});
+ x.restore();x.fillStyle='#30a46c';x.font='bold 16px sans-serif';x.textAlign='center';x.fillText('⚖️ متوازن دائماً لأنك تطبّق نفس العملية على الطرفين',300,25);x.textAlign='start'}
+function mkPred(el,q,opts,ok,why,cb){el.innerHTML='<b>'+q+'</b>'+opts.map((o,i)=>'<label><input type=radio name=r'+el.id+' value='+i+'> '+o+'</label>').join('');
+ el.onchange=e=>{const v=+e.target.value;el.querySelectorAll('label').forEach((l,i)=>{l.className=i==ok?'ok':(i==v?'no':'')});if(why){$('pw').textContent=(v==ok?'✔️ صح! ':'✖️ ')+why;$('pw').classList.add('on')}cb&&cb(v==ok)}}
+function pred(i){const [a,b,c,d]=E[i].slice(1);$('pw').classList.remove('on');const k=a-c;
+ const s=k?(d-b)/k:null,cands=k?[s,s+2,-s||1]:[1,2,3];
+ if(!k){mkPred($('pq'),'كم حل لهذه المعادلة؟',['حل واحد','ليس لها حل','لا نهائي'],b==d?2:1,'معامل x متساوٍ، فبعد الطرح تختفي x.');return}
+ mkPred($('pq'),'توقّع قيمة x ثم جرّب بالميزان:',cands.map(v=>'x = '+f(v)),0,'x = '+f(s)+'. الآن جرّب بالأزرار وشوف!')}
+load(0);
+// classify
+const C=[[3,5,3,5],[2,7,2,1],[5,-2,3,6],[6,12,6,12],[4,1,4,9],[7,-3,2,7],[-2,8,-2,8],[9,4,9,-4],[1,6,-1,2],[8,0,8,0]];
+const P=["2(x + 3) − 2x = 6 + 0x".replace(/.*/,'')];
+const CL=["3(x + 1) + 2 = 3x + 5","2x + 7 = 2(x + 0.5)","5x − 2 = 3x + 6","6(x + 2) = 6x + 12","4x + 1 = 2(2x + 4.5)","7x − 3 = 2x + 7","−2(x − 4) = 8 − 2x","9x + 4 = 9x − 4","x + 6 = −x + 2","8x = 4(2x)"];
+let ci=0,cok=0,ctot=0,ans=false;
+const cls=(a,b,c,d)=>a!=c?0:b!=d?1:2,NM=['حل واحد','ليس لها حل','عدد لانهائي من الحلول'];
+function cload(){const [a,b,c,d]=C[ci];ans=false;$('ceq').textContent=CL[ci];$('clog').textContent='';$('cres').textContent='';['h0','h1','h5'].forEach(h=>$(h).textContent='?');
+ mkPred($('cpred'),'🤔 توقّع قبل أن تجرب: كم حل؟',NM,cls(a,b,c,d),null,ok=>{if(ans)return;ans=true;ctot++;ok&&cok++;$('cscore').textContent=cok+' / '+ctot;$('cres').textContent=ok?'✔️ توقّعك صحيح':'✖️ اضغط جرّب وشوف ليش'})}
+$('ctry').onclick=()=>{const [a,b,c,d]=C[ci],k=cls(a,b,c,d);$('clog').textContent='بعد التبسيط: '+side(a,b)+' = '+side(c,d)+(k==0?'  →  x = '+f((d-b)/(a-c)):k==1?'  →  '+f(b)+' = '+f(d)+' ✗':'  →  '+f(b)+' = '+f(d)+' ✓');
+ [0,1,5].forEach(v=>$('h'+v).textContent=f(a*v+b)+(a*v+b==c*v+d?' = ':' ≠ ')+f(c*v+d));$('cres').textContent+=' — الجواب: '+NM[k]};
+$('cnext').onclick=()=>{ci=(ci+1)%C.length;cload()};cload();
+// examples
+const X=[["مثال ص96 — حل معادلة بالتوزيع","7(5 + 2x) + x = 65",["نوزّع 7: 35 + 14x + x = 65","نجمع: 35 + 15x = 65","نطرح 35: 15x = 30","نقسم على 15: x = 2"]],
+["واجب ص96 س5","27 = 7x − 3(x − 1)",["نوزّع −3: 27 = 7x − 3x + 3","نجمع: 27 = 4x + 3","نطرح 3: 24 = 4x","x = 6"]],
+["واجب ص97 س10 — متغير في الطرفين","3(x − 6) + 6 = 5x − 6",["3x − 18 + 6 = 5x − 6","3x − 12 = 5x − 6","نطرح 3x: −12 = 2x − 6","نجمع 6: −6 = 2x ← x = −3"]],
+["واجب ص97 س12","2(x + 5) = 3(x + 2)",["2x + 10 = 3x + 6","نطرح 2x: 10 = x + 6","x = 4"]],
+["درس 2-4 ص102 — ليس لها حل","3x + 5 = 3(x + 2)",["3x + 5 = 3x + 6","نطرح 3x: 5 = 6 ✗ جملة خاطئة","ليس لها حل (∅)"]],
+["درس 2-4 ص102 — لا نهائي","2(x + 4) = 2x + 8",["2x + 8 = 2x + 8","نطرح 2x: 8 = 8 ✓ متطابقة","عدد لانهائي من الحلول"]],
+["واجب ص103 س5","2(5x − 4) = 8 − 3x + 7x",["10x − 8 = 8 + 4x","نطرح 4x: 6x − 8 = 8","6x = 16 ← حل واحد: x = 8/3"]]];
+$('ex').innerHTML='<div class="split">'+X.map((e,i)=>'<div class="card '+['y','p','c','pk','m'][i%5]+'"><h3>'+e[0]+'</h3><div class="eq">'+e[1]+'</div>'+e[2].map((s,j)=>'<div class="reveal" onclick="this.classList.add(\'open\')"><span class="m">'+s+'</span><div class="lid">اضغط لتكشف الخطوة '+(j+1)+'</div></div>').join('')+'</div>').join('')+'</div>';
+// match
+const M=[["متطابقة","معادلة صحيحة لكل قيم x"],["ليس لها حل","تنتهي بجملة خاطئة مثل 5 = 6"],["خاصية التوزيع","a(b + c) = ab + ac"],["حدود متشابهة","حدود لها نفس المتغير مثل 3x و 5x"],["المعامل","العدد المضروب في المتغير"]];
+let sel=null,md=0;const sh=a=>a.map(v=>[Math.random(),v]).sort().map(v=>v[1]);
+$('ma').innerHTML=sh(M.map((m,i)=>'<span class="chip" data-i='+i+'>'+m[0]+'</span>')).join('');
+$('mb').innerHTML=sh(M.map((m,i)=>'<span class="chip" data-j='+i+'>'+m[1]+'</span>')).join('');
+$('ma').onclick=e=>{const t=e.target;if(!t.dataset.i||t.classList.contains('done'))return;document.querySelectorAll('#ma .chip').forEach(c=>c.classList.remove('sel'));t.classList.add('sel');sel=t};
+$('mb').onclick=e=>{const t=e.target;if(!sel||!t.dataset.j||t.classList.contains('done'))return;if(t.dataset.j==sel.dataset.i){t.classList.add('done');sel.classList.add('done');md++;$('mres').textContent=md==M.length?'🎉 ممتاز يا يوسف!':'✔️ صح'}else $('mres').textContent='✖️ جرّب مرة ثانية';sel.classList.remove('sel');sel=null};
+const Z=[["لحل 3(x − 6) نستخدم خاصية ____ أولاً.","التوزيع"],["إذا وصلنا إلى 8 = 8 فللمعادلة عدد ____ من الحلول.","لانهائي"],["إذا وصلنا إلى 5 = 6 فالمعادلة ليس لها ____.","حل"],["حل 2(x + 5) = 3(x + 2) هو x = ____","4"],["حل 27 = 7x − 3(x − 1) هو x = ____","6"],["ما نعمله على أحد طرفي المعادلة نعمله على الطرف ____.","الآخر"]];
+$('cz').innerHTML=Z.map((z,i)=>'<div class="card y">'+z[0].replace('____','<input class="n" id="z'+i+'" style="width:110px">')+' <button class="btn go" onclick="zc('+i+')">تحقق</button> <span id="zr'+i+'"></span></div>').join('');
+window.zc=i=>{const v=$('z'+i).value.trim().replace(/^ال/,'');$('zr'+i).textContent=(v==Z[i][1].replace(/^ال/,'')||v==Z[i][1])?'✔️':'✖️ الجواب: '+Z[i][1]};
+</script></body></html>
