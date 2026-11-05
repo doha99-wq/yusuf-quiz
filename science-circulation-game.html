@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a6fb0">
+<title>لعبة الجهاز الدوري — يوسف 8/1 🔬❤️</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--l1:#e08a1e;--l2:#1f8a70;--l3:#2a7ab0;--l4:#c2417e;--mix:#7b5cd6;--ink:#2b2350;--bg:#fdf6ff;--ok:#1f9d55;--okbg:#e6f8ee;--bad:#e0435a;--badbg:#fdecef;--accent:var(--mix)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);background-image:radial-gradient(circle at 10% 0%,#e3f6ff 0,transparent 40%),radial-gradient(circle at 100% 30%,#ffe8f3 0,transparent 40%);
+  min-height:100vh;line-height:1.7;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:14px 14px calc(28px + env(safe-area-inset-bottom))}
+bdi.n,bdi.m{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+.hidden{display:none!important}
+button{font-family:inherit;cursor:pointer;border:none;touch-action:manipulation}
+h1{font-size:26px;margin:4px 0 2px;line-height:1.35;text-align:center}
+.sub{text-align:center;color:#6b6290;margin:0 0 12px;font-size:15px;line-height:1.6}
+.hero{text-align:center;font-size:48px;line-height:1;margin-top:4px}
+.card{background:#fff;border-radius:22px;box-shadow:0 6px 22px rgba(80,50,140,.10);padding:16px;margin:12px 0}
+.label{font-weight:700;margin:0 2px 10px;font-size:17px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modebtn{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:right;width:100%;min-height:92px;padding:12px 14px;border-radius:18px;background:#f6f3ff;color:var(--ink);font-size:16px;border:3px solid transparent;transition:transform .1s}
+.modebtn .ic{font-size:28px;line-height:1}
+.modebtn b{font-size:18px}
+.modebtn small{color:#6b6290;font-size:13px;line-height:1.35}
+.modebtn.sel{border-color:var(--c);background:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,transparent)}
+.modebtn:active{transform:scale(.98)}
+.topics{display:grid;gap:8px}
+.topicbtn{display:flex;align-items:center;gap:10px;width:100%;min-height:56px;padding:10px 12px;border-radius:16px;background:#f6f3ff;border:3px solid transparent;text-align:right;font-size:15px;color:var(--ink)}
+.topicbtn .num{flex:none;width:34px;height:34px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px}
+.topicbtn.sel{border-color:var(--c);background:#fff}
+.big-btn{display:block;width:100%;min-height:58px;border-radius:20px;font-size:21px;font-weight:800;color:#fff;background:linear-gradient(135deg,#ff6fa8,#7b5cd6);box-shadow:0 6px 16px rgba(123,92,214,.35);margin-top:6px}
+.big-btn:active{transform:translateY(2px)}
+.big-btn.sec{background:linear-gradient(135deg,#2a7ab0,#1f8a70)}
+.best{text-align:center;color:#6b6290;font-size:14px;margin-top:10px;min-height:1em}
+.banner{background:#eef4ff;border:2px dashed #2a7ab0;border-radius:16px;padding:10px 12px;font-size:14.5px;text-align:center;margin-top:10px;line-height:1.7}
+.top{position:sticky;top:0;z-index:5;background:rgba(253,246,255,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);margin:-14px -14px 0;padding:10px 14px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.pill{background:#fff;border-radius:999px;padding:4px 12px;box-shadow:0 2px 8px rgba(80,50,140,.08)}
+.home{background:#fff;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px rgba(80,50,140,.08)}
+.bar{height:10px;background:#ece6ff;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7b5cd6,#ff6fa8);border-radius:999px;transition:width .35s}
+.pass{background:#f8f5ff;border-radius:16px;padding:14px;font-size:17px;line-height:1.95;border-right:5px solid var(--accent);margin:8px 0 14px}
+.pass h3{margin:0 0 8px;font-size:18px;color:var(--accent)}
+.qtext{font-size:19px;line-height:1.9;overflow-wrap:anywhere}
+.opts{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.opt{min-height:54px;border-radius:16px;background:#f6f3ff;border:3px solid #e2dbff;font-size:17px;color:var(--ink);padding:10px 14px;text-align:right;line-height:1.6;transition:transform .08s}
+.opt:active{transform:scale(.97)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#9b1c30}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.fb{border-radius:18px;padding:12px 14px;margin-top:12px;animation:pop .25s ease-out}
+.fb.ok{background:var(--okbg);border:3px solid var(--ok)}.fb.bad{background:var(--badbg);border:3px solid var(--bad)}
+.fb h3{margin:0 0 4px;font-size:19px}.fb.ok h3{color:#11643a}.fb.bad h3{color:#9b1c30}
+.fb .ex{font-size:15px;color:#4a4070;line-height:1.75}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.speak-box{text-align:center;padding:18px 12px;background:#f0f7ff;border-radius:18px;margin-bottom:12px;border:2px dashed #2a7ab0}
+.speak-btn{min-width:140px;min-height:56px;border-radius:18px;background:linear-gradient(135deg,#2a7ab0,#1f8a70);color:#fff;font-size:18px;font-weight:800;padding:0 18px}
+.speak-hint{font-size:14px;color:#6b6290;margin-top:8px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match .col{display:grid;gap:8px}
+.mitem{min-height:58px;border-radius:14px;background:#f6f3ff;border:3px solid #e2dbff;padding:10px 12px;font-size:15px;line-height:1.45;text-align:right;color:var(--ink)}
+.mitem.sel{border-color:var(--mix);background:#fff;box-shadow:0 0 0 3px color-mix(in srgb,var(--mix) 22%,transparent)}
+.mitem.done{opacity:.45;border-color:var(--ok);background:var(--okbg)}
+.mitem.badflash{border-color:var(--bad);background:var(--badbg)}
+.cloze{font-size:18px;line-height:2.1;background:#f8f5ff;border-radius:16px;padding:14px;margin-bottom:12px}
+.cloze .blank{display:inline-block;min-width:88px;border-bottom:3px solid var(--mix);color:var(--mix);font-weight:800;text-align:center;padding:0 6px;margin:0 2px}
+.blank-opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.blank-opts .opt{flex:1 1 40%;min-width:120px;text-align:center}
+.score-big{text-align:center;font-size:48px;font-weight:900;line-height:1.1;margin:4px 0}
+.stars{text-align:center;font-size:36px;letter-spacing:6px;direction:ltr}
+.msg{text-align:center;font-size:18px;font-weight:700;margin:6px 0}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.btn2{min-height:54px;border-radius:18px;font-size:17px;font-weight:800;color:#fff;background:var(--mix)}
+.btn2.alt{background:#fff;color:var(--mix);border:3px solid var(--mix)}
+.chip{display:inline-block;color:#fff;background:var(--accent);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:700;margin-bottom:8px}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.confetti span{position:absolute;top:-40px;font-size:26px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (max-width:360px){.modes{grid-template-columns:1fr}.match{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section id="home">
+    <div class="hero">❤️🩸🔬</div>
+    <h1>لعبة الجهاز الدوري مع يوسف</h1>
+    <p class="sub">مراجعة العلوم — الجهاز الدوري — أسبوع <bdi class="n" dir="ltr">1–5</bdi> نوفمبر <bdi class="n" dir="ltr">2026</bdi><br>الصف الثامن (الشعبة <bdi class="n" dir="ltr">8/1</bdi>) — من الكتاب المدرسي</p>
+
+    <div class="card">
+      <div class="label">١) اختر طريقة التدرّب:</div>
+      <div class="modes" id="modes">
+        <button class="modebtn sel" data-m="read" style="--c:var(--l3)"><span class="ic">📖</span><b>اقرأ</b><small>نصوص قصيرة ثم أسئلة فهم</small></button>
+        <button class="modebtn" data-m="listen" style="--c:var(--l2)"><span class="ic">🎧</span><b>اسمع</b><small>استمع واختر الإجابة الصحيحة</small></button>
+        <button class="modebtn" data-m="match" style="--c:var(--l1)"><span class="ic">🔗</span><b>طابق</b><small>اربط المصطلح بتعريفه أو وظيفته</small></button>
+        <button class="modebtn" data-m="cloze" style="--c:var(--l4)"><span class="ic">✏️</span><b>أكمل الفراغ</b><small>املأ الفراغ بكلمات الكتاب</small></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">٢) الموضوع (اختياري):</div>
+      <div class="topics" id="topics">
+        <button class="topicbtn sel" data-t="all" style="--c:var(--mix)"><span class="num" style="background:var(--mix)">★</span><span><b>كل مواضيع الأسبوع</b></span></button>
+        <button class="topicbtn" data-t="1" style="--c:var(--l1)"><span class="num" style="background:var(--l1)">1</span><span><b>ما علاقة ممارسة الرياضة بمعدل دقات القلب؟</b></span></button>
+        <button class="topicbtn" data-t="2" style="--c:var(--l2)"><span class="num" style="background:var(--l2)">2</span><span><b>كيف يتلاءم الدم مع وظائفه؟</b></span></button>
+        <button class="topicbtn" data-t="3" style="--c:var(--l3)"><span class="num" style="background:var(--l3)">3</span><span><b>كيف نحافظ على صحة الجهاز الدوري؟</b></span></button>
+      </div>
+    </div>
+
+    <button class="big-btn" id="go">ابدأ اللعب 🚀</button>
+    <div class="best" id="best"></div>
+    <div class="banner">📘 الدروس من كتاب العلوم الفصل الأول (الجزء الثاني): الدرس <bdi class="n">5-3</bdi> و<bdi class="n">6-3</bdi> و<bdi class="n">7-3</bdi> — حسب الرسالة الأسبوعية</div>
+  </section>
+
+  <section id="play" class="hidden">
+    <div class="top">
+      <div class="stats">
+        <button class="home" id="homeBtn" aria-label="الرئيسية">🏠</button>
+        <span class="pill" id="qnum"></span>
+        <span class="pill" id="score"></span>
+        <span class="pill" id="modePill"></span>
+      </div>
+      <div class="bar"><i id="prog"></i></div>
+    </div>
+    <div class="card" id="stage"></div>
+    <div id="fb"></div>
+  </section>
+
+  <section id="finish" class="hidden">
+    <div class="card" style="text-align:center">
+      <div class="hero" id="fEmoji">🏆</div>
+      <div class="stars" id="fStars"></div>
+      <div class="score-big"><bdi class="n" dir="ltr" id="fScore"></bdi></div>
+      <div style="font-size:19px;font-weight:700">النسبة: <bdi class="n" dir="ltr" id="fPct"></bdi></div>
+      <div class="msg" id="fMsg"></div>
+      <div class="best" id="fBest"></div>
+    </div>
+    <div class="btns">
+      <button class="btn2" id="again">🔁 حاول مرة أخرى</button>
+      <button class="btn2 alt" id="other">🏠 القائمة</button>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+'use strict';
+var N=function(s){return '<bdi class="n" dir="ltr">'+s+'</bdi>';};
+var F=function(s){return '<bdi class="m" dir="ltr">'+s+'</bdi>';};
+var STORE='yusufScienceHeartBest';
+var MODE_NAMES={read:'📖 اقرأ',listen:'🎧 اسمع',match:'🔗 طابق',cloze:'✏️ أكمل الفراغ'};
+var TOPICS={
+  1:{name:'الرياضة ودقات القلب',icon:'🏃'},
+  2:{name:'تلاؤم الدم مع وظائفه',icon:'🩸'},
+  3:{name:'صحة الجهاز الدوري',icon:'💚'}
+};
+
+/* ===== Content from textbook Term1 Part2 lessons 5-3, 6-3, 7-3 ===== */
+var PASSAGES=[
+  {t:1,title:'الدرس 5-3 — الرياضة ومعدل دقات القلب',
+   body:'النبض موجة صادمة في جدران الشرايين سببها دقات القلب، ويمكن الإحساس به على الرسغ أو الرقبة. معدل النبض هو عدد النبضات في الدقيقة، وغالبًا يساوي معدل دقات القلب. المدى الطبيعي لقلب الإنسان البالغ عند الراحة حوالي '+N('60')+'–'+N('100')+' دقة/دقيقة.\n\nعند ممارسة الرياضة تحتاج خلايا العضلات إلى المزيد من الطاقة، فتتنفّس أكثر وتحتاج المزيد من الجلوكوز والأكسجين. لذلك يزداد معدل النبض لينقل الدم هذه المواد إلى الخلايا بسرعة أكبر، ونتنفّس بشكل أسرع أيضًا للحصول على المزيد من الأكسجين.\n\nالتنفّس الخلوي تفاعل كيميائي تستهلك فيه الخلايا الجلوكوز والأكسجين، فتُطلَق الطاقة المخزّنة في الجلوكوز وينتج ثاني أكسيد الكربون والماء.'},
+  {t:2,title:'الدرس 6-3 — كيف يتلاءم الدم مع وظائفه؟',
+   body:'يتكوّن الدم من أربعة مكوّنات رئيسة:\n• خلايا الدم الحمراء: أقراص مقعّرة الوجهين بلا نوى، تحمل الأكسجين بفضل الهيموجلوبين الغني بالحديد. شكلها يعطي مساحة سطحية كبيرة لدخول الأكسجين ومغادرته بسرعة، وخلوّها من العضيات يزيد سعتها للهيموجلوبين.\n• خلايا الدم البيضاء: عديمة اللون ولها نوى كبيرة. بعضها مرن يغيّر شكله ليمر عبر الأنسجة ويحيط بالكائنات الحية الدقيقة ويهضمها، وبعضها ينتج الأجسام المضادة.\n• الصفائح الدموية: قطع من الخلايا بلا نوى، تصبح لاصقة عند القطع فتكوّن جلطة وتوقف النزف.\n• البلازما: سائل أصفر باهت ينقل الخلايا والمواد المذابة مثل الجلوكوز وثاني أكسيد الكربون. وهي تشكّل معظم الدم.'},
+  {t:3,title:'الدرس 7-3 — صحة الجهاز الدوري',
+   body:'نحافظ على صحة الجهاز الدوري بالعناية بالقلب والدم والأوعية الدموية.\n• الرياضة المنتظمة تقوّي عضلة القلب؛ فغالبًا يكون معدل دقات قلب الرياضيين عند الراحة أقل لأن القلب يضخ دمًا أكثر مع كل نبضة. الرياضة أيضًا تساعد على تنظيف الشرايين.\n• النظام الغذائي قليل الدهون يقلّل خطر الترسبات الصفائحية (مادة دهنية تتجمّع داخل الشرايين). انسداد شريان يغذّي القلب قد يسبب نوبة قلبية، وانسداد شريان يغذّي الدماغ قد يسبب سكتة دماغية.\n• الحديد ضروري لصنع الهيموجلوبين؛ نقصه قد يسبب فقر الدم والشعور بالتعب. النظام الغذائي الصحي غني بالفواكه والخضروات والعناصر المهمة كالحديد.'}
+];
+
+var READ_Q=[
+  {t:1,q:'ما أفضل وصف للنبض حسب الكتاب؟',a:'موجة صادمة في جدران الشرايين سببها دقات القلب',o:['شعور بانغلاق صمام في الوريد','تدفّق الدم في الأوردة فقط','صوت الرئتين عند الشهيق'],ex:'النبض موجة صادمة في جدران الشرايين سببها دقات القلب.'},
+  {t:1,q:'المدى التقريبي لمعدل دقات قلب الإنسان البالغ عند الراحة:',a:N('60')+'–'+N('100')+' دقة/دقيقة',o:[N('20')+'–'+N('40')+' دقة/دقيقة',N('120')+'–'+N('160')+' دقة/دقيقة',N('10')+'–'+N('30')+' دقة/دقيقة'],ex:'حسب الكتاب: مدى قلب البالغ عند الراحة حوالي '+N('60')+'–'+N('100')+' دقة/دقيقة.'},
+  {t:1,q:'لماذا يزداد معدل النبض أثناء التمرين؟',a:'لأن خلايا العضلات تحتاج المزيد من الجلوكوز والأكسجين',o:['لأن الرئتين تتوقّفان عن العمل','لأن الدم يصبح أقل لزوجة فقط','لأن القلب يصغر حجمه'],ex:'العضلات تتنفّس أكثر فتحتاج المزيد من الجلوكوز والأكسجين، فيدق القلب أسرع.'},
+  {t:1,q:'ماذا ينتج عن التنفّس الخلوي؟',a:'طاقة + ثاني أكسيد الكربون + ماء',o:['أكسجين فقط','حديد وهيموجلوبين','جلوكوز جديد'],ex:'الخلايا تستهلك الجلوكوز والأكسجين فتُطلَق الطاقة وينتج '+F('CO<sub>2</sub>')+' والماء.'},
+  {t:2,q:'أيّ مكوّن يحمل الأكسجين بفضل الهيموجلوبين؟',a:'خلايا الدم الحمراء',o:['خلايا الدم البيضاء','الصفائح الدموية','البلازما فقط'],ex:'الهيموجلوبين في خلايا الدم الحمراء يحمل الأكسجين.'},
+  {t:2,q:'لماذا شكل خلية الدم الحمراء مقعّر الوجهين؟',a:'لإعطائها مساحة سطحية كبيرة لدخول الأكسجين ومغادرته بسرعة',o:['لكي تنتج الأجسام المضادة','لكي تلتصق بجدران الشرايين','لكي تخزّن الدهون'],ex:'المساحة السطحية الكبيرة تساعد الأكسجين على الدخول والمغادرة بسرعة.'},
+  {t:2,q:'ما وظيفة الصفائح الدموية؟',a:'المساعدة على تجلّط الدم ووقف النزف',o:['حمل الأكسجين','إنتاج الأجسام المضادة','نقل الجلوكوز فقط'],ex:'تصبح لاصقة عند القطع فتكوّن جلطة وتوقف النزف.'},
+  {t:2,q:'ما البلازما؟',a:'سائل أصفر باهت ينقل الخلايا والمواد المذابة',o:['خلية حمراء بلا نواة','قطعة خلية توقف النزف','جسم مضاد'],ex:'البلازما سائل أصفر باهت يحمل الخلايا والمواد المذابة مثل الجلوكوز و'+F('CO<sub>2</sub>')+'.'},
+  {t:2,q:'كيف تتلاءم بعض خلايا الدم البيضاء مع مكافحة الجراثيم؟',a:'مرنة تغيّر شكلها لتحيط بالكائنات الدقيقة وتهضمها، وبعضها ينتج أجسامًا مضادة',o:['تحمل الهيموجلوبين فقط','تصبح لاصقة لتكوّن جلطة','تنقل الحديد إلى العضلات'],ex:'المرونة تسمح بالمرور عبر الأنسجة والإحاطة بالجراثيم؛ وأنواع أخرى تنتج أجسامًا مضادة.'},
+  {t:3,q:'لماذا يكون معدل دقات قلب الرياضي غالبًا أقل عند الراحة؟',a:'لأن عضلة قلبه أقوى فتضخ دمًا أكثر مع كل نبضة',o:['لأن قلبه أصغر','لأن دمه أقل','لأن رئتيه لا تعملان'],ex:'الرياضة تقوّي القلب فيضخ حجمًا أكبر من الدم بكل نبضة.'},
+  {t:3,q:'الترسبات الصفائحية مادة:',a:'دهنية تتجمّع داخل الشرايين',o:['بروتينية في البلازما','حديدية في الهيموجلوبين','ملحية في العظام'],ex:'Plaques = مادة دهنية تتجمّع داخل الشرايين.'},
+  {t:3,q:'نقص الحديد قد يسبب:',a:'فقر الدم',o:['سكتة دماغية مباشرة','زيادة الترسبات الدهنية','ارتفاع معدل النبض دائمًا'],ex:'الحديد لازم لصنع الهيموجلوبين؛ نقصه يسبب فقر الدم (Anaemia).'},
+  {t:3,q:'انسداد شريان يغذّي الدماغ قد يسبب:',a:'سكتة دماغية',o:['فقر دم فقط','التهاب الحلق','كسور العظام'],ex:'السكتة الدماغية Stroke تحدث إذا انقطع إمداد الدم عن خلايا الدماغ.'}
+];
+
+var LISTEN=[
+  {t:1,say:'النبض موجة صادمة في جدران الشرايين سببها دقات القلب',q:'ماذا سمعت؟ ما النبض؟',a:'موجة صادمة في جدران الشرايين سببها دقات القلب',o:['سائل أصفر يحمل الجلوكوز','قطعة خلية توقف النزف','مادة دهنية في الشرايين']},
+  {t:1,say:'يزداد معدل النبض أثناء التمارين لأن العضلات تحتاج المزيد من الطاقة',q:'لماذا يزداد معدل النبض أثناء التمرين؟',a:'لأن العضلات تحتاج المزيد من الطاقة',o:['لأن القلب يتوقّف لحظيًا','لأن البلازما تتجمّد','لأن الحديد ينقص فورًا']},
+  {t:1,say:'معدل دقات قلب الإنسان البالغ عند الراحة بين ستين ومائة دقة في الدقيقة',q:'ما مدى معدل دقات قلب البالغ عند الراحة؟',a:N('60')+'–'+N('100')+' دقة/دقيقة',o:[N('30')+'–'+N('40'),N('150')+'–'+N('200'),N('10')+'–'+N('20')]},
+  {t:2,say:'خلايا الدم الحمراء أقراص مقعرة الوجهين وليس لها نوى وتحمل الأكسجين',q:'أيّ وصف سمعت لخلايا الدم الحمراء؟',a:'أقراص مقعّرة الوجهين بلا نوى وتحمل الأكسجين',o:['عديمة اللون ولها نوى كبيرة','قطع لاصقة توقف النزف','سائل أصفر باهت']},
+  {t:2,say:'الهيموجلوبين مادة حمراء تحتوي على الكثير من الحديد وتحمل الأكسجين',q:'ما الهيموجلوبين؟',a:'مادة حمراء غنية بالحديد تحمل الأكسجين',o:['جسم مضاد يهاجم الجراثيم','مادة دهنية في الشرايين','صمام في القلب']},
+  {t:2,say:'الصفائح الدموية قطع من الخلايا تساعد الدم على التجلط',q:'ما وظيفة الصفائح؟',a:'المساعدة على تجلّط الدم',o:['حمل الأكسجين','إنتاج الجلوكوز','قياس النبض']},
+  {t:2,say:'البلازما سائل أصفر باهت يحمل الخلايا والمواد الذائبة',q:'ما لون البلازما تقريبًا؟',a:'أصفر باهت',o:['أحمر قانٍ','أخضر','أزرق'],ex:'البلازما سائل أصفر باهت.'},
+  {t:3,say:'الترسبات الصفائحية مادة دهنية تتجمع داخل الشرايين',q:'ما الترسبات الصفائحية؟',a:'مادة دهنية داخل الشرايين',o:['خلايا دم بيضاء','نوع من الصمامات','سائل البلازما']},
+  {t:3,say:'نقص الحديد قد يسبب فقر الدم',q:'ماذا قد يسبب نقص الحديد؟',a:'فقر الدم',o:['كسر العظام','التهاب الأذن','زيادة طول القامة']},
+  {t:3,say:'ممارسة الرياضة واتباع نظام غذائي قليل الدهون يحافظان على صحة الأوعية الدموية',q:'ما الذي يحافظ على صحة الأوعية الدموية؟',a:'الرياضة ونظام غذائي قليل الدهون',o:['النوم في النهار فقط','تجنب شرب الماء','زيادة الدهون المشبعة']}
+];
+
+var MATCH_SETS=[
+  {t:2,title:'مكوّنات الدم ↔ وظيفتها',
+   pairs:[['خلايا الدم الحمراء','حمل الأكسجين بالهيموجلوبين'],['خلايا الدم البيضاء','محاربة الكائنات الدقيقة'],['الصفائح الدموية','تجلّط الدم ووقف النزف'],['البلازما','نقل الخلايا والمواد المذابة']]},
+  {t:2,title:'تركيب ↔ تلاؤم مع الوظيفة',
+   pairs:[['شكل مقعّر الوجهين','مساحة سطحية كبيرة لدخول الأكسجين'],['خلوّ الحمراء من النوى/العضيات','سعة أكبر للهيموجلوبين'],['مرونة بعض البيضاء','المرور عبر الأنسجة والإحاطة بالجراثيم'],['التصاق الصفائح','تكوين جلطة عند القطع']]},
+  {t:1,title:'مصطلحات القلب والنبض',
+   pairs:[['النبض','موجة صادمة في جدران الشرايين'],['معدل النبض','عدد النبضات في الدقيقة'],['التنفّس الخلوي','استهلاك جلوكوز وأكسجين لإطلاق طاقة'],['الشعيرات الدموية','جدران رقيقة تسمح بمرور الأكسجين والجلوكوز']]},
+  {t:3,title:'صحة الجهاز الدوري',
+   pairs:[['الترسبات الصفائحية','مادة دهنية داخل الشرايين'],['النوبة القلبية','انقطاع دم عن عضلة القلب'],['السكتة الدماغية','انقطاع دم عن خلايا الدماغ'],['فقر الدم','نقص الهيموجلوبين غالبًا لنقص الحديد']]}
+];
+
+var CLOZE=[
+  {t:1,text:'النبض ___ صادمة في جدران الشرايين سببها دقات القلب.',ans:'موجة',opts:['موجة','خلية','مادة','صمام'],ex:'النبض موجة صادمة في جدران الشرايين.'},
+  {t:1,text:'يزداد معدل النبض أثناء التمرين لأن خلايا العضلات تحتاج المزيد من ___ والأكسجين.',ans:'الجلوكوز',opts:['الجلوكوز','الحديد','الملح','الدهون'],ex:'العضلات تحتاج جلوكوزًا وأكسجينًا أكثر للطاقة.'},
+  {t:1,text:'التنفّس الخلوي يطلق الطاقة المخزّنة في الجلوكوز وينتج ثاني أكسيد الكربون و___.',ans:'الماء',opts:['الماء','الحديد','الهيموجلوبين','الدهون'],ex:'نواتج التنفّس الخلوي: طاقة + '+F('CO<sub>2</sub>')+' + ماء.'},
+  {t:1,text:'يمكن الإحساس بالنبض على الرسغ أو ___.',ans:'الرقبة',opts:['الرقبة','الكعب','الأذن','الركبة'],ex:'مواضع شائعة: الرسغ والرقبة.'},
+  {t:2,text:'خلايا الدم الحمراء تحمل الأكسجين بفضل مادة ___ الغنية بالحديد.',ans:'الهيموجلوبين',opts:['الهيموجلوبين','البلازما','الصفائح','الترسبات'],ex:'الهيموجلوبين يحمل الأكسجين.'},
+  {t:2,text:'خلايا الدم الحمراء أقراص مقعّرة الوجهين وليس لها ___.',ans:'نوى',opts:['نوى','أغشية','سيتوبلازم','حديد'],ex:'تفتقر إلى النوى لزيادة سعة الهيموجلوبين.'},
+  {t:2,text:'الصفائح الدموية تساعد الدم على ___.',ans:'التجلّط',opts:['التجلّط','التنفّس','الهضم','الإبصار'],ex:'توقف النزف بتكوين جلطة.'},
+  {t:2,text:'البلازما سائل ___ باهت يحمل الخلايا والمواد المذابة.',ans:'أصفر',opts:['أصفر','أحمر','أخضر','أزرق'],ex:'لون البلازما أصفر باهت.'},
+  {t:2,text:'بعض خلايا الدم البيضاء تنتج ___ التي تهاجم الكائنات الدقيقة.',ans:'الأجسام المضادة',opts:['الأجسام المضادة','الهيموجلوبين','الترسبات','الجلوكوز'],ex:'Antibodies = أجسام مضادة.'},
+  {t:3,text:'الترسبات الصفائحية مادة ___ تتجمّع داخل الشرايين.',ans:'دهنية',opts:['دهنية','حديدية','ملحية','مائية'],ex:'Plaques مادة دهنية.'},
+  {t:3,text:'نقص الحديد قد يسبب ___.',ans:'فقر الدم',opts:['فقر الدم','كسر العظم','التهاب الحلق','قصر النظر'],ex:'Anaemia = فقر الدم.'},
+  {t:3,text:'ممارسة الرياضة واتّباع نظام غذائي قليل ___ يحافظان على صحة الأوعية الدموية.',ans:'الدهون',opts:['الدهون','الماء','الحديد','الأكسجين'],ex:'قليل الدهون يقلّل الترسبات.'},
+  {t:3,text:'انسداد شريان يغذّي الدماغ قد يسبب ___ دماغية.',ans:'سكتة',opts:['سكتة','نوبة','عدوى','حساسية'],ex:'Stroke = سكتة دماغية.'},
+  {t:3,text:'يحتاج الجسم إلى الحديد لصنع ___.',ans:'الهيموجلوبين',opts:['الهيموجلوبين','العظام','الصمامات','الشعيرات'],ex:'الحديد ضروري لصنع الهيموجلوبين.'}
+];
+
+/* ===== State & UI ===== */
+var $=function(id){return document.getElementById(id);};
+var state={mode:'read',topic:'all',items:[],i:0,score:0,answered:false,matchSel:null,matchDone:0};
+
+function store(get,val){try{if(get)return JSON.parse(localStorage.getItem(STORE)||'{}');localStorage.setItem(STORE,JSON.stringify(val));}catch(e){return{};}}
+function bestKey(){return state.mode+'-'+state.topic;}
+function showBest(){var b=store(true)||{},k=bestKey();$('best').textContent=b[k]!=null?'🏅 أفضل نتيجة لك هنا: '+b[k]+'%':'';}
+function show(id){['home','play','finish'].forEach(function(s){$(s).classList.toggle('hidden',s!==id);});window.scrollTo(0,0);}
+function stopSpeech(){try{if(window.speechSynthesis)speechSynthesis.cancel();}catch(e){}}
+
+$('modes').addEventListener('click',function(e){var b=e.target.closest('.modebtn');if(!b)return;state.mode=b.dataset.m;Array.prototype.forEach.call($('modes').children,function(x){x.classList.toggle('sel',x===b);});showBest();});
+$('topics').addEventListener('click',function(e){var b=e.target.closest('.topicbtn');if(!b)return;state.topic=b.dataset.t;Array.prototype.forEach.call($('topics').children,function(x){x.classList.toggle('sel',x===b);});showBest();});
+$('go').addEventListener('click',start);
+$('again').addEventListener('click',start);
+$('other').addEventListener('click',function(){stopSpeech();show('home');showBest();});
+$('homeBtn').addEventListener('click',function(){if(confirm('الخروج إلى القائمة؟')){stopSpeech();show('home');showBest();}});
+
+function topicOk(t){return state.topic==='all'||String(t)===String(state.topic);}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+function buildItems(){
+  var m=state.mode, items=[];
+  if(m==='read'){
+    PASSAGES.filter(function(p){return topicOk(p.t);}).forEach(function(p){
+      var qs=shuffle(READ_Q.filter(function(q){return q.t===p.t;})).slice(0,3);
+      items.push({kind:'passage',passage:p});
+      qs.forEach(function(q){items.push({kind:'mc',data:q,topic:q.t});});
+    });
+  } else if(m==='listen'){
+    shuffle(LISTEN.filter(function(x){return topicOk(x.t);})).forEach(function(x){items.push({kind:'listen',data:x,topic:x.t});});
+  } else if(m==='match'){
+    MATCH_SETS.filter(function(s){return topicOk(s.t);}).forEach(function(s){items.push({kind:'match',data:s,topic:s.t});});
+  } else if(m==='cloze'){
+    shuffle(CLOZE.filter(function(x){return topicOk(x.t);})).forEach(function(x){items.push({kind:'cloze',data:x,topic:x.t});});
+  }
+  return items;
+}
+
+function start(){
+  stopSpeech();
+  state.items=buildItems();
+  if(!state.items.length){alert('لا توجد عناصر لهذا الاختيار');return;}
+  state.i=0;state.score=0;state.answered=false;state.matchSel=null;state.matchDone=0;
+  show('play');render();
+}
+
+function updateTop(){
+  var n=state.items.length, scored=countScored();
+  $('qnum').innerHTML='<bdi class="n" dir="ltr">'+(state.i+1)+'</bdi> / <bdi class="n" dir="ltr">'+n+'</bdi>';
+  $('score').innerHTML='⭐ <bdi class="n" dir="ltr">'+state.score+'</bdi>'+(scored?' / <bdi class="n" dir="ltr">'+scored.total+'</bdi>':'');
+  $('modePill').textContent=MODE_NAMES[state.mode];
+  $('prog').style.width=((state.i+(state.answered?1:0))/n*100)+'%';
+}
+function countScored(){/* estimate max score points so far+remaining */ var total=0;state.items.forEach(function(it){if(it.kind==='passage')return;if(it.kind==='match')total+=it.data.pairs.length;else total+=1;});return{total:total};}
+
+function render(){
+  state.answered=false;state.matchSel=null;state.matchDone=0;$('fb').innerHTML='';
+  var it=state.items[state.i], stage=$('stage');stage.innerHTML='';
+  if(it.kind==='passage') renderPassage(it.passage,stage);
+  else if(it.kind==='mc') renderMC(it.data,stage);
+  else if(it.kind==='listen') renderListen(it.data,stage);
+  else if(it.kind==='match') renderMatch(it.data,stage);
+  else if(it.kind==='cloze') renderCloze(it.data,stage);
+  updateTop();
+}
+
+function topicChip(t){return '<span class="chip" style="background:var(--l'+t+')">'+TOPICS[t].icon+' '+TOPICS[t].name+'</span>';}
+
+function renderPassage(p,stage){
+  stage.innerHTML=topicChip(p.t)+'<div class="pass"><h3>'+p.title+'</h3>'+p.body.replace(/\n/g,'<br>')+'</div>'+
+    '<button class="big-btn sec" id="nextPass">فهمت — إلى الأسئلة ⬅</button>';
+  $('nextPass').onclick=function(){state.answered=true;next();};
+}
+
+function renderMC(q,stage){
+  var opts=shuffle([q.a].concat(q.o));
+  stage.innerHTML=topicChip(q.t)+'<div class="qtext">'+q.q+'</div><div class="opts" id="opts"></div>';
+  var box=$('opts');
+  opts.forEach(function(h){var b=document.createElement('button');b.className='opt';b.innerHTML=h;b.onclick=function(){gradeMC(b,h===q.a,q);};box.appendChild(b);});
+}
+
+function gradeMC(el,ok,q){
+  if(state.answered)return;state.answered=true;
+  Array.prototype.forEach.call(document.querySelectorAll('.opt'),function(b){
+    b.disabled=true;
+    if(b.innerHTML===q.a||(q.ans&&b.textContent.trim()===q.ans))b.classList.add('ok');
+    else if(b===el&&!ok)b.classList.add('bad');
+    else b.classList.add('dim');
+  });
+  if(ok)state.score++;
+  feedback(ok,q.a,q.ex||'');
+}
+
+function speak(text){
+  stopSpeech();
+  if(!window.speechSynthesis){alert('جهازك لا يدعم القراءة الصوتية');return;}
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang='ar-SA';u.rate=0.9;
+  var voices=speechSynthesis.getVoices()||[];
+  var ar=voices.filter(function(v){return /^ar/i.test(v.lang);});
+  if(ar.length)u.voice=ar[0];
+  speechSynthesis.speak(u);
+}
+
+function renderListen(d,stage){
+  stage.innerHTML=topicChip(d.t)+
+    '<div class="speak-box"><button class="speak-btn" id="spk">🔊 اضغط للسماع</button><div class="speak-hint">استمع جيدًا ثم أجب — يمكنك إعادة السماع</div></div>'+
+    '<div class="qtext">'+d.q+'</div><div class="opts" id="opts"></div>';
+  $('spk').onclick=function(){speak(d.say);};
+  // auto-speak once
+  setTimeout(function(){speak(d.say);},350);
+  var opts=shuffle([d.a].concat(d.o));
+  var box=$('opts');
+  opts.forEach(function(h){var b=document.createElement('button');b.className='opt';b.innerHTML=h;b.onclick=function(){stopSpeech();gradeMC(b,h===d.a,{a:d.a,ex:d.ex||('الجملة: «'+d.say+'»')});};box.appendChild(b);});
+}
+
+function renderMatch(s,stage){
+  var left=shuffle(s.pairs.map(function(p,i){return{i:i,h:p[0]};}));
+  var right=shuffle(s.pairs.map(function(p,i){return{i:i,h:p[1]};}));
+  stage.innerHTML=topicChip(s.t)+'<div class="qtext" style="margin-bottom:8px"><b>'+s.title+'</b><br><small style="color:#6b6290">اضغط عنصرًا من اليمين ثم من اليسار للربط</small></div>'+
+    '<div class="match"><div class="col" id="L"></div><div class="col" id="R"></div></div>';
+  function mk(side,item){
+    var b=document.createElement('button');b.className='mitem';b.innerHTML=item.h;b.dataset.i=item.i;b.dataset.side=side;
+    b.onclick=function(){onMatchTap(b,s);};
+    return b;
+  }
+  left.forEach(function(it){$('L').appendChild(mk('L',it));});
+  right.forEach(function(it){$('R').appendChild(mk('R',it));});
+  state.matchSel=null;state.matchDone=0;state._matchTotal=s.pairs.length;
+}
+
+function onMatchTap(b,s){
+  if(b.classList.contains('done')||state.answered)return;
+  if(!state.matchSel){
+    Array.prototype.forEach.call(document.querySelectorAll('.mitem.sel'),function(x){x.classList.remove('sel');});
+    b.classList.add('sel');state.matchSel=b;return;
+  }
+  if(state.matchSel===b){b.classList.remove('sel');state.matchSel=null;return;}
+  if(state.matchSel.dataset.side===b.dataset.side){
+    state.matchSel.classList.remove('sel');b.classList.add('sel');state.matchSel=b;return;
+  }
+  var a=state.matchSel, ok=a.dataset.i===b.dataset.i;
+  if(ok){
+    a.classList.remove('sel');a.classList.add('done');b.classList.add('done');
+    state.score++;state.matchDone++;state.matchSel=null;
+    if(state.matchDone>=state._matchTotal){
+      state.answered=true;
+      feedback(true,'أحسنت! كل الأزواج صحيحة','ربطت المصطلحات بتعريفاتها من الكتاب.');
+    }
+  } else {
+    a.classList.add('badflash');b.classList.add('badflash');
+    setTimeout(function(){a.classList.remove('badflash','sel');b.classList.remove('badflash');},450);
+    state.matchSel=null;
+  }
+}
+
+function renderCloze(d,stage){
+  var html=d.text.replace('___','<span class="blank" id="blank">؟؟؟</span>');
+  stage.innerHTML=topicChip(d.t)+'<div class="cloze">'+html+'</div><div class="blank-opts" id="opts"></div>';
+  var opts=shuffle(d.opts.slice());
+  var box=$('opts');
+  opts.forEach(function(h){var b=document.createElement('button');b.className='opt';b.textContent=h;b.onclick=function(){
+    if(state.answered)return;
+    var ok=h===d.ans;$('blank').textContent=h;
+    gradeMC(b,ok,{a:d.ans,ex:d.ex||''});
+  };box.appendChild(b);});
+}
+
+function feedback(ok,ans,ex){
+  var last=state.i===state.items.length-1;
+  $('fb').innerHTML='<div class="fb '+(ok?'ok':'bad')+'" role="status"><h3>'+(ok?'✅ أحسنت يا يوسف!':'❌ حاول مرة أخرى')+'</h3>'+
+    (ok?'':'<div class="ans">الإجابة: <b>'+ans+'</b></div>')+
+    (ex?'<div class="ex">💡 '+ex+'</div>':'')+'</div>'+
+    '<button class="big-btn next" id="next">'+(last?'عرض النتيجة 🎉':'التالي ⬅')+'</button>';
+  updateTop();
+  $('next').onclick=function(){if(last)finish();else next();};
+  setTimeout(function(){var fb=$('fb');if(fb.scrollIntoView)fb.scrollIntoView({behavior:'smooth',block:'nearest'});},50);
+}
+
+function next(){state.i++;render();window.scrollTo(0,0);}
+
+function finish(){
+  stopSpeech();
+  var max=countScored().total||1, pct=Math.round(state.score/max*100);
+  var stars=pct>=90?3:pct>=70?2:pct>=50?1:0;
+  $('fStars').textContent='★★★'.slice(0,stars)+'☆☆☆'.slice(0,3-stars);
+  $('fEmoji').textContent=['💪','🌱','🌟','🏆'][stars];
+  $('fScore').textContent=state.score+' / '+max;
+  $('fPct').textContent=pct+'%';
+  $('fMsg').textContent=['راجع النصوص وجرّب وضعًا آخر 💙','بداية جيدة يا يوسف! 🌱','أداء قوي — استمر 🌟','ما شاء الله! جاهز للأسبوع 🏆'][stars];
+  var b=store(true)||{},k=bestKey(),prev=b[k],isNew=prev==null||pct>prev;
+  if(isNew){b[k]=pct;store(false,b);}
+  $('fBest').textContent=isNew&&prev!=null?'🎉 رقم قياسي جديد! (السابق '+prev+'%)':prev!=null?'🏅 أفضل نتيجة: '+Math.max(prev,pct)+'%':'';
+  show('finish');
+  if(stars>=2){
+    var c=document.createElement('div');c.className='confetti';var em=['🌟','❤️','🩸','🔬','✨'];
+    for(var i=0;i<24;i++){var s=document.createElement('span');s.textContent=em[i%em.length];s.style.left=Math.random()*100+'%';s.style.animationDuration=(2+Math.random()*2.5)+'s';s.style.animationDelay=Math.random()*0.8+'s';c.appendChild(s);}
+    document.body.appendChild(c);setTimeout(function(){c.remove();},5600);
+  }
+}
+
+// warm speech voices on iOS
+if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};}
+showBest();
+})();
+</script>
+</body>
+</html>
