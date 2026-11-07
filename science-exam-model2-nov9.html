@@ -1,0 +1,395 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#142c48"><title>اختبار العلوم • النموذج الثاني | يوسف</title><style>
+:root{--ink:#17324d;--teal:#007d85;--paper:#f0f5fa;--gold:#ffd16a}*{box-sizing:border-box}body{margin:0;font:17px/1.85 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}header{background:linear-gradient(125deg,#142c48,#175c73);color:white;padding:29px max(18px,calc((100% - 900px)/2)) 24px}.pill{display:inline-block;border-radius:50px;background:#284b65;padding:3px 12px;font-size:13px;color:#f8e3b3}h1{font-size:clamp(25px,5vw,37px);line-height:1.6;margin:12px 0}header p{margin:9px 0;color:#d9e7ee}#date{font-size:14px}main{max-width:900px;margin:auto;padding:20px 16px 60px}.panel{background:white;border:1px solid #dde5ee;border-radius:22px;padding:clamp(19px,4vw,32px);box-shadow:0 8px 35px #17324d08;margin-bottom:19px}h2{font-size:clamp(22px,4.3vw,29px);line-height:1.8}h3{font-size:19px}button,input{font:inherit}button{border:1px solid #c9d7e4;border-radius:12px;background:white;color:var(--ink);min-height:48px;padding:11px 18px;cursor:pointer;touch-action:manipulation}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #e3a523;outline-offset:3px}.primary{background:var(--teal);color:white;border-color:var(--teal);font-weight:700}.wide{width:100%}.muted{font-size:14px;color:#526b7e}.tip{padding:12px 15px;background:#fff5dc;border-radius:12px;border-right:4px solid #efbe5e}.stats{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}progress{width:100%;height:10px;accent-color:var(--teal)}#nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(42px,1fr));gap:7px;margin-top:16px}.number{padding:7px;min-height:44px}.number.done{background:#e3f1f5;border-color:#8cbcc6}.number.active{background:var(--ink);border-color:var(--ink);color:white}.tag{font-size:14px;color:var(--teal);font-weight:700}fieldset{padding:0;margin:0;border:0;display:grid;gap:12px}.choice{display:flex;align-items:flex-start;gap:12px;padding:14px;border:1px solid #cfdae4;border-radius:13px;cursor:pointer;min-height:52px;background:#fbfcfd}.choice.chosen{border:2px solid #16808a;background:#eaf7f8;padding:13px}.choice input{margin-top:9px;width:19px;height:19px;flex-shrink:0;accent-color:var(--teal)}#response{display:block;width:100%;border:1px solid #9eb4c7;background:white;border-radius:12px;padding:13px;margin-top:12px;color:var(--ink)}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.actions button{flex:1}#notice:not(:empty){padding:12px;background:#fff0d8;border-radius:12px;color:#6b470b;margin-top:14px}#notice:empty{display:none}#submit{margin-top:16px}#score{font-size:56px;font-weight:800;line-height:1.4;color:var(--teal)}#percent{font-size:24px}#resultTop{text-align:center}.review{padding:20px;border:1px solid #cfdfdf;border-radius:18px;margin:15px 0;background:white}.review.correct{border-right:5px solid #249077}.review.incorrect{border-right:5px solid #d58838}.review h3{margin:9px 0}.review p{margin:8px 0}.review small{color:#5c6e7c}.status{font-size:14px;font-weight:700}.explanation{background:#f1f6fa;border-radius:10px;padding:12px}.resultButtons{display:grid;gap:12px}details{background:white;border-radius:16px;padding:16px;border:1px solid #dde5ee;margin-top:20px}summary{cursor:pointer;font-weight:700}footer{font-size:13px;color:#587087;margin-top:20px}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}[hidden]{display:none!important}a{color:#007b83}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head><body><header><span class="pill">نموذج جديد ٢ • الصف الثامن ٨/١ • قطر</span><h1 id="examTitle"></h1><p id="scope"></p><div id="date"></div></header><main><section id="start" class="panel"><span class="tag">🎯 اختبار جديد، تفكير جديد</span><h2>جاهز للتحدي يا يوسف؟</h2><p><b id="introCount"></b> سؤالًا بأسئلة تطبيق واستنتاج وتصحيح أخطاء. لا يوجد مؤقت؛ خذ وقتك.</p><p class="tip"><b>نظام اختبار:</b> لن تظهر الإجابات الصحيحة أو الشروح إلا بعد تسليم جميع الإجابات. يمكنك الرجوع وتغيير اختيارك قبل التسليم.</p><ul><li>الأزرار المرقمة تساعدك على الانتقال والمراجعة.</li><li>اللون الأزرق الفاتح يعني «تمت الإجابة»، لا يعني أن الإجابة صحيحة.</li><li>بعد التسليم: درجتك + شرح كل إجابة + إعادة الأخطاء فقط.</li></ul><button class="primary wide" onclick="begin()">ابدأ الاختبار ←</button><p class="muted">لا تجمع الصفحة بياناتك ولا ترسل إجاباتك. تحديث الصفحة يمسح المحاولة الحالية. الأسئلة تدريبية وليست ورقة المدرسة.</p></section><section id="exam" hidden><div class="panel"><div class="stats"><span id="mode"></span><span id="answered"></span></div><progress id="progress" value="0" max="1" aria-label="نسبة الأسئلة المجاب عنها"></progress><nav id="nav" aria-label="التنقل بين الأسئلة"></nav></div><article class="panel"><div class="stats"><span id="kind" class="tag"></span><span id="where"></span></div><h2 id="question"></h2><div id="choices"></div><div id="notice" role="status" aria-live="polite" tabindex="-1"></div><div class="actions"><button id="previous" onclick="step(-1)">→ السابق</button><button id="next" onclick="step(1)">التالي ←</button></div><button id="submit" class="primary wide" onclick="submitExam()"></button><p class="muted">لن تعرف صحة الإجابة أثناء الاختبار. راجع اختياراتك بحرية قبل التسليم.</p></article></section><section id="results" tabindex="-1" hidden><div class="panel" id="resultTop"><span id="roundLabel" class="tag"></span><h2>اكتملت المحاولة يا يوسف ✨</h2><div id="score" dir="ltr"></div><div id="percent"></div><p id="resultMessage"></p><p id="firstScore" class="muted"></p><div class="resultButtons"><button id="retry" class="primary" onclick="retryErrors()"></button><button onclick="restart()">ابدأ الاختبار كاملًا من جديد</button></div></div><h2>التصحيح والتعليل</h2><div id="review"></div></section><details><summary>📚 المصادر وما يغطيه هذا النموذج</summary><p id="source"></p><p>أسئلة جديدة مؤلفة بالاعتماد على نطاق الاختبار المثبت في الرسالة الأسبوعية. الجمل والبيانات العددية الجديدة مميزة بأنها تدريبية. لا اقتباسات قصصية مختلقة ولا ضمان لتغطية كل ما قد يسأله المعلم. المحتوى لا يعد تشخيصًا طبيًا أو إرشادًا لتجارب خطرة.</p><p>درجة واحدة لكل سؤال، والإجابة القصيرة تصحح آليًا بصيغة الجواب المطلوبة. تعليل الإجابات لا يظهر قبل التسليم. نتيجة جولة الأخطاء مستقلة، وتبقى درجة الاختبار الأصلية ظاهرة.</p></details><footer>إعداد خاص ليوسف • يعمل دون تسجيل دخول أو اتصال بخدمات خارجية. لا توجد أصوات أو ملفات مطلوبة. <a href="arabic-exam-model2-nov8.html">اختبار العربي الجديد</a></footer></main><script>const EXAM={
+  "id": "science2",
+  "title": "اختبار العلوم • النموذج الثاني",
+  "icon": "🔬",
+  "date": "الاثنين ٩ نوفمبر ٢٠٢٦",
+  "scope": "الصفحات المطبوعة ١٤٦–١٧٥: النبض والرياضة، تكيف مكونات الدم، صحة الجهاز الدوري.",
+  "source": "كتاب العلوم الفصل الأول، الجزء الثاني، ص١٤٦–١٧٥ (صفحات PDF ٥٠–٧٩). الرسالة الأسبوعية الرسمية ٨–١٢ نوفمبر ٢٠٢٦.",
+  "questions": [
+    {
+      "type": "mc",
+      "p": "في تجربة تدريبية مؤلفة: نبض يوسف ٧٤ قبل مشي مناسب، و٩٦ بعده، ثم ٧٨ بعد الراحة. أي استنتاج تدعمه هذه البيانات؟",
+      "a": "ازداد بعد النشاط ثم اقترب من قيمة الراحة",
+      "options": [
+        "ازداد بعد النشاط ثم اقترب من قيمة الراحة",
+        "ظل ثابتًا في جميع المراحل",
+        "انخفض بمجرد بدء النشاط"
+      ],
+      "exp": "٩٦ أعلى من ٧٤، ثم انخفض إلى ٧٨ بعد الراحة. هذه بيانات تعلم، وليست قياسات طبية فعلية.",
+      "source": "ص١٥٠–١٥٤؛ بيانات مؤلفة",
+      "id": "science2-q1"
+    },
+    {
+      "type": "mc",
+      "p": "تريد مقارنة أثر تمرينين على نبض الشخص نفسه. أي تصميم يقلل أثر ترتيب التجربة؟",
+      "a": "يبدأ كل تمرين بعد راحة كافية وبطريقة قياس متماثلة",
+      "options": [
+        "يبدأ كل تمرين بعد راحة كافية وبطريقة قياس متماثلة",
+        "يبدأ الثاني فور انتهاء الأول دون راحة",
+        "يُعد النبض في الأول ١٥ ثانية وفي الثاني دقيقة دون تحويل"
+      ],
+      "exp": "الراحة قبل كل تجربة تساعد على بدء المقارنة من حالة أقرب للتماثل، مع توحيد القياس أو تحويل وحداته.",
+      "source": "ص١٥٠–١٥٢؛ تطبيق استقصائي مؤلف",
+      "id": "science2-q2"
+    },
+    {
+      "type": "mc",
+      "p": "سجل باحث النبض بعد تمرين فورًا في المرة الأولى، وبعد راحة طويلة في الثانية. ما الخلل؟",
+      "a": "زمن الانتظار قبل القياس غير مضبوط",
+      "options": [
+        "زمن الانتظار قبل القياس غير مضبوط",
+        "لا يجوز استخدام ساعة توقيت",
+        "قراءة النبض لا تتغير مع الراحة"
+      ],
+      "exp": "اختلاف زمن الانتظار قد يؤثر في النبض؛ ثبته عند المقارنة بين أثر التمارين.",
+      "source": "ص١٥٠–١٥٢؛ تطبيق مؤلف",
+      "id": "science2-q3"
+    },
+    {
+      "type": "mc",
+      "p": "طالب يرى أن قياس نبض خمسة أشخاص مرة واحدة يثبت دقة قياسه لشخص واحد. أي تصحيح أدق وفق الكتاب؟",
+      "a": "يفحص تقارب قراءات متكررة للشخص نفسه في ظروف متماثلة",
+      "options": [
+        "يفحص تقارب قراءات متكررة للشخص نفسه في ظروف متماثلة",
+        "يكفي اختلاف الأسماء لإثبات الدقة",
+        "كلما تباعدت القراءات زادت الدقة"
+      ],
+      "exp": "ص١٤٨ ينبه إلى أن قراءات أشخاص مختلفين ليست قياسات متكررة للعينة نفسها.",
+      "source": "ص١٤٧–١٤٨",
+      "id": "science2-q4"
+    },
+    {
+      "type": "mc",
+      "p": "قراءات مؤلفة للشخص نفسه: ٧٢،٧٣،٧٢،٩٢ نبضة/دقيقة. ما التصرف العلمي الأنسب؟",
+      "a": "التحقق من ظروف القياس وإعادة القراءة الشاذة بدل حذفها بلا سبب",
+      "options": [
+        "التحقق من ظروف القياس وإعادة القراءة الشاذة بدل حذفها بلا سبب",
+        "حذف ٩٢ تلقائيًا لأنها لا تعجبنا",
+        "اعتبار المتوسط تشخيصًا مؤكدًا لمرض"
+      ],
+      "exp": "القراءة البعيدة تستدعي التحقق من احتمال خطأ العد أو تغير الظروف، ولا تبرر الحذف التعسفي أو التشخيص.",
+      "source": "ص١٥١،١٥٥؛ بيانات مؤلفة",
+      "id": "science2-q5"
+    },
+    {
+      "type": "mc",
+      "p": "في تجربة أثر مدة المشي على النبض، ما المتغير المستقل؟",
+      "a": "مدة المشي التي يحددها المجرب",
+      "options": [
+        "مدة المشي التي يحددها المجرب",
+        "معدل النبض المقاس بعده",
+        "عدد خلايا الدم الحمراء"
+      ],
+      "exp": "المستقل ما نغيره عمدًا، والتابع هنا معدل النبض.",
+      "source": "ص١٥٠–١٥٢؛ تطبيق مؤلف",
+      "id": "science2-q6"
+    },
+    {
+      "type": "mc",
+      "p": "أي تفسير يربط زيادة النبض أثناء الجهد بحاجات الخلايا لا بمجرد ملاحظة التغير؟",
+      "a": "تزداد حاجة العضلات للطاقة فيسرع نقل مواد التنفس الخلوي إليها",
+      "options": [
+        "تزداد حاجة العضلات للطاقة فيسرع نقل مواد التنفس الخلوي إليها",
+        "يزداد النبض لأن العضلات تتوقف عن التنفس الخلوي",
+        "تحتاج العضلات للجلوكوز فقط ولا تحتاج للأكسجين"
+      ],
+      "exp": "الربط السببي: نشاط أكبر، حاجة لطاقة أكبر، تنفس خلوي أكثر، ونقل أسرع للجلوكوز والأكسجين.",
+      "source": "ص١٥٢–١٥٣",
+      "id": "science2-q7"
+    },
+    {
+      "type": "mc",
+      "p": "كتب طالب: «التنفس الخلوي هو مجرد دخول الهواء إلى الرئتين». ما التصحيح الأفضل؟",
+      "a": "هو تفاعل في الخلايا يطلق الطاقة من الجلوكوز، وليس حركة الهواء وحدها",
+      "options": [
+        "هو تفاعل في الخلايا يطلق الطاقة من الجلوكوز، وليس حركة الهواء وحدها",
+        "هو انتقال الدم في الأوردة فقط",
+        "هو توقف استعمال الجلوكوز"
+      ],
+      "exp": "دخول الهواء يساعد على توفير الأكسجين؛ أما التنفس الخلوي فيستخدم الجلوكوز والأكسجين وينتج الماء وثاني أكسيد الكربون.",
+      "source": "ص١٥٢–١٥٣",
+      "id": "science2-q8"
+    },
+    {
+      "type": "mc",
+      "p": "في نموذج تعليمي: دم يحمل الجلوكوز لكن نقله للأكسجين إلى العضلة ضعيف. أي استنتاج صحيح؟",
+      "a": "توفر الجلوكوز وحده لا يكفي لتلبية التنفس الخلوي الموصوف",
+      "options": [
+        "توفر الجلوكوز وحده لا يكفي لتلبية التنفس الخلوي الموصوف",
+        "لن تتأثر عملية إطلاق الطاقة الموصوفة أبدًا",
+        "تتحول الصفائح تلقائيًا إلى أكسجين"
+      ],
+      "exp": "التفاعل الموصوف في الدرس يحتاج الجلوكوز والأكسجين معًا؛ السؤال نموذج مبسط لا تشخيص.",
+      "source": "ص١٥٣؛ تطبيق مؤلف",
+      "id": "science2-q9"
+    },
+    {
+      "type": "mc",
+      "p": "تريد تمثيل تبادل المواد بين الدم والعضلة. أي سهم للفضلات صحيح؟",
+      "a": "ثاني أكسيد الكربون من الخلية إلى الدم",
+      "options": [
+        "ثاني أكسيد الكربون من الخلية إلى الدم",
+        "ثاني أكسيد الكربون من الدم إلى الخلية بوصفه غذاءً لها",
+        "الجلوكوز من الخلية إلى الدم بوصفه فضلة التنفس"
+      ],
+      "exp": "ثاني أكسيد الكربون ناتج للتنفس الخلوي؛ ينقله الدم بعيدًا عن الخلايا.",
+      "source": "ص١٤٦،١٥٣",
+      "id": "science2-q10"
+    },
+    {
+      "type": "mc",
+      "p": "في صورة مجهرية تعليمية ظهرت خلية دموية ذات نواة كبيرة وخلية قرصية بلا نواة. أي مقارنة وظيفية أدق؟",
+      "a": "الأولى دفاعية، والثانية متكيفة لحمل الأكسجين",
+      "options": [
+        "الأولى دفاعية، والثانية متكيفة لحمل الأكسجين",
+        "كلتاهما صفائح لوقف النزيف",
+        "الأولى تحمل كل الجلوكوز والثانية تقتل الميكروبات"
+      ],
+      "exp": "النواة الكبيرة من صفات البيضاء، والقرص المقعر بلا نواة من صفات الحمراء.",
+      "source": "ص١٥٨–١٦٢؛ صورة موصوفة لا مرفقة",
+      "id": "science2-q11"
+    },
+    {
+      "type": "mc",
+      "p": "لو احتوت الخلية الحمراء الناضجة على نواة كبيرة، فما الأثر المتوقع في النموذج المبسط للدرس؟",
+      "a": "يقل الحيز المتاح للهيموجلوبين",
+      "options": [
+        "يقل الحيز المتاح للهيموجلوبين",
+        "يزداد الحيز المتاح للهيموجلوبين بالضرورة",
+        "يتحول شكلها إلى وعاء دموي"
+      ],
+      "exp": "غياب النواة والعضيات يوفر حيزًا للهيموجلوبين؛ إضافة نواة كبيرة تشغل بعض هذا الحيز.",
+      "source": "ص١٥٩،١٦٢؛ فرضية مؤلفة",
+      "id": "science2-q12"
+    },
+    {
+      "type": "mc",
+      "p": "صمم طالب خلية حمراء افتراضية بنفس الحجم لكن بمساحة سطحية أصغر. أي تكيف أضعفه؟",
+      "a": "سرعة تبادل الأكسجين عبر سطحها",
+      "options": [
+        "سرعة تبادل الأكسجين عبر سطحها",
+        "قدرتها على إنتاج أجسام مضادة",
+        "قدرتها على تكوين أغصان"
+      ],
+      "exp": "الكتاب يربط المساحة السطحية الكبيرة بدخول الأكسجين ومغادرته بسرعة.",
+      "source": "ص١٥٩–١٦٢؛ فرضية مؤلفة",
+      "id": "science2-q13"
+    },
+    {
+      "type": "mc",
+      "p": "في نموذج جرح، وصلت الصفائح لكنها لم تصبح لاصقة. ما العملية التي قد تضعف؟",
+      "a": "تكوين الخثرة عند موضع قطع الوعاء",
+      "options": [
+        "تكوين الخثرة عند موضع قطع الوعاء",
+        "إنتاج الجلوكوز في البلازما",
+        "صنع النواة داخل الحمراء"
+      ],
+      "exp": "التصاق الصفائح بموضع القطع يساعد على تكوين الخثرة ووقف النزف.",
+      "source": "ص١٥٩،١٦١–١٦٢؛ فرضية مؤلفة",
+      "id": "science2-q14"
+    },
+    {
+      "type": "mc",
+      "p": "أنت تصمم نموذجًا للدم: وضعت خرزًا أحمر وأبيض وقطعًا صغيرة، لكنك نسيت السائل الحامل. ما الناقص؟",
+      "a": "البلازما التي تحمل الخلايا والصفائح والمواد الذائبة",
+      "options": [
+        "البلازما التي تحمل الخلايا والصفائح والمواد الذائبة",
+        "مكون يحمل الأكسجين بدلًا من الحمراء فقط",
+        "جدار شريان بدلًا من الدم"
+      ],
+      "exp": "البلازما ليست خلية؛ هي الوسط السائل الحامل، وفيها مواد مذابة.",
+      "source": "ص١٥٨،١٦٤؛ نموذج مؤلف",
+      "id": "science2-q15"
+    },
+    {
+      "type": "mc",
+      "p": "أي مقارنة صحيحة بين نوعين من دفاع خلايا الدم البيضاء؟",
+      "a": "بعضها ينتج أجسامًا مضادة وبعضها يحيط بالميكروبات ويهضمها",
+      "options": [
+        "بعضها ينتج أجسامًا مضادة وبعضها يحيط بالميكروبات ويهضمها",
+        "كل البيضاء تتحول إلى صفائح",
+        "كل البيضاء تحمل الأكسجين بالهيموجلوبين فقط"
+      ],
+      "exp": "للبيضاء وظائف دفاعية متنوعة؛ إنتاج الأجسام المضادة والإحاطة بالكائنات الدقيقة آليتان موصوفتان.",
+      "source": "ص١٥٩،١٦٢",
+      "id": "science2-q16"
+    },
+    {
+      "type": "mc",
+      "p": "صحح بطاقة معرض كتب عليها: «الصفائح خلايا بيضاء كاملة ذات نواة كبيرة».",
+      "a": "الصفائح أجزاء خلوية بلا نوى، وليست خلايا بيضاء",
+      "options": [
+        "الصفائح أجزاء خلوية بلا نوى، وليست خلايا بيضاء",
+        "الصفائح خلايا حمراء تحمل الهيموجلوبين",
+        "العبارة صحيحة ولا تحتاج تصحيحًا"
+      ],
+      "exp": "تمييز البنية مهم: البيضاء لها نوى، أما الصفائح فقطع من خلايا لا تحتوي على نوى.",
+      "source": "ص١٥٨–١٥٩",
+      "id": "science2-q17"
+    },
+    {
+      "type": "mc",
+      "p": "بحسب نطاق النساء في جدول ص١٦٣ (٤٫٠–٥٫٢ ملايين/مم³)، ماذا تعني قراءة تدريبية ٥٫٠ ملايين؟",
+      "a": "تقع داخل النطاق المذكور، ولا تكفي وحدها لحكم طبي شامل",
+      "options": [
+        "تقع داخل النطاق المذكور، ولا تكفي وحدها لحكم طبي شامل",
+        "أعلى من النطاق",
+        "أقل من النطاق"
+      ],
+      "exp": "٥٫٠ بين ٤٫٠ و٥٫٢. قراءة جدول لا تعني استبعاد كل الأمراض أو إثباتها.",
+      "source": "ص١٦٣؛ قيمة مؤلفة",
+      "id": "science2-q18"
+    },
+    {
+      "type": "mc",
+      "p": "قارن رياضيًا مدربًا وغير مدرب يحتاج جسم كل منهما إلى الحجم نفسه من الدم في دقيقة أثناء الراحة. إن ضخ الرياضي دمًا أكثر بكل نبضة، فإنه يحتاج…",
+      "a": "نبضات أقل لضخ ذلك الحجم",
+      "options": [
+        "نبضات أقل لضخ ذلك الحجم",
+        "نبضات أكثر بالضرورة",
+        "صفر نبضات"
+      ],
+      "exp": "الحجم الكلي = عدد النبضات × حجم الدم في النبضة؛ زيادة الحجم لكل نبضة تسمح بعدد أقل.",
+      "source": "ص١٦٦،١٧٠؛ استدلال مؤلف",
+      "id": "science2-q19"
+    },
+    {
+      "type": "mc",
+      "p": "في نموذج شريان، تراكمت مادة دهنية حتى ضاق مجرى الدم. أي سلسلة نتائج أكثر منطقية؟",
+      "a": "يقل تدفق الدم ثم يقل توصيل الأكسجين للنسيج الذي يغذيه",
+      "options": [
+        "يقل تدفق الدم ثم يقل توصيل الأكسجين للنسيج الذي يغذيه",
+        "يزداد وصول الأكسجين تلقائيًا بسبب الانسداد",
+        "تتحول الدهون إلى خلايا حمراء فورًا"
+      ],
+      "exp": "الترسبات قد تقلل التدفق أو توقفه؛ أثرها يعتمد على النسيج الذي يغذيه الشريان.",
+      "source": "ص١٧٠،١٧٤",
+      "id": "science2-q20"
+    },
+    {
+      "type": "mc",
+      "p": "سجل تقرير تعليمي أن خلايا من عضلة القلب بدأت تموت لقلة الأكسجين؛ أين تقع المشكلة الموصوفة غالبًا؟",
+      "a": "في إمداد الدم لعضلة القلب",
+      "options": [
+        "في إمداد الدم لعضلة القلب",
+        "في إنتاج الأجسام المضادة فقط",
+        "في نمو الأظافر وحده"
+      ],
+      "exp": "الدرس يربط النوبة القلبية بنقص إمداد عضلة القلب بالدم والأكسجين؛ ليس حكمًا على أعراض شخص حقيقي.",
+      "source": "ص١٧٠،١٧٤",
+      "id": "science2-q21"
+    },
+    {
+      "type": "mc",
+      "p": "أي اختيار يربط الغذاء بوظيفة محددة في الدم؟",
+      "a": "غذاء يحوي الحديد يدعم صنع الهيموجلوبين الناقل للأكسجين",
+      "options": [
+        "غذاء يحوي الحديد يدعم صنع الهيموجلوبين الناقل للأكسجين",
+        "الإكثار من الملح يصنع الهيموجلوبين",
+        "إلغاء مصادر الحديد يحسن نقل الأكسجين"
+      ],
+      "exp": "الحديد مطلوب لصنع الهيموجلوبين؛ نقصه قد يسهم في فقر الدم والتعب.",
+      "source": "ص١٧١–١٧٤",
+      "id": "science2-q22"
+    },
+    {
+      "type": "mc",
+      "p": "لماذا لا يكفي القول «الترسبات الصغيرة لا تهم» في نشاط الجسيمات النانوية؟",
+      "a": "لأن كشفها يحدد المشكلة قبل ازدياد الانسداد وقد يساعد الأطباء على التعامل معها",
+      "options": [
+        "لأن كشفها يحدد المشكلة قبل ازدياد الانسداد وقد يساعد الأطباء على التعامل معها",
+        "لأن كل ترسب صغير يثبت توقف القلب فورًا",
+        "لأن أجهزة المسح تقيس النبض فقط"
+      ],
+      "exp": "الكتاب يعرض كشف الترسبات الصغيرة وتحديد مواضعها بمواد تظهر في المسح؛ لا يثبت حتمية نوبة فورية.",
+      "source": "ص١٧٢–١٧٣",
+      "id": "science2-q23"
+    },
+    {
+      "type": "mc",
+      "p": "باحث يقارن معلومات عن صحة الجهاز الدوري. أي مصدر أصلح لعرض علمي مدرسي؟",
+      "a": "مصدر صحي متخصص يوضح أدلته ومصدر معلوماته",
+      "options": [
+        "مصدر صحي متخصص يوضح أدلته ومصدر معلوماته",
+        "إعلان منتج يعد بمنع كل الأمراض بلا دليل",
+        "منشور مجهول لأن عنوانه مثير"
+      ],
+      "exp": "يتضمن الدرس البحث وتقييم صلاحية المصادر؛ اختر مصدرًا واضحًا موثوقًا لا وعودًا تسويقية مطلقة.",
+      "source": "ص١٦٨–١٦٩؛ تطبيق مهارة البحث",
+      "id": "science2-q24"
+    },
+    {
+      "type": "fill",
+      "p": "بيانات تدريبية مؤلفة: عُدّت ٢٧ نبضة في ٢٠ ثانية. ما المعدل بوحدة نبضة/دقيقة؟ اكتب العدد فقط.",
+      "a": "81",
+      "exp": "نحوّل إلى الدقيقة: ٢٧ × (٦٠ ÷ ٢٠) = ٨١ نبضة/دقيقة.",
+      "source": "ص١٤٨–١٤٩؛ قيم مؤلفة",
+      "id": "science2-q25"
+    },
+    {
+      "type": "fill",
+      "p": "بيانات تدريبية مؤلفة: المعدل ٨٤ نبضة/دقيقة. كم نبضة يُتوقع عدّها في ١٥ ثانية عند ثبات المعدل؟",
+      "a": "21",
+      "exp": "١٥ ثانية ربع دقيقة؛ ٨٤ ÷ ٤ = ٢١ نبضة. هذا تحويل عكسي للمعدل.",
+      "source": "ص١٤٨–١٤٩؛ قيم مؤلفة",
+      "id": "science2-q26"
+    },
+    {
+      "type": "fill",
+      "p": "بيانات تدريبية مؤلفة لثلاث قراءات: ٧٦،٨٠،٧٨ نبضة/دقيقة. احسب المتوسط الحسابي.",
+      "a": "78",
+      "exp": "مجموع القراءات ٢٣٤؛ ٢٣٤ ÷ ٣ = ٧٨ نبضة/دقيقة.",
+      "source": "ص١٤٧–١٤٩؛ قيم مؤلفة",
+      "id": "science2-q27"
+    },
+    {
+      "type": "fill",
+      "p": "بيانات تدريبية مؤلفة: ٦٨،٧٢،٧٠،٧٤. احسب الفرق بين أعلى وأدنى قراءة (أعلى ناقص أدنى)، لا تكتب طرفي المدى.",
+      "a": "6",
+      "exp": "أعلى قراءة ٧٤ وأدناها ٦٨، فالفرق ٦. ملاحظة: الكتاب يصف المدى بحديه الأدنى والأعلى؛ المطلوب هنا الفرق بينهما صراحة.",
+      "source": "ص١٤٧–١٤٩؛ قيم مؤلفة",
+      "id": "science2-q28"
+    },
+    {
+      "type": "fill",
+      "p": "من جدول الكتاب ص١٧٥: متوسط جدار البطين لدى السباحين ٢٤٫٣ مم ولدى لاعبي الكرة الطائرة ١٥٫٩ مم. كم الفرق بالملليمتر؟",
+      "a": "8.4",
+      "exp": "٢٤٫٣ − ١٥٫٩ = ٨٫٤ مم. القيم مأخوذة من الجدول؛ حساب الفرق سؤال جديد.",
+      "source": "ص١٧٥؛ بيانات الكتاب",
+      "id": "science2-q29"
+    },
+    {
+      "type": "fill",
+      "p": "من جدول ص١٧٥: قليلو التمرين ١٣٫٥ مم، وراكبو الدراجات المدربون ٢٥٫٧ مم. كم زيادة المتوسط عند راكبي الدراجات بالملليمتر؟",
+      "a": "12.2",
+      "exp": "٢٥٫٧ − ١٣٫٥ = ١٢٫٢ مم. هذه مقارنة متوسطات مجموعتين، لا تنبؤ بقياس فرد بعينه.",
+      "source": "ص١٧٥؛ بيانات الكتاب",
+      "id": "science2-q30"
+    }
+  ]
+};</script><script>'use strict';
+const $=s=>document.querySelector(s);
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function normalize(s){return String(s).normalize('NFC').trim().replace(/[٠-٩]/g,c=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(c))).replace(/[۰-۹]/g,c=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(c))).replace(/[\u064b-\u065f\u0670\u0640]/g,'').replace(/٫/g,'.').replace(/\s+/g,' ').toLowerCase()}
+function isCorrect(q,value){return normalize(q.a)===normalize(value)}
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+let queue=[],answers={},position=0,submitted=false,mode='full',result=null,firstResult=null;
+const options=EXAM.questions.map(q=>q.type==='mc'?shuffle([...q.options]):[]);
+function countAnswered(){return queue.filter(i=>answers[i]!==undefined&&String(answers[i]).trim()!=='').length}
+function begin(){queue=EXAM.questions.map((_,i)=>i);answers={};position=0;submitted=false;mode='full';result=null;firstResult=null;renderShell();renderQuestion();}
+function renderShell(){$('#examTitle').textContent=EXAM.icon+' '+EXAM.title;$('#scope').textContent=EXAM.scope;$('#date').textContent=EXAM.date;$('#source').textContent=EXAM.source;$('#start').hidden=true;$('#exam').hidden=false;$('#results').hidden=true;$('#mode').textContent=mode==='full'?'اختبار مستقل • لا تصحيح قبل التسليم':'جولة تدريب على الأخطاء • لا تصحيح قبل التسليم';}
+function updateProgress(){const n=countAnswered();$('#answered').textContent=`أجبت عن ${n} من ${queue.length}`;$('#progress').value=n/queue.length;$('#nav').innerHTML=queue.map((idx,k)=>`<button class="number ${answers[idx]!==undefined&&String(answers[idx]).trim()!==''?'done':''} ${k===position?'active':''}" aria-label="السؤال ${k+1}${answers[idx]!==undefined?'، تمت الإجابة':''}" aria-current="${k===position?'step':'false'}" onclick="go(${k})">${k+1}</button>`).join('');}
+function renderQuestion(){if(submitted)return;const idx=queue[position],q=EXAM.questions[idx];$('#notice').textContent='';$('#where').textContent=`السؤال ${position+1} من ${queue.length}`;$('#question').textContent=q.p;$('#kind').textContent=q.type==='fill'?'✍️ إجابة قصيرة':'🔎 اختر إجابة واحدة';$('#choices').innerHTML=q.type==='fill'?`<label for="response">اكتب الإجابة فقط، دون شرح أو وحدة قياس. الأرقام العربية والإنجليزية مقبولة.</label><input id="response" autocomplete="off" spellcheck="false" enterkeyhint="next" value="${escapeHTML(answers[idx]||'')}" oninput="capture(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();step(1)}">`:`<fieldset><legend class="sr">اختيارات السؤال</legend>${options[idx].map((v,k)=>`<label class="choice ${answers[idx]===v?'chosen':''}"><input type="radio" name="answer" value="${escapeHTML(v)}" ${answers[idx]===v?'checked':''} onchange="pick(this.value)"><span>${escapeHTML(v)}</span></label>`).join('')}</fieldset>`;$('#previous').disabled=position===0;$('#next').disabled=position===queue.length-1;$('#submit').textContent=position===queue.length-1?'تسليم الاختبار وعرض التصحيح':'إنهاء وتسليم الاختبار';updateProgress();}
+function capture(value){if(submitted)return;answers[queue[position]]=value;updateProgress();}
+function pick(value){if(submitted)return;capture(value);document.querySelectorAll('.choice').forEach(el=>{const input=el.querySelector('input');el.classList.toggle('chosen',input.checked)});}
+function go(k){if(submitted||k<0||k>=queue.length)return;position=k;renderQuestion();}
+function step(delta){go(position+delta)}
+function grade(indices,responses){const wrong=indices.filter(i=>!isCorrect(EXAM.questions[i],responses[i]===undefined?'':responses[i]));return {correct:indices.length-wrong.length,total:indices.length,wrong,percent:Math.round(100*(indices.length-wrong.length)/indices.length)}}
+function submitExam(){if(submitted)return;const missing=queue.filter(i=>answers[i]===undefined||String(answers[i]).trim()==='');if(missing.length){position=queue.indexOf(missing[0]);renderQuestion();$('#notice').textContent=`باقي ${missing.length} سؤال دون إجابة. انتقلنا لأول سؤال ناقص؛ أكملها ثم سلّم الاختبار.`;$('#notice').focus();return}submitted=true;result=grade(queue,answers);if(mode==='full')firstResult={...result};renderResults();}
+function renderResults(){$('#exam').hidden=true;$('#results').hidden=false;$('#score').textContent=`${result.correct} / ${result.total}`;$('#percent').textContent=`${result.percent}٪`;$('#resultMessage').textContent=result.percent>=85?'أحسنت يا يوسف! راجع التعليل، ثم حاول تشرح فكرتين بأسلوبك.':'كل سؤال فرصة للتعلم يا يوسف. اقرأ التعليل قبل إعادة الأخطاء.';$('#roundLabel').textContent=mode==='full'?'نتيجة الاختبار الثاني':'نتيجة جولة الأخطاء (ليست بديلًا لدرجة الاختبار)';$('#firstScore').textContent=mode==='errors'&&firstResult?`درجة الاختبار الأصلي: ${firstResult.correct} / ${firstResult.total} (${firstResult.percent}٪)` :'';$('#retry').hidden=result.wrong.length===0;$('#retry').textContent=`تدرب على الأخطاء فقط (${result.wrong.length})`;$('#review').innerHTML=queue.map((idx,k)=>{const q=EXAM.questions[idx],ok=isCorrect(q,answers[idx]);return `<article class="review ${ok?'correct':'incorrect'}"><span class="status">${ok?'✓ إجابة صحيحة':'↺ تحتاج مراجعة'} • ${k+1}</span><h3>${escapeHTML(q.p)}</h3><p>إجابتك: <b>${escapeHTML(answers[idx])}</b></p>${ok?'':`<p>الإجابة الصحيحة: <b>${escapeHTML(q.a)}</b></p>`}<p class="explanation">${escapeHTML(q.exp)}</p><small>المصدر: ${escapeHTML(q.source)}</small></article>`}).join('');$('#results').focus();}
+function retryErrors(){if(!submitted||!result||!result.wrong.length)return;queue=[...result.wrong];answers={};position=0;submitted=false;mode='errors';result=null;renderShell();renderQuestion();}
+function restart(){begin()}
+$('#examTitle').textContent=EXAM.icon+' '+EXAM.title;$('#scope').textContent=EXAM.scope;$('#date').textContent=EXAM.date;$('#source').textContent=EXAM.source;$('#introCount').textContent=EXAM.questions.length;
+</script></body></html>

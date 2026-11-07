@@ -1,0 +1,353 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#142c48"><title>اختبار العربي • النموذج الثاني | يوسف</title><style>
+:root{--ink:#17324d;--teal:#007d85;--paper:#f0f5fa;--gold:#ffd16a}*{box-sizing:border-box}body{margin:0;font:17px/1.85 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}header{background:linear-gradient(125deg,#142c48,#175c73);color:white;padding:29px max(18px,calc((100% - 900px)/2)) 24px}.pill{display:inline-block;border-radius:50px;background:#284b65;padding:3px 12px;font-size:13px;color:#f8e3b3}h1{font-size:clamp(25px,5vw,37px);line-height:1.6;margin:12px 0}header p{margin:9px 0;color:#d9e7ee}#date{font-size:14px}main{max-width:900px;margin:auto;padding:20px 16px 60px}.panel{background:white;border:1px solid #dde5ee;border-radius:22px;padding:clamp(19px,4vw,32px);box-shadow:0 8px 35px #17324d08;margin-bottom:19px}h2{font-size:clamp(22px,4.3vw,29px);line-height:1.8}h3{font-size:19px}button,input{font:inherit}button{border:1px solid #c9d7e4;border-radius:12px;background:white;color:var(--ink);min-height:48px;padding:11px 18px;cursor:pointer;touch-action:manipulation}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #e3a523;outline-offset:3px}.primary{background:var(--teal);color:white;border-color:var(--teal);font-weight:700}.wide{width:100%}.muted{font-size:14px;color:#526b7e}.tip{padding:12px 15px;background:#fff5dc;border-radius:12px;border-right:4px solid #efbe5e}.stats{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}progress{width:100%;height:10px;accent-color:var(--teal)}#nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(42px,1fr));gap:7px;margin-top:16px}.number{padding:7px;min-height:44px}.number.done{background:#e3f1f5;border-color:#8cbcc6}.number.active{background:var(--ink);border-color:var(--ink);color:white}.tag{font-size:14px;color:var(--teal);font-weight:700}fieldset{padding:0;margin:0;border:0;display:grid;gap:12px}.choice{display:flex;align-items:flex-start;gap:12px;padding:14px;border:1px solid #cfdae4;border-radius:13px;cursor:pointer;min-height:52px;background:#fbfcfd}.choice.chosen{border:2px solid #16808a;background:#eaf7f8;padding:13px}.choice input{margin-top:9px;width:19px;height:19px;flex-shrink:0;accent-color:var(--teal)}#response{display:block;width:100%;border:1px solid #9eb4c7;background:white;border-radius:12px;padding:13px;margin-top:12px;color:var(--ink)}.actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.actions button{flex:1}#notice:not(:empty){padding:12px;background:#fff0d8;border-radius:12px;color:#6b470b;margin-top:14px}#notice:empty{display:none}#submit{margin-top:16px}#score{font-size:56px;font-weight:800;line-height:1.4;color:var(--teal)}#percent{font-size:24px}#resultTop{text-align:center}.review{padding:20px;border:1px solid #cfdfdf;border-radius:18px;margin:15px 0;background:white}.review.correct{border-right:5px solid #249077}.review.incorrect{border-right:5px solid #d58838}.review h3{margin:9px 0}.review p{margin:8px 0}.review small{color:#5c6e7c}.status{font-size:14px;font-weight:700}.explanation{background:#f1f6fa;border-radius:10px;padding:12px}.resultButtons{display:grid;gap:12px}details{background:white;border-radius:16px;padding:16px;border:1px solid #dde5ee;margin-top:20px}summary{cursor:pointer;font-weight:700}footer{font-size:13px;color:#587087;margin-top:20px}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}[hidden]{display:none!important}a{color:#007b83}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head><body><header><span class="pill">نموذج جديد ٢ • الصف الثامن ٨/١ • قطر</span><h1 id="examTitle"></h1><p id="scope"></p><div id="date"></div></header><main><section id="start" class="panel"><span class="tag">🎯 اختبار جديد، تفكير جديد</span><h2>جاهز للتحدي يا يوسف؟</h2><p><b id="introCount"></b> سؤالًا بأسئلة تطبيق واستنتاج وتصحيح أخطاء. لا يوجد مؤقت؛ خذ وقتك.</p><p class="tip"><b>نظام اختبار:</b> لن تظهر الإجابات الصحيحة أو الشروح إلا بعد تسليم جميع الإجابات. يمكنك الرجوع وتغيير اختيارك قبل التسليم.</p><ul><li>الأزرار المرقمة تساعدك على الانتقال والمراجعة.</li><li>اللون الأزرق الفاتح يعني «تمت الإجابة»، لا يعني أن الإجابة صحيحة.</li><li>بعد التسليم: درجتك + شرح كل إجابة + إعادة الأخطاء فقط.</li></ul><button class="primary wide" onclick="begin()">ابدأ الاختبار ←</button><p class="muted">لا تجمع الصفحة بياناتك ولا ترسل إجاباتك. تحديث الصفحة يمسح المحاولة الحالية. الأسئلة تدريبية وليست ورقة المدرسة.</p></section><section id="exam" hidden><div class="panel"><div class="stats"><span id="mode"></span><span id="answered"></span></div><progress id="progress" value="0" max="1" aria-label="نسبة الأسئلة المجاب عنها"></progress><nav id="nav" aria-label="التنقل بين الأسئلة"></nav></div><article class="panel"><div class="stats"><span id="kind" class="tag"></span><span id="where"></span></div><h2 id="question"></h2><div id="choices"></div><div id="notice" role="status" aria-live="polite" tabindex="-1"></div><div class="actions"><button id="previous" onclick="step(-1)">→ السابق</button><button id="next" onclick="step(1)">التالي ←</button></div><button id="submit" class="primary wide" onclick="submitExam()"></button><p class="muted">لن تعرف صحة الإجابة أثناء الاختبار. راجع اختياراتك بحرية قبل التسليم.</p></article></section><section id="results" tabindex="-1" hidden><div class="panel" id="resultTop"><span id="roundLabel" class="tag"></span><h2>اكتملت المحاولة يا يوسف ✨</h2><div id="score" dir="ltr"></div><div id="percent"></div><p id="resultMessage"></p><p id="firstScore" class="muted"></p><div class="resultButtons"><button id="retry" class="primary" onclick="retryErrors()"></button><button onclick="restart()">ابدأ الاختبار كاملًا من جديد</button></div></div><h2>التصحيح والتعليل</h2><div id="review"></div></section><details><summary>📚 المصادر وما يغطيه هذا النموذج</summary><p id="source"></p><p>أسئلة جديدة مؤلفة بالاعتماد على نطاق الاختبار المثبت في الرسالة الأسبوعية. الجمل والبيانات العددية الجديدة مميزة بأنها تدريبية. لا اقتباسات قصصية مختلقة ولا ضمان لتغطية كل ما قد يسأله المعلم. المحتوى لا يعد تشخيصًا طبيًا أو إرشادًا لتجارب خطرة.</p><p>درجة واحدة لكل سؤال، والإجابة القصيرة تصحح آليًا بصيغة الجواب المطلوبة. تعليل الإجابات لا يظهر قبل التسليم. نتيجة جولة الأخطاء مستقلة، وتبقى درجة الاختبار الأصلية ظاهرة.</p></details><footer>إعداد خاص ليوسف • يعمل دون تسجيل دخول أو اتصال بخدمات خارجية. لا توجد أصوات أو ملفات مطلوبة. <a href="science-exam-model2-nov9.html">اختبار العلوم الجديد</a></footer></main><script>const EXAM={
+  "id": "arabic2",
+  "title": "اختبار العربي • النموذج الثاني",
+  "icon": "🌊",
+  "date": "الأحد ٨ نوفمبر ٢٠٢٦",
+  "scope": "من أوراق البحر + الأفعال الخمسة. مواقف النص من الكتاب؛ جمل النحو أمثلة جديدة مؤلفة.",
+  "source": "كتاب اللغة العربية الفصل الأول: من أوراق البحر ص٨٣–٨٤ وتدريباته، ودرس الأفعال الخمسة في الوحدة الرابعة. الرسالة الأسبوعية الرسمية ٨–١٢ نوفمبر ٢٠٢٦.",
+  "questions": [
+    {
+      "type": "mc",
+      "p": "أي تلخيص يحافظ على ترتيب خط الأحداث الرئيس دون إضافة واقعة غير موجودة؟",
+      "a": "رحلة للغوص، ثم جمع المحار، ثم مواجهة القرش، ثم بلوغ السفينة مصابًا",
+      "options": [
+        "رحلة للغوص، ثم جمع المحار، ثم مواجهة القرش، ثم بلوغ السفينة مصابًا",
+        "مواجهة القرش على الشاطئ، ثم شراء سفينة جديدة",
+        "العثور على النفط، ثم العودة بلا غوص"
+      ],
+      "exp": "النص يبدأ بالخروج في السفن، ثم غوص بدر، فالخطر، فنجاته مع إصابة يده. لا نفط ولا شراء سفينة في النص.",
+      "source": "ص٨٣–٨٤؛ تركيب أحداث",
+      "id": "arabic2-q1"
+    },
+    {
+      "type": "mc",
+      "p": "ما الذي يجمع ذكريات القرية والزوجة والأولاد في بداية الرحلة؟",
+      "a": "كشف الارتباط بالأهل والحياة التي تركها البحارة خلفهم",
+      "options": [
+        "كشف الارتباط بالأهل والحياة التي تركها البحارة خلفهم",
+        "إثبات أن البحارة لا أهل لهم",
+        "وصف مدرسة زارها بدر في الرحلة"
+      ],
+      "exp": "استرجاع الصور الجميلة والذكريات يبرز الجانب الإنساني للبحارة، ولا يضيف رحلة لم يذكرها النص.",
+      "source": "ص٨٣؛ استنتاج مسنود",
+      "id": "arabic2-q2"
+    },
+    {
+      "type": "mc",
+      "p": "كيف يسهم وصف الأشرعة البيضاء والبيوت الطينية التي تبتعد في بناء المشهد؟",
+      "a": "يجعل القارئ يتخيل مغادرة الساحل وبداية الرحلة",
+      "options": [
+        "يجعل القارئ يتخيل مغادرة الساحل وبداية الرحلة",
+        "ينقل القصة إلى صحراء بعيدة",
+        "يثبت أن الحادثة وقعت داخل منزل"
+      ],
+      "exp": "هذه تفاصيل بصرية تهيئ مشهد الابتعاد عن القرية في السفن.",
+      "source": "ص٨٣؛ تحليل وصف",
+      "id": "arabic2-q3"
+    },
+    {
+      "type": "mc",
+      "p": "أي استنتاج عن بدر تسنده معرفته بما تفعله الضربة على رأس القرش؟",
+      "a": "يستعين بالخبرة السابقة في تدبير المواجهة",
+      "options": [
+        "يستعين بالخبرة السابقة في تدبير المواجهة",
+        "لا يعرف شيئًا عن البحر مطلقًا",
+        "اخترع جهازًا جديدًا في تلك اللحظة"
+      ],
+      "exp": "النص يذكر علمه من تجارب السابقين؛ لذلك يوظف معرفة عملية، لا اختراعًا لم يذكره النص.",
+      "source": "ص٨٤؛ استنتاج",
+      "id": "arabic2-q4"
+    },
+    {
+      "type": "mc",
+      "p": "قال قارئ: «كثرة المحار تكفي وحدها لتجعل رحلة الغوص آمنة». أي دليل من القصة ينقض قوله؟",
+      "a": "اجتماع وفرة المحار مع ظهور خطر القرش",
+      "options": [
+        "اجتماع وفرة المحار مع ظهور خطر القرش",
+        "شراء بدر للمحار من السوق",
+        "خلو البحر من الكائنات"
+      ],
+      "exp": "وصف المحار بأنه كثير جدًا لم يمنع ظهور الخطر؛ الرزق الوفير لا يعني غياب المخاطر.",
+      "source": "ص٨٣؛ ربط بين تفصيلين",
+      "id": "arabic2-q5"
+    },
+    {
+      "type": "mc",
+      "p": "ما العلاقة بين نصيحة الآباء والأجداد وتصرف بدر عند الخطر؟",
+      "a": "انتقلت الخبرة الموروثة إلى فعل عملي",
+      "options": [
+        "انتقلت الخبرة الموروثة إلى فعل عملي",
+        "كانت النصيحة بلا أي صلة بالموقف",
+        "نصحوه بترك السفينة قبل الرحلة فرفض"
+      ],
+      "exp": "تذكر بدر نصيحتهم بالبقاء في القاع قدر المستطاع، ثم دبر صعوده ومواجهته.",
+      "source": "ص٨٣–٨٤؛ علاقة سبب واستجابة",
+      "id": "arabic2-q6"
+    },
+    {
+      "type": "mc",
+      "p": "أي ملخص يفسر النهاية تفسيرًا متوازنًا؟",
+      "a": "نجاة بدر لا تلغي ما دفعه من ثمن جسدي",
+      "options": [
+        "نجاة بدر لا تلغي ما دفعه من ثمن جسدي",
+        "عاد بدر بلا أي خسارة",
+        "نجاة بدر دليل على أن الغوص بلا مشقة"
+      ],
+      "exp": "بلغ السفينة حيًا، لكن الكلام الأخير عن يده يبين أن النجاة صاحبتها خسارة وإصابة.",
+      "source": "ص٨٤؛ فهم النهاية",
+      "id": "arabic2-q7"
+    },
+    {
+      "type": "mc",
+      "p": "لماذا لا يصح الجزم بأن كل السفن بقيت متجاورة طوال الرحلة؟",
+      "a": "لأن النص يذكر تفرق مجموعاتها واختيار كل قائد طريقه",
+      "options": [
+        "لأن النص يذكر تفرق مجموعاتها واختيار كل قائد طريقه",
+        "لأن النص يقول إن جميع السفن غرقت",
+        "لأن النص لا يذكر سفنًا أصلًا"
+      ],
+      "exp": "التفرق واختيار المسار مذكوران في افتتاح النص، فلا نحول البداية الجماعية إلى بقاء دائم معًا.",
+      "source": "ص٨٣؛ تمييز دليل من تعميم",
+      "id": "arabic2-q8"
+    },
+    {
+      "type": "mc",
+      "p": "أي عبارة تعد رأيًا تقويميًا لا واقعة سردية مباشرة؟",
+      "a": "كان ثبات بدر جديرًا بالإعجاب",
+      "options": [
+        "كان ثبات بدر جديرًا بالإعجاب",
+        "بدأ بدر يستعد للغوص",
+        "جمع بدر المحار في سلته"
+      ],
+      "exp": "«جدير بالإعجاب» حكم القارئ على السلوك؛ الاستعداد والجمع حدثان يرويهما النص.",
+      "source": "ص٨٣–٨٤؛ مهارة نقدية",
+      "id": "arabic2-q9"
+    },
+    {
+      "type": "mc",
+      "p": "أي تفصيل يرفع التوتر في القصة أكثر من وصف البداية الهادئة؟",
+      "a": "إدراك بدر أن الكائن يقصده بالذات",
+      "options": [
+        "إدراك بدر أن الكائن يقصده بالذات",
+        "ارتفاع الأشرعة البيضاء عند الرحيل",
+        "تذكر ليالي القرية"
+      ],
+      "exp": "اقتراب الخطر من البطل شخصيًا يصعد الصراع ويزيد ترقب القارئ للنتيجة.",
+      "source": "ص٨٣–٨٤؛ حبكة",
+      "id": "arabic2-q10"
+    },
+    {
+      "type": "mc",
+      "p": "ما الصراع الأوضح في الجزء الحاسم من القصة؟",
+      "a": "صراع الإنسان مع خطر من الطبيعة",
+      "options": [
+        "صراع الإنسان مع خطر من الطبيعة",
+        "خلاف تجاري في متجر",
+        "مسابقة بين طلاب في الصف"
+      ],
+      "exp": "المواجهة المباشرة بين بدر والقرش هي بؤرة الخطر في الحدث الرئيس.",
+      "source": "ص٨٣–٨٤؛ تصنيف صراع",
+      "id": "arabic2-q11"
+    },
+    {
+      "type": "mc",
+      "p": "كتب طالب: «نجا بدر لأن رفاقه أطلقوا شبكة فحبست القرش». ما الملاحظة الأدق على إجابته؟",
+      "a": "أضاف تفصيلًا لا يثبته النص المقروء",
+      "options": [
+        "أضاف تفصيلًا لا يثبته النص المقروء",
+        "نقل الحدث كما ورد تمامًا",
+        "أخطأ فقط في اسم لون الشبكة"
+      ],
+      "exp": "لا يذكر النص شبكة حبس بها الرفاق القرش؛ يجب الاستشهاد بالأحداث الموجودة لا اختراع وسيلة إنقاذ.",
+      "source": "ص٨٣–٨٤؛ حدود الاستدلال",
+      "id": "arabic2-q12"
+    },
+    {
+      "type": "mc",
+      "p": "أي عنوان بديل يلائم الحدث والمغزى معًا؟",
+      "a": "الغوص: رزق وخبرة ومواجهة",
+      "options": [
+        "الغوص: رزق وخبرة ومواجهة",
+        "اكتشاف النفط في القرية",
+        "رحلة مدرسية إلى البر"
+      ],
+      "exp": "العنوان المقترح يلخص طلب الرزق وخبرة الأجداد وخطر الغوص، دون إدخال حادثة جديدة.",
+      "source": "ص٨٣–٨٤؛ تركيب دلالي",
+      "id": "arabic2-q13"
+    },
+    {
+      "type": "mc",
+      "p": "اختر تصحيح الخطأ: «الصيادان لن يعودان قبل المساء».",
+      "a": "الصيادان لن يعودا قبل المساء",
+      "options": [
+        "الصيادان لن يعودا قبل المساء",
+        "الصيادان لن يعودون قبل المساء",
+        "الصيادان لن عادوا قبل المساء"
+      ],
+      "exp": "لن تنصب المضارع من الأفعال الخمسة بحذف النون، وتبقى ألف الاثنين فاعلًا. الجملة تدريب مؤلف.",
+      "source": "الأفعال الخمسة؛ جملة مؤلفة",
+      "id": "arabic2-q14"
+    },
+    {
+      "type": "mc",
+      "p": "أي جملة صحيحة بعد دخول «لم» على «أنتِ تحافظين على أدواتكِ»؟",
+      "a": "أنتِ لم تحافظي على أدواتكِ",
+      "options": [
+        "أنتِ لم تحافظي على أدواتكِ",
+        "أنتِ لم تحافظين على أدواتكِ",
+        "أنتِ لم تحافظوا على أدواتكِ"
+      ],
+      "exp": "تحافظين تجزم بحذف النون بعد لم، مع بقاء ياء المخاطبة. لا نبدل ضمير المؤنثة المفردة بواو الجماعة.",
+      "source": "الأفعال الخمسة؛ جملة مؤلفة",
+      "id": "arabic2-q15"
+    },
+    {
+      "type": "mc",
+      "p": "ما الفرق النحوي بين «الغواصون يستعدون» و«الغواصون لن يستعدوا»؟",
+      "a": "الأول مرفوع بثبوت النون والثاني منصوب بحذفها",
+      "options": [
+        "الأول مرفوع بثبوت النون والثاني منصوب بحذفها",
+        "كلاهما مجزوم بالسكون",
+        "الأول منصوب والثاني مرفوع"
+      ],
+      "exp": "لم يسبق الأول ناصب أو جازم؛ الثاني سبقه حرف النصب لن.",
+      "source": "الأفعال الخمسة؛ مقارنة مؤلفة",
+      "id": "arabic2-q16"
+    },
+    {
+      "type": "mc",
+      "p": "في «لا تهملوا قواعد السلامة»، إذا كانت «لا» ناهية، فإن «تهملوا»…",
+      "a": "مجزوم بحذف النون",
+      "options": [
+        "مجزوم بحذف النون",
+        "منصوب بالفتحة",
+        "مرفوع بثبوت النون"
+      ],
+      "exp": "لا الناهية تجزم المضارع؛ لأنه من الأفعال الخمسة تكون علامة الجزم حذف النون.",
+      "source": "الأفعال الخمسة؛ نهي مؤلف",
+      "id": "arabic2-q17"
+    },
+    {
+      "type": "mc",
+      "p": "أي صيغة في الجمل الآتية اتصلت بياء المخاطبة لا بنون النسوة؟",
+      "a": "أنتِ ترتبين الحقيبة",
+      "options": [
+        "أنتِ ترتبين الحقيبة",
+        "الطالبات يرتبن الحقائب",
+        "أنا أرتب الحقيبة"
+      ],
+      "exp": "ترتبين للمخاطبة المفردة، أما يرتبن فنونه ضمير نون النسوة، وليست علامة رفع للأفعال الخمسة.",
+      "source": "الأفعال الخمسة؛ تمييز صيغ",
+      "id": "arabic2-q18"
+    },
+    {
+      "type": "mc",
+      "p": "أي جملة تشتمل على مضارع اتصل بألف الاثنين وسبق بناصب؟",
+      "a": "الصديقان يتعاونان كي ينجحا",
+      "options": [
+        "الصديقان يتعاونان كي ينجحا",
+        "الصديقان نجحا في المهمة",
+        "الصديقان ينجحان في المهمة"
+      ],
+      "exp": "كي تنصب ينجحا بحذف النون؛ نجحا فعل ماض، وينجحان مرفوع في المثال الثالث.",
+      "source": "الأفعال الخمسة؛ جمل مؤلفة",
+      "id": "arabic2-q19"
+    },
+    {
+      "type": "mc",
+      "p": "في «البحارة لم يقصّروا»، أي تحليل للواو صحيح؟",
+      "a": "واو الجماعة ضمير متصل في محل رفع فاعل",
+      "options": [
+        "واو الجماعة ضمير متصل في محل رفع فاعل",
+        "علامة الجزم وحدها",
+        "حرف عطف لا محل له"
+      ],
+      "exp": "الفعل مجزوم بحذف النون؛ الواو فاعل، والألف بعدها ألف فارقة لا فاعل جديد.",
+      "source": "الأفعال الخمسة؛ تحليل مؤلف",
+      "id": "arabic2-q20"
+    },
+    {
+      "type": "mc",
+      "p": "اختر العبارة التي لا تحذف فيها النون من الفعل بسبب أداة نصب أو جزم.",
+      "a": "أنتما تصغيان إلى الإرشادات",
+      "options": [
+        "أنتما تصغيان إلى الإرشادات",
+        "أنتما لن تصغيا إلى الإرشادات",
+        "أنتما لم تصغيا إلى الإرشادات"
+      ],
+      "exp": "في الجملة الأولى لا ناصب ولا جازم فترفع تصغيان بثبوت النون؛ الباقيتان حذفت نونهما.",
+      "source": "الأفعال الخمسة؛ مقابلة مؤلفة",
+      "id": "arabic2-q21"
+    },
+    {
+      "type": "mc",
+      "p": "صحح التعليل: «حُذفت نون تسافروا في لن تسافروا لأنها فعل ماضٍ».",
+      "a": "هي مضارع منصوب بلن وعلامة نصبه حذف النون",
+      "options": [
+        "هي مضارع منصوب بلن وعلامة نصبه حذف النون",
+        "هي أمر مبني على الكسرة",
+        "هي مضارع مرفوع بالواو"
+      ],
+      "exp": "الأفعال الخمسة أفعال مضارعة؛ دخول لن سبب النصب وحذف النون، ولا يحولها إلى ماض.",
+      "source": "الأفعال الخمسة؛ تصحيح تعليل",
+      "id": "arabic2-q22"
+    },
+    {
+      "type": "fill",
+      "p": "أكمل بالفعل فقط: أنتِ تحرصين على الدقة ← يجب أن _____ على الدقة.",
+      "a": "تحرصي",
+      "exp": "أن تنصب المضارع، فنحذف النون من تحرصين وتبقى ياء المخاطبة: تحرصي.",
+      "source": "الأفعال الخمسة؛ تحويل مؤلف",
+      "id": "arabic2-q23"
+    },
+    {
+      "type": "fill",
+      "p": "أكمل بالفعل فقط: هما يراقبان الموج ← هما لم _____ الموج.",
+      "a": "يراقبا",
+      "exp": "لم حرف جزم؛ يراقبان من الأفعال الخمسة، فيجزم بحذف النون: يراقبا.",
+      "source": "الأفعال الخمسة؛ تحويل مؤلف",
+      "id": "arabic2-q24"
+    },
+    {
+      "type": "fill",
+      "p": "حوّل الخطاب إلى جماعة الذكور، واكتب الفعل فقط: «أنتَ تتقنُ السباحة» ← «أنتم _____ السباحة».",
+      "a": "تتقنون",
+      "exp": "نصل المضارع بواو الجماعة: تتقنون. لا ناصب ولا جازم هنا فيرفع بثبوت النون.",
+      "source": "الأفعال الخمسة؛ تحويل مؤلف",
+      "id": "arabic2-q25"
+    },
+    {
+      "type": "fill",
+      "p": "أكمل بالفعل فقط مع بقاء النفي: «أنتم لن تتأخروا» ← «أنتِ لن _____».",
+      "a": "تتأخري",
+      "exp": "للمخاطبة المفردة أصل الفعل تتأخرين، وبعد لن تحذف النون: تتأخري.",
+      "source": "الأفعال الخمسة؛ تحويل مؤلف",
+      "id": "arabic2-q26"
+    }
+  ]
+};</script><script>'use strict';
+const $=s=>document.querySelector(s);
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function normalize(s){return String(s).normalize('NFC').trim().replace(/[٠-٩]/g,c=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(c))).replace(/[۰-۹]/g,c=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(c))).replace(/[\u064b-\u065f\u0670\u0640]/g,'').replace(/٫/g,'.').replace(/\s+/g,' ').toLowerCase()}
+function isCorrect(q,value){return normalize(q.a)===normalize(value)}
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+let queue=[],answers={},position=0,submitted=false,mode='full',result=null,firstResult=null;
+const options=EXAM.questions.map(q=>q.type==='mc'?shuffle([...q.options]):[]);
+function countAnswered(){return queue.filter(i=>answers[i]!==undefined&&String(answers[i]).trim()!=='').length}
+function begin(){queue=EXAM.questions.map((_,i)=>i);answers={};position=0;submitted=false;mode='full';result=null;firstResult=null;renderShell();renderQuestion();}
+function renderShell(){$('#examTitle').textContent=EXAM.icon+' '+EXAM.title;$('#scope').textContent=EXAM.scope;$('#date').textContent=EXAM.date;$('#source').textContent=EXAM.source;$('#start').hidden=true;$('#exam').hidden=false;$('#results').hidden=true;$('#mode').textContent=mode==='full'?'اختبار مستقل • لا تصحيح قبل التسليم':'جولة تدريب على الأخطاء • لا تصحيح قبل التسليم';}
+function updateProgress(){const n=countAnswered();$('#answered').textContent=`أجبت عن ${n} من ${queue.length}`;$('#progress').value=n/queue.length;$('#nav').innerHTML=queue.map((idx,k)=>`<button class="number ${answers[idx]!==undefined&&String(answers[idx]).trim()!==''?'done':''} ${k===position?'active':''}" aria-label="السؤال ${k+1}${answers[idx]!==undefined?'، تمت الإجابة':''}" aria-current="${k===position?'step':'false'}" onclick="go(${k})">${k+1}</button>`).join('');}
+function renderQuestion(){if(submitted)return;const idx=queue[position],q=EXAM.questions[idx];$('#notice').textContent='';$('#where').textContent=`السؤال ${position+1} من ${queue.length}`;$('#question').textContent=q.p;$('#kind').textContent=q.type==='fill'?'✍️ إجابة قصيرة':'🔎 اختر إجابة واحدة';$('#choices').innerHTML=q.type==='fill'?`<label for="response">اكتب الإجابة فقط، دون شرح أو وحدة قياس. الأرقام العربية والإنجليزية مقبولة.</label><input id="response" autocomplete="off" spellcheck="false" enterkeyhint="next" value="${escapeHTML(answers[idx]||'')}" oninput="capture(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();step(1)}">`:`<fieldset><legend class="sr">اختيارات السؤال</legend>${options[idx].map((v,k)=>`<label class="choice ${answers[idx]===v?'chosen':''}"><input type="radio" name="answer" value="${escapeHTML(v)}" ${answers[idx]===v?'checked':''} onchange="pick(this.value)"><span>${escapeHTML(v)}</span></label>`).join('')}</fieldset>`;$('#previous').disabled=position===0;$('#next').disabled=position===queue.length-1;$('#submit').textContent=position===queue.length-1?'تسليم الاختبار وعرض التصحيح':'إنهاء وتسليم الاختبار';updateProgress();}
+function capture(value){if(submitted)return;answers[queue[position]]=value;updateProgress();}
+function pick(value){if(submitted)return;capture(value);document.querySelectorAll('.choice').forEach(el=>{const input=el.querySelector('input');el.classList.toggle('chosen',input.checked)});}
+function go(k){if(submitted||k<0||k>=queue.length)return;position=k;renderQuestion();}
+function step(delta){go(position+delta)}
+function grade(indices,responses){const wrong=indices.filter(i=>!isCorrect(EXAM.questions[i],responses[i]===undefined?'':responses[i]));return {correct:indices.length-wrong.length,total:indices.length,wrong,percent:Math.round(100*(indices.length-wrong.length)/indices.length)}}
+function submitExam(){if(submitted)return;const missing=queue.filter(i=>answers[i]===undefined||String(answers[i]).trim()==='');if(missing.length){position=queue.indexOf(missing[0]);renderQuestion();$('#notice').textContent=`باقي ${missing.length} سؤال دون إجابة. انتقلنا لأول سؤال ناقص؛ أكملها ثم سلّم الاختبار.`;$('#notice').focus();return}submitted=true;result=grade(queue,answers);if(mode==='full')firstResult={...result};renderResults();}
+function renderResults(){$('#exam').hidden=true;$('#results').hidden=false;$('#score').textContent=`${result.correct} / ${result.total}`;$('#percent').textContent=`${result.percent}٪`;$('#resultMessage').textContent=result.percent>=85?'أحسنت يا يوسف! راجع التعليل، ثم حاول تشرح فكرتين بأسلوبك.':'كل سؤال فرصة للتعلم يا يوسف. اقرأ التعليل قبل إعادة الأخطاء.';$('#roundLabel').textContent=mode==='full'?'نتيجة الاختبار الثاني':'نتيجة جولة الأخطاء (ليست بديلًا لدرجة الاختبار)';$('#firstScore').textContent=mode==='errors'&&firstResult?`درجة الاختبار الأصلي: ${firstResult.correct} / ${firstResult.total} (${firstResult.percent}٪)` :'';$('#retry').hidden=result.wrong.length===0;$('#retry').textContent=`تدرب على الأخطاء فقط (${result.wrong.length})`;$('#review').innerHTML=queue.map((idx,k)=>{const q=EXAM.questions[idx],ok=isCorrect(q,answers[idx]);return `<article class="review ${ok?'correct':'incorrect'}"><span class="status">${ok?'✓ إجابة صحيحة':'↺ تحتاج مراجعة'} • ${k+1}</span><h3>${escapeHTML(q.p)}</h3><p>إجابتك: <b>${escapeHTML(answers[idx])}</b></p>${ok?'':`<p>الإجابة الصحيحة: <b>${escapeHTML(q.a)}</b></p>`}<p class="explanation">${escapeHTML(q.exp)}</p><small>المصدر: ${escapeHTML(q.source)}</small></article>`}).join('');$('#results').focus();}
+function retryErrors(){if(!submitted||!result||!result.wrong.length)return;queue=[...result.wrong];answers={};position=0;submitted=false;mode='errors';result=null;renderShell();renderQuestion();}
+function restart(){begin()}
+$('#examTitle').textContent=EXAM.icon+' '+EXAM.title;$('#scope').textContent=EXAM.scope;$('#date').textContent=EXAM.date;$('#source').textContent=EXAM.source;$('#introCount').textContent=EXAM.questions.length;
+</script></body></html>
