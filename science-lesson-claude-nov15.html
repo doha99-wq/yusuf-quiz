@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>درس العلوم — التوصيل والعزل وتيارات الحمل | يوسف 8/1</title>
+<style>
+  :root{
+    --ink:#161b2b; --ink2:#3d4459; --muted:#5d6478;
+    --bg:#f5f2ec; --card:#ffffff; --line:#e3ddd2;
+    --hot:#c2410c; --hot2:#fb923c; --hotbg:#fff1e7;
+    --cold:#1d4ed8; --cold2:#60a5fa; --coldbg:#eaf1ff;
+    --lab:#0f5f5a; --labbg:#e4f4f2;
+    --good:#166534; --goodbg:#e8f6ec; --bad:#9f1239; --badbg:#fdecef;
+    --r:18px;
+    --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+    --safe-l:env(safe-area-inset-left,0px); --safe-r:env(safe-area-inset-right,0px);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,"SF Arabic","Geeza Pro","Noto Naskh Arabic","Segoe UI",Tahoma,sans-serif;
+    font-size:17px;line-height:1.75;
+    padding:0 var(--safe-r) var(--safe-b) var(--safe-l);}
+  body.nomotion *{animation:none!important;transition:none!important}
+  .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+  .en{direction:ltr;unicode-bidi:isolate;font-family:-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--lab);font-weight:600;font-size:.92em}
+  header.hero{
+    background:radial-gradient(120% 140% at 100% 0%, #3b1d0e 0%, #1a2030 55%, #0d2a3a 100%);
+    color:#fff;padding:calc(22px + var(--safe-t)) 18px 26px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;inset:auto -40px -60px auto;width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle,#fb923c55,transparent 70%)}
+  .wrap{max-width:860px;margin:0 auto}
+  .tag{display:inline-block;background:#ffffff1f;border:1px solid #ffffff40;border-radius:999px;padding:2px 12px;font-size:14px}
+  h1{font-size:clamp(26px,6vw,38px);line-height:1.3;margin:12px 0 6px}
+  .hero p{margin:6px 0;color:#e8ecf5;max-width:680px}
+  .toolbar{position:sticky;top:0;z-index:20;background:#161b2bf2;padding:8px 10px calc(8px);
+    padding-top:calc(8px + var(--safe-t));box-shadow:0 2px 10px #0003}
+  .toolbar .wrap{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:center}
+  .toolbar .wrap::-webkit-scrollbar{display:none}
+  .toolbar a,.toolbar button{flex:0 0 auto;min-height:44px;display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;
+    background:#ffffff14;border:1px solid #ffffff30;border-radius:12px;padding:0 14px;font:inherit;font-size:15px;cursor:pointer}
+  .toolbar a:focus-visible,.toolbar button:focus-visible{outline:3px solid #fbbf24;outline-offset:2px}
+  .toolbar button[aria-pressed="true"]{background:#fbbf24;color:#161b2b;border-color:#fbbf24}
+  main{padding:18px 14px 40px}
+  section.station{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:20px 16px;margin:0 0 26px;
+    box-shadow:0 6px 24px #1a20300d;scroll-margin-top:calc(70px + var(--safe-t))}
+  .st-head{display:flex;gap:12px;align-items:center;margin-bottom:6px}
+  .st-num{flex:0 0 auto;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;
+    background:linear-gradient(135deg,var(--hot),#7c2d12)}
+  .st-num.c{background:linear-gradient(135deg,var(--cold),#1e3a8a)}
+  .st-num.l{background:linear-gradient(135deg,var(--lab),#134e4a)}
+  h2{margin:0;font-size:clamp(21px,4.6vw,27px);line-height:1.35}
+  h3{font-size:19px;margin:22px 0 8px;display:flex;align-items:center;gap:8px}
+  .phase{font-size:13px;font-weight:700;border-radius:999px;padding:1px 10px;background:var(--labbg);color:var(--lab)}
+  .phase.w{background:var(--hotbg);color:var(--hot)}
+  .phase.k{background:var(--coldbg);color:var(--cold)}
+  .lead{color:var(--ink2)}
+  .card{border:1px solid var(--line);border-radius:var(--r);padding:14px;background:#fffdfa;margin:12px 0}
+  .def{border-inline-start:5px solid var(--lab);background:var(--labbg);border-radius:12px;padding:10px 14px;margin:10px 0}
+  .note{font-size:14px;color:var(--muted);background:#f2efe8;border-radius:10px;padding:6px 10px;display:inline-block;margin:6px 0}
+  .illus{font-size:13px;font-weight:700;color:#7c2d12;background:#ffedd5;border:1px dashed #c2410c;border-radius:8px;padding:1px 8px;display:inline-block}
+  .remember{background:linear-gradient(135deg,#fff7ed,#eff6ff);border:2px solid #f4d8bd;border-radius:18px;padding:12px 16px;margin-top:22px}
+  .remember h4{margin:0 0 4px;font-size:18px}
+  .remember ul{margin:4px 0;padding-inline-start:20px}
+  .grid2{display:grid;grid-template-columns:1fr;gap:12px}
+  @media (min-width:640px){.grid2{grid-template-columns:1fr 1fr}}
+  button,select,input{font:inherit}
+  .btn{min-height:44px;min-width:44px;border-radius:12px;border:2px solid var(--ink);background:var(--ink);color:#fff;padding:0 16px;font-weight:700;cursor:pointer}
+  .btn.ghost{background:#fff;color:var(--ink)}
+  .btn.hot{background:var(--hot);border-color:var(--hot)}
+  .btn.cold{background:var(--cold);border-color:var(--cold)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn:focus-visible,.chip:focus-visible,.opt:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+  .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+  .chip{min-height:44px;border-radius:999px;border:2px solid #c9c2b5;background:#fff;color:var(--ink);padding:0 14px;cursor:pointer;font-weight:600}
+  .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .sim{border:1px solid #d9d2c5;border-radius:20px;background:#fbfaf7;padding:12px;margin:12px 0}
+  .sim canvas{width:100%;display:block;border-radius:14px;background:#fff;touch-action:manipulation}
+  .simtitle{font-weight:800;margin:0 0 4px}
+  .readout{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 10px;font-size:15px}
+  .pill b{font-variant-numeric:tabular-nums}
+  .predict{background:#fffbeb;border:1px solid #fcd34d;border-radius:14px;padding:10px 12px;margin:8px 0}
+  .result{border-radius:14px;padding:10px 12px;margin-top:10px;background:#f1f5f9}
+  .result.ok{background:var(--goodbg);border:1px solid #86efac}
+  .result.no{background:var(--badbg);border:1px solid #fda4af}
+  select{min-height:44px;border-radius:10px;border:2px solid #c9c2b5;background:#fff;padding:0 10px;color:var(--ink);max-width:100%}
+  input[type=range]{width:100%;min-height:44px;accent-color:var(--hot)}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:start;vertical-align:middle}
+  th{color:var(--muted);font-weight:700}
+  /* touch test */
+  .testers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tester{border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center;background:#fff}
+  .tester .hand{font-size:15px;color:var(--muted)}
+  .tester .feel{font-size:20px;font-weight:800;min-height:34px}
+  .meter{border:2px solid var(--lab);border-radius:16px;padding:10px;text-align:center;background:var(--labbg);margin-top:10px}
+  .meter b{font-size:24px}
+  /* checks */
+  .check{border:2px solid #d6cfc2;border-radius:18px;padding:12px 14px;margin:16px 0;background:#fff}
+  .check .cq{font-weight:700;margin:0 0 8px}
+  .check .cq::before{content:"تحقّق صغير ✎ ";color:var(--cold);font-size:14px}
+  .opts{display:grid;gap:8px}
+  .opt{min-height:48px;text-align:start;border-radius:12px;border:2px solid #cfc8bb;background:#fbfaf7;padding:8px 12px;cursor:pointer;color:var(--ink);line-height:1.5}
+  .opt.right{border-color:#16a34a;background:var(--goodbg)}
+  .opt.wrong{border-color:#e11d48;background:var(--badbg)}
+  .fb{font-weight:800;margin-top:10px}
+  .fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+  .why{background:#f8fafc;border-radius:12px;padding:8px 12px;margin-top:6px;color:var(--ink2)}
+  /* worked examples */
+  .worked{border:2px solid #fed7aa;background:#fffaf5;border-radius:18px;padding:12px 14px;margin:14px 0}
+  .worked .wt{font-weight:800;color:var(--hot);margin:0 0 6px}
+  .worked ol{margin:0;padding-inline-start:22px}
+  .worked li{margin:6px 0}
+  .worked li.hide{display:none}
+  .worked li.show{animation:pop .35s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  /* quiz */
+  .qz{border:1px solid var(--line);border-radius:16px;padding:12px;margin:12px 0;background:#fff}
+  .qz .qt{font-weight:700;margin-bottom:6px}
+  .qz label{display:flex;gap:10px;align-items:center;min-height:46px;border:2px solid #e2dccf;border-radius:12px;padding:6px 10px;margin:6px 0;cursor:pointer;background:#fbfaf7}
+  .qz input[type=radio]{width:22px;height:22px;flex:0 0 auto;accent-color:var(--ink)}
+  .qz.done label.right{border-color:#16a34a;background:var(--goodbg)}
+  .qz.done label.wrong{border-color:#e11d48;background:var(--badbg)}
+  .qz .qwhy{display:none;margin-top:6px;background:#f8fafc;border-radius:10px;padding:8px 10px;color:var(--ink2)}
+  .qz.done .qwhy{display:block}
+  .score{font-size:22px;font-weight:800;text-align:center;padding:14px;border-radius:16px;background:var(--labbg);margin:10px 0}
+  footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 16px 30px}
+  .tube-legend{display:flex;gap:6px;align-items:center;font-size:14px;color:var(--muted);margin-top:6px}
+  .grad{width:120px;height:12px;border-radius:6px;background:linear-gradient(90deg,#1d4ed8,#a78bfa,#dc2626)}
+  .density{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+  .box{border-radius:14px;padding:10px;text-align:center;border:2px solid}
+  .box.h{border-color:#fdba74;background:var(--hotbg)} .box.c{border-color:#93c5fd;background:var(--coldbg)}
+  .dots{height:70px;position:relative;margin:6px auto;width:110px}
+  .dots i{position:absolute;width:12px;height:12px;border-radius:50%}
+  .box.h .dots i{background:var(--hot)} .box.c .dots i{background:var(--cold)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--ink2);margin:6px 0}
+  .legend span::before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;vertical-align:middle;margin-inline-end:6px;background:var(--c)}
+  .hw{border:2px dashed var(--lab);border-radius:16px;padding:10px 14px;background:#f4fbfa}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">العلوم · الصف الثامن 8/1 · أسبوع 15–19 نوفمبر 2026</span>
+    <h1>كيف تنتقل الطاقة الحرارية؟<br>التوصيل، العوازل، وتيارات الحمل</h1>
+    <p>أهلًا يا يوسف 👋 في هذا الدرس ستكون أنت الباحث: ستختبر، وتتنبأ قبل التشغيل، وتصمّم اختبارًا عادلًا، ثم تفسّر لماذا يوضع المكيف قرب السقف.</p>
+    <p style="font-size:14px;opacity:.85">كل المحاكاة هنا آمنة ولا تحتاج نارًا أو أدوات حقيقية. الأرقام داخل المحاكاة <b>توضيحية وليست قياسًا مخبريًا</b>.</p>
+  </div>
+</header>
+
+<nav class="toolbar" aria-label="محطات الدرس">
+  <div class="wrap">
+    <a href="#s1">١ استقصاء التوصيل</a>
+    <a href="#s2">٢ العوازل والاختبار العادل</a>
+    <a href="#s3">٣ تيارات الحمل</a>
+    <a href="#s4">٤ تطبيقات الحمل</a>
+    <a href="#quiz">✓ الاختبار القصير</a>
+    <button type="button" id="motionBtn" aria-pressed="false">⏸ إيقاف الحركة</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ========== STATION 1 ========== -->
+<section class="station" id="s1">
+  <div class="st-head"><div class="st-num">١</div><h2>كيف نستقصي التوصيل الحراري؟</h2></div>
+  <p class="lead">سؤال المحطة: <b>هل يكفي أن نلمس القضيب لنعرف أي مادة أفضل توصيلًا للحرارة؟</b></p>
+
+  <h3><span class="phase">افهم</span> كلمات المحطة</h3>
+  <div class="def"><b>التوصيل الحراري</b>: انتقال الطاقة الحرارية عبر المادة من الجزء الأسخن إلى الجزء الأبرد، ويحدث بشكل أساسي في <b>الأجسام الصلبة</b>.</div>
+  <div class="def"><b>الموصلية الحرارية</b> <span class="en">Thermal conductivity</span>: مقياس لقدرة المادة على السماح للطاقة الحرارية بالانتقال عبرها بالتوصيل.</div>
+  <div class="grid2">
+    <div class="card"><b>موصل حراري</b> <span class="en">Thermal conductor</span><br>مادة تسمح للحرارة بالمرور بسهولة، مثل ملعقة فلزية في شاي ساخن يسخن طرفها بسرعة.</div>
+    <div class="card"><b>عازل حراري</b> <span class="en">Thermal insulator</span><br>مادة لا تسمح للحرارة بالمرور بسهولة، مثل ملعقة خشبية.</div>
+  </div>
+  <p>الفلزات موصلات جيدة، وموصليتها أكبر من اللافلزات، لكن <b>الفلزات نفسها تختلف</b>؛ ومن الفلزات في هذا الدرس يكون <b>النحاس</b> الأفضل توصيلًا.</p>
+
+  <h3><span class="phase w">شاهد وحرّك</span> المحاكاة ١: اختبار اللمس — مَن نصدّق؟</h3>
+  <div class="sim" id="touchSim">
+    <p class="simtitle">قضيب طرفه في ماء ساخن منذ ٣ دقائق. شخصان يلمسان الطرف الآخر.</p>
+    <p class="note">المختبِر (أ) كان يمسك علبة عصير مثلّجة، والمختبِر (ب) كان يمسك كوب شاي ساخن. <span class="illus">أرقام توضيحية</span></p>
+    <div class="row" id="touchMats" role="group" aria-label="اختر مادة القضيب"></div>
+    <div class="testers">
+      <div class="tester"><div class="hand">المختبِر (أ) — يد باردة <span class="ltr">≈20°C</span></div><div class="feel" id="feelA">—</div></div>
+      <div class="tester"><div class="hand">المختبِر (ب) — يد ساخنة <span class="ltr">≈38°C</span></div><div class="feel" id="feelB">—</div></div>
+    </div>
+    <div class="meter">مقياس الحرارة (مؤشر موضوعي) عند طرف القضيب: <b class="ltr" id="touchTemp">—</b></div>
+    <div class="result" id="touchMsg">اختر مادة لترى ماذا «يشعر» كل مختبِر.</div>
+  </div>
+
+  <div class="check" data-correct="c">
+    <p class="cq">اختار يوسف قضيب الفولاذ: المختبِر (أ) قال «ساخن» والمختبِر (ب) قال «بارد». ما السبب الأرجح؟</p>
+    <div class="opts">
+      <button type="button" class="opt" data-k="a">الفولاذ يسخن ويبرد بسرعة كبيرة</button>
+      <button type="button" class="opt" data-k="b">أحد المختبِرين يكذب</button>
+      <button type="button" class="opt" data-k="c">الإحساس يعتمد على حرارة يد المختبِر نفسه</button>
+    </div>
+    <div class="fb" hidden></div>
+    <div class="why" hidden>القضيب نفسه بالدرجة نفسها تقريبًا (المقياس يقرأ القيمة نفسها للاثنين)، لكن اليد الباردة تشعر بالفرق «سخونة» واليد الساخنة تشعر به «برودة». لذلك اختبار اللمس وحده يعتمد على <b>مَن</b> يقوم بالاختبار، والطريقة العلمية الجيدة لا تعتمد على ذلك.</div>
+  </div>
+
+  <div class="def"><b>قابلة لتكرار نتائجها</b> <span class="en">Reproducible</span>: إذا كرّر شخص آخر التجربة نفسها بالخطوات والظروف نفسها وحصل على نتائج متقاربة، فالتجربة قابلة للتكرار. اختبار اللمس يفشل هنا؛ فالشخصان حصلا على نتيجتين متعاكستين.</div>
+
+  <h3><span class="phase w">شاهد وحرّك</span> المحاكاة ٢: مؤشر موضوعي — دبوس مثبّت بالشمع</h3>
+  <p>الفكرة: نثبّت دبوسًا بقليل من الشمع عند <b>الطرف البعيد</b> لكل قضيب. عندما تصل الطاقة الحرارية بالتوصيل إلى الطرف البعيد يلين الشمع ويسقط الدبوس. نقيس <b>زمن السقوط</b> بدل الإحساس. هذا يعطي نتيجة لا تعتمد على يد أحد.</p>
+  <div class="card" style="font-size:15px">
+    <b>ثبّتنا في المحاكاة (لتكون المقارنة عادلة):</b> الطول نفسه ✓ السمك نفسه ✓ الماء الساخن نفسه ✓ كمية الشمع نفسها ✓ — <b>والمتغير الوحيد: نوع المادة</b>.
+  </div>
+  <div class="sim">
+    <div class="predict">
+      <b>تنبّأ أولًا يا يوسف:</b> أي دبوس سيسقط أولًا؟ (زر التشغيل يعمل بعد التنبؤ)
+      <div class="row" id="waxPredict" role="group" aria-label="التنبؤ"></div>
+    </div>
+    <canvas id="waxCanvas" aria-label="محاكاة ستة قضبان في ماء ساخن ودبابيس مثبتة بالشمع عند أطرافها" role="img" dir="ltr"></canvas>
+    <div class="row">
+      <button type="button" class="btn hot" id="waxRun" disabled>▶ شغّل التجربة</button>
+      <button type="button" class="btn ghost" id="waxReset">↺ إعادة</button>
+      <span class="pill">الزمن: <b class="ltr" id="waxTime">0 s</b> <span class="illus">زمن توضيحي مُسرَّع</span></span>
+    </div>
+    <div class="result" id="waxResult">اختر تنبؤك ثم شغّل.</div>
+  </div>
+
+  <div class="worked" data-worked>
+    <p class="wt">مثال محلول: كيف أحوّل اختبار اللمس إلى اختبار أفضل؟ <span class="illus">مثال تدريبي مؤلف</span></p>
+    <ol>
+      <li><b>المشكلة:</b> اللمس يعتمد على حرارة اليد، فشخصان قد يختلفان ← النتائج غير قابلة للتكرار.</li>
+      <li><b>ماذا أقيس بدلًا من الإحساس؟</b> شيئًا يمكن رؤيته أو قياسه: زمن سقوط دبوس الشمع، أو قراءة مقياس حرارة عند الطرف البعيد بعد زمن محدد.</li>
+      <li><b>ماذا أغيّر؟</b> شيئًا واحدًا فقط: نوع مادة القضيب (المتغير المستقل).</li>
+      <li><b>ماذا أثبّت؟</b> طول القضيب وسمكه، ودرجة حرارة الماء، وعمق غمر القضيب، وكمية الشمع، وموضع الدبوس.</li>
+      <li><b>كيف أتأكد؟</b> أكرر التجربة أكثر من مرة، ويمكن أن يكررها زميل؛ إذا تقاربت النتائج فهي قابلة للتكرار.</li>
+      <li><b>الاستنتاج المتوقع:</b> الفلزات تُسقط الدبوس أسرع من اللافلزات، والنحاس أسرعها في هذا الدرس.</li>
+    </ol>
+    <div class="row"><button type="button" class="btn ghost" data-next>الخطوة التالية ←</button><button type="button" class="btn ghost" data-all>أظهر الكل</button></div>
+  </div>
+
+  <h3><span class="phase">لماذا يهمّنا؟</span> اختيار المادة المناسبة</h3>
+  <div class="grid2">
+    <div class="card">🔧 <b>جهاز اللحام</b>: رأس فلزي ليوصل الحرارة إلى موضع اللحام، ومقبض بلاستيكي عازل حتى لا تحترق اليد.</div>
+    <div class="card">🍳 <b>أواني الطهي</b>: جسم فلزي لينقل الحرارة إلى الطعام، ومقبض عازل لتمسكه بأمان.</div>
+  </div>
+  <p>القاعدة: <b>موصل</b> عندما نريد <b>نقل</b> الحرارة، و<b>عازل</b> عندما نريد <b>إيقافها أو إبطاءها</b>.</p>
+
+  <div class="check" data-correct="b">
+    <p class="cq">في تجربة الشمع، غيّرت مجموعة نوع المادة <u>و</u>طول القضيب معًا. لماذا لا نثق في مقارنتها؟</p>
+    <div class="opts">
+      <button type="button" class="opt" data-k="a">لأن الشمع لا يذوب على القضبان الطويلة</button>
+      <button type="button" class="opt" data-k="b">لأننا لا نعرف هل الفرق في الزمن سببه المادة أم الطول</button>
+      <button type="button" class="opt" data-k="c">لا مشكلة؛ كلما غيّرنا متغيرات أكثر كانت التجربة أدق</button>
+    </div>
+    <div class="fb" hidden></div>
+    <div class="why">‏تغيير متغيرين معًا يخلط السببين؛ القضيب الأطول يحتاج وقتًا أطول حتى تصل الحرارة لطرفه. في الاختبار العادل نغيّر متغيرًا واحدًا فقط.</div>
+  </div>
+
+  <div class="remember">
+    <h4>🧠 تذكّر</h4>
+    <ul>
+      <li>التوصيل: انتقال الطاقة الحرارية عبر المادة الصلبة من الأسخن إلى الأبرد.</li>
+      <li>اللمس يعتمد على حرارة يد المختبِر ← نحتاج مؤشرًا موضوعيًا (زمن سقوط الدبوس، مقياس حرارة).</li>
+      <li><span class="en">Reproducible</span> = يكرّرها غيرك بالظروف نفسها فيحصل على نتائج متقاربة.</li>
+      <li>الفلزات أفضل توصيلًا من اللافلزات، وتختلف فيما بينها؛ النحاس أفضلها في هذا الدرس.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== STATION 2 ========== -->
+<section class="station" id="s2">
+  <div class="st-head"><div class="st-num l">٢</div><h2>ما مدى فاعلية الأنواع المختلفة من العوازل؟</h2></div>
+  <p class="lead">في قطر نريد إبقاء الحرارة <b>خارج</b> البيت صيفًا. المواد العازلة <b>تبطئ</b> انتقال الطاقة الحرارية، فتساعد في المحافظة على درجة حرارة المبنى.</p>
+
+  <h3><span class="phase">افهم</span> سرّ العوازل الجيدة: الهواء المحبوس</h3>
+  <p>المواد التي فيها <b>فراغات صغيرة مليئة بالهواء</b> (مثل الصوف، والرغوة، وغلاف الفقاعات) تكون عازلة جيدة؛ لأن <b>الهواء الساكن موصل ضعيف للحرارة</b>، والفراغات الصغيرة تمنعه من الحركة.</p>
+
+  <h3><span class="phase">افهم</span> الاختبار العادل <span class="en">Fair test</span></h3>
+  <table>
+    <tr><th>النوع</th><th>في تجربة مقارنة العوازل</th></tr>
+    <tr><td><b>المتغير المستقل</b> (أغيّره)</td><td>نوع المادة العازلة فقط</td></tr>
+    <tr><td><b>المتغير التابع</b> (أقيسه)</td><td>مقدار انخفاض درجة حرارة الماء</td></tr>
+    <tr><td><b>المتغيرات المضبوطة</b> (أثبّتها)</td><td>سماكة العازل، حجم الماء، درجة البداية، زمن الرصد، طريقة القياس</td></tr>
+  </table>
+
+  <h3><span class="phase w">شاهد وحرّك</span> المحاكاة ٣: صمّم اختبارك — كوبان من الماء الساخن</h3>
+  <p>لُفّ كل كوب بمادة، واضبط باقي الظروف. سيحكم «المشرف الآلي» على عدالة الاختبار قبل أن تقرأ النتيجة.</p>
+  <div class="sim">
+    <table id="cupTable">
+      <tr><th>المتغير</th><th>الكوب أ</th><th>الكوب ب</th></tr>
+    </table>
+    <div class="row">
+      <button type="button" class="btn hot" id="cupRun">▶ ابدأ الرصد</button>
+      <button type="button" class="btn ghost" id="cupFair">اجعله عادلًا</button>
+      <button type="button" class="btn ghost" id="cupReset">↺ إعادة</button>
+    </div>
+    <div class="legend"><span style="--c:#c2410c">الكوب أ</span><span style="--c:#1d4ed8">الكوب ب</span><span class="illus">منحنى توضيحي</span></div>
+    <canvas id="cupCanvas" role="img" aria-label="منحنى انخفاض درجة حرارة الكوبين مع الزمن" dir="ltr"></canvas>
+    <p class="note" style="margin-top:6px">المس المنحنى لقراءة القيم عند أي دقيقة.</p>
+    <div class="readout" id="cupRead"></div>
+    <div class="result" id="cupVerdict">اضبط الكوبين ثم اضغط «ابدأ الرصد».</div>
+  </div>
+
+  <div class="check" data-correct="a">
+    <p class="cq">لفّ يوسف الكوب أ بطبقتين من الصوف والكوب ب بطبقة واحدة من الرغوة. ما الخطأ في هذا الاختبار؟</p>
+    <div class="opts">
+      <button type="button" class="opt" data-k="a">السماكة مختلفة، فلا نعرف هل الفرق بسبب المادة أم السماكة</button>
+      <button type="button" class="opt" data-k="b">لا يجوز استعمال الصوف في التجارب</button>
+      <button type="button" class="opt" data-k="c">لا خطأ؛ لأن المادتين مختلفتان كما يجب</button>
+    </div>
+    <div class="fb" hidden></div>
+    <div class="why">المادة مختلفة (هذا مقصود)، لكن السماكة مختلفة أيضًا. لكي يكون الاختبار عادلًا يجب أن تكون السماكة متساوية فيبقى نوع المادة هو الفرق الوحيد.</div>
+  </div>
+
+  <h3><span class="phase w">شاهد وحرّك</span> المحاكاة ٤: صمّم عزل سقف بيت في الصيف</h3>
+  <p>الطاقة الحرارية تدخل من السقف الساخن نحو الغرفة. اختر مادة العزل وسماكتها، وقرّر هل تضيف طبقة هواء ساكن محبوس. كل نقطة برتقالية تمثّل «حزمة طاقة» تعبر السقف. <span class="illus">نموذج توضيحي</span></p>
+  <div class="sim">
+    <div class="row" id="roofMats" role="group" aria-label="مادة عزل السقف"></div>
+    <label for="roofThick"><b>سماكة العزل:</b> <span class="ltr" id="roofThickV">10 cm</span></label>
+    <input type="range" id="roofThick" min="0" max="20" step="1" value="10" aria-describedby="roofThickV">
+    <div class="row"><button type="button" class="chip" id="roofAir" aria-pressed="false">➕ طبقة هواء ساكن محبوس</button>
+      <button type="button" class="btn ghost" id="roofReset">↺ إعادة</button></div>
+    <canvas id="roofCanvas" role="img" aria-label="مقطع لبيت يوضح الطاقة الحرارية العابرة من السقف" dir="ltr"></canvas>
+    <div class="readout">
+      <span class="pill">مؤشر تسرّب الطاقة عبر السقف: <b class="ltr" id="roofIdx">—</b> <span class="illus">توضيحي</span></span>
+    </div>
+    <div class="result" id="roofMsg"></div>
+  </div>
+
+  <div class="worked" data-worked>
+    <p class="wt">مثال محلول: أي سقف أختار لبيت في الدوحة؟ <span class="illus">مثال تدريبي مؤلف</span></p>
+    <ol>
+      <li><b>الهدف:</b> إبطاء دخول الطاقة الحرارية من الخارج الحار إلى الداخل ← أحتاج <b>عازلًا</b> لا موصلًا.</li>
+      <li><b>أستبعد اللوح الفلزي وحده</b>: الفلز موصل جيد، فلا يكاد يبطئ الحرارة (لاحظ المؤشر في المحاكاة).</li>
+      <li><b>أفضّل مادة فيها هواء محبوس</b> مثل الألياف أو الرغوة؛ الهواء الساكن موصل ضعيف.</li>
+      <li><b>أزيد السماكة</b> بقدر معقول؛ كلما زادت قلّ التسرب، لكن الزيادة تعطي فائدة أقل تدريجيًا.</li>
+      <li><b>كيف أتحقق علميًا؟</b> أقارن عيّنات <u>بالسماكة نفسها</u> ونفس مصدر الحرارة ونفس زمن الرصد — اختبار عادل.</li>
+    </ol>
+    <div class="row"><button type="button" class="btn ghost" data-next>الخطوة التالية ←</button><button type="button" class="btn ghost" data-all>أظهر الكل</button></div>
+  </div>
+
+  <div class="check" data-correct="b">
+    <p class="cq">لماذا يُعدّ غلاف الفقاعات عازلًا أفضل من لوح زجاج بالسماكة نفسها في هذا السياق؟</p>
+    <div class="opts">
+      <button type="button" class="opt" data-k="a">لأنه أخف وزنًا فقط</button>
+      <button type="button" class="opt" data-k="b">لأنه يحبس الهواء في فقاعات صغيرة، والهواء الساكن موصل ضعيف</button>
+      <button type="button" class="opt" data-k="c">لأن البلاستيك فلز</button>
+    </div>
+    <div class="fb" hidden></div>
+    <div class="why">الفكرة الأساسية هي الهواء المحبوس الساكن؛ لا يستطيع التحرك داخل الفقاعات الصغيرة، وهو موصل ضعيف، فتنتقل الطاقة ببطء. (البلاستيك ليس فلزًا.)</div>
+  </div>
+
+  <div class="remember">
+    <h4>🧠 تذكّر</h4>
+    <ul>
+      <li>العوازل تبطئ انتقال الطاقة الحرارية وتحافظ على درجة حرارة المبنى.</li>
+      <li>المواد التي تحبس الهواء في فراغات صغيرة عوازل جيدة.</li>
+      <li>نوع مادة العزل وسماكتها وتصميم السقف تؤثر في انتقال الطاقة.</li>
+      <li>الاختبار العادل: أغيّر متغيرًا واحدًا، وأثبّت الباقي، وأقيس بالطريقة نفسها.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== STATION 3 ========== -->
+<section class="station" id="s3">
+  <div class="st-head"><div class="st-num c">٣</div><h2>ما تيارات الحمل الحراري؟</h2></div>
+
+  <h3><span class="phase">افهم</span> المادة نفسها تتحرك</h3>
+  <div class="def"><b>الحمل الحراري</b> <span class="en">Convection</span>: انتقال الطاقة الحرارية بواسطة <b>حركة</b> السائل أو الغاز نفسه. يحدث في <b>الموائع</b> (السوائل والغازات)، ولا يحدث في الأجسام الصلبة.</div>
+  <p>⚠️ لا تخلط: في <b>التوصيل</b> تنتقل الطاقة عبر المادة دون أن تنتقل المادة نفسها من مكانها، أما في <b>الحمل</b> فالمائع الساخن نفسه يتحرك حاملًا الطاقة.</p>
+  <div class="density">
+    <div class="box h"><b>مائع ساخن</b><div class="dots" aria-hidden="true">
+      <i style="top:4px;left:6px"></i><i style="top:30px;left:44px"></i><i style="top:52px;left:12px"></i><i style="top:10px;left:86px"></i><i style="top:50px;left:84px"></i></div>
+      الجسيمات متباعدة ← <b>كثافة أقل</b> ← يصعد ⬆</div>
+    <div class="box c"><b>مائع بارد</b><div class="dots" aria-hidden="true">
+      <i style="top:20px;left:10px"></i><i style="top:20px;left:28px"></i><i style="top:20px;left:46px"></i><i style="top:36px;left:18px"></i><i style="top:36px;left:36px"></i><i style="top:36px;left:54px"></i><i style="top:52px;left:10px"></i><i style="top:52px;left:28px"></i><i style="top:52px;left:46px"></i><i style="top:52px;left:64px"></i></div>
+      الجسيمات متقاربة ← <b>كثافة أكبر</b> ← يهبط ⬇</div>
+  </div>
+  <p>يصعد المائع الساخن، ويهبط البارد ليأخذ مكانه، فيسخن هو أيضًا ويصعد… هذه الدورة المستمرة هي <b>تيار الحمل</b>. والأسهم في الرسوم تبيّن <b>اتجاه</b> التيار فقط، لا مقدار الطاقة بدقة.</p>
+
+  <h3><span class="phase w">تنبّأ ثم شغّل</span> المحاكاة ٥: أنبوب فيه ماء وقطعة ثلج مثبّتة في القاع</h3>
+  <p>ثبّتنا قطعة ثلج في قاع أنبوب ماء (بثقل صغير حتى لا تطفو). سنسخّن الماء بمسخّن كهربائي توضيحي إما من <b>الأعلى</b> أو من <b>الأسفل</b>. <span class="illus">محاكاة توضيحية — لا تجرّبها بنار حقيقية</span></p>
+  <div class="sim">
+    <div class="predict">
+      <b>١) اختر موضع التسخين:</b>
+      <div class="row" role="group" aria-label="موضع التسخين">
+        <button type="button" class="chip" data-heat="top" aria-pressed="true">🔥 من الأعلى</button>
+        <button type="button" class="chip" data-heat="bottom" aria-pressed="false">🔥 من الأسفل</button>
+      </div>
+      <b>٢) تنبّأ: ماذا سيحدث للثلج؟</b>
+      <div class="row" role="group" aria-label="التنبؤ" id="tubePredict">
+        <button type="button" class="chip" data-p="fast" aria-pressed="false">ينصهر بسرعة</button>
+        <button type="button" class="chip" data-p="slow" aria-pressed="false">يبقى معظمه</button>
+      </div>
+    </div>
+    <canvas id="tubeCanvas" role="img" aria-label="أنبوب ماء فيه ثلج في القاع وجسيمات ملونة حسب الحرارة" dir="ltr"></canvas>
+    <div class="tube-legend"><span>بارد</span><span class="grad" aria-hidden="true"></span><span>ساخن</span></div>
+    <div class="row">
+      <button type="button" class="btn hot" id="tubeRun" disabled>▶ شغّل</button>
+      <button type="button" class="btn ghost" id="tubeReset">↺ إعادة</button>
+    </div>
+    <div class="readout">
+      <span class="pill">أعلى الأنبوب: <b class="ltr" id="tubeTop">20°C</b></span>
+      <span class="pill">أسفل الأنبوب: <b class="ltr" id="tubeBot">20°C</b></span>
+      <span class="pill">الثلج المتبقي: <b class="ltr" id="tubeIce">100%</b></span>
+      <span class="pill">الزمن: <b class="ltr" id="tubeTime">0 s</b></span>
+    </div>
+    <div class="result" id="tubeMsg">اختر موضع التسخين وتنبؤك، ثم شغّل. جرّب الحالتين وقارن.</div>
+  </div>
+
+  <div class="worked" data-worked>
+    <p class="wt">مثال محلول: لماذا يغلي الماء في الأعلى بينما يبقى الثلج في القاع؟</p>
+    <ol>
+      <li><b>ألاحظ:</b> التسخين من الأعلى. الماء في الأعلى يسخن فتقل كثافته.</li>
+      <li><b>أفكّر:</b> الماء الأقل كثافة يبقى فوق؛ لا يوجد سبب ليهبط إلى القاع.</li>
+      <li><b>إذن:</b> لا تتكون دورة حمل؛ الطاقة تصل إلى الأسفل فقط ببطء شديد (الماء موصل ضعيف).</li>
+      <li><b>النتيجة:</b> الماء في الأعلى قد يغلي، والثلج في القاع ينصهر ببطء شديد.</li>
+      <li><b>المقارنة:</b> عند التسخين من الأسفل يصعد الماء الساخن ويهبط البارد، فيدور الماء كله وتصل الطاقة إلى كل الأنبوب ← ينصهر الثلج أسرع.</li>
+    </ol>
+    <div class="row"><button type="button" class="btn ghost" data-next>الخطوة التالية ←</button><button type="button" class="btn ghost" data-all>أظهر الكل</button></div>
+  </div>
+
+  <div class="check" data-correct="c">
+    <p class="cq">في أي مما يلي <u>لا</u> يمكن أن يحدث الحمل الحراري؟</p>
+    <div class="opts">
+      <button type="button" class="opt" data-k="a">الهواء في غرفة</button>
+      <button type="button" class="opt" data-k="b">الماء في قِدر</button>
+      <button type="button" class="opt" data-k="c">قضيب نحاس</button>
+    </div>
+    <div class="fb" hidden></div>
+    <div class="why">الحمل يحتاج مادة تتحرك (سائل أو غاز). جسيمات النحاس الصلب لا تنساب من مكان لآخر، لذلك تنتقل فيه الطاقة بالتوصيل.</div>
+  </div>
+
+  <div class="remember">
+    <h4>🧠 تذكّر</h4>
+    <ul>
+      <li>الحمل: انتقال الطاقة بحركة السائل أو الغاز نفسه، في الموائع فقط.</li>
+      <li>الساخن كثافته أقل فيصعد، والبارد كثافته أكبر فيهبط ← دورة = تيار حمل.</li>
+      <li>التسخين من الأعلى لا يصنع تيار حمل جيدًا؛ التسخين من الأسفل يصنعه.</li>
+      <li>الأسهم في الرسوم تبيّن الاتجاه فقط.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== STATION 4 ========== -->
+<section class="station" id="s4">
+  <div class="st-head"><div class="st-num c">٤</div><h2>ما التطبيقات العملية للحمل؟</h2></div>
+  <p class="lead">تيارات الحمل الناتجة عن حركة الهواء أو الماء مفيدة جدًا في <b>التسخين</b> و<b>التبريد</b>. المهم: <b>أين</b> نضع مصدر الحرارة أو التبريد؟</p>
+
+  <h3><span class="phase">افهم</span> قاعدتان من الحمل</h3>
+  <div class="grid2">
+    <div class="card">🔥 <b>عنصر التسخين في الأسفل</b> (مثل الغلاية وسخان الماء): الماء الساخن يصعد والبارد يهبط ليُسخَّن، فيسخن كل الماء.</div>
+    <div class="card">❄️ <b>وحدة التبريد قرب السقف</b>: الهواء البارد كثافته أكبر فيهبط إلى الغرفة، ويصعد الهواء الدافئ إلى المكيف ليُبرَّد.</div>
+  </div>
+
+  <h3><span class="phase w">تنبّأ ثم شغّل</span> المحاكاة ٦: غرفة جلوس في الدوحة</h3>
+  <p>اختر الوضع وموضع الجهاز، ثم راقب ثلاثة مقاييس: قرب الأرض، عند مستوى رأس يوسف وهو واقف، وقرب السقف. <span class="illus">أرقام توضيحية</span></p>
+  <div class="sim">
+    <div class="predict">
+      <div class="row" role="group" aria-label="الوضع">
+        <b>الوضع:</b>
+        <button type="button" class="chip" data-mode="cool" aria-pressed="true">❄️ تبريد (صيف)</button>
+        <button type="button" class="chip" data-mode="heat" aria-pressed="false">🔥 تدفئة</button>
+      </div>
+      <div class="row" role="group" aria-label="موضع الجهاز">
+        <b>موضع الجهاز:</b>
+        <button type="button" class="chip" data-pos="high" aria-pressed="true">⬆ قرب السقف</button>
+        <button type="button" class="chip" data-pos="low" aria-pressed="false">⬇ قرب الأرض</button>
+      </div>
+      <div class="row" role="group" aria-label="التنبؤ" id="roomPredict">
+        <b>تنبؤك:</b>
+        <button type="button" class="chip" data-p="yes" aria-pressed="false">سيصل أثر الجهاز لمستوى الرأس جيدًا</button>
+        <button type="button" class="chip" data-p="no" aria-pressed="false">سيبقى مستوى الرأس بعيدًا عن المطلوب</button>
+      </div>
+    </div>
+    <canvas id="roomCanvas" role="img" aria-label="غرفة فيها مكيف أو مدفأة وجسيمات هواء تتحرك وثلاثة مقاييس حرارة" dir="ltr"></canvas>
+    <div class="row">
+      <button type="button" class="btn cold" id="roomRun" disabled>▶ شغّل الجهاز</button>
+      <button type="button" class="btn ghost" id="roomReset">↺ إعادة</button>
+    </div>
+    <div class="readout">
+      <span class="pill">قرب السقف: <b class="ltr" id="rCeil">—</b></span>
+      <span class="pill">مستوى الرأس: <b class="ltr" id="rHead">—</b></span>
+      <span class="pill">قرب الأرض: <b class="ltr" id="rFloor">—</b></span>
+      <span class="pill">الزمن: <b class="ltr" id="rTime">0 min</b></span>
+    </div>
+    <div class="result" id="roomMsg">اختر الإعدادات وتنبؤك ثم شغّل. جرّب الحالات الأربع.</div>
+  </div>
+
+  <div class="check" data-correct="a">
+    <p class="cq">يريد يوسف تجميد مكعبات ثلج بأسرع ما يمكن في ثلاجة يكون الهواء البارد فيها حرًّا في الحركة. أين يضع القالب غالبًا؟</p>
+    <div class="opts">
+      <button type="button" class="opt" data-k="a">في المنطقة السفلى؛ لأن الهواء الأبرد كثافته أكبر فيهبط</button>
+      <button type="button" class="opt" data-k="b">في الأعلى؛ لأن البرودة تصعد دائمًا</button>
+      <button type="button" class="opt" data-k="c">لا فرق إطلاقًا في أي مكان</button>
+    </div>
+    <div class="fb" hidden></div>
+    <div class="why">الهواء البارد أعلى كثافة فيهبط، لذلك تكون المنطقة السفلى غالبًا الأبرد. «البرودة تصعد» فكرة خاطئة؛ الذي يصعد هو المائع الأسخن الأقل كثافة.</div>
+  </div>
+
+  <div class="check" data-correct="b">
+    <p class="cq">صُمّمت غلاية بحيث يكون عنصر التسخين قرب غطائها في الأعلى. ما المتوقع؟</p>
+    <div class="opts">
+      <button type="button" class="opt" data-k="a">يسخن الماء كله أسرع</button>
+      <button type="button" class="opt" data-k="b">يسخن الماء العلوي فقط تقريبًا، ويبقى السفلي أبرد مدة طويلة</button>
+      <button type="button" class="opt" data-k="c">لا يسخن أي جزء من الماء</button>
+    </div>
+    <div class="fb" hidden></div>
+    <div class="why">الماء الساخن الأقل كثافة سيبقى في الأعلى، فلا تتكون دورة حمل جيدة. لهذا يوضع العنصر في الأسفل — كما رأيت في أنبوب الثلج.</div>
+  </div>
+
+  <h3><span class="phase k">مثال من قطر</span> مبانٍ تفكّر في الحرارة</h3>
+  <p>يذكر كتابك <b>متحف الفن الإسلامي في الدوحة</b> مثالًا على مبنى يُحافظ على برودته باستخدام الألوان الفاتحة وتيارات الحمل والمكيفات. بشكل عام، تعتمد المحافظة على برودة المبنى على: <b>مكان وحدات التبريد</b>، و<b>مواد العزل</b>، و<b>تصميم يسمح بتدفق تيارات الحمل</b>. لاحظ كيف تجتمع هنا أفكار المحطات ٢ و٣ و٤ معًا.</p>
+
+  <div class="remember">
+    <h4>🧠 تذكّر</h4>
+    <ul>
+      <li>المسخّن في الأسفل، والمكيف قرب السقف — حتى يعمل الحمل لصالحنا.</li>
+      <li>مكيف منخفض جدًا قد يبرّد الأرض ولا يبرّد مستوى الرؤوس جيدًا.</li>
+      <li>المنطقة السفلى في الثلاجة غالبًا الأبرد لأن الهواء البارد يهبط.</li>
+      <li>برودة المبنى = موضع التبريد + العزل + تصميم يسمح بتيارات الحمل.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== QUIZ ========== -->
+<section class="station" id="quiz">
+  <div class="st-head"><div class="st-num l">✓</div><h2>الاختبار القصير — ١٠ أسئلة</h2></div>
+  <p>أجب عن كل الأسئلة ثم اضغط «سلّم الإجابات». ستظهر النتيجة والتعليل بعد التسليم فقط. لا يُحفظ أي شيء — كل شيء يبقى على جهازك.</p>
+  <form id="quizForm" onsubmit="return false"></form>
+  <div class="row">
+    <button type="button" class="btn" id="quizSubmit">سلّم الإجابات</button>
+    <button type="button" class="btn ghost" id="quizReset">↺ أعد الاختبار</button>
+  </div>
+  <div id="quizScore" aria-live="polite"></div>
+
+  <div class="hw" style="margin-top:16px">
+    <b>📘 واجب هذا الأسبوع (من الرسالة الأسبوعية):</b> كتاب العلوم ص 212 رقم 1 و2، وص 225 رقم 1 و2. حلّها بنفسك في الكتاب يا يوسف؛ هذا الدرس يعطيك الأفكار، لا الإجابات الحرفية.
+  </div>
+</section>
+</main>
+
+<footer>درس تفاعلي ليوسف — الصف 8/1 · كل الأرقام في المحاكاة توضيحية · يعمل دون إنترنت ولا يجمع أي بيانات.</footer>
+
+<script>
+"use strict";
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------- motion control ---------- */
+  var mq = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+  var motionOn = !(mq && mq.matches);
+  var motionBtn = $("#motionBtn");
+  var sims = [];
+  var loopOn = false, lastTs = 0;
+  function frame(ts){
+    var dt = Math.min(0.05, Math.max(0, (ts - lastTs) / 1000));
+    lastTs = ts;
+    var any = false;
+    sims.forEach(function(s){ if (motionOn && s.active()) { any = true; s.update(dt); s.draw(); } });
+    if (any) { requestAnimationFrame(frame); } else { loopOn = false; }
+  }
+  function kick(){ if (!loopOn && motionOn) { loopOn = true; lastTs = performance.now(); requestAnimationFrame(frame); } }
+  function syncMotionBtn(){
+    motionBtn.setAttribute("aria-pressed", motionOn ? "false" : "true");
+    motionBtn.textContent = motionOn ? "⏸ إيقاف الحركة" : "▶ تشغيل الحركة";
+    document.body.classList.toggle("nomotion", !motionOn);
+  }
+  motionBtn.addEventListener("click", function(){
+    motionOn = !motionOn;
+    syncMotionBtn();
+    if (!motionOn) { sims.forEach(function(s){ if (s.onMotionOff) s.onMotionOff(); }); }
+    else { kick(); }
+  });
+  syncMotionBtn();
+
+  /* ---------- canvas helper ---------- */
+  function fit(cv, ratio, minH){
+    var w = cv.clientWidth || 320;
+    var h = Math.max(minH || 0, Math.round(w * ratio));
+    var d = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(w * d); cv.height = Math.round(h * d);
+    cv.style.height = h + "px";
+    var ctx = cv.getContext("2d");
+    ctx.setTransform(d, 0, 0, d, 0, 0);
+    return { ctx: ctx, w: w, h: h };
+  }
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function tempColor(t, lo, hi, alpha){
+    var x = clamp((t - lo) / (hi - lo), 0, 1);
+    var c1 = [29, 78, 216], c2 = [167, 139, 250], c3 = [220, 38, 38], r, g, b;
+    if (x < 0.5) { var u = x / 0.5; r = lerp(c1[0], c2[0], u); g = lerp(c1[1], c2[1], u); b = lerp(c1[2], c2[2], u); }
+    else { var v = (x - 0.5) / 0.5; r = lerp(c2[0], c3[0], v); g = lerp(c2[1], c3[1], v); b = lerp(c2[2], c3[2], v); }
+    return "rgba(" + Math.round(r) + "," + Math.round(g) + "," + Math.round(b) + "," + (alpha == null ? 1 : alpha) + ")";
+  }
+  function roundRect(ctx, x, y, w, h, r){
+    ctx.beginPath();
+    ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y); ctx.closePath();
+  }
+  function setPressed(group, btn){ group.forEach(function(b){ b.setAttribute("aria-pressed", b === btn ? "true" : "false"); }); }
+  var FONT = '-apple-system,"SF Arabic","Geeza Pro","Noto Naskh Arabic",Tahoma,sans-serif';
+
+  /* ---------- mini checks ---------- */
+  $$(".check").forEach(function(ch){
+    var correct = ch.getAttribute("data-correct");
+    var fb = $(".fb", ch), why = $(".why", ch);
+    why.hidden = true;
+    $$(".opt", ch).forEach(function(b){
+      b.addEventListener("click", function(){
+        $$(".opt", ch).forEach(function(o){ o.classList.remove("right", "wrong"); });
+        var ok = b.getAttribute("data-k") === correct;
+        b.classList.add(ok ? "right" : "wrong");
+        if (!ok) { var r = $('.opt[data-k="' + correct + '"]', ch); if (r) r.classList.add("right"); }
+        fb.hidden = false;
+        fb.className = "fb " + (ok ? "ok" : "no");
+        fb.textContent = ok ? "✓ أحسنت يا يوسف، إجابة صحيحة." : "✗ ليست هذه. الإجابة الصحيحة مظللة بالأخضر — اقرأ التعليل:";
+        why.hidden = false;
+      });
+    });
+  });
+
+  /* ---------- worked examples ---------- */
+  $$("[data-worked]").forEach(function(wk){
+    var items = $$("li", wk), shown = 1;
+    items.forEach(function(li, i){ if (i > 0) li.classList.add("hide"); });
+    var nextB = $("[data-next]", wk), allB = $("[data-all]", wk);
+    function upd(){ if (shown >= items.length) { nextB.disabled = true; allB.disabled = true; } }
+    nextB.addEventListener("click", function(){
+      if (shown < items.length) { items[shown].classList.remove("hide"); items[shown].classList.add("show"); shown++; }
+      upd();
+    });
+    allB.addEventListener("click", function(){ items.forEach(function(li){ li.classList.remove("hide"); }); shown = items.length; upd(); });
+  });
+
+  /* =========================================================
+     SIM 1: touch test
+     ========================================================= */
+  var MATS = [
+    { id: "cu", name: "نحاس", en: "Copper", metal: true, drop: 25, end: 48, color: "#b87333" },
+    { id: "al", name: "ألومنيوم", en: "Aluminium", metal: true, drop: 40, end: 42, color: "#a3acb8" },
+    { id: "fe", name: "فولاذ", en: "Steel", metal: true, drop: 110, end: 33, color: "#6b7280" },
+    { id: "gl", name: "زجاج", en: "Glass", metal: false, drop: null, end: 27, color: "#8fcfd6" },
+    { id: "wd", name: "خشب", en: "Wood", metal: false, drop: null, end: 26, color: "#9a6a3a" },
+    { id: "pl", name: "بلاستيك", en: "Plastic", metal: false, drop: null, end: 26, color: "#e5cf8f" }
+  ];
+  function feeling(rod, hand){
+    var d = rod - hand;
+    if (d >= 10) return "🔥 ساخن بوضوح";
+    if (d >= 4) return "♨️ دافئ";
+    if (d > -2) return "😐 لا فرق تقريبًا";
+    return "❄️ بارد";
+  }
+  (function(){
+    var box = $("#touchMats"), btns = [];
+    MATS.forEach(function(m){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", "false");
+      b.textContent = m.name;
+      b.addEventListener("click", function(){
+        setPressed(btns, b);
+        var fa = feeling(m.end, 20), fbv = feeling(m.end, 38);
+        $("#feelA").textContent = fa; $("#feelB").textContent = fbv;
+        $("#touchTemp").textContent = m.end + "°C";
+        var msg = $("#touchMsg");
+        if (fa !== fbv) {
+          msg.className = "result no";
+          msg.innerHTML = "القضيب نفسه، والمقياس يقرأ <span class='ltr'>" + m.end + "°C</span> للاثنين، لكن الإحساسين مختلفان! النتيجة تعتمد على يد المختبِر ← ليست قابلة للتكرار.";
+        } else {
+          msg.className = "result";
+          msg.innerHTML = "هنا اتفق الإحساسان، لكن هذا لا يكفي: جرّب مادة أخرى (مثل الفولاذ أو الزجاج) وانظر هل يبقى الاتفاق.";
+        }
+      });
+      btns.push(b); box.appendChild(b);
+    });
+  })();
+
+  /* =========================================================
+     SIM 2: wax pins
+     ========================================================= */
+  var wax = (function(){
+    var cv = $("#waxCanvas"), g = null;
+    var T_END = 180, SPEED = 12;
+    var st = {};
+    var prediction = null, predBtns = [];
+    function reset(){
+      st = { t: 0, running: false, dropped: {}, fall: {}, order: [], done: false };
+      $("#waxTime").textContent = "0 s";
+      $("#waxResult").className = "result";
+      $("#waxResult").textContent = prediction ? "جاهز. اضغط «شغّل التجربة»." : "اختر تنبؤك ثم شغّل.";
+      $("#waxRun").disabled = !prediction;
+      draw();
+    }
+    function frac(m, t){ return m.drop ? Math.min(1, t / m.drop) : Math.min(0.3, t / 650); }
+    function update(dt){
+      st.t = Math.min(T_END, st.t + dt * SPEED);
+      MATS.forEach(function(m){
+        if (m.drop && st.t >= m.drop && st.dropped[m.id] == null) { st.dropped[m.id] = m.drop; st.order.push(m.id); st.fall[m.id] = 0; }
+        if (st.dropped[m.id] != null) st.fall[m.id] = Math.min(1, st.fall[m.id] + dt * 2.2);
+      });
+      $("#waxTime").textContent = Math.round(st.t) + " s";
+      if (st.t >= T_END) { st.running = false; finishText(); }
+    }
+    function finish(){
+      st.t = T_END; st.running = false; st.order = [];
+      MATS.forEach(function(m){ if (m.drop) { st.dropped[m.id] = m.drop; st.fall[m.id] = 1; st.order.push(m.id); } });
+      $("#waxTime").textContent = T_END + " s";
+      draw(); finishText();
+    }
+    function finishText(){
+      if (st.done) return; st.done = true;
+      var names = st.order.map(function(id){ var m = MATS.filter(function(x){ return x.id === id; })[0]; return m.name + " (" + m.drop + " s)"; });
+      var first = st.order[0];
+      var ok = prediction === first;
+      var r = $("#waxResult");
+      r.className = "result " + (ok ? "ok" : "no");
+      r.innerHTML = (ok ? "✓ تنبؤك صحيح يا يوسف! " : "تنبؤك كان مختلفًا — وهذا جيد، فالتجربة تعلّمنا. ") +
+        "ترتيب السقوط: " + names.join(" ← ") + ". دبابيس الزجاج والخشب والبلاستيك لم تسقط خلال <span class='ltr'>180 s</span>: هذه مواد عازلة. <span class='illus'>أزمنة توضيحية</span>";
+    }
+    function draw(){
+      if (!g) return;
+      var ctx = g.ctx, w = g.w, h = g.h;
+      ctx.clearRect(0, 0, w, h);
+      // bath on the right
+      var bx = w - 78, by = 10, bw = 66, bh = h - 20;
+      ctx.fillStyle = "#e2e8f0"; roundRect(ctx, bx, by, bw, bh, 10); ctx.fill();
+      ctx.fillStyle = "rgba(239,68,68,0.28)"; roundRect(ctx, bx + 4, by + 18, bw - 8, bh - 22, 8); ctx.fill();
+      ctx.fillStyle = "#7c2d12"; ctx.font = "bold 12px " + FONT; ctx.textAlign = "center";
+      ctx.fillText("ماء ساخن", bx + bw / 2, by + 13);
+      // wavy steam
+      var rods = MATS.length, top = 26, gap = (h - 44) / rods;
+      var x0 = 26, x1 = w - 40;
+      ctx.textAlign = "right";
+      MATS.forEach(function(m, i){
+        var y = top + i * gap + gap * 0.45;
+        // rod
+        ctx.fillStyle = m.color; roundRect(ctx, x0, y - 4, x1 - x0, 8, 4); ctx.fill();
+        var f = frac(m, st.t);
+        if (f > 0) {
+          var xf = x1 - f * (x1 - x0);
+          var gr = ctx.createLinearGradient(x1, 0, xf, 0);
+          gr.addColorStop(0, "rgba(220,38,38,0.95)"); gr.addColorStop(1, "rgba(251,146,60,0.15)");
+          ctx.fillStyle = gr; roundRect(ctx, xf, y - 4, x1 - xf, 8, 4); ctx.fill();
+        }
+        // label
+        ctx.fillStyle = "#161b2b"; ctx.font = "bold 13px " + FONT;
+        ctx.fillText(m.name, x1 - 8, y - 9);
+        // wax + pin
+        var fall = st.fall[m.id] || 0;
+        var pinY = y + 6 + fall * (h - y - 22);
+        ctx.fillStyle = "#f2df9a"; ctx.beginPath(); ctx.arc(x0 + 12, y + 5, st.dropped[m.id] != null ? 3 : 5, 0, Math.PI * 2); ctx.fill();
+        ctx.save(); ctx.translate(x0 + 12, pinY);
+        ctx.rotate(fall * 1.2);
+        ctx.strokeStyle = "#334155"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, 14); ctx.stroke();
+        ctx.fillStyle = "#334155"; ctx.beginPath(); ctx.arc(0, 0, 2.5, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      });
+      ctx.fillStyle = "#94a3b8"; ctx.fillRect(0, h - 4, w - 80, 2);
+    }
+    function resize(){ g = fit(cv, 0.62, 260); draw(); }
+    MATS.forEach(function(m){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", "false"); b.textContent = m.name;
+      b.addEventListener("click", function(){
+        if (st.running) return;
+        prediction = m.id; setPressed(predBtns, b);
+        reset();
+      });
+      predBtns.push(b); $("#waxPredict").appendChild(b);
+    });
+    $("#waxRun").addEventListener("click", function(){
+      if (!prediction) return;
+      reset();
+      if (motionOn) { st.running = true; $("#waxRun").disabled = true; $("#waxResult").textContent = "التجربة تعمل… راقب الدبابيس."; kick(); }
+      else { finish(); }
+    });
+    $("#waxReset").addEventListener("click", function(){ prediction = null; setPressed(predBtns, null); reset(); });
+    var api = { active: function(){ return st.running; }, update: update, draw: function(){ draw(); if (!st.running) $("#waxRun").disabled = !prediction; },
+      onMotionOff: function(){ if (st.running) finish(); $("#waxRun").disabled = !prediction; }, resize: resize };
+    sims.push(api);
+    resize(); reset();
+    return api;
+  })();
+
+  /* =========================================================
+     SIM 3: insulated cups (fair test)
+     ========================================================= */
+  var cups = (function(){
+    var INS = [
+      { v: "none", name: "بلا عازل", f: 1.0 },
+      { v: "foil", name: "رقائق ألومنيوم (فلز)", f: 0.95 },
+      { v: "cotton", name: "قماش قطني", f: 0.6 },
+      { v: "bubble", name: "غلاف فقاعات هوائية", f: 0.42 },
+      { v: "wool", name: "صوف", f: 0.4 },
+      { v: "foam", name: "رغوة بوليسترين", f: 0.34 }
+    ];
+    var VARS = [
+      { k: "mat", label: "المادة العازلة (المستقل)", opts: INS.map(function(o){ return [o.v, o.name]; }) },
+      { k: "layers", label: "السماكة (عدد الطبقات)", opts: [["1", "طبقة"], ["2", "طبقتان"], ["3", "3 طبقات"]] },
+      { k: "vol", label: "حجم الماء", opts: [["100", "100 mL"], ["200", "200 mL"]] },
+      { k: "t0", label: "درجة البداية", opts: [["60", "60°C"], ["80", "80°C"]] },
+      { k: "time", label: "زمن الرصد", opts: [["5", "5 min"], ["10", "10 min"]] }
+    ];
+    var DEF = { A: { mat: "wool", layers: "2", vol: "200", t0: "80", time: "10" }, B: { mat: "cotton", layers: "1", vol: "100", t0: "80", time: "10" } };
+    var table = $("#cupTable"), sel = { A: {}, B: {} };
+    VARS.forEach(function(V){
+      var tr = document.createElement("tr");
+      var th = document.createElement("td"); th.innerHTML = "<b>" + V.label + "</b>"; tr.appendChild(th);
+      ["A", "B"].forEach(function(c){
+        var td = document.createElement("td");
+        var s = document.createElement("select");
+        s.setAttribute("aria-label", V.label + " — الكوب " + (c === "A" ? "أ" : "ب"));
+        V.opts.forEach(function(o){ var op = document.createElement("option"); op.value = o[0]; op.textContent = o[1]; s.appendChild(op); });
+        s.addEventListener("change", function(){ cleared(); });
+        sel[c][V.k] = s; td.appendChild(s); tr.appendChild(td);
+      });
+      table.appendChild(tr);
+    });
+    var cv = $("#cupCanvas"), g = null, data = null, prog = 1, running = false, cross = null;
+    var ROOM = 24;
+    function val(c, k){ return sel[c][k].value; }
+    function k(c){
+      var m = INS.filter(function(o){ return o.v === val(c, "mat"); })[0];
+      var R = (1 / m.f - 1) * Number(val(c, "layers"));
+      var volF = val(c, "vol") === "100" ? 1.6 : 1;
+      return 0.06 * volF / (1 + R);
+    }
+    function T(c, t){ var t0 = Number(val(c, "t0")); return ROOM + (t0 - ROOM) * Math.exp(-k(c) * Math.min(t, Number(val(c, "time")))); }
+    function cleared(){ data = null; cross = null; $("#cupRead").innerHTML = ""; $("#cupVerdict").className = "result"; $("#cupVerdict").textContent = "تغيّرت الإعدادات. اضغط «ابدأ الرصد»."; draw(); }
+    function setDefaults(){ ["A", "B"].forEach(function(c){ Object.keys(DEF[c]).forEach(function(kk){ sel[c][kk].value = DEF[c][kk]; }); }); cleared(); }
+    function makeFair(){ ["layers", "vol", "t0", "time"].forEach(function(kk){ sel.B[kk].value = sel.A[kk].value; }); if (val("A", "mat") === val("B", "mat")) { sel.B.mat.value = val("A", "mat") === "foam" ? "cotton" : "foam"; } cleared(); }
+    function run(){
+      var diffs = [];
+      VARS.forEach(function(V){ if (V.k !== "mat" && val("A", V.k) !== val("B", V.k)) diffs.push(V.label); });
+      var sameMat = val("A", "mat") === val("B", "mat");
+      var tA = Number(val("A", "time")), tB = Number(val("B", "time"));
+      data = { diffs: diffs, sameMat: sameMat, tmax: Math.max(tA, tB) };
+      prog = motionOn ? 0 : 1; cross = null;
+      var v = $("#cupVerdict");
+      var endA = T("A", tA), endB = T("B", tB), dA = Number(val("A", "t0")) - endA, dB = Number(val("B", "t0")) - endB;
+      data.endA = endA; data.endB = endB;
+      $("#cupRead").innerHTML = "<span class='pill'>الكوب أ: انخفض <b class='ltr'>" + dA.toFixed(1) + "°C</b></span><span class='pill'>الكوب ب: انخفض <b class='ltr'>" + dB.toFixed(1) + "°C</b></span>";
+      var nameA = sel.A.mat.options[sel.A.mat.selectedIndex].text, nameB = sel.B.mat.options[sel.B.mat.selectedIndex].text;
+      if (diffs.length) {
+        v.className = "result no";
+        v.innerHTML = "⚠️ <b>اختبار غير عادل.</b> اختلف بين الكوبين أيضًا: " + diffs.join("، ") + ". لا نستطيع أن نقول إن الفرق سببه المادة وحدها. اضغط «اجعله عادلًا» وأعد الرصد.";
+      } else if (sameMat) {
+        v.className = "result no";
+        v.innerHTML = "الظروف متساوية ✓، لكنك لم تغيّر المتغير المستقل (المادة نفسها في الكوبين)، فلا يوجد ما نقارنه. غيّر مادة أحد الكوبين.";
+      } else {
+        var better = dA < dB ? "أ (" + nameA + ")" : "ب (" + nameB + ")";
+        v.className = "result ok";
+        v.innerHTML = "✓ <b>اختبار عادل</b>: الفرق الوحيد هو نوع المادة. الكوب " + better + " فقد طاقة أقل، إذن عازله أكثر فاعلية في هذا الاختبار. <span class='illus'>نتيجة نموذج توضيحي</span>";
+      }
+      running = motionOn;
+      if (running) kick(); else draw();
+    }
+    function draw(){
+      if (!g) return;
+      var ctx = g.ctx, w = g.w, h = g.h;
+      ctx.clearRect(0, 0, w, h);
+      var L = 40, R = 18, Tp = 14, B = 34;
+      var pw = w - L - R, ph = h - Tp - B;
+      var tmax = data ? data.tmax : 10, ylo = 20, yhi = 90;
+      function X(t){ return L + (t / tmax) * pw; }
+      function Y(v){ return Tp + (1 - (v - ylo) / (yhi - ylo)) * ph; }
+      ctx.strokeStyle = "#e8e3d9"; ctx.lineWidth = 1; ctx.fillStyle = "#5d6478"; ctx.font = "12px " + FONT;
+      ctx.textAlign = "right";
+      for (var yv = 20; yv <= 90; yv += 10) { ctx.beginPath(); ctx.moveTo(L, Y(yv)); ctx.lineTo(w - R, Y(yv)); ctx.stroke(); ctx.fillText(yv + "°", L - 6, Y(yv) + 4); }
+      ctx.textAlign = "center";
+      for (var tv = 0; tv <= tmax; tv += (tmax > 5 ? 2 : 1)) { ctx.fillText(String(tv), X(tv), h - B + 16); }
+      ctx.fillText("الزمن (دقيقة)", L + pw / 2, h - 4);
+      ctx.strokeStyle = "#94a3b8"; ctx.beginPath(); ctx.moveTo(L, Tp); ctx.lineTo(L, h - B); ctx.lineTo(w - R, h - B); ctx.stroke();
+      if (!data) {
+        ctx.fillStyle = "#5d6478"; ctx.font = "14px " + FONT; ctx.fillText("سيظهر المنحنى هنا بعد بدء الرصد", L + pw / 2, Tp + ph / 2);
+        return;
+      }
+      [["A", "#c2410c", "أ"], ["B", "#1d4ed8", "ب"]].forEach(function(s){
+        var tEnd = Number(val(s[0], "time")) * prog;
+        ctx.strokeStyle = s[1]; ctx.lineWidth = 2; ctx.beginPath();
+        for (var i = 0; i <= 60; i++) { var t = tEnd * i / 60; var px = X(t), py = Y(T(s[0], t)); if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
+        ctx.stroke();
+        var ex = X(tEnd), ey = Y(T(s[0], tEnd));
+        ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(ex, ey, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = s[1]; ctx.beginPath(); ctx.arc(ex, ey, 4, 0, Math.PI * 2); ctx.fill();
+        if (prog >= 1) {
+          ctx.fillStyle = "#161b2b"; ctx.font = "bold 12px " + FONT; ctx.textAlign = ex > w - 70 ? "right" : "left";
+          var off = s[0] === "A" ? -10 : 16;
+          if (Math.abs(Y(data.endA) - Y(data.endB)) > 20) off = -10;
+          ctx.fillText(s[2] + " " + T(s[0], tEnd).toFixed(1) + "°", ex + (ex > w - 70 ? -8 : 8), ey + off);
+        }
+      });
+      if (cross != null && prog >= 1) {
+        var cx = X(cross);
+        ctx.strokeStyle = "#161b2b"; ctx.lineWidth = 1; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(cx, Tp); ctx.lineTo(cx, h - B); ctx.stroke(); ctx.setLineDash([]);
+      }
+    }
+    cv.addEventListener("pointerdown", function(e){
+      if (!data || prog < 1) return;
+      var rect = cv.getBoundingClientRect(), L = 40, R = 18, pw = rect.width - L - R;
+      var t = clamp((e.clientX - rect.left - L) / pw, 0, 1) * data.tmax;
+      t = Math.round(t * 2) / 2; cross = t;
+      var a = t <= Number(val("A", "time")) ? T("A", t).toFixed(1) + "°C" : "انتهى رصده";
+      var b = t <= Number(val("B", "time")) ? T("B", t).toFixed(1) + "°C" : "انتهى رصده";
+      $("#cupRead").innerHTML = "<span class='pill'>عند الدقيقة <b class='ltr'>" + t + "</b></span><span class='pill'>الكوب أ: <b class='ltr'>" + a + "</b></span><span class='pill'>الكوب ب: <b class='ltr'>" + b + "</b></span>";
+      draw();
+    });
+    $("#cupRun").addEventListener("click", run);
+    $("#cupFair").addEventListener("click", makeFair);
+    $("#cupReset").addEventListener("click", setDefaults);
+    function resize(){ g = fit(cv, 0.55, 230); draw(); }
+    var api = { active: function(){ return running; },
+      update: function(dt){ prog = Math.min(1, prog + dt / 2.5); if (prog >= 1) running = false; },
+      draw: draw, onMotionOff: function(){ prog = 1; running = false; draw(); }, resize: resize };
+    sims.push(api); resize(); setDefaults();
+    return api;
+  })();
+
+  /* =========================================================
+     SIM 4: roof insulation
+     ========================================================= */
+  var roof = (function(){
+    var RM = [
+      { v: "none", name: "بلا عزل", r: 0 },
+      { v: "metal", name: "لوح فلزي إضافي", r: 0.002 },
+      { v: "wood", name: "خشب", r: 0.09 },
+      { v: "fibre", name: "ألياف/صوف (هواء محبوس)", r: 0.25 },
+      { v: "foam", name: "رغوة عازلة (فقاعات هواء)", r: 0.28 }
+    ];
+    var mat = "fibre", air = false, btns = [];
+    var cv = $("#roofCanvas"), g = null, visible = false, packets = [], spawnAcc = 0;
+    var slider = $("#roofThick");
+    function index(){
+      var m = RM.filter(function(o){ return o.v === mat; })[0];
+      var th = mat === "none" ? 0 : Number(slider.value);
+      var R = 0.2 + m.r * th + (air ? 0.5 : 0);
+      return Math.round(100 * 0.2 / R);
+    }
+    function updateText(){
+      var th = Number(slider.value);
+      slider.disabled = mat === "none";
+      $("#roofThickV").textContent = mat === "none" ? "—" : th + " cm";
+      var idx = index();
+      $("#roofIdx").textContent = idx + " / 100";
+      var msg = $("#roofMsg");
+      if (mat === "none") { msg.className = "result no"; msg.textContent = "بلا عزل: الطاقة تعبر السقف بسهولة، والمكيف سيعمل بجهد كبير."; }
+      else if (mat === "metal") { msg.className = "result no"; msg.textContent = "الفلز موصل جيد؛ إضافة لوح فلزي لا تكاد تغيّر شيئًا مهما زادت السماكة."; }
+      else if (th === 0 && !air) { msg.className = "result"; msg.textContent = "السماكة صفر = كأنك لم تضع عازلًا. زِد السماكة."; }
+      else if (idx <= 15) { msg.className = "result ok"; msg.textContent = "ممتاز: تسرب منخفض. مادة فيها هواء محبوس وبسماكة جيدة."; }
+      else { msg.className = "result"; msg.textContent = "تحسّن واضح. هل تستطيع خفض المؤشر أكثر؟ جرّب مادة فيها هواء محبوس أو زد السماكة أو أضف طبقة هواء."; }
+      draw();
+    }
+    function geom(){
+      var w = g.w, h = g.h;
+      var roofY = h * 0.36, th = (mat === "none" ? 0 : Number(slider.value)) * 2.2 + (air ? 10 : 0);
+      return { w: w, h: h, roofTop: roofY - 8, slab: 10, insTop: roofY + 2, insH: th, roomTop: roofY + 2 + th, left: w * 0.12, right: w * 0.88 };
+    }
+    function draw(){
+      if (!g) return;
+      var ctx = g.ctx, G = geom();
+      ctx.clearRect(0, 0, G.w, G.h);
+      var sky = ctx.createLinearGradient(0, 0, 0, G.roofTop);
+      sky.addColorStop(0, "#fed7aa"); sky.addColorStop(1, "#fff7ed");
+      ctx.fillStyle = sky; ctx.fillRect(0, 0, G.w, G.roofTop);
+      ctx.fillStyle = "#f59e0b"; ctx.beginPath(); ctx.arc(G.w * 0.12, 26, 16, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#7c2d12"; ctx.font = "bold 13px " + FONT; ctx.textAlign = "center";
+      ctx.fillText("خارج البيت: حار جدًا (صيف)", G.w * 0.55, 24);
+      // roof slab
+      ctx.fillStyle = "#57534e"; ctx.fillRect(G.left - 10, G.roofTop, G.right - G.left + 20, G.slab);
+      // insulation
+      if (G.insH > 0) {
+        var airH = air ? 10 : 0, mh = G.insH - airH;
+        if (mh > 0) {
+          var col = { metal: "#94a3b8", wood: "#b08150", fibre: "#fde68a", foam: "#e0f2fe" }[mat] || "#ddd";
+          ctx.fillStyle = col; ctx.fillRect(G.left, G.insTop, G.right - G.left, mh);
+          if (mat === "fibre" || mat === "foam") {
+            ctx.fillStyle = "rgba(255,255,255,0.9)";
+            for (var i = 0; i < 40; i++) { var px = G.left + ((i * 37) % 100) / 100 * (G.right - G.left); var py = G.insTop + ((i * 53) % 100) / 100 * mh; ctx.beginPath(); ctx.arc(px, py, 2, 0, Math.PI * 2); ctx.fill(); }
+          }
+        }
+        if (air) { ctx.fillStyle = "#f0f9ff"; ctx.fillRect(G.left, G.insTop + Math.max(0, mh), G.right - G.left, airH); ctx.strokeStyle = "#7dd3fc"; ctx.strokeRect(G.left, G.insTop + Math.max(0, mh), G.right - G.left, airH); }
+      }
+      // room
+      ctx.fillStyle = "#eff6ff"; ctx.fillRect(G.left, G.roomTop, G.right - G.left, G.h - G.roomTop - 6);
+      ctx.strokeStyle = "#475569"; ctx.lineWidth = 3; ctx.strokeRect(G.left, G.roofTop, G.right - G.left, G.h - G.roofTop - 6);
+      ctx.fillStyle = "#1e3a8a"; ctx.font = "bold 13px " + FONT;
+      ctx.fillText("داخل البيت", (G.left + G.right) / 2, G.h - 18);
+      // packets
+      packets.forEach(function(p){
+        ctx.fillStyle = p.y > G.roomTop ? "rgba(234,88,12,0.95)" : "rgba(234,88,12,0.75)";
+        ctx.beginPath(); ctx.arc(p.x, p.y, 3.2, 0, Math.PI * 2); ctx.fill();
+      });
+      // static hint arrows when no motion
+      if (!motionOn) {
+        var n = Math.max(1, Math.round(index() / 12));
+        ctx.strokeStyle = "#ea580c"; ctx.lineWidth = 2;
+        for (var a = 0; a < n; a++) {
+          var ax = G.left + (a + 0.5) * (G.right - G.left) / n;
+          ctx.beginPath(); ctx.moveTo(ax, G.roofTop - 26); ctx.lineTo(ax, G.roomTop + 20); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(ax - 5, G.roomTop + 13); ctx.lineTo(ax, G.roomTop + 20); ctx.lineTo(ax + 5, G.roomTop + 13); ctx.stroke();
+        }
+      }
+    }
+    function update(dt){
+      var G = geom(), idx = index();
+      spawnAcc += dt * (2 + idx * 0.25);
+      while (spawnAcc > 1) { spawnAcc -= 1; packets.push({ x: lerp(G.left + 8, G.right - 8, Math.random()), y: G.roofTop - 30, pass: Math.random() * 100 < idx }); }
+      packets.forEach(function(p){
+        var inIns = p.y >= G.roofTop && p.y < G.roomTop;
+        if (inIns && !p.pass) { p.dead = (p.dead || 0) + dt; p.y += dt * 6; if (p.dead > 0.6) p.gone = true; }
+        else p.y += dt * (inIns ? 40 : 70);
+        if (p.y > G.h - 10) p.gone = true;
+      });
+      packets = packets.filter(function(p){ return !p.gone; });
+      if (packets.length > 140) packets.splice(0, packets.length - 140);
+    }
+    RM.forEach(function(m){
+      var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = m.name;
+      b.setAttribute("aria-pressed", m.v === mat ? "true" : "false");
+      b.addEventListener("click", function(){ mat = m.v; setPressed(btns, b); updateText(); });
+      btns.push(b); $("#roofMats").appendChild(b);
+    });
+    slider.addEventListener("input", updateText);
+    $("#roofAir").addEventListener("click", function(){ air = !air; this.setAttribute("aria-pressed", air ? "true" : "false"); updateText(); });
+    $("#roofReset").addEventListener("click", function(){
+      mat = "fibre"; air = false; slider.value = 10; packets = [];
+      btns.forEach(function(b, i){ b.setAttribute("aria-pressed", RM[i].v === mat ? "true" : "false"); });
+      $("#roofAir").setAttribute("aria-pressed", "false"); updateText();
+    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function(es){ es.forEach(function(e){ visible = e.isIntersecting; if (visible) kick(); }); }).observe(cv);
+    } else { visible = true; }
+    function resize(){ g = fit(cv, 0.6, 250); packets = []; draw(); }
+    var api = { active: function(){ return visible; }, update: update, draw: draw,
+      onMotionOff: function(){ packets = []; draw(); }, resize: resize };
+    sims.push(api); resize(); updateText(); kick();
+    return api;
+  })();
+
+  /* =========================================================
+     SIM 5: test tube convection with ice
+     ========================================================= */
+  var tube = (function(){
+    var N = 24, cv = $("#tubeCanvas"), g = null;
+    var heatPos = "top", pred = null, st = null, parts = [];
+    var T_END = 90, SPEED = 6, ICE_E = 420;
+    var heatBtns = $$("[data-heat]"), predBtns = $$("#tubePredict .chip");
+    function reset(){
+      st = { T: [], ice: ICE_E, t: 0, running: false, conv: 0, boil: false, done: false };
+      for (var i = 0; i < N; i++) st.T.push(20);
+      parts = [];
+      for (var p = 0; p < 70; p++) parts.push({ u: Math.random() * 2 - 1, v: Math.random() * 0.92 + 0.04 });
+      $("#tubeRun").disabled = !pred;
+      $("#tubeMsg").className = "result";
+      $("#tubeMsg").textContent = pred ? "جاهز. اضغط «شغّل»." : "اختر موضع التسخين وتنبؤك، ثم شغّل. جرّب الحالتين وقارن.";
+      readout(); draw();
+    }
+    function step(dt){
+      var T = st.T, P = 20, i;
+      var src = heatPos === "top" ? N - 1 : 0;
+      T[src] += P * dt;
+      // conduction (water: poor conductor)
+      var kd = 0.15, nT = T.slice();
+      for (i = 0; i < N; i++) {
+        var lap = (i > 0 ? T[i - 1] - T[i] : 0) + (i < N - 1 ? T[i + 1] - T[i] : 0);
+        nT[i] = T[i] + kd * lap * dt;
+      }
+      for (i = 0; i < N; i++) T[i] = nT[i];
+      // convection: warmer below colder -> rises / mixes
+      var mixed = 0;
+      for (var pass = 0; pass < 4; pass++) {
+        for (i = 0; i < N - 1; i++) {
+          if (T[i] > T[i + 1] + 0.02) { var m = (T[i] + T[i + 1]) / 2, d = (T[i] - m) * 0.9; T[i] -= d; T[i + 1] += d; mixed += d; }
+        }
+      }
+      st.conv = lerp(st.conv, clamp(mixed / (dt * 8), 0, 1), 0.1);
+      // ice at bottom absorbs energy
+      if (st.ice > 0 && T[0] > 0) { var a = Math.min(st.ice, T[0] * 1.2 * dt); st.ice -= a; T[0] -= a; }
+      // boiling cap
+      st.boil = false;
+      for (i = 0; i < N; i++) { if (T[i] >= 100) { T[i] = 100; st.boil = true; } }
+      st.t += dt;
+    }
+    function update(dt){
+      var sdt = dt * SPEED, sub = 6;
+      for (var s = 0; s < sub; s++) step(sdt / sub);
+      moveParts(dt);
+      readout();
+      if (st.t >= T_END) { st.running = false; doneText(); }
+    }
+    function moveParts(dt){
+      var c = st.conv;
+      parts.forEach(function(p){
+        var vx = -Math.PI * Math.sin(Math.PI * p.u) * Math.cos(Math.PI * p.v);
+        var vy = Math.PI * Math.cos(Math.PI * p.u) * Math.sin(Math.PI * p.v);
+        var sp = 0.09 * c;
+        p.u += (vx * sp + (Math.random() - 0.5) * 0.04) * dt * 3;
+        p.v += (vy * sp * 0.6 + (Math.random() - 0.5) * 0.03) * dt * 3;
+        p.u = clamp(p.u, -0.97, 0.97); p.v = clamp(p.v, 0.03, 0.97);
+      });
+    }
+    function finish(){
+      while (st.t < T_END) step(0.05);
+      st.running = false; readout(); draw(); doneText();
+    }
+    function readout(){
+      $("#tubeTop").textContent = Math.round(st.T[N - 1]) + "°C" + (st.boil ? " يغلي" : "");
+      $("#tubeBot").textContent = Math.round(st.T[0]) + "°C";
+      $("#tubeIce").textContent = Math.round(100 * st.ice / ICE_E) + "%";
+      $("#tubeTime").textContent = Math.round(st.t) + " s";
+    }
+    function doneText(){
+      if (st.done) return; st.done = true;
+      var left = st.ice / ICE_E, actual = left < 0.3 ? "fast" : "slow";
+      var ok = pred === actual, m = $("#tubeMsg");
+      m.className = "result " + (ok ? "ok" : "no");
+      if (heatPos === "top") {
+        m.innerHTML = (ok ? "✓ تنبؤ صحيح! " : "النتيجة خالفت تنبؤك. ") + "التسخين من الأعلى: الماء الساخن الأقل كثافة بقي فوق، فلم تتكون دورة حمل. بقي <span class='ltr'>" + Math.round(left * 100) + "%</span> من الثلج تقريبًا بينما الماء في الأعلى ساخن جدًا. جرّب الآن التسخين من الأسفل.";
+      } else {
+        m.innerHTML = (ok ? "✓ تنبؤ صحيح! " : "النتيجة خالفت تنبؤك. ") + "التسخين من الأسفل: الماء الساخن صعد والبارد هبط ← تيار حمل نقل الطاقة إلى كل الأنبوب، فانصهر معظم الثلج (بقي <span class='ltr'>" + Math.round(left * 100) + "%</span>).";
+      }
+    }
+    function draw(){
+      if (!g) return;
+      var ctx = g.ctx, w = g.w, h = g.h;
+      ctx.clearRect(0, 0, w, h);
+      var tw = Math.min(150, w * 0.36), tx = (w - tw) / 2, ty = 40, th = h - 80;
+      // layers
+      ctx.save(); roundRect(ctx, tx, ty, tw, th, 22); ctx.clip();
+      for (var i = 0; i < N; i++) {
+        var y = ty + th - (i + 1) * th / N;
+        ctx.fillStyle = tempColor(st.T[i], 0, 100, 0.35); ctx.fillRect(tx, y, tw, th / N + 1);
+      }
+      // ice
+      var ice = st.ice / ICE_E;
+      if (ice > 0.01) {
+        var s = 16 + 26 * Math.sqrt(ice);
+        ctx.fillStyle = "rgba(224,242,254,0.95)"; ctx.strokeStyle = "#38bdf8"; ctx.lineWidth = 2;
+        roundRect(ctx, tx + tw / 2 - s / 2, ty + th - s - 10, s, s, 5); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = "#475569"; ctx.fillRect(tx + tw / 2 - 12, ty + th - 10, 24, 6);
+      }
+      // particles
+      parts.forEach(function(p){
+        var px = tx + (p.u + 1) / 2 * tw, py = ty + th - p.v * th;
+        var li = clamp(Math.floor(p.v * N), 0, N - 1);
+        ctx.fillStyle = tempColor(st.T[li], 0, 100, 0.95);
+        ctx.beginPath(); ctx.arc(px, py, 3.4, 0, Math.PI * 2); ctx.fill();
+      });
+      // bubbles when boiling
+      if (st.boil) {
+        ctx.strokeStyle = "rgba(255,255,255,0.95)"; ctx.lineWidth = 1.5;
+        for (var b = 0; b < 8; b++) { var bx = tx + 12 + ((b * 29 + Math.floor(st.t * 7) * 13) % (tw - 24)); var by = ty + 10 + ((b * 17 + Math.floor(st.t * 9) * 7) % 34); ctx.beginPath(); ctx.arc(bx, by, 3, 0, Math.PI * 2); ctx.stroke(); }
+      }
+      ctx.restore();
+      ctx.strokeStyle = "#334155"; ctx.lineWidth = 3; roundRect(ctx, tx, ty, tw, th, 22); ctx.stroke();
+      // heater
+      var hy = heatPos === "top" ? ty + 14 : ty + th - 30;
+      var hx = tx + tw + 6;
+      ctx.fillStyle = st.running || st.t > 0 ? "#dc2626" : "#f87171";
+      roundRect(ctx, hx, hy, 18, 20, 4); ctx.fill();
+      ctx.fillStyle = "#161b2b"; ctx.font = "bold 12px " + FONT; ctx.textAlign = "left";
+      ctx.fillText("مسخّن", hx + 22, hy + 14);
+      ctx.textAlign = "right"; ctx.fillStyle = "#0c4a6e";
+      if (ice > 0.01) ctx.fillText("ثلج + ثقل", tx - 6, ty + th - 14);
+      // convection arrows (direction only)
+      if (st.conv > 0.15) {
+        ctx.strokeStyle = "rgba(15,23,42,0.6)"; ctx.lineWidth = 2;
+        arrow(ctx, tx + tw / 2, ty + th * 0.75, tx + tw / 2, ty + th * 0.3);
+        arrow(ctx, tx + tw * 0.1, ty + th * 0.3, tx + tw * 0.1, ty + th * 0.75);
+        arrow(ctx, tx + tw * 0.9, ty + th * 0.3, tx + tw * 0.9, ty + th * 0.75);
+        ctx.fillStyle = "#334155"; ctx.textAlign = "left"; ctx.fillText("الأسهم = الاتجاه", tx + tw + 6, ty + th * 0.55);
+      }
+      ctx.textAlign = "center"; ctx.fillStyle = "#334155"; ctx.font = "13px " + FONT;
+      ctx.fillText(heatPos === "top" ? "التسخين من الأعلى" : "التسخين من الأسفل", w / 2, 24);
+    }
+    function arrow(ctx, x1, y1, x2, y2){
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+      var a = Math.atan2(y2 - y1, x2 - x1);
+      ctx.beginPath(); ctx.moveTo(x2, y2); ctx.lineTo(x2 - 8 * Math.cos(a - 0.5), y2 - 8 * Math.sin(a - 0.5));
+      ctx.moveTo(x2, y2); ctx.lineTo(x2 - 8 * Math.cos(a + 0.5), y2 - 8 * Math.sin(a + 0.5)); ctx.stroke();
+    }
+    heatBtns.forEach(function(b){ b.addEventListener("click", function(){ if (st.running) return; heatPos = b.getAttribute("data-heat"); setPressed(heatBtns, b); pred = null; setPressed(predBtns, null); reset(); }); });
+    predBtns.forEach(function(b){ b.addEventListener("click", function(){ if (st.running) return; pred = b.getAttribute("data-p"); setPressed(predBtns, b); reset(); }); });
+    $("#tubeRun").addEventListener("click", function(){
+      if (!pred) return; reset();
+      $("#tubeRun").disabled = true;
+      if (motionOn) { st.running = true; $("#tubeMsg").textContent = "يعمل… راقب ألوان الجسيمات والثلج."; kick(); } else finish();
+    });
+    $("#tubeReset").addEventListener("click", function(){ pred = null; setPressed(predBtns, null); reset(); });
+    function resize(){ g = fit(cv, 0.8, 300); if (g.h > 460) { g = fit(cv, 460 / (cv.clientWidth || 460), 300); } draw(); }
+    var api = { active: function(){ return st.running; }, update: update, draw: function(){ draw(); if (!st.running) $("#tubeRun").disabled = !pred; },
+      onMotionOff: function(){ if (st.running) finish(); }, resize: resize };
+    sims.push(api); reset(); resize();
+    return api;
+  })();
+
+  /* =========================================================
+     SIM 6: room AC / heater
+     ========================================================= */
+  var room = (function(){
+    var N = 12, cv = $("#roomCanvas"), g = null;
+    var mode = "cool", pos = "high", pred = null, st = null, parts = [];
+    var T_END = 600, SPEED = 40;
+    var modeBtns = $$("[data-mode]"), posBtns = $$("[data-pos]"), predBtns = $$("#roomPredict .chip");
+    var HEAD = 6; // layer index at standing head height (illustrative)
+    function startT(){ return mode === "cool" ? 34 : 15; }
+    function reset(){
+      st = { T: [], t: 0, running: false, done: false };
+      for (var i = 0; i < N; i++) st.T.push(startT() + (mode === "cool" ? i * 0.15 : i * 0.1));
+      parts = [];
+      for (var p = 0; p < 80; p++) parts.push({ x: Math.random(), y: Math.random() });
+      $("#roomRun").disabled = !pred;
+      $("#roomMsg").className = "result";
+      $("#roomMsg").textContent = pred ? "جاهز. اضغط «شغّل الجهاز»." : "اختر الإعدادات وتنبؤك ثم شغّل. جرّب الحالات الأربع.";
+      readout(); draw();
+    }
+    function circulating(){ return (mode === "cool" && pos === "high") || (mode === "heat" && pos === "low"); }
+    function step(dt){
+      var T = st.T, i;
+      var src = pos === "high" ? N - 1 : 1;
+      var target = mode === "cool" ? 16 : 40;
+      T[src] += (target - T[src]) * 0.08 * dt;
+      // walls exchange with outside (illustrative)
+      var out = mode === "cool" ? 40 : 10;
+      for (i = 0; i < N; i++) T[i] += (out - T[i]) * 0.0009 * dt;
+      // slow conduction in air
+      var nT = T.slice();
+      for (i = 0; i < N; i++) { var lap = (i > 0 ? T[i - 1] - T[i] : 0) + (i < N - 1 ? T[i + 1] - T[i] : 0); nT[i] = T[i] + 0.004 * lap * dt; }
+      for (i = 0; i < N; i++) T[i] = nT[i];
+      // convection: warmer air under colder air -> overturn
+      for (var pass = 0; pass < 3; pass++) {
+        for (i = 0; i < N - 1; i++) { if (T[i] > T[i + 1] + 0.01) { var m = (T[i] + T[i + 1]) / 2, d = (T[i] - m) * 0.25; T[i] -= d; T[i + 1] += d; } }
+      }
+      st.t += dt;
+    }
+    function update(dt){
+      var sdt = dt * SPEED, sub = 10;
+      for (var s = 0; s < sub; s++) step(sdt / sub);
+      moveParts(dt); readout();
+      if (st.t >= T_END) { st.running = false; doneText(); }
+    }
+    function moveParts(dt){
+      var circ = circulating();
+      parts.forEach(function(p){
+        var vx, vy;
+        if (circ) {
+          var sgn = mode === "cool" ? -1 : 1; // cool: down on AC side (right); heat: up on heater side (right)
+          vx = sgn * Math.PI * Math.sin(Math.PI * p.x) * Math.cos(Math.PI * p.y);
+          vy = -sgn * Math.PI * Math.cos(Math.PI * p.x) * Math.sin(Math.PI * p.y);
+          vx *= 0.06; vy *= 0.06;
+        } else {
+          var near = pos === "low" ? p.y < 0.28 : p.y > 0.72;
+          vx = near ? -0.12 : 0; vy = 0;
+        }
+        p.x += vx * dt + (Math.random() - 0.5) * 0.01;
+        p.y += vy * dt + (Math.random() - 0.5) * 0.01;
+        if (!circ && p.x < 0.03) p.x = 0.97;
+        p.x = clamp(p.x, 0.02, 0.98); p.y = clamp(p.y, 0.02, 0.98);
+      });
+    }
+    function finish(){ while (st.t < T_END) step(0.5); st.running = false; readout(); draw(); doneText(); }
+    function f1(v){ return v.toFixed(1) + "°C"; }
+    function readout(){
+      $("#rCeil").textContent = f1(st.T[N - 1]); $("#rHead").textContent = f1(st.T[HEAD]); $("#rFloor").textContent = f1(st.T[0]);
+      $("#rTime").textContent = Math.round(st.t / 60) + " min";
+    }
+    function doneText(){
+      if (st.done) return; st.done = true;
+      var head = st.T[HEAD], good = mode === "cool" ? head < 26 : head > 20;
+      var ok = (pred === "yes") === good, m = $("#roomMsg");
+      m.className = "result " + (ok ? "ok" : "no");
+      var lead = ok ? "✓ تنبؤك صحيح. " : "النتيجة خالفت تنبؤك. ";
+      var t;
+      if (mode === "cool" && pos === "high") t = "المكيف قرب السقف: الهواء البارد الأعلى كثافة هبط، والدافئ صعد إليه ليُبرَّد ← دارت تيارات الحمل وبرد مستوى الرأس.";
+      else if (mode === "cool") t = "المكيف قرب الأرض: الهواء البارد بقي في الأسفل لأنه أثقل، ولم يصعد إلى مستوى الرأس جيدًا؛ بقي أعلى الغرفة حارًا.";
+      else if (pos === "low") t = "المدفأة في الأسفل: الهواء الساخن الأقل كثافة صعد والبارد هبط إليها ← دفئت الغرفة كلها.";
+      else t = "المدفأة قرب السقف: الهواء الساخن بقي فوق، ولم تتكون دورة حمل؛ بقي مستوى الرأس والأرض باردين.";
+      m.innerHTML = lead + t + " <span class='illus'>نموذج توضيحي</span>";
+    }
+    function draw(){
+      if (!g) return;
+      var ctx = g.ctx, w = g.w, h = g.h;
+      ctx.clearRect(0, 0, w, h);
+      var L = 16, R = w - 16, Tp = 16, B = h - 16, rw = R - L, rh = B - Tp;
+      for (var i = 0; i < N; i++) {
+        var y = B - (i + 1) * rh / N;
+        ctx.fillStyle = tempColor(st.T[i], 14, 40, 0.3); ctx.fillRect(L, y, rw, rh / N + 1);
+      }
+      ctx.strokeStyle = "#334155"; ctx.lineWidth = 3; ctx.strokeRect(L, Tp, rw, rh);
+      // device on right wall
+      var dy = pos === "high" ? Tp + 10 : B - 40;
+      ctx.fillStyle = mode === "cool" ? "#e0f2fe" : "#fee2e2"; ctx.strokeStyle = mode === "cool" ? "#0369a1" : "#b91c1c"; ctx.lineWidth = 2;
+      roundRect(ctx, R - 70, dy, 62, 28, 6); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = "#161b2b"; ctx.font = "bold 12px " + FONT; ctx.textAlign = "center";
+      ctx.fillText(mode === "cool" ? "مكيّف" : "مدفأة", R - 39, dy + 18);
+      // person (illustrative)
+      var px = L + rw * 0.4, headY = B - (HEAD + 0.5) * rh / N;
+      ctx.strokeStyle = "#1f2937"; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(px, headY, 9, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(px, headY + 9); ctx.lineTo(px, B - 30); ctx.moveTo(px, B - 30); ctx.lineTo(px - 10, B - 2); ctx.moveTo(px, B - 30); ctx.lineTo(px + 10, B - 2);
+      ctx.moveTo(px - 14, headY + 26); ctx.lineTo(px + 14, headY + 26); ctx.stroke();
+      ctx.fillStyle = "#1f2937"; ctx.font = "12px " + FONT; ctx.fillText("يوسف", px, headY - 14);
+      // thermometers on left wall
+      [[N - 1, "سقف"], [HEAD, "رأس"], [0, "أرض"]].forEach(function(o){
+        var yy = B - (o[0] + 0.5) * rh / N;
+        ctx.fillStyle = "#fff"; roundRect(ctx, L + 6, yy - 11, 78, 22, 6); ctx.fill();
+        ctx.strokeStyle = "#cbd5e1"; ctx.lineWidth = 1; ctx.stroke();
+        ctx.fillStyle = "#161b2b"; ctx.font = "bold 12px " + FONT; ctx.textAlign = "center";
+        ctx.fillText(o[1] + " " + st.T[o[0]].toFixed(1) + "°", L + 45, yy + 4);
+      });
+      // particles
+      parts.forEach(function(p){
+        var x = L + p.x * rw, y = B - p.y * rh;
+        var li = clamp(Math.floor(p.y * N), 0, N - 1);
+        ctx.fillStyle = tempColor(st.T[li], 14, 40, 0.9);
+        ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.font = "11px " + FONT; ctx.fillStyle = "#475569"; ctx.textAlign = "center";
+      ctx.fillText("الألوان: أزرق بارد ← أحمر حار", L + rw * 0.62, B - 6);
+    }
+    function pickGroup(btns, attr, setter){
+      btns.forEach(function(b){ b.addEventListener("click", function(){ if (st.running) return; setter(b.getAttribute(attr)); setPressed(btns, b); pred = null; setPressed(predBtns, null); reset(); }); });
+    }
+    pickGroup(modeBtns, "data-mode", function(v){ mode = v; });
+    pickGroup(posBtns, "data-pos", function(v){ pos = v; });
+    predBtns.forEach(function(b){ b.addEventListener("click", function(){ if (st.running) return; pred = b.getAttribute("data-p"); setPressed(predBtns, b); reset(); }); });
+    $("#roomRun").addEventListener("click", function(){
+      if (!pred) return; reset(); $("#roomRun").disabled = true;
+      if (motionOn) { st.running = true; $("#roomMsg").textContent = "يعمل… راقب المقاييس الثلاثة وحركة الهواء."; kick(); } else finish();
+    });
+    $("#roomReset").addEventListener("click", function(){ pred = null; setPressed(predBtns, null); reset(); });
+    function resize(){ g = fit(cv, 0.62, 260); draw(); }
+    var api = { active: function(){ return st.running; }, update: update, draw: function(){ draw(); if (!st.running) $("#roomRun").disabled = !pred; },
+      onMotionOff: function(){ if (st.running) finish(); }, resize: resize };
+    sims.push(api); reset(); resize();
+    return api;
+  })();
+
+  /* ---------- resize handling ---------- */
+  var rt = null;
+  window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(function(){ sims.forEach(function(s){ s.resize(); }); }, 150); });
+
+  /* =========================================================
+     QUIZ
+     ========================================================= */
+  var QUIZ = [
+    { q: "لماذا لا يكفي اختبار اللمس وحده لمقارنة توصيل المواد؟", o: ["لأن القضبان تنكسر عند لمسها", "لأن الإحساس يتأثر بحرارة يد المختبِر فتختلف النتائج بين الأشخاص", "لأن اللمس أدق من مقياس الحرارة", "لأن الحرارة لا تنتقل في الفلزات"], a: 1,
+      w: "اليد الباردة والساخنة تشعران بالقضيب نفسه بشكل مختلف؛ الطريقة العلمية الجيدة لا تعتمد على من يجري الاختبار." },
+    { q: "تكون التجربة «قابلة لتكرار نتائجها» Reproducible عندما…", o: ["يجريها الشخص نفسه مرة واحدة فقط", "يكررها شخص آخر بالخطوات والظروف نفسها فيحصل على نتائج متقاربة", "تعطي نتائج مختلفة في كل مرة", "لا تحتاج إلى أدوات قياس"], a: 1,
+      w: "قابلية التكرار تعني أن غيرك يحصل على نتائج متقاربة إذا اتبع الخطوات والظروف نفسها." },
+    { q: "في تجربة قضبان الشمع، ما المتغير الذي يجب أن نغيّره فقط؟", o: ["طول القضيب", "درجة حرارة الماء", "نوع مادة القضيب", "سمك القضيب"], a: 2,
+      w: "نوع المادة هو المتغير المستقل؛ الطول والسمك وحرارة الماء متغيرات مضبوطة." },
+    { q: "أي القضبان يُتوقع أن يسقط دبوسه أولًا حسب الدرس؟", o: ["الخشب", "الفولاذ", "الزجاج", "النحاس"], a: 3,
+      w: "الفلزات موصلات أفضل من اللافلزات، والنحاس الأفضل توصيلًا بين فلزات الدرس." },
+    { q: "جهاز اللحام له رأس فلزي ومقبض بلاستيكي. لماذا؟", o: ["الرأس عازل والمقبض موصل", "الرأس موصل ينقل الحرارة، والمقبض عازل يحمي اليد", "كلاهما موصل", "ليكون الجهاز أخف فقط"], a: 1,
+      w: "نختار الموصل حيث نريد نقل الحرارة، والعازل حيث نريد إبطاءها." },
+    { q: "لماذا تكون المواد التي تحتوي على هواء محبوس عوازل جيدة؟", o: ["لأن الهواء الساكن موصل ضعيف للحرارة", "لأن الهواء موصل ممتاز", "لأن الهواء يشع البرودة", "لأنها أثقل"], a: 0,
+      w: "الهواء الساكن المحبوس في فراغات صغيرة موصل ضعيف، فيبطئ انتقال الطاقة." },
+    { q: "أراد طالب مقارنة عازلين، فلفّ كوبًا بطبقة واحدة وآخر بثلاث طبقات من مادة أخرى. ما الحكم؟", o: ["اختبار عادل", "اختبار غير عادل لأن السماكة تغيّرت مع المادة", "اختبار عادل لأن المادتين مختلفتان", "لا يمكن مقارنة العوازل أبدًا"], a: 1,
+      w: "غيّر متغيرين (المادة والسماكة)، فلا نعرف سبب الفرق." },
+    { q: "أين يحدث الحمل الحراري؟", o: ["في الأجسام الصلبة فقط", "في السوائل والغازات (الموائع)", "في الفراغ فقط", "في الفلزات فقط"], a: 1,
+      w: "الحمل يحتاج حركة المادة نفسها، وهذا ممكن في السوائل والغازات." },
+    { q: "سُخّن أنبوب ماء من الأعلى وفي قاعه ثلج. لماذا بقي الثلج تقريبًا؟", o: ["لأن الماء الساخن الأقل كثافة بقي في الأعلى ولم تتكون دورة حمل", "لأن الثلج عازل مثالي", "لأن الحرارة تنتقل دائمًا إلى الأعلى بالتوصيل", "لأن الماء موصل ممتاز"], a: 0,
+      w: "الساخن يبقى فوق؛ لا دورة حمل، والماء موصل ضعيف فتصل الطاقة إلى الأسفل ببطء." },
+    { q: "لماذا تُركّب المكيفات عادة قرب السقف؟", o: ["لأن الهواء البارد أقل كثافة فيصعد", "لأن الهواء البارد أعلى كثافة فيهبط وتتكون تيارات حمل تبرّد الغرفة", "لحمايتها من الغبار فقط", "لأن الحمل لا يحدث في الهواء"], a: 1,
+      w: "الهواء البارد يهبط والدافئ يصعد إلى المكيف، فتدور تيارات الحمل وتبرد الغرفة كلها." }
+  ];
+  function buildQuiz(){
+    var f = $("#quizForm"); f.innerHTML = "";
+    QUIZ.forEach(function(item, i){
+      var d = document.createElement("fieldset"); d.className = "qz"; d.style.border = "1px solid #e3ddd2";
+      var lg = document.createElement("legend"); lg.className = "qt"; lg.textContent = (i + 1) + ") " + item.q; d.appendChild(lg);
+      item.o.forEach(function(o, j){
+        var lb = document.createElement("label");
+        var r = document.createElement("input"); r.type = "radio"; r.name = "q" + i; r.value = String(j);
+        var sp = document.createElement("span"); sp.textContent = o;
+        lb.appendChild(r); lb.appendChild(sp); d.appendChild(lb);
+      });
+      var wy = document.createElement("div"); wy.className = "qwhy"; wy.textContent = "التعليل: " + item.w; d.appendChild(wy);
+      f.appendChild(d);
+    });
+    $("#quizScore").innerHTML = "";
+    $("#quizSubmit").disabled = false;
+  }
+  $("#quizSubmit").addEventListener("click", function(){
+    var unanswered = 0;
+    QUIZ.forEach(function(item, i){ if (!$('input[name="q' + i + '"]:checked')) unanswered++; });
+    if (unanswered && !this.dataset.confirm) {
+      this.dataset.confirm = "1";
+      $("#quizScore").innerHTML = "<div class='result no'>بقي " + unanswered + " سؤال بلا إجابة. أكملها، أو اضغط «سلّم الإجابات» مرة أخرى للتسليم كما هو.</div>";
+      return;
+    }
+    delete this.dataset.confirm;
+    var score = 0;
+    $$(".qz").forEach(function(fs, i){
+      fs.classList.add("done");
+      var chosen = $('input[name="q' + i + '"]:checked', fs);
+      $$("label", fs).forEach(function(lb, j){
+        lb.classList.remove("right", "wrong");
+        if (j === QUIZ[i].a) lb.classList.add("right");
+        else if (chosen && Number(chosen.value) === j) lb.classList.add("wrong");
+        $("input", lb).disabled = true;
+      });
+      if (chosen && Number(chosen.value) === QUIZ[i].a) score++;
+    });
+    var msg = score >= 9 ? "ممتاز يا يوسف! فهمك للتوصيل والحمل قوي." : score >= 7 ? "عمل جيد يا يوسف. راجع التعليلات للأسئلة التي فاتتك." : "لا بأس — راجع المحطات المرتبطة بالأسئلة الخاطئة ثم أعد المحاولة.";
+    $("#quizScore").innerHTML = "<div class='score'>نتيجتك: <span class='ltr'>" + score + " / " + QUIZ.length + "</span><br><span style='font-size:16px;font-weight:600'>" + msg + "</span></div>";
+    this.disabled = true;
+  });
+  $("#quizReset").addEventListener("click", function(){ delete $("#quizSubmit").dataset.confirm; buildQuiz(); });
+  buildQuiz();
+})();
+</script>
+</body>
+</html>
