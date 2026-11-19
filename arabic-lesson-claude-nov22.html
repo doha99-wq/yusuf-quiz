@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f5fbf">
+<title>العربية (نحو) — الأسبوع 22–26 نوفمبر 2026 — الأفعال الخمسة والمبني من الأفعال</title>
+<style>
+/*CORE-CSS-START*/
+:root{--bg:#f4f6fb;--card:#fff;--ink:#1c2230;--muted:#586174;--pri:#1f5fbf;--pri-soft:#e7efff;--ok:#1b7f3b;--ok-soft:#e4f5e9;--bad:#b3261e;--bad-soft:#fdeceb;--warn-soft:#fff4dc;--line:#d8dde8;--hot:#d0342c;--cold:#1e6fd9}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html.nomotion{scroll-behavior:auto}
+body{margin:0;font-family:-apple-system,"SF Arabic","Geeza Pro","Noto Naskh Arabic","Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:17px;padding:0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+header.top{background:linear-gradient(135deg,var(--pri),#3b7de2);color:#fff;padding:calc(16px + env(safe-area-inset-top)) 16px 14px}
+header.top h1{margin:0 0 4px;font-size:1.35rem;line-height:1.45}
+header.top .sub{opacity:.93;font-size:.95rem}
+nav.stations{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:6px 8px;-webkit-overflow-scrolling:touch}
+nav.stations a{flex:0 0 auto;min-height:44px;display:flex;align-items:center;padding:0 12px;border-radius:22px;background:var(--pri-soft);color:var(--pri);text-decoration:none;font-weight:600;font-size:.9rem}
+main{max-width:860px;margin:0 auto;padding:10px 12px 90px}
+section.station{background:var(--card);border-radius:16px;padding:16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.07);scroll-margin-top:64px}
+h2{font-size:1.22rem;margin:.1em 0 .5em;color:var(--pri);line-height:1.5}
+h3{font-size:1.05rem;margin:1.1em 0 .4em}
+p{margin:.45em 0}
+.note{background:var(--warn-soft);border-inline-start:4px solid #e0a100;padding:10px 12px;border-radius:10px;font-size:.95rem;margin:10px 0}
+.info{background:var(--pri-soft);border-inline-start:4px solid var(--pri);padding:10px 12px;border-radius:10px;margin:10px 0}
+.key{background:#f0f7f1;border-inline-start:4px solid var(--ok);padding:10px 12px;border-radius:10px;margin:10px 0}
+.tag{display:inline-block;font-size:.76rem;background:#eceff5;color:var(--muted);padding:0 8px;border-radius:10px;margin-inline-start:6px;vertical-align:middle;line-height:1.8;font-weight:normal}
+.illus{font-size:.82rem;color:var(--muted)}
+button{font:inherit;min-height:44px;min-width:44px;padding:8px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5}
+button.pri{background:var(--pri);color:#fff;border-color:var(--pri);font-weight:600}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.sel{outline:3px solid var(--pri);outline-offset:-1px;background:var(--pri-soft)}
+button.right{background:var(--ok-soft);border-color:var(--ok);color:#0f5129;opacity:1}
+button.wrong{background:var(--bad-soft);border-color:var(--bad);color:#7a1a14;opacity:1}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts button{text-align:start;width:100%}
+.opts.inline{flex-direction:row;flex-wrap:wrap}
+.opts.inline button{width:auto}
+.check{border:1px solid var(--line);border-radius:14px;padding:12px;margin:12px 0;background:#fbfcff}
+.check .q{font-weight:600;margin-bottom:8px}
+.fb{margin-top:10px;padding:10px 12px;border-radius:10px;display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--ok-soft);color:#0f5129}
+.fb.no{background:var(--bad-soft);color:#7a1a14}
+.fb.wait{background:var(--warn-soft);color:#5d3d00}
+canvas{display:block;width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;touch-action:manipulation;margin:8px 0}
+input[type=range]{width:100%;min-height:44px;accent-color:var(--pri)}
+.numwrap{display:inline-flex;gap:4px;align-items:center;direction:ltr}
+input.num{font:inherit;min-height:44px;width:7em;padding:6px 10px;border:1px solid var(--line);border-radius:10px;text-align:center;direction:ltr}
+.steps{border:1px dashed var(--line);border-radius:14px;padding:10px 12px;margin:12px 0;background:#fffdf7}
+.steps h3{margin-top:.2em}
+.steps ol{padding-inline-start:1.4em;margin:6px 0}
+.steps li{margin:6px 0}
+.steps li.hid{display:none}
+.steps li.new{animation:fadein .45s}
+@keyframes fadein{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+html.nomotion *,html.nomotion *::before,html.nomotion *::after{animation:none!important;transition:none!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.95rem}
+td,th{border:1px solid var(--line);padding:6px;text-align:center}
+th{background:#f1f4fa}
+tr.hl td{background:#fff3c4;font-weight:700}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+#motionBtn{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom));left:calc(12px + env(safe-area-inset-left));z-index:30;box-shadow:0 2px 8px rgba(0,0,0,.18);background:#fff;font-size:.9rem}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px;margin:8px 0}
+.readout div{background:#f1f4fa;border-radius:10px;padding:6px;text-align:center;font-size:.9rem}
+.readout b{display:block;font-size:1.2rem;direction:ltr}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+.quiz .qitem{border:1px solid var(--line);border-radius:14px;padding:12px;margin:12px 0}
+.quiz .qitem.ok{border-color:var(--ok);background:#f6fcf7}
+.quiz .qitem.no{border-color:var(--bad);background:#fff8f7}
+.quiz .qnum{font-weight:700;color:var(--pri)}
+.score{font-size:1.25rem;font-weight:700;margin:10px 0}
+.pill{display:inline-block;padding:0 10px;border-radius:12px;font-weight:700}
+.pill.hot{background:#fde3e1;color:var(--hot)}
+.pill.cold{background:#e2edfd;color:var(--cold)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 12px 30px}
+.big{font-size:1.5rem;font-weight:700}
+/*CORE-CSS-END*/
+.word{font-size:2.1rem;font-weight:700;text-align:center;margin:8px 0;line-height:1.6}
+.word .nun{color:var(--ok);background:#e4f5e9;border-radius:6px;padding:0 2px}
+.word .gone{color:var(--bad);text-decoration:line-through;opacity:.7}
+.word .suf{color:var(--pri);background:var(--pri-soft);border-radius:6px;padding:0 2px}
+.word .tool{color:#8a5a00}
+.irab{background:#f7f7fb;border-radius:10px;padding:8px 12px;margin:8px 0;border:1px solid var(--line)}
+.flip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.flip button{min-height:96px;font-size:1.05rem;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.flip button .f{font-size:1.5rem;font-weight:700;color:var(--pri)}
+.sortrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding:8px 0}
+.sortrow .w{font-size:1.35rem;font-weight:700;min-width:5.5em}
+.sortrow .why{flex-basis:100%;display:none;font-size:.93rem;padding:6px 10px;border-radius:8px}
+.sortrow .why.show{display:block}
+.sortrow .why.ok{background:var(--ok-soft)}
+.sortrow .why.no{background:var(--bad-soft)}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>العربية (نحو): الأفعال الخمسة، والمبني من الأفعال</h1>
+  <div class="sub">درس تفاعلي ليوسف — الصف الثامن 8/1 — الأسبوع من الأحد 22 إلى الخميس 26 نوفمبر 2026</div>
+</header>
+<nav class="stations" aria-label="المحطات">
+  <a href="#s1">1 · الصيغ الخمس</a>
+  <a href="#s2">2 · إعراب الخمسة</a>
+  <a href="#s3">3 · الفخاخ</a>
+  <a href="#s4">4 · الماضي المبني</a>
+  <a href="#s5">5 · الأمر والمضارع المبني</a>
+  <a href="#quiz">الاختبار النهائي</a>
+</nav>
+<button id="motionBtn" type="button" aria-pressed="false">⏸ إيقاف الحركة</button>
+
+<main>
+<section class="station" id="intro">
+  <h2>خطة الأسبوع يا يوسف</h2>
+  <div class="info">
+    <p><b>الأحد 22-11-2026:</b> اختبار قصير في درسي <b>«التعليم فوق الجميع»</b> و<b>الأفعال الخمسة</b>. هذا الملف <b>نحو فقط</b>، فراجع درس القراءة «التعليم فوق الجميع» من كتابك مباشرة (لا ننقل هنا شيئًا من نصه).</p>
+    <p><b>الجديد هذا الأسبوع:</b> درس الرازي (قراءة — من الكتاب)، والنحو: <b>المبني من الأفعال</b> (الماضي — المضارع — الأمر).</p>
+    <p>المحطات 1–3 للأفعال الخمسة (اختبار الأحد)، والمحطتان 4–5 للمبني من الأفعال.</p>
+  </div>
+  <div class="note">
+    <b>تنبيه:</b> الأسئلة هنا <b>تدريبية من إعداد الدرس</b>، وليست ورقة المعلم. كل الجمل والأمثلة <b>مؤلفة وقصيرة</b>، وليست مقتبسة من نصوص القراءة.
+  </div>
+</section>
+
+<!-- ================= Station 1 ================= -->
+<section class="station" id="s1">
+  <h2>محطة 1 — ما الأفعال الخمسة؟</h2>
+  <div class="key"><b>الأفعال الخمسة:</b> كل فعل <b>مضارع</b> اتصلت به <b>واو الجماعة</b> (يفعلون / تفعلون)، أو <b>ألف الاثنين</b> (يفعلان / تفعلان)، أو <b>ياء المخاطبة</b> (تفعلين).</div>
+  <p>سُمّيت «الخمسة» لأنها تأتي على خمس صيغ: <b>تفعلون — يفعلون — تفعلان — يفعلان — تفعلين</b>.</p>
+  <p>اضغط على كل ضمير لترى صيغته مع الفعل «كتب»:</p>
+  <div class="flip" id="flip"></div>
+  <p class="illus">ملاحظة: «تفعلان» تأتي أيضًا للغائبتين: «الطالبتان تكتبان».</p>
+  <h3>تحقق: أيها من الأفعال الخمسة؟</h3>
+  <div id="sort1"></div>
+</section>
+
+<!-- ================= Station 2 ================= -->
+<section class="station" id="s2">
+  <h2>محطة 2 — إعراب الأفعال الخمسة: راقب النون!</h2>
+  <table>
+    <tr><th>الحالة</th><th>العلامة</th><th>متى؟</th></tr>
+    <tr><td><b>الرفع</b></td><td><b>ثبوت النون</b></td><td>إذا لم يسبقها ناصب ولا جازم</td></tr>
+    <tr><td><b>النصب</b></td><td><b>حذف النون</b></td><td>بعد أداة نصب: أنْ، لنْ، كي، حتى، لام التعليل</td></tr>
+    <tr><td><b>الجزم</b></td><td><b>حذف النون</b></td><td>بعد أداة جزم: لمْ، لا الناهية، لام الأمر</td></tr>
+  </table>
+  <div class="card">
+    <b>مختبر الأداة والنون</b> <span class="tag">أمثلة مؤلفة</span>
+    <div class="row"><span>الفعل:</span><span class="opts inline" id="vSel"></span></div>
+    <div class="row"><span>الأداة قبله:</span><span class="opts inline" id="tSel"></span></div>
+    <p><b>تنبّأ:</b> ماذا سيحدث للنون في آخر الفعل؟</p>
+    <div class="opts inline" id="nPred"><button type="button" data-v="keep">تثبت النون</button><button type="button" data-v="drop">تُحذف النون</button></div>
+    <div class="row"><button type="button" class="pri" id="nRun" disabled>▶ طبّق الأداة</button><span class="illus" id="nHint">تنبّأ أولًا.</span></div>
+    <div class="word" id="nWord" aria-live="polite">؟</div>
+    <div class="irab" id="nIrab" hidden></div>
+    <div class="fb" id="nFb" role="status" aria-live="polite"></div>
+  </div>
+  <div class="steps">
+    <h3>مثال محلول خطوة بخطوة</h3>
+    <ol>
+      <li><b>الطلابُ يرسمونَ.</b> لا ناصب ولا جازم ← «يرسمون»: فعل مضارع <b>مرفوع وعلامة رفعه ثبوت النون</b> لأنه من الأفعال الخمسة، والواو ضمير متصل مبني على السكون في محل رفع فاعل.</li>
+      <li><b>لنْ يرسموا.</b> دخلت «لن» (أداة نصب) ← «يرسموا»: فعل مضارع <b>منصوب بلن وعلامة نصبه حذف النون</b>، والواو ضمير متصل في محل رفع فاعل، والألف فارقة.</li>
+      <li><b>لمْ يرسموا.</b> دخلت «لم» (أداة جزم) ← «يرسموا»: فعل مضارع <b>مجزوم بلم وعلامة جزمه حذف النون</b>، والواو ضمير متصل في محل رفع فاعل، والألف فارقة.</li>
+      <li>لاحظ: الشكل نفسه «يرسموا» في النصب والجزم، والفرق في <b>نوع الأداة</b>: لن ناصبة، ولم جازمة.</li>
+    </ol>
+  </div>
+  <h3>تحققات المحطة 2</h3>
+  <div id="c2"></div>
+</section>
+
+<!-- ================= Station 3 ================= -->
+<section class="station" id="s3">
+  <h2>محطة 3 — الفخاخ: ما ليس من الأفعال الخمسة</h2>
+  <ul>
+    <li><b>الفعل الماضي</b> مثل «ذاكَروا»: فيه واو الجماعة لكنه ماضٍ، والخمسة مضارعة فقط.</li>
+    <li><b>الاسم</b> مثل «مشتركون»: آخره «ون» لكنه اسم (جمع مذكر سالم).</li>
+    <li><b>المضارع المتصل بنون النسوة</b> مثل «يدرسْنَ»: نونه ضمير للنسوة، والفعل مبني على السكون وليس من الخمسة.</li>
+    <li><b>فعل الأمر</b> مثل «اجتهدي»: فيه ياء المخاطبة لكنه أمر.</li>
+    <li><b>المضارع المعتل الآخر</b> مثل «يسمو»: آخره واو أصلية من الفعل، لا واو جماعة.</li>
+  </ul>
+  <div class="key">ثلاثة أسئلة سريعة: (1) هل هو <b>فعل</b>؟ (2) هل هو <b>مضارع</b>؟ (3) هل اتصلت به <b>واو جماعة أو ألف اثنين أو ياء مخاطبة</b> (لا نون نسوة)؟ ثلاث «نعم» ← من الأفعال الخمسة.</div>
+  <h3>صنّف الكلمات الثماني</h3>
+  <div id="sort3"></div>
+</section>
+
+<!-- ================= Station 4 ================= -->
+<section class="station" id="s4">
+  <h2>محطة 4 — الفعل الماضي مبنيّ دائمًا</h2>
+  <p>الفعل الماضي <b>مبني مطلقًا</b> (لا يتغير آخره بسبب أداة). وعلامة بنائه تتحدد بما يتصل به:</p>
+  <table>
+    <tr><th>البناء</th><th>متى؟</th><th>مثال</th></tr>
+    <tr><td><b>على الفتح</b></td><td>لم يتصل به شيء، أو اتصلت به ألف الاثنين، أو تاء التأنيث الساكنة</td><td>فَهِمَ — فَهِمَا — فَهِمَتْ</td></tr>
+    <tr><td><b>على السكون</b></td><td>اتصل به ضمير رفع متحرك: تاء الفاعل، نا الفاعلين، نون النسوة</td><td>فَهِمْتُ / فَهِمْتَ / فَهِمْتِ — فَهِمْنَا — فَهِمْنَ</td></tr>
+    <tr><td><b>على الضم</b></td><td>اتصلت به واو الجماعة</td><td>فَهِمُوا</td></tr>
+  </table>
+  <div class="note"><b>لا تخلط بين التاءين:</b> <b>تاء التأنيث الساكنة</b> «كتبَتْ» ساكنة وما قبلها مفتوح، وهي حرف لا محل له ← الفعل مبني على <b>الفتح</b>. أما <b>تاء الفاعل</b> «كتبْتُ» فمتحركة وما قبلها ساكن، وهي ضمير فاعل ← الفعل مبني على <b>السكون</b>.</div>
+  <div class="card">
+    <b>جدول الماضي التفاعلي</b> <span class="tag">الفعل «كتب»</span>
+    <div class="row"><span>ما الذي يتصل بالفعل؟</span></div>
+    <div class="opts inline" id="pSuf"></div>
+    <p><b>تنبّأ:</b> الفعل مبني على…</p>
+    <div class="opts inline" id="pPred"><button type="button" data-v="fath">الفتح</button><button type="button" data-v="suk">السكون</button><button type="button" data-v="dam">الضم</button></div>
+    <div class="row"><button type="button" class="pri" id="pRun" disabled>▶ اعرض البناء</button><span class="illus" id="pHint">اختر المتصل ثم تنبّأ.</span></div>
+    <div class="word" id="pWord">كَتَبـ…</div>
+    <div class="irab" id="pIrab" hidden></div>
+    <div class="fb" id="pFb" role="status" aria-live="polite"></div>
+  </div>
+  <h3>تحققات المحطة 4</h3>
+  <div id="c4"></div>
+</section>
+
+<!-- ================= Station 5 ================= -->
+<section class="station" id="s5">
+  <h2>محطة 5 — فعل الأمر مبنيّ، والمضارع يُبنى في حالتين فقط</h2>
+  <h3>أ) فعل الأمر مبني مطلقًا — يُبنى على ما يُجزم به مضارعه</h3>
+  <table>
+    <tr><th>البناء</th><th>متى؟</th><th>مثال</th></tr>
+    <tr><td><b>السكون</b></td><td>صحيح الآخر ولم يتصل به شيء، أو اتصلت به نون النسوة</td><td>ذاكِرْ — ذاكِرْنَ</td></tr>
+    <tr><td><b>حذف حرف العلة</b></td><td>معتل الآخر</td><td>اسْعَ — ادْعُ — امْضِ</td></tr>
+    <tr><td><b>حذف النون</b></td><td>اتصلت به ألف الاثنين أو واو الجماعة أو ياء المخاطبة</td><td>ذاكِرا — ذاكِروا — ذاكِري</td></tr>
+    <tr><td><b>الفتح</b></td><td>اتصلت به نون التوكيد الثقيلة أو الخفيفة</td><td>ذاكِرَنَّ</td></tr>
+  </table>
+  <div class="card">
+    <b>مُنشئ فعل الأمر</b> <span class="tag">أمثلة مؤلفة</span>
+    <div class="row"><span>الفعل:</span><span class="opts inline" id="iVerb"></span></div>
+    <div class="row" id="iSufRow"><span>المتصل:</span><span class="opts inline" id="iSuf"></span></div>
+    <div class="word" id="iWord"></div>
+    <div class="irab" id="iIrab"></div>
+  </div>
+
+  <h3>ب) الفعل المضارع معرب، ويُبنى في حالتين فقط</h3>
+  <ol>
+    <li><b>على السكون</b> عند اتصاله بنون النسوة: «الطالباتُ يكتبْنَ».</li>
+    <li><b>على الفتح</b> إذا اتصلت به نون التوكيد مباشرة: «واللهِ لأكتبَنَّ الواجبَ».</li>
+  </ol>
+  <p>وفي غير هاتين الحالتين يكون المضارع <b>معربًا</b>: يُرفع ويُنصب ويُجزم (يكتبُ، لن يكتبَ، لم يكتبْ، يكتبون…).</p>
+
+  <div class="steps">
+    <h3>أمثلة محلولة خطوة بخطوة</h3>
+    <ol>
+      <li><b>ادْعُ صديقَك.</b> «ادعُ»: فعل أمر مبني على <b>حذف حرف العلة</b> (الواو؛ مضارعه يدعو)، والفاعل ضمير مستتر وجوبًا تقديره أنت.</li>
+      <li><b>اكتبْ درسَك.</b> «اكتبْ»: فعل أمر مبني على <b>السكون</b> لأنه صحيح الآخر ولم يتصل به شيء، والفاعل ضمير مستتر وجوبًا تقديره أنت.</li>
+      <li><b>اكتبا درسَكما.</b> «اكتبا»: فعل أمر مبني على <b>حذف النون</b> لاتصاله بألف الاثنين، والألف ضمير متصل مبني على السكون في محل رفع فاعل.</li>
+      <li><b>الطالباتُ يكتبْنَ.</b> «يكتبْنَ»: فعل مضارع مبني على <b>السكون</b> لاتصاله بنون النسوة، ونون النسوة ضمير متصل مبني على الفتح في محل رفع فاعل. (ليس من الأفعال الخمسة.)</li>
+      <li><b>واللهِ لأسعيَنَّ في الخير.</b> اللام واقعة في جواب القسم، و«أسعيَنَّ»: فعل مضارع مبني على <b>الفتح</b> لاتصاله بنون التوكيد الثقيلة، والنون حرف توكيد لا محل له من الإعراب، والفاعل ضمير مستتر وجوبًا تقديره أنا.</li>
+    </ol>
+  </div>
+
+  <h3>مبني أم معرب؟ صنّف المضارع</h3>
+  <div id="sort5"></div>
+
+  <h3>تحققات المحطة 5</h3>
+  <div id="c5"></div>
+</section>
+
+<!-- ================= Quiz ================= -->
+<section class="station quiz" id="quiz">
+  <h2>الاختبار النهائي — 10 أسئلة</h2>
+  <p class="note">أسئلة تدريبية من إعداد الدرس (ليست ورقة المعلم). أجب عن الكل ثم اضغط «سلّم». التصحيح والتعليل يظهران بعد التسليم فقط.</p>
+  <div id="quizBox"></div>
+</section>
+</main>
+<footer>درس تدريبي ليوسف — العربية (نحو) — 22–26 نوفمبر 2026. الجمل مؤلفة.</footer>
+
+<script>
+/*CORE-JS-START*/
+var motionOn = true;
+(function(){
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  motionOn = !mq.matches;
+  var btn = document.getElementById('motionBtn');
+  function apply(){
+    document.documentElement.classList.toggle('nomotion', !motionOn);
+    if(btn){ btn.textContent = motionOn ? '⏸ إيقاف الحركة' : '▶ تشغيل الحركة'; btn.setAttribute('aria-pressed', String(!motionOn)); }
+    document.dispatchEvent(new Event('motionchange'));
+  }
+  if(btn) btn.addEventListener('click', function(){ motionOn = !motionOn; apply(); });
+  window.addEventListener('DOMContentLoaded', apply);
+})();
+function el(tag, attrs, html){
+  var e = document.createElement(tag);
+  if(attrs) for(var k in attrs){ if(k==='class') e.className=attrs[k]; else e.setAttribute(k, attrs[k]); }
+  if(html!==undefined) e.innerHTML = html;
+  return e;
+}
+function choiceGroup(container, onChange){
+  var btns = Array.prototype.slice.call(container.querySelectorAll('button'));
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      if(container.dataset.locked==='1') return;
+      btns.forEach(function(x){ x.classList.remove('sel'); x.setAttribute('aria-pressed','false'); });
+      b.classList.add('sel'); b.setAttribute('aria-pressed','true');
+      container.dataset.value = b.dataset.v !== undefined ? b.dataset.v : (b.dataset.h||'');
+      if(onChange) onChange(container.dataset.value, b);
+    });
+  });
+  var s = container.querySelector('button.sel');
+  if(s) container.dataset.value = s.dataset.v !== undefined ? s.dataset.v : (s.dataset.h||'');
+  return {
+    get value(){ return container.dataset.value; },
+    clear: function(){ btns.forEach(function(x){x.classList.remove('sel');}); container.dataset.value=''; }
+  };
+}
+function mcCheck(host, o){
+  var box = el('div',{'class':'check'});
+  box.appendChild(el('div',{'class':'q'}, (o.label||'تحقّق') + ': ' + o.q));
+  var ob = el('div',{'class':'opts' + (o.inline?' inline':'')});
+  var fb = el('div',{'class':'fb',role:'status','aria-live':'polite'});
+  var retry = el('button',{type:'button'},'↺ حاول مرة أخرى'); retry.hidden = true;
+  var btns = o.opts.map(function(t, i){
+    var b = el('button',{type:'button'}, t);
+    b.addEventListener('click', function(){ answer(i); });
+    ob.appendChild(b); return b;
+  });
+  function answer(i){
+    var ok = i === o.ans;
+    btns.forEach(function(b){ b.disabled = true; });
+    btns[i].classList.add(ok?'right':'wrong');
+    if(!ok) btns[o.ans].classList.add('right');
+    fb.className = 'fb show ' + (ok?'ok':'no');
+    fb.innerHTML = (ok?'✔ صحيح. ':'✘ ليست صحيحة. الإجابة الصحيحة مظلّلة بالأخضر. ') + o.why;
+    retry.hidden = false;
+  }
+  retry.addEventListener('click', function(){
+    btns.forEach(function(b){ b.disabled=false; b.classList.remove('right','wrong'); });
+    fb.className='fb'; fb.innerHTML=''; retry.hidden = true;
+  });
+  box.appendChild(ob); box.appendChild(fb); box.appendChild(retry);
+  host.appendChild(box);
+  return box;
+}
+function initSteps(){
+  document.querySelectorAll('.steps').forEach(function(s){
+    var lis = Array.prototype.slice.call(s.querySelectorAll('ol > li'));
+    var n = 0;
+    lis.forEach(function(li){ li.classList.add('hid'); });
+    var row = el('div',{'class':'row'});
+    var next = el('button',{type:'button','class':'pri'},'');
+    var reset = el('button',{type:'button'},'↺ من البداية');
+    function upd(){ next.textContent = n<lis.length ? 'أظهر الخطوة التالية (' + (n+1) + ' من ' + lis.length + ')' : '✔ اكتمل الحل'; next.disabled = n>=lis.length; }
+    next.addEventListener('click', function(){ if(n<lis.length){ lis[n].classList.remove('hid'); lis[n].classList.add('new'); n++; upd(); } });
+    reset.addEventListener('click', function(){ n=0; lis.forEach(function(li){ li.classList.add('hid'); li.classList.remove('new'); }); upd(); });
+    row.appendChild(next); row.appendChild(reset); s.appendChild(row); upd();
+  });
+}
+function buildQuiz(host, items){
+  var state = items.map(function(){ return null; });
+  var warned = false, graded = false;
+  var nodes = items.map(function(it, idx){
+    var d = el('div',{'class':'qitem'});
+    d.appendChild(el('div',null,'<span class="qnum">' + (idx+1) + ')</span> ' + it.q));
+    var rec = {d:d};
+    var ob = el('div',{'class':'opts'});
+    rec.btns = it.opts.map(function(t, i){
+      var b = el('button',{type:'button'}, t);
+      b.addEventListener('click', function(){ if(graded) return; rec.btns.forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel'); state[idx] = i; });
+      ob.appendChild(b); return b;
+    });
+    d.appendChild(ob);
+    rec.fb = el('div',{'class':'fb'}); d.appendChild(rec.fb);
+    host.appendChild(d); return rec;
+  });
+  var row = el('div',{'class':'row'});
+  var submit = el('button',{type:'button','class':'pri'},'سلّم الإجابات');
+  var again = el('button',{type:'button'},'↺ أعد الاختبار'); again.hidden = true;
+  var msg = el('div',{'class':'fb',role:'status','aria-live':'polite'});
+  row.appendChild(submit); row.appendChild(again);
+  host.appendChild(row); host.appendChild(msg);
+  submit.addEventListener('click', function(){
+    var missing = state.filter(function(v){ return v===null; }).length;
+    if(missing > 0 && !warned){
+      warned = true;
+      msg.className='fb show wait';
+      msg.innerHTML='بقي ' + missing + ' سؤال بلا إجابة. أكملها، أو اضغط «سلّم» مرة ثانية للتصحيح كما هو.';
+      return;
+    }
+    graded = true; var score = 0;
+    items.forEach(function(it, idx){
+      var rec = nodes[idx], ok = state[idx] === it.ans;
+      rec.btns.forEach(function(b, i){ b.disabled = true; if(i===it.ans) b.classList.add('right'); else if(i===state[idx]) b.classList.add('wrong'); });
+      if(ok) score++;
+      rec.d.classList.add(ok?'ok':'no');
+      rec.fb.className = 'fb show ' + (ok?'ok':'no');
+      rec.fb.innerHTML = (ok?'✔ صحيح. ':(state[idx]===null?'— لم تُجب. ':'✘ خطأ. ')) + it.why;
+    });
+    msg.className='fb show ' + (score>=8?'ok':'wait');
+    msg.innerHTML='<span class="score">نتيجتك: ' + score + ' / ' + items.length + '</span><br>' + (score>=8 ? 'ممتاز يا يوسف! راجع أي سؤال أخطأت فيه.' : 'راجع التعليل تحت كل سؤال خاطئ، ثم ارجع للمحطة المناسبة وأعد الاختبار.');
+    submit.disabled = true; again.hidden = false;
+  });
+  again.addEventListener('click', function(){
+    graded=false; warned=false; state = items.map(function(){return null;});
+    nodes.forEach(function(rec){
+      rec.d.classList.remove('ok','no'); rec.fb.className='fb'; rec.fb.innerHTML='';
+      rec.btns.forEach(function(b){ b.disabled=false; b.classList.remove('sel','right','wrong'); });
+    });
+    msg.className='fb'; submit.disabled=false; again.hidden=true;
+    host.scrollIntoView({behavior: motionOn?'smooth':'auto'});
+  });
+}
+/*CORE-JS-END*/
+</script>
+
+<script>
+/* ===================== ARABIC GRAMMAR LESSON ===================== */
+/* sorting widget: each word gets a label; reasons shown only after checking */
+function sortWidget(host, labels, items){
+  var picks = items.map(function(){ return null; }), rows = [];
+  items.forEach(function(it, i){
+    var r = el('div',{'class':'sortrow'});
+    r.appendChild(el('span',{'class':'w'}, it.w));
+    var bs = labels.map(function(lb, k){
+      var b = el('button',{type:'button'}, lb);
+      b.addEventListener('click', function(){ if(r.dataset.done==='1') return; bs.forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel'); picks[i] = k; });
+      r.appendChild(b); return b;
+    });
+    var why = el('div',{'class':'why'}); r.appendChild(why);
+    host.appendChild(r); rows.push({r:r, bs:bs, why:why});
+  });
+  var row = el('div',{'class':'row'});
+  var go = el('button',{type:'button','class':'pri'},'تحقّق من التصنيف');
+  var again = el('button',{type:'button'},'↺ أعد'); again.hidden = true;
+  var fb = el('div',{'class':'fb',role:'status','aria-live':'polite'});
+  row.appendChild(go); row.appendChild(again); host.appendChild(row); host.appendChild(fb);
+  go.addEventListener('click', function(){
+    var miss = picks.filter(function(p){ return p===null; }).length;
+    if(miss){ fb.className='fb show wait'; fb.innerHTML='صنّف كل الكلمات أولًا (بقي ' + miss + ').'; return; }
+    var score = 0;
+    items.forEach(function(it, i){
+      var R = rows[i], ok = picks[i] === it.ans; if(ok) score++;
+      R.r.dataset.done = '1';
+      R.bs.forEach(function(b, k){ b.disabled = true; if(k===it.ans) b.classList.add('right'); else if(k===picks[i]) b.classList.add('wrong'); });
+      R.why.className = 'why show ' + (ok?'ok':'no'); R.why.innerHTML = (ok?'✔ ':'✘ ') + it.why;
+    });
+    fb.className = 'fb show ' + (score===items.length?'ok':'wait');
+    fb.innerHTML = 'صحيح ' + score + ' من ' + items.length + '.';
+    go.disabled = true; again.hidden = false;
+  });
+  again.addEventListener('click', function(){
+    picks = items.map(function(){ return null; });
+    rows.forEach(function(R){ R.r.dataset.done='0'; R.bs.forEach(function(b){ b.disabled=false; b.classList.remove('sel','right','wrong'); }); R.why.className='why'; R.why.innerHTML=''; });
+    fb.className='fb'; go.disabled=false; again.hidden=true;
+  });
+}
+
+/* ---------- Station 1 ---------- */
+(function(){
+  var F = [
+    ['أنتما','تَكْتُبانِ','أنتما تكتبانِ الدرسَ.','ألف الاثنين'],
+    ['هما','يَكْتُبانِ','هما يكتبانِ القصةَ.','ألف الاثنين'],
+    ['أنتم','تَكْتُبونَ','أنتم تكتبونَ الواجبَ.','واو الجماعة'],
+    ['هم','يَكْتُبونَ','هم يكتبونَ الرسالةَ.','واو الجماعة'],
+    ['أنتِ','تَكْتُبينَ','أنتِ تكتبينَ بخطٍّ جميل.','ياء المخاطبة']
+  ];
+  var host = document.getElementById('flip');
+  F.forEach(function(f){
+    var b = el('button',{type:'button','aria-pressed':'false'}, '<span>' + f[0] + '</span><span class="illus">اضغط لترى الصيغة</span>');
+    var open = false;
+    b.addEventListener('click', function(){
+      open = !open; b.setAttribute('aria-pressed', String(open));
+      b.innerHTML = open ? '<span>' + f[0] + '</span><span class="f">' + f[1] + '</span><span class="illus">' + f[3] + ' — «' + f[2] + '»</span>' : '<span>' + f[0] + '</span><span class="illus">اضغط لترى الصيغة</span>';
+    });
+    host.appendChild(b);
+  });
+  sortWidget(document.getElementById('sort1'), ['من الخمسة','ليس منها'], [
+    {w:'يسمعانِ', ans:0, why:'مضارع + ألف الاثنين ← من الأفعال الخمسة (يفعلان).'},
+    {w:'تكتبينَ', ans:0, why:'مضارع + ياء المخاطبة ← من الأفعال الخمسة (تفعلين).'},
+    {w:'يذهبونَ', ans:0, why:'مضارع + واو الجماعة ← من الأفعال الخمسة (يفعلون).'},
+    {w:'ذهَبُوا', ans:1, why:'فعل <b>ماضٍ</b> اتصلت به واو الجماعة؛ الأفعال الخمسة مضارعة فقط.'},
+    {w:'اذهبي', ans:1, why:'فعل <b>أمر</b> اتصلت به ياء المخاطبة، وليس مضارعًا.'},
+    {w:'يكتبْنَ', ans:1, why:'مضارع اتصلت به <b>نون النسوة</b>؛ ليس من الخمسة، وهو مبني على السكون.'}
+  ]);
+})();
+
+/* ---------- Station 2: tool lab ---------- */
+(function(){
+  var V = [
+    {id:'w', full:'يَرْسُمو', pre:'يَ', tail:'نَ', after:'ا', pron:'الواو (واو الجماعة)', alif:true, label:'يرسمون'},
+    {id:'a', full:'تَكْتُبا', pre:'تَ', tail:'نِ', after:'', pron:'الألف (ألف الاثنين)', alif:false, label:'تكتبان'},
+    {id:'y', full:'تَدْرُسي', pre:'تَ', tail:'نَ', after:'', pron:'الياء (ياء المخاطبة)', alif:false, label:'تدرسين'},
+    {id:'w2', full:'تَجْتَهِدو', pre:'تَ', tail:'نَ', after:'ا', pron:'الواو (واو الجماعة)', alif:true, label:'تجتهدون'},
+    {id:'a2', full:'يَلْعَبا', pre:'يَ', tail:'نِ', after:'', pron:'الألف (ألف الاثنين)', alif:false, label:'يلعبان'}
+  ];
+  var T = [
+    {id:'none', label:'بلا أداة', kind:'raf', show:''},
+    {id:'an', label:'أنْ', kind:'nasb', show:'أنْ ', desc:'«أنْ» حرف مصدري ونصب'},
+    {id:'lan', label:'لنْ', kind:'nasb', show:'لنْ ', desc:'«لن» حرف نفي ونصب واستقبال'},
+    {id:'kay', label:'كي', kind:'nasb', show:'كي ', desc:'«كي» حرف مصدري ونصب'},
+    {id:'hatta', label:'حتى', kind:'nasb', show:'حتى ', desc:'«حتى» أداة نصب هنا'},
+    {id:'lamt', label:'لام التعليل', kind:'nasb', show:'لِـ', desc:'لام التعليل (جئنا لِـ…) أداة نصب'},
+    {id:'lam', label:'لمْ', kind:'jazm', show:'لمْ ', desc:'«لم» حرف نفي وجزم وقلب'},
+    {id:'la', label:'لا الناهية', kind:'jazm', show:'لا ', desc:'«لا» الناهية حرف نهي وجزم'},
+    {id:'lamamr', label:'لام الأمر', kind:'jazm', show:'لِـ', desc:'لام الأمر حرف أمر وجزم'}
+  ];
+  var vHost = document.getElementById('vSel'), tHost = document.getElementById('tSel');
+  V.forEach(function(v,i){ vHost.appendChild(el('button',{type:'button','data-v':v.id,'class':i===0?'sel':''}, v.label)); });
+  T.forEach(function(t,i){ tHost.appendChild(el('button',{type:'button','data-v':t.id,'class':i===0?'sel':''}, t.label)); });
+  var runBtn = document.getElementById('nRun'), fb = document.getElementById('nFb'), word = document.getElementById('nWord'), irab = document.getElementById('nIrab');
+  function reset(){ pred.clear(); runBtn.disabled = true; document.getElementById('nHint').textContent='تنبّأ أولًا.'; fb.className='fb'; irab.hidden = true; word.innerHTML = cur().v.label + ' ← ؟'; }
+  var vs = choiceGroup(vHost, reset), ts = choiceGroup(tHost, reset);
+  var pred = choiceGroup(document.getElementById('nPred'), function(){ runBtn.disabled=false; document.getElementById('nHint').textContent='جاهز.'; });
+  function cur(){ return {v: V.filter(function(x){return x.id===vs.value;})[0], t: T.filter(function(x){return x.id===ts.value;})[0]}; }
+  function stem(v){ return v.full; }
+  runBtn.addEventListener('click', function(){
+    var o = cur(), v = o.v, t = o.t, keep = t.kind==='raf';
+    var tool = t.show ? '<span class="tool">' + t.show + '</span>' : '';
+    if(keep) word.innerHTML = tool + stem(v) + '<span class="nun">' + (v.tail==='نَ'? 'نَ' : 'نِ') + '</span>';
+    else word.innerHTML = tool + stem(v) + (v.after ? '<span class="suf">' + v.after + '</span>' : '') + ' <span class="gone">ن</span>';
+    var pr = v.pron + ' ضمير متصل مبني على السكون في محل رفع فاعل' + (keep || !v.alif ? '.' : '، والألف فارقة.');
+    var txt;
+    if(keep) txt = '<b>' + v.label + '</b>: فعل مضارع <b>مرفوع وعلامة رفعه ثبوت النون</b> لأنه من الأفعال الخمسة ولم يسبقه ناصب ولا جازم، و' + pr;
+    else if(t.kind==='nasb') txt = t.desc + '. والفعل مضارع <b>منصوب وعلامة نصبه حذف النون</b> لأنه من الأفعال الخمسة، و' + pr;
+    else txt = t.desc + '. والفعل مضارع <b>مجزوم وعلامة جزمه حذف النون</b> لأنه من الأفعال الخمسة، و' + pr;
+    irab.hidden = false; irab.innerHTML = '<b>الإعراب:</b> ' + txt;
+    var ok = (pred.value==='keep') === keep;
+    fb.className = 'fb show ' + (ok?'ok':'no');
+    fb.innerHTML = (ok?'✔ تنبؤك صحيح. ':'✘ تنبؤك لم يطابق. ') + (keep ? 'لا ناصب ولا جازم ← الرفع بثبوت النون.' : (t.kind==='nasb' ? 'أداة نصب ← النصب بحذف النون.' : 'أداة جزم ← الجزم بحذف النون.'));
+  });
+  reset();
+
+  var h = document.getElementById('c2');
+  mcCheck(h,{label:'تحقق 1',q:'«اجتهِدا <b>كي تنجحا</b>». ما علامة نصب «تنجحا»؟',opts:['الفتحة','حذف النون','ثبوت النون','السكون'],ans:1,inline:true,why:'«كي» أداة نصب، و«تنجحا» من الأفعال الخمسة (ألف الاثنين) ← منصوب وعلامة نصبه <b>حذف النون</b> (أصلها تنجحان).'});
+  mcCheck(h,{label:'تحقق 2',q:'«<b>لا تهملي</b> واجبك». ما إعراب «تهملي»؟',opts:['مرفوع بثبوت النون','منصوب بحذف النون','مجزوم بلا الناهية وعلامة جزمه حذف النون','مبني على السكون'],ans:2,why:'«لا» هنا <b>ناهية جازمة</b>، و«تهملي» مضارع اتصلت به ياء المخاطبة (من الخمسة) ← <b>مجزوم وعلامة جزمه حذف النون</b> (أصلها تهملين)، والياء ضمير متصل في محل رفع فاعل.'});
+})();
+
+/* ---------- Station 3: traps ---------- */
+sortWidget(document.getElementById('sort3'), ['من الخمسة','ليس منها'], [
+  {w:'يقرؤونَ', ans:0, why:'مضارع + واو الجماعة ← من الأفعال الخمسة.'},
+  {w:'تحرصينَ', ans:0, why:'مضارع + ياء المخاطبة ← من الأفعال الخمسة.'},
+  {w:'يتناقشانِ', ans:0, why:'مضارع + ألف الاثنين ← من الأفعال الخمسة.'},
+  {w:'ذاكَروا', ans:1, why:'فعل <b>ماضٍ</b> (مبني على الضم لاتصاله بواو الجماعة)، وليس مضارعًا.'},
+  {w:'مشتركونَ', ans:1, why:'<b>اسم</b> (جمع مذكر سالم)، لا فعل، رغم أن آخره «ون».'},
+  {w:'يدرسْنَ', ans:1, why:'مضارع متصل بـ<b>نون النسوة</b> ← مبني على السكون، وليس من الخمسة.'},
+  {w:'اجتهدي', ans:1, why:'فعل <b>أمر</b> متصل بياء المخاطبة (مبني على حذف النون)، وليس مضارعًا.'},
+  {w:'يسمو', ans:1, why:'مضارع <b>معتل الآخر</b>: الواو من أصل الفعل لا واو جماعة ← مرفوع وعلامة رفعه <b>الضمة المقدّرة</b> على الواو، وليس من الخمسة.'}
+]);
+
+/* ---------- Station 4: past tense ---------- */
+(function(){
+  var S = [
+    {id:'0', label:'لا شيء', w:'كَتَبَ', mark:'<span class="suf">بَ</span>', b:'fath', ex:'كَتَبَ يوسفُ الدرسَ.', ir:'فعل ماضٍ مبني على <b>الفتح</b> لأنه لم يتصل به شيء.'},
+    {id:'a', label:'ألف الاثنين', w:'كَتَبَا', b:'fath', ex:'الطالبانِ كَتَبَا القصةَ.', ir:'فعل ماضٍ مبني على <b>الفتح</b> لاتصاله بألف الاثنين، والألف ضمير متصل مبني على السكون في محل رفع فاعل.'},
+    {id:'t0', label:'تاء التأنيث (تْ)', w:'كَتَبَتْ', b:'fath', ex:'كَتَبَتْ مريمُ الواجبَ.', ir:'فعل ماضٍ مبني على <b>الفتح</b>، والتاء تاء التأنيث الساكنة حرف مبني على السكون لا محل له من الإعراب.'},
+    {id:'tu', label:'تاء الفاعل (تُ)', w:'كَتَبْتُ', b:'suk', ex:'كَتَبْتُ رسالةً.', ir:'فعل ماضٍ مبني على <b>السكون</b> لاتصاله بتاء الفاعل، والتاء ضمير متصل مبني على الضم في محل رفع فاعل.'},
+    {id:'ta', label:'تاء الفاعل (تَ)', w:'كَتَبْتَ', b:'suk', ex:'كَتَبْتَ يا يوسفُ جيدًا.', ir:'فعل ماضٍ مبني على <b>السكون</b> لاتصاله بتاء الفاعل، والتاء ضمير متصل مبني على الفتح في محل رفع فاعل.'},
+    {id:'ti', label:'تاء الفاعل (تِ)', w:'كَتَبْتِ', b:'suk', ex:'كَتَبْتِ يا سارةُ بخطٍّ جميل.', ir:'فعل ماضٍ مبني على <b>السكون</b> لاتصاله بتاء الفاعل، والتاء ضمير متصل مبني على الكسر في محل رفع فاعل.'},
+    {id:'na', label:'نا الفاعلين', w:'كَتَبْنَا', b:'suk', ex:'كَتَبْنَا التقريرَ.', ir:'فعل ماضٍ مبني على <b>السكون</b> لاتصاله بنا الفاعلين، و«نا» ضمير متصل مبني على السكون في محل رفع فاعل.'},
+    {id:'n', label:'نون النسوة', w:'كَتَبْنَ', b:'suk', ex:'الطالباتُ كَتَبْنَ المقالَ.', ir:'فعل ماضٍ مبني على <b>السكون</b> لاتصاله بنون النسوة، والنون ضمير متصل مبني على الفتح في محل رفع فاعل.'},
+    {id:'w', label:'واو الجماعة', w:'كَتَبُوا', b:'dam', ex:'الطلابُ كَتَبُوا الواجبَ.', ir:'فعل ماضٍ مبني على <b>الضم</b> لاتصاله بواو الجماعة، والواو ضمير متصل مبني على السكون في محل رفع فاعل، والألف فارقة.'}
+  ];
+  var NAME = {fath:'الفتح', suk:'السكون', dam:'الضم'};
+  var host = document.getElementById('pSuf');
+  S.forEach(function(s,i){ host.appendChild(el('button',{type:'button','data-v':s.id,'class':i===0?'sel':''}, s.label)); });
+  var runBtn = document.getElementById('pRun'), fb = document.getElementById('pFb'), word = document.getElementById('pWord'), irab = document.getElementById('pIrab');
+  function cur(){ return S.filter(function(x){ return x.id===suf.value; })[0]; }
+  function reset(){ pred.clear(); runBtn.disabled=true; document.getElementById('pHint').textContent='تنبّأ أولًا.'; fb.className='fb'; irab.hidden=true; word.textContent = 'كَتَبـ + ' + cur().label + ' ← ؟'; }
+  var suf = choiceGroup(host, reset);
+  var pred = choiceGroup(document.getElementById('pPred'), function(){ runBtn.disabled=false; document.getElementById('pHint').textContent='جاهز.'; });
+  runBtn.addEventListener('click', function(){
+    var s = cur(), ok = pred.value === s.b;
+    word.textContent = s.w;
+    irab.hidden = false; irab.innerHTML = '<b>مثال مؤلف:</b> ' + s.ex + '<br><b>إعراب «' + s.w + '»:</b> ' + s.ir;
+    fb.className = 'fb show ' + (ok?'ok':'no');
+    fb.innerHTML = (ok?'✔ تنبؤك صحيح: ':'✘ تنبؤك لم يطابق. الصحيح: ') + 'مبني على <b>' + NAME[s.b] + '</b>.';
+  });
+  reset();
+
+  var h = document.getElementById('c4');
+  var B3 = ['الفتح','السكون','الضم'];
+  mcCheck(h,{label:'تحقق 1',q:'«الطلابُ <b>كتبُوا</b> الدرس». الفعل «كتبوا» مبني على…',opts:B3,ans:2,inline:true,why:'الماضي المتصل بواو الجماعة يُبنى على <b>الضم</b>.'});
+  mcCheck(h,{label:'تحقق 2',q:'«<b>كتبْنا</b> الدرس». الفعل «كتبنا» مبني على…',opts:B3,ans:1,inline:true,why:'اتصل به «نا الفاعلين» وهو ضمير رفع متحرك ← مبني على <b>السكون</b>.'});
+  mcCheck(h,{label:'تحقق 3',q:'«<b>كتبَتْ</b> الطالبةُ الدرس». الفعل «كتبت» مبني على…',opts:B3,ans:0,inline:true,why:'التاء هنا <b>تاء التأنيث الساكنة</b> (حرف، وما قبلها مفتوح) ← الماضي مبني على <b>الفتح</b>. قارنها بـ«كتبْتُ» (تاء الفاعل) المبني على السكون.'});
+})();
+
+/* ---------- Station 5: imperative builder + present ---------- */
+(function(){
+  var VERBS = [
+    {id:'dh', label:'ذاكَرَ (صحيح الآخر)', sound:true},
+    {id:'da', label:'دعا (معتل بالواو)', sound:false, w:'ادْعُ', pres:'يدعو', jz:'لم يدعُ', ir:'فعل أمر مبني على <b>حذف حرف العلة</b> (الواو)، والفاعل ضمير مستتر وجوبًا تقديره أنت.'},
+    {id:'sa', label:'سعى (معتل بالألف)', sound:false, w:'اسْعَ', pres:'يسعى', jz:'لم يسعَ', ir:'فعل أمر مبني على <b>حذف حرف العلة</b> (الألف)، والفاعل ضمير مستتر وجوبًا تقديره أنت.'},
+    {id:'ma', label:'مضى (معتل بالياء)', sound:false, w:'امْضِ', pres:'يمضي', jz:'لم يمضِ', ir:'فعل أمر مبني على <b>حذف حرف العلة</b> (الياء)، والفاعل ضمير مستتر وجوبًا تقديره أنت.'}
+  ];
+  var SUF = [
+    {id:'0', label:'لا شيء (أنتَ)', w:'ذاكِرْ', jz:'لم تُذاكِرْ', ir:'فعل أمر مبني على <b>السكون</b> لأنه صحيح الآخر ولم يتصل به شيء، والفاعل ضمير مستتر وجوبًا تقديره أنت.'},
+    {id:'a', label:'ألف الاثنين', w:'ذاكِرا', jz:'لم تُذاكِرا', ir:'فعل أمر مبني على <b>حذف النون</b> لاتصاله بألف الاثنين، والألف ضمير متصل مبني على السكون في محل رفع فاعل.'},
+    {id:'w', label:'واو الجماعة', w:'ذاكِروا', jz:'لم تُذاكِروا', ir:'فعل أمر مبني على <b>حذف النون</b> لاتصاله بواو الجماعة، والواو ضمير متصل مبني على السكون في محل رفع فاعل، والألف فارقة.'},
+    {id:'y', label:'ياء المخاطبة', w:'ذاكِري', jz:'لم تُذاكِري', ir:'فعل أمر مبني على <b>حذف النون</b> لاتصاله بياء المخاطبة، والياء ضمير متصل مبني على السكون في محل رفع فاعل.'},
+    {id:'n', label:'نون النسوة', w:'ذاكِرْنَ', jz:'لم تُذاكِرْنَ', ir:'فعل أمر مبني على <b>السكون</b> لاتصاله بنون النسوة، والنون ضمير متصل مبني على الفتح في محل رفع فاعل.'},
+    {id:'t', label:'نون التوكيد', w:'ذاكِرَنَّ', jz:null, ir:'فعل أمر مبني على <b>الفتح</b> لاتصاله بنون التوكيد الثقيلة، والنون حرف توكيد لا محل له من الإعراب، والفاعل ضمير مستتر وجوبًا تقديره أنت.'}
+  ];
+  var vh = document.getElementById('iVerb'), sh = document.getElementById('iSuf');
+  VERBS.forEach(function(v,i){ vh.appendChild(el('button',{type:'button','data-v':v.id,'class':i===0?'sel':''}, v.label)); });
+  SUF.forEach(function(s,i){ sh.appendChild(el('button',{type:'button','data-v':s.id,'class':i===0?'sel':''}, s.label)); });
+  var vg = choiceGroup(vh, render), sg = choiceGroup(sh, render);
+  function render(){
+    var v = VERBS.filter(function(x){ return x.id===vg.value; })[0];
+    var word = document.getElementById('iWord'), ir = document.getElementById('iIrab');
+    document.getElementById('iSufRow').hidden = !v.sound;
+    if(v.sound){
+      var s = SUF.filter(function(x){ return x.id===sg.value; })[0];
+      word.textContent = s.w;
+      ir.innerHTML = '<b>الإعراب:</b> ' + s.ir + (s.jz ? '<br><span class="illus">قارن بالمضارع المجزوم: «' + s.jz + '» — الأمر يُبنى على ما يُجزم به مضارعه.</span>' : '');
+    } else {
+      word.textContent = v.w;
+      ir.innerHTML = '<b>الإعراب:</b> ' + v.ir + '<br><span class="illus">المضارع «' + v.pres + '» معتل الآخر، ومجزومه «' + v.jz + '» بحذف حرف العلة — والأمر يُبنى على ما يُجزم به مضارعه.</span>';
+    }
+  }
+  render();
+
+  sortWidget(document.getElementById('sort5'), ['مبني','معرب'], [
+    {w:'يكتبُ', ans:1, why:'لم تتصل به نون نسوة ولا نون توكيد ← <b>معرب</b> مرفوع بالضمة.'},
+    {w:'يكتبْنَ', ans:0, why:'متصل بنون النسوة ← <b>مبني على السكون</b>.'},
+    {w:'لأكتبَنَّ', ans:0, why:'اتصلت به نون التوكيد مباشرة ← <b>مبني على الفتح</b>.'},
+    {w:'يكتبونَ', ans:1, why:'من الأفعال الخمسة ← <b>معرب</b> مرفوع بثبوت النون.'},
+    {w:'لم يكتبْ', ans:1, why:'السكون هنا <b>علامة جزم</b> سببها «لم»، لا بناء ← <b>معرب</b> مجزوم.'}
+  ]);
+
+  var h = document.getElementById('c5');
+  mcCheck(h,{label:'تحقق 1',q:'أي العبارات صحيحة عن الفعل المضارع؟',opts:['مبني دائمًا مثل الماضي','معرب دائمًا ولا يُبنى أبدًا','معرب إلا في حالتين: اتصاله بنون النسوة (يُبنى على السكون) أو بنون التوكيد مباشرة (يُبنى على الفتح)'],ans:2,why:'المضارع <b>معرب</b>، ويُبنى في <b>حالتين فقط</b>: نون النسوة ← السكون، ونون التوكيد المباشرة ← الفتح.'});
+  mcCheck(h,{label:'تحقق 2',q:'«<b>اسْعَ</b> إلى الخير». ما إعراب «اسعَ»؟',opts:['فعل أمر مبني على السكون','فعل أمر مبني على حذف حرف العلة','فعل مضارع مجزوم','فعل أمر مبني على حذف النون'],ans:1,why:'«اسعَ» من «سعى» معتل الآخر بالألف ← فعل أمر مبني على <b>حذف حرف العلة</b>، والفاعل ضمير مستتر وجوبًا تقديره أنت.'});
+})();
+
+/* ---------- Final quiz ---------- */
+buildQuiz(document.getElementById('quizBox'), [
+  {q:'ما صيغ الأفعال الخمسة؟', opts:['يفعل، تفعل، أفعل، نفعل، يفعلن','تفعلون، يفعلون، تفعلان، يفعلان، تفعلين','فعلوا، فعلا، فعلت، فعلنا، فعلن','افعلوا، افعلا، افعلي، افعلن، افعل'], ans:1, why:'الصيغ الخمس: <b>تفعلون، يفعلون، تفعلان، يفعلان، تفعلين</b> — كلها مضارعة.'},
+  {q:'ما علامة رفع الأفعال الخمسة؟', opts:['الضمة','ثبوت النون','حذف النون','الواو'], ans:1, why:'تُرفع بـ<b>ثبوت النون</b> إذا لم يسبقها ناصب ولا جازم.'},
+  {q:'«<b>لن تسافروا</b> اليوم». إعراب «تسافروا»:', opts:['مرفوع بثبوت النون','منصوب وعلامة نصبه حذف النون','مجزوم وعلامة جزمه حذف النون','مبني على الضم'], ans:1, why:'«لن» أداة <b>نصب</b> ← منصوب وعلامة نصبه <b>حذف النون</b>.'},
+  {q:'«<b>لم يكتبوا</b> الواجب». إعراب «يكتبوا»:', opts:['منصوب بحذف النون','مجزوم وعلامة جزمه حذف النون','مرفوع بثبوت النون','مبني على السكون'], ans:1, why:'«لم» أداة <b>جزم</b> ← مجزوم وعلامة جزمه <b>حذف النون</b>.'},
+  {q:'«المعلماتُ <b>يشرحْنَ</b> الدرس». الفعل «يشرحن»:', opts:['من الأفعال الخمسة مرفوع بثبوت النون','ليس من الخمسة؛ مضارع مبني على السكون لاتصاله بنون النسوة','فعل ماضٍ مبني على السكون','مضارع منصوب'], ans:1, why:'النون هنا <b>نون النسوة</b> ← ليس من الأفعال الخمسة، وهو مضارع <b>مبني على السكون</b>.'},
+  {q:'«الطلاب <b>فهموا</b> الدرس». الفعل «فهموا»:', opts:['مضارع من الأفعال الخمسة','ماضٍ مبني على الضم','ماضٍ مبني على الفتح','أمر مبني على حذف النون'], ans:1, why:'ماضٍ اتصلت به واو الجماعة ← مبني على <b>الضم</b>.'},
+  {q:'«<b>فهمْتُ</b> الدرس». الفعل «فهمت»:', opts:['ماضٍ مبني على الفتح','ماضٍ مبني على السكون','ماضٍ مبني على الضم','مضارع مرفوع'], ans:1, why:'اتصلت به <b>تاء الفاعل</b> (ضمير رفع متحرك) ← مبني على <b>السكون</b>.'},
+  {q:'«<b>ادْعُ</b> صديقك». الفعل «ادعُ»:', opts:['أمر مبني على السكون','أمر مبني على حذف حرف العلة','مضارع مجزوم بحذف حرف العلة','أمر مبني على حذف النون'], ans:1, why:'معتل الآخر (من دعا يدعو) ← فعل أمر مبني على <b>حذف حرف العلة</b>.'},
+  {q:'متى يُبنى الفعل المضارع؟', opts:['دائمًا','في حالتين فقط: اتصاله بنون النسوة، أو بنون التوكيد','إذا سبقته «لم»','إذا اتصلت به واو الجماعة'], ans:1, why:'المضارع معرب، ويُبنى في حالتين فقط: <b>نون النسوة</b> (على السكون) و<b>نون التوكيد</b> (على الفتح).'},
+  {q:'«<b>اكتبوا</b> الدرس». الفعل «اكتبوا»:', opts:['ماضٍ مبني على الضم','أمر مبني على حذف النون لاتصاله بواو الجماعة','مضارع من الأفعال الخمسة','أمر مبني على السكون'], ans:1, why:'فعل أمر اتصلت به <b>واو الجماعة</b> ← مبني على <b>حذف النون</b>، والواو ضمير متصل في محل رفع فاعل.'}
+]);
+initSteps();
+</script>
+</body>
+</html>

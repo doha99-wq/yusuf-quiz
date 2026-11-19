@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f5fbf">
+<title>الرياضيات — الأسبوع 22–26 نوفمبر 2026 — العلاقات والدوال وفترات التزايد والتناقص</title>
+<style>
+/*CORE-CSS-START*/
+:root{--bg:#f4f6fb;--card:#fff;--ink:#1c2230;--muted:#586174;--pri:#1f5fbf;--pri-soft:#e7efff;--ok:#1b7f3b;--ok-soft:#e4f5e9;--bad:#b3261e;--bad-soft:#fdeceb;--warn-soft:#fff4dc;--line:#d8dde8;--hot:#d0342c;--cold:#1e6fd9}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html.nomotion{scroll-behavior:auto}
+body{margin:0;font-family:-apple-system,"SF Arabic","Geeza Pro","Noto Naskh Arabic","Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:17px;padding:0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+header.top{background:linear-gradient(135deg,var(--pri),#3b7de2);color:#fff;padding:calc(16px + env(safe-area-inset-top)) 16px 14px}
+header.top h1{margin:0 0 4px;font-size:1.35rem;line-height:1.45}
+header.top .sub{opacity:.93;font-size:.95rem}
+nav.stations{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:6px 8px;-webkit-overflow-scrolling:touch}
+nav.stations a{flex:0 0 auto;min-height:44px;display:flex;align-items:center;padding:0 12px;border-radius:22px;background:var(--pri-soft);color:var(--pri);text-decoration:none;font-weight:600;font-size:.9rem}
+main{max-width:860px;margin:0 auto;padding:10px 12px 90px}
+section.station{background:var(--card);border-radius:16px;padding:16px;margin:14px 0;box-shadow:0 1px 3px rgba(0,0,0,.07);scroll-margin-top:64px}
+h2{font-size:1.22rem;margin:.1em 0 .5em;color:var(--pri);line-height:1.5}
+h3{font-size:1.05rem;margin:1.1em 0 .4em}
+p{margin:.45em 0}
+.note{background:var(--warn-soft);border-inline-start:4px solid #e0a100;padding:10px 12px;border-radius:10px;font-size:.95rem;margin:10px 0}
+.info{background:var(--pri-soft);border-inline-start:4px solid var(--pri);padding:10px 12px;border-radius:10px;margin:10px 0}
+.key{background:#f0f7f1;border-inline-start:4px solid var(--ok);padding:10px 12px;border-radius:10px;margin:10px 0}
+.tag{display:inline-block;font-size:.76rem;background:#eceff5;color:var(--muted);padding:0 8px;border-radius:10px;margin-inline-start:6px;vertical-align:middle;line-height:1.8;font-weight:normal}
+.illus{font-size:.82rem;color:var(--muted)}
+button{font:inherit;min-height:44px;min-width:44px;padding:8px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;line-height:1.5}
+button.pri{background:var(--pri);color:#fff;border-color:var(--pri);font-weight:600}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.sel{outline:3px solid var(--pri);outline-offset:-1px;background:var(--pri-soft)}
+button.right{background:var(--ok-soft);border-color:var(--ok);color:#0f5129;opacity:1}
+button.wrong{background:var(--bad-soft);border-color:var(--bad);color:#7a1a14;opacity:1}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts button{text-align:start;width:100%}
+.opts.inline{flex-direction:row;flex-wrap:wrap}
+.opts.inline button{width:auto}
+.check{border:1px solid var(--line);border-radius:14px;padding:12px;margin:12px 0;background:#fbfcff}
+.check .q{font-weight:600;margin-bottom:8px}
+.fb{margin-top:10px;padding:10px 12px;border-radius:10px;display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--ok-soft);color:#0f5129}
+.fb.no{background:var(--bad-soft);color:#7a1a14}
+.fb.wait{background:var(--warn-soft);color:#5d3d00}
+canvas{display:block;width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;touch-action:manipulation;margin:8px 0}
+input[type=range]{width:100%;min-height:44px;accent-color:var(--pri)}
+.numwrap{display:inline-flex;gap:4px;align-items:center;direction:ltr}
+input.num{font:inherit;min-height:44px;width:7em;padding:6px 10px;border:1px solid var(--line);border-radius:10px;text-align:center;direction:ltr}
+.steps{border:1px dashed var(--line);border-radius:14px;padding:10px 12px;margin:12px 0;background:#fffdf7}
+.steps h3{margin-top:.2em}
+.steps ol{padding-inline-start:1.4em;margin:6px 0}
+.steps li{margin:6px 0}
+.steps li.hid{display:none}
+.steps li.new{animation:fadein .45s}
+@keyframes fadein{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+html.nomotion *,html.nomotion *::before,html.nomotion *::after{animation:none!important;transition:none!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.95rem}
+td,th{border:1px solid var(--line);padding:6px;text-align:center}
+th{background:#f1f4fa}
+tr.hl td{background:#fff3c4;font-weight:700}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+#motionBtn{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom));left:calc(12px + env(safe-area-inset-left));z-index:30;box-shadow:0 2px 8px rgba(0,0,0,.18);background:#fff;font-size:.9rem}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px;margin:8px 0}
+.readout div{background:#f1f4fa;border-radius:10px;padding:6px;text-align:center;font-size:.9rem}
+.readout b{display:block;font-size:1.2rem;direction:ltr}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+.quiz .qitem{border:1px solid var(--line);border-radius:14px;padding:12px;margin:12px 0}
+.quiz .qitem.ok{border-color:var(--ok);background:#f6fcf7}
+.quiz .qitem.no{border-color:var(--bad);background:#fff8f7}
+.quiz .qnum{font-weight:700;color:var(--pri)}
+.score{font-size:1.25rem;font-weight:700;margin:10px 0}
+.pill{display:inline-block;padding:0 10px;border-radius:12px;font-weight:700}
+.pill.hot{background:#fde3e1;color:var(--hot)}
+.pill.cold{background:#e2edfd;color:var(--cold)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:10px 12px 30px}
+.big{font-size:1.5rem;font-weight:700}
+/*CORE-CSS-END*/
+.eq{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"SF Mono",Menlo,Consolas,monospace;font-weight:700;background:#f1f4fa;padding:0 8px;border-radius:8px}
+.mapcols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mapcols .col{display:flex;flex-direction:column;gap:6px}
+.mapcols .col b{text-align:center}
+.pairs{direction:ltr;display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.pairs button{font-family:"SF Mono",Menlo,Consolas,monospace}
+.pairs button.bad{border-color:var(--bad);background:var(--bad-soft)}
+table.h{direction:ltr}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>الرياضيات: العلاقات والدوال، تمثيلاتها، وفترات التزايد والتناقص</h1>
+  <div class="sub">درس تفاعلي ليوسف — الصف الثامن 8/1 — الأسبوع من الأحد 22 إلى الخميس 26 نوفمبر 2026</div>
+</header>
+<nav class="stations" aria-label="المحطات">
+  <a href="#s1">1 · متى تكون دالة؟</a>
+  <a href="#s2">2 · تمثيلات متعددة</a>
+  <a href="#s3">3 · خطية أم لا؟</a>
+  <a href="#s4">4 · التزايد والتناقص</a>
+  <a href="#s5">5 · نمذجة خطية</a>
+  <a href="#quiz">الاختبار النهائي</a>
+</nav>
+<button id="motionBtn" type="button" aria-pressed="false">⏸ إيقاف الحركة</button>
+
+<main>
+<section class="station" id="intro">
+  <h2>خطة الأسبوع يا يوسف</h2>
+  <div class="info">
+    <p><b>الثلاثاء:</b> اختبار قصير في الرياضيات.</p>
+    <p><b>الواجب حسب الرسالة:</b> ص 155 رقم 8 و 9 و 10، وص 181 رقم 6 و 8 و 10 (مطبوعة في الرسالة «1181»، والمقصود ص 181 في كتاب الطالب).</p>
+    <p>الرسالة لم تذكر عنوان الدرس، لكن في كتاب الطالب: <b>ص 155</b> في الدرس <b>3-1 العلاقات والدوال</b>، و<b>ص 181</b> في الدرس <b>3-5 فترات التزايد والتناقص</b>. وبينهما: 3-2 الربط بين تمثيلات الدوال، 3-3 مقارنة الدوال الخطية وغير الخطية، 3-4 إنشاء دوال لنمذجة علاقات خطية. والأسبوع الماضي درست <span class="eq">y = mx + b</span>، فهذا تكملة طبيعية.</p>
+    <p>لذلك: <b>عمق</b> في المحطتين 1 و 4 (موضوعا الواجب)، وتغطية للمحطتين 2 و 3، ومحطة 5 قصيرة.</p>
+  </div>
+  <div class="note">
+    <b>تنبيه:</b> كل الأسئلة هنا <b>تدريبية من إعداد الدرس</b>، وليست ورقة المعلم ولا مسائل الواجب أو أمثلة الكتاب. كل مثال مكتوب عليه «<b>مثال تدريبي مؤلف</b>»، والأرقام والرسوم <b>توضيحية</b>. في الشبكات: كل مربع = وحدة واحدة ما لم يُذكر غير ذلك.
+  </div>
+  <p class="illus">في خانات الأعداد: يمكنك الكتابة بالأرقام ١٢٣ أو 123، والكسر مثل <span class="ltr">15/2</span>، واستخدم زر <b>±</b> للإشارة السالبة لأن لوحة أرقام iPhone لا تحتوي عليها.</p>
+</section>
+
+<!-- ================= Station 1 ================= -->
+<section class="station" id="s1">
+  <h2>محطة 1 — متى تكون العلاقة دالة؟ (3-1)</h2>
+  <ul>
+    <li><b>العلاقة:</b> مجموعة أزواج مرتبة <span class="eq">(x, y)</span> = (مدخلة، مخرجة)، أو ربط بين مدخلات ومخرجات.</li>
+    <li><b>الدالة:</b> علاقة يكون فيها <b>لكل مدخلة مخرجة واحدة وواحدة فقط</b>.</li>
+    <li>إذا كانت لمدخلة واحدة <b>مخرجتان مختلفتان</b> ← <b>ليست دالة</b>.</li>
+    <li>إذا ارتبطت <b>مدخلتان مختلفتان بنفس المخرجة</b> ← قد تبقى <b>دالة</b> (هذا لا يكسر التعريف).</li>
+    <li>نمثّل العلاقة بـ: قائمة أزواج، جدول، مخطط أسهم، أو تمثيل بياني.</li>
+  </ul>
+  <div class="key">اسأل سؤالًا واحدًا: <b>هل توجد مدخلة «تشير» إلى مخرجتين مختلفتين؟</b> إن وُجدت ← ليست دالة. إن لم توجد ← دالة.</div>
+
+  <div class="card">
+    <b>مُنشئ مخطط الأسهم</b> <span class="tag">تفاعلي</span>
+    <p class="illus">اضغط مدخلة x ثم مخرجة y لإضافة سهم. اضغط على زوج في القائمة لحذفه.</p>
+    <div class="row">
+      <button type="button" id="mpA">مثال: دالة</button>
+      <button type="button" id="mpB">مثال: المدخلة 4 مرتين</button>
+      <button type="button" id="mpC">مثال: مخرجة مكررة</button>
+      <button type="button" id="mpClr">مسح الكل</button>
+    </div>
+    <div class="mapcols">
+      <div class="col" id="mapX"><b>المدخلات x</b></div>
+      <div class="col" id="mapY"><b>المخرجات y</b></div>
+    </div>
+    <canvas id="mapCv" dir="ltr" aria-label="مخطط أسهم"></canvas>
+    <div class="pairs" id="mapPairs"></div>
+    <div class="fb show" id="mapFb" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="steps">
+    <h3>مثال محلول <span class="tag">مثال تدريبي مؤلف</span></h3>
+    <ol>
+      <li>العلاقة الأولى: <span class="eq">(1, 3), (2, 5), (3, 5)</span>.</li>
+      <li>المدخلات: 1 و 2 و 3 — كل واحدة تظهر <b>مرة واحدة</b>.</li>
+      <li>المخرجة 5 تكررت (للمدخلتين 2 و 3)، وهذا <b>مسموح</b>.</li>
+      <li>إذن العلاقة الأولى <b>دالة</b>.</li>
+      <li>العلاقة الثانية: <span class="eq">(2, 1), (2, 7)</span>.</li>
+      <li>المدخلة 2 لها مخرجتان مختلفتان: 1 و 7.</li>
+      <li>إذن العلاقة الثانية <b>ليست دالة</b>.</li>
+    </ol>
+  </div>
+
+  <h3>اختبار الخط الرأسي</h3>
+  <p>في التمثيل البياني: إذا قطع <b>مستقيم رأسي</b> الرسم في <b>أكثر من نقطة</b> ← ليست دالة (لأن قيمة x واحدة صار لها أكثر من y).</p>
+  <div class="card">
+    <div class="row"><span>اختر رسمًا:</span>
+      <span class="opts inline" id="vlGraph">
+        <button type="button" data-v="line" class="sel">مستقيم</button>
+        <button type="button" data-v="para">قطع مكافئ ∪</button>
+        <button type="button" data-v="vee">حرف V مقلوب ∧</button>
+        <button type="button" data-v="circ">دائرة</button>
+        <button type="button" data-v="side">منحنى جانبي ⊂</button>
+      </span>
+    </div>
+    <p><b>تنبّأ:</b> هل هذا الرسم دالة؟</p>
+    <div class="opts inline" id="vlPred"><button type="button" data-v="yes">دالة</button><button type="button" data-v="no">ليست دالة</button></div>
+    <div class="row"><button type="button" class="pri" id="vlRun" disabled>▶ مرّر الخط الرأسي</button><span class="illus" id="vlHint">تنبّأ أولًا.</span></div>
+    <canvas id="vlCv" dir="ltr" aria-label="اختبار الخط الرأسي"></canvas>
+    <label for="vlX">موضع الخط الرأسي: <b class="ltr" id="vlXv">x = 0</b> — نقاط التقاطع: <b id="vlN">—</b></label>
+    <input type="range" id="vlX" min="-4.5" max="4.5" step="0.1" value="0">
+    <div class="fb" id="vlFb" role="status" aria-live="polite"></div>
+  </div>
+
+  <h3>تحققات المحطة 1</h3>
+  <div id="c1"></div>
+</section>
+
+<!-- ================= Station 2 ================= -->
+<section class="station" id="s2">
+  <h2>محطة 2 — نفس الدالة بأربعة تمثيلات (3-2)</h2>
+  <p>نفس الدالة قد تظهر في <b>وصف لفظي</b>، و<b>معادلة</b>، و<b>جدول</b>، و<b>تمثيل بياني</b>. في الدالة الخطية:</p>
+  <ul>
+    <li><b>الميل m</b> = معدل التغير الثابت.</li>
+    <li><b>المقطع b</b> = القيمة الابتدائية عند <span class="eq">x = 0</span>.</li>
+    <li>الرسم <b>مستقيم</b>. والأسلوب العام: <b>كمية ابتدائية + معدل × عدد المرات/الزمن</b>.</li>
+  </ul>
+  <div class="card">
+    <b>الوصف</b> <span class="tag">مثال تدريبي مؤلف</span>
+    <p>اشتراك في نادي سباحة: رسوم تسجيل ثابتة <b>40 ر.ق</b>، ثم <b>15 ر.ق لكل حصة</b>. x = عدد الحصص، y = المبلغ الكلي بالريال القطري.</p>
+    <p><b>المعادلة:</b> <span class="eq">y = 15x + 40</span></p>
+    <label for="swX">عدد الحصص x = <b id="swXv">0</b></label>
+    <input type="range" id="swX" min="0" max="10" step="1" value="0">
+    <p class="big" style="text-align:center"><span class="eq" id="swEq">y = 15(0) + 40 = 40</span></p>
+    <div style="overflow-x:auto"><table class="h" id="swTab"></table></div>
+    <canvas id="swCv" dir="ltr" aria-label="تمثيل بياني لاشتراك السباحة"></canvas>
+    <p class="illus">مقياس الرسم: كل مربع أفقي = حصة واحدة، وكل مربع رأسي = <b>20 ر.ق</b> (لتبسيط الرسم). النقطة الحمراء تتحرك مع المنزلق، والصف الأصفر في الجدول هو نفس النقطة.</p>
+  </div>
+  <div class="steps">
+    <h3>مثال محلول: كيف نربط التمثيلات؟</h3>
+    <ol>
+      <li>من الوصف: المبلغ عند 0 حصص = 40 ر.ق ← هذا <b>المقطع b = 40</b>، والنقطة <span class="eq">(0, 40)</span>.</li>
+      <li>كل حصة تزيد المبلغ 15 ر.ق ← هذا <b>معدل التغير = الميل m = 15</b> ر.ق لكل حصة.</li>
+      <li>نكتب <span class="eq">y = mx + b</span> ← <span class="eq">y = 15x + 40</span>.</li>
+      <li>في الجدول: كلما زادت x بمقدار 1 زادت y بمقدار 15 (40، 55، 70، 85 …) — فرق ثابت.</li>
+      <li>في الرسم: نبدأ من <span class="eq">(0, 40)</span> ونصعد 15 لكل خطوة إلى اليمين ← مستقيم صاعد.</li>
+      <li>مثال: بعد 6 حصص: <span class="eq">y = 15(6) + 40 = 90 + 40 = 130</span> ر.ق.</li>
+    </ol>
+  </div>
+  <h3>تحقق المحطة 2</h3>
+  <div id="c2"></div>
+</section>
+
+<!-- ================= Station 3 ================= -->
+<section class="station" id="s3">
+  <h2>محطة 3 — خطية أم غير خطية؟ والمقارنة بين دالتين (3-3)</h2>
+  <ul>
+    <li><b>الدالة الخطية:</b> معدل تغيرها <b>ثابت</b>، ورسمها <b>مستقيم</b>، ويمكن كتابتها <span class="eq">y = mx + b</span>. (المستقيم الأفقي خطي أيضًا: ميله 0.)</li>
+    <li><b>غير الخطية:</b> معدل التغير <b>غير ثابت</b>، أو الرسم ليس مستقيمًا (منحنى، أو خط ينكسر إلى معدل مختلف عند النظر للفترة كلها).</li>
+    <li><b>لمقارنة دالتين خطيتين</b> نقارن معدل التغير (الميل) والقيمة الابتدائية (المقطع).</li>
+  </ul>
+  <h3>صنّف الرسوم الأربعة</h3>
+  <div class="grid2" id="clsGrid"></div>
+
+  <div class="card">
+    <b>مقارنة خدمتين</b> <span class="tag">مثال تدريبي مؤلف — أرقام توضيحية</span>
+    <p>خدمة توصيل <b>أ</b>: <span class="eq">y = 8x + 20</span>، وخدمة <b>ب</b>: <span class="eq">y = 6x + 35</span>، حيث x عدد الطلبات وy التكلفة بالريال.</p>
+    <canvas id="cmpCv" dir="ltr" aria-label="مقارنة دالتين خطيتين"></canvas>
+    <label for="cmpX">عدد الطلبات x = <b id="cmpXv">0</b></label>
+    <input type="range" id="cmpX" min="0" max="12" step="0.5" value="0">
+    <div class="readout"><div>خدمة أ<b id="cmpA">20</b></div><div>خدمة ب<b id="cmpB">35</b></div><div>الأرخص<b id="cmpW" style="font-size:1rem">أ</b></div></div>
+    <p class="illus">كل مربع أفقي = طلب واحد، وكل مربع رأسي = 10 ر.ق.</p>
+  </div>
+  <div class="steps">
+    <h3>مثال محلول: أيهما يزيد أسرع؟ ومتى تتعادلان؟</h3>
+    <ol>
+      <li>نقارن الميلين: أ ميلها 8، ب ميلها 6. وبما أن <span class="eq">8 &gt; 6</span> ← <b>أ تتزايد أسرع</b>.</li>
+      <li>نقارن المقطعين: أ تبدأ من 20 وب تبدأ من 35 ← ب أغلى في البداية.</li>
+      <li>للتعادل نساوي التكلفتين: <span class="eq">8x + 20 = 6x + 35</span>.</li>
+      <li>نطرح 6x من الطرفين: <span class="eq">2x + 20 = 35</span>.</li>
+      <li>نطرح 20: <span class="eq">2x = 15</span>.</li>
+      <li>نقسم على 2: <span class="eq">x = 7.5</span> ← التكلفة عندها <span class="eq">8(7.5) + 20 = 80</span> ر.ق للخدمتين. (رقم توضيحي؛ عمليًا لا يوجد نصف طلب، لكنه يبيّن أين يتقاطع المستقيمان.)</li>
+      <li>الخلاصة: قبل 7.5 الخدمة أ أرخص، وبعدها ب أرخص.</li>
+    </ol>
+  </div>
+  <h3>تحققات المحطة 3</h3>
+  <div id="c3"></div>
+</section>
+
+<!-- ================= Station 4 ================= -->
+<section class="station" id="s4">
+  <h2>محطة 4 — فترات التزايد والتناقص (3-5)</h2>
+  <ul>
+    <li><b>الفترة:</b> مدة بين قيمتين لـ x (بين نقطتين على الرسم).</li>
+    <li><b>متزايدة</b> في فترة: كلما زادت x <b>زادت</b> y ← الرسم <b>يصعد</b> من اليسار إلى اليمين.</li>
+    <li><b>متناقصة</b>: كلما زادت x <b>نقصت</b> y ← الرسم <b>ينزل</b>.</li>
+    <li><b>ثابتة</b>: y <b>لا تتغير</b> ← الرسم <b>أفقي</b>.</li>
+    <li><b>التمثيل البياني النوعي:</b> يصف العلاقة بلا أرقام دقيقة، لكن يظهر فيه التزايد والتناقص والثبات.</li>
+  </ul>
+  <div class="note"><b>تنبيه:</b> «ثابتة» تعني أن y لا تتغير <b>في تلك الفترة فقط</b>، لا أن الدالة كلها ثابتة. ونقرأ الرسم دائمًا <b>من اليسار إلى اليمين</b> (اتجاه زيادة x) حتى لو كنا نكتب بالعربية من اليمين.</div>
+
+  <div class="card">
+    <b>محاكاة الفترات</b> <span class="tag">رسم تدريبي مؤلف</span>
+    <p class="illus">الرسم يمر بالنقاط <span class="ltr">(0,1) → (2,5) → (4,5) → (6,1) → (8,4)</span>. كل مربع = وحدة واحدة.</p>
+    <div class="row"><span>اختر فترة:</span>
+      <span class="opts inline" id="ivSel">
+        <button type="button" data-v="0" class="sel"><span class="ltr">0 ≤ x ≤ 2</span></button>
+        <button type="button" data-v="1"><span class="ltr">2 ≤ x ≤ 4</span></button>
+        <button type="button" data-v="2"><span class="ltr">4 ≤ x ≤ 6</span></button>
+        <button type="button" data-v="3"><span class="ltr">6 ≤ x ≤ 8</span></button>
+      </span>
+    </div>
+    <p><b>تنبّأ:</b> الدالة في هذه الفترة…</p>
+    <div class="opts inline" id="ivPred"><button type="button" data-v="inc">متزايدة</button><button type="button" data-v="con">ثابتة</button><button type="button" data-v="dec">متناقصة</button></div>
+    <div class="row"><button type="button" class="pri" id="ivRun" disabled>▶ حرّك النقطة على الفترة</button><span class="illus" id="ivHint">تنبّأ أولًا.</span></div>
+    <canvas id="ivCv" dir="ltr" aria-label="رسم متعدد الفترات"></canvas>
+    <div class="fb" id="ivFb" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="steps">
+    <h3>مثال محلول: تمثيل نوعي لسرعة دراجة <span class="tag">مثال تدريبي مؤلف</span></h3>
+    <canvas id="bikeCv" dir="ltr" aria-label="تمثيل نوعي لسرعة دراجة مع الزمن"></canvas>
+    <ol>
+      <li>المحور الأفقي: الزمن، والمحور الرأسي: سرعة يوسف على الدراجة. لا أرقام — هذا تمثيل <b>نوعي</b>.</li>
+      <li>الجزء (1): يوسف ينطلق ويزيد سرعته ← الرسم يصعد ← السرعة <b>متزايدة</b> (فترة تسارع).</li>
+      <li>الجزء (2): يسير بسرعة ثابتة على طريق مستوٍ ← الرسم أفقي ← السرعة <b>ثابتة</b>.</li>
+      <li>الجزء (3): يقترب من البيت ويضغط المكابح ← الرسم ينزل ← السرعة <b>متناقصة</b> (تباطؤ) حتى تصل صفرًا.</li>
+      <li>لاحظ: «ثابتة» في الجزء (2) لا تعني أن يوسف متوقف؛ بل أن سرعته لا تتغير.</li>
+    </ol>
+  </div>
+  <h3>تحققات المحطة 4</h3>
+  <div id="c4"></div>
+</section>
+
+<!-- ================= Station 5 ================= -->
+<section class="station" id="s5">
+  <h2>محطة 5 (قصيرة) — إنشاء دالة لنمذجة موقف خطي (3-4)</h2>
+  <p>نترجم الموقف إلى <span class="eq">y = mx + b</span>: <b>m</b> = معدل التغير (موجب إذا كانت الكمية تزيد، سالب إذا كانت تنقص)، و<b>b</b> = قيمة البداية. ثم نسأل: <b>هل المقطع منطقي في هذا الموقف؟</b></p>
+  <div class="card">
+    <b>خزان يُفرَّغ</b> <span class="tag">مثال تدريبي مؤلف</span>
+    <p>خزان فيه <b>80 لترًا</b> ويُفرَّغ بمعدل <b>5 لترات كل دقيقة</b>.</p>
+    <div class="steps">
+      <ol>
+        <li>البداية 80 لترًا ← <b>b = 80</b> (منطقي: الكمية عند الدقيقة 0).</li>
+        <li>الكمية تنقص 5 كل دقيقة ← <b>m = −5</b>؛ الميل <b>سالب</b> لأن الكمية تتناقص.</li>
+        <li>الدالة: <span class="eq">y = −5x + 80</span>.</li>
+        <li>متى يفرغ؟ عندما <span class="eq">y = 0</span>: <span class="eq">0 = −5x + 80</span> ← <span class="eq">5x = 80</span> ← <span class="eq">x = 80 / 5 = 16</span> دقيقة.</li>
+      </ol>
+    </div>
+    <label for="tkX">الزمن x = <b id="tkXv">0</b> دقيقة</label>
+    <input type="range" id="tkX" min="0" max="16" step="1" value="0">
+    <p style="text-align:center"><span class="eq" id="tkEq">y = −5(0) + 80 = 80</span></p>
+    <canvas id="tkCv" dir="ltr" aria-label="خزان يفرغ"></canvas>
+    <p class="illus">كل مربع أفقي = دقيقتان، وكل مربع رأسي = 10 لترات.</p>
+  </div>
+  <h3>تحقق المحطة 5</h3>
+  <div id="c5"></div>
+</section>
+
+<!-- ================= Quiz ================= -->
+<section class="station quiz" id="quiz">
+  <h2>الاختبار النهائي — 10 أسئلة</h2>
+  <p class="note">أسئلة تدريبية من إعداد الدرس (ليست ورقة المعلم ولا مسائل الواجب). أجب عن الكل ثم اضغط «سلّم». التصحيح والتعليل يظهران بعد التسليم فقط. في الأسئلة العددية استخدم زر ± للسالب.</p>
+  <div id="quizBox"></div>
+</section>
+</main>
+<footer>درس تدريبي ليوسف — الرياضيات — 22–26 نوفمبر 2026. الأمثلة مؤلفة والأرقام توضيحية.</footer>
+
+<script>
+/*CORE-JS-START*/
+var motionOn = true;
+(function(){
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : {matches:false};
+  motionOn = !mq.matches;
+  var btn = document.getElementById('motionBtn');
+  function apply(){
+    document.documentElement.classList.toggle('nomotion', !motionOn);
+    if(btn){ btn.textContent = motionOn ? '⏸ إيقاف الحركة' : '▶ تشغيل الحركة'; btn.setAttribute('aria-pressed', String(!motionOn)); }
+    document.dispatchEvent(new Event('motionchange'));
+  }
+  if(btn) btn.addEventListener('click', function(){ motionOn = !motionOn; apply(); });
+  window.addEventListener('DOMContentLoaded', apply);
+})();
+function toWestern(s){
+  return String(s)
+    .replace(/[٠-٩]/g,function(c){return String(c.charCodeAt(0)-0x660);})
+    .replace(/[۰-۹]/g,function(c){return String(c.charCodeAt(0)-0x6F0);})
+    .replace(/٫/g,'.').replace(/٬/g,'')
+    .replace(/[−‒–—‐‑﹣－]/g,'-')
+    .replace(/[⁄∕÷]/g,'/')
+    .replace(/[‎‏؜ \s]/g,'');
+}
+function parseNum(s){
+  s = toWestern(s).replace(/[,،]/g,'.');
+  if(!s) return NaN;
+  var m = s.match(/^([+-]?)(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/);
+  if(m){ var d = Number(m[3]); if(d===0) return NaN; return (m[1]==='-'?-1:1)*Number(m[2])/d; }
+  if(/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return Number(s);
+  return NaN;
+}
+function el(tag, attrs, html){
+  var e = document.createElement(tag);
+  if(attrs) for(var k in attrs){ if(k==='class') e.className=attrs[k]; else e.setAttribute(k, attrs[k]); }
+  if(html!==undefined) e.innerHTML = html;
+  return e;
+}
+function makeNumInput(ph){
+  var w = el('span',{'class':'numwrap'});
+  var i = el('input',{'class':'num',type:'text',inputmode:'decimal',autocomplete:'off',autocorrect:'off',autocapitalize:'off',spellcheck:'false',dir:'ltr','aria-label':ph||'إجابة عددية'});
+  if(ph) i.placeholder = ph;
+  var pm = el('button',{type:'button','aria-label':'تبديل الإشارة السالبة'},'±');
+  pm.addEventListener('click', function(){
+    var v = i.value.trim();
+    if(/^[-−–]/.test(v)) v = v.replace(/^[-−–]\s*/,''); else v = '-' + v;
+    i.value = v; i.dispatchEvent(new Event('input'));
+  });
+  w.appendChild(i); w.appendChild(pm); w.input = i; w.pm = pm;
+  return w;
+}
+function choiceGroup(container, onChange){
+  var btns = Array.prototype.slice.call(container.querySelectorAll('button'));
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      if(container.dataset.locked==='1') return;
+      btns.forEach(function(x){ x.classList.remove('sel'); x.setAttribute('aria-pressed','false'); });
+      b.classList.add('sel'); b.setAttribute('aria-pressed','true');
+      container.dataset.value = b.dataset.v !== undefined ? b.dataset.v : (b.dataset.h||'');
+      if(onChange) onChange(container.dataset.value, b);
+    });
+  });
+  var s = container.querySelector('button.sel');
+  if(s) container.dataset.value = s.dataset.v !== undefined ? s.dataset.v : (s.dataset.h||'');
+  return {
+    get value(){ return container.dataset.value; },
+    clear: function(){ btns.forEach(function(x){x.classList.remove('sel');}); container.dataset.value=''; }
+  };
+}
+function mcCheck(host, o){
+  var box = el('div',{'class':'check'});
+  box.appendChild(el('div',{'class':'q'}, (o.label||'تحقّق') + ': ' + o.q));
+  var ob = el('div',{'class':'opts' + (o.inline?' inline':'')});
+  var fb = el('div',{'class':'fb',role:'status','aria-live':'polite'});
+  var retry = el('button',{type:'button'},'↺ حاول مرة أخرى'); retry.hidden = true;
+  var btns = o.opts.map(function(t, i){
+    var b = el('button',{type:'button'}, t);
+    b.addEventListener('click', function(){ answer(i); });
+    ob.appendChild(b); return b;
+  });
+  function answer(i){
+    var ok = i === o.ans;
+    btns.forEach(function(b){ b.disabled = true; });
+    btns[i].classList.add(ok?'right':'wrong');
+    if(!ok) btns[o.ans].classList.add('right');
+    fb.className = 'fb show ' + (ok?'ok':'no');
+    fb.innerHTML = (ok?'✔ صحيح. ':'✘ ليست صحيحة. الإجابة الصحيحة مظلّلة بالأخضر. ') + o.why;
+    retry.hidden = false;
+  }
+  retry.addEventListener('click', function(){
+    btns.forEach(function(b){ b.disabled=false; b.classList.remove('right','wrong'); });
+    fb.className='fb'; fb.innerHTML=''; retry.hidden = true;
+  });
+  box.appendChild(ob); box.appendChild(fb); box.appendChild(retry);
+  host.appendChild(box);
+  return box;
+}
+function numCheck(host, o){
+  var box = el('div',{'class':'check'});
+  box.appendChild(el('div',{'class':'q'}, (o.label||'تحقّق') + ': ' + o.q));
+  var inputs = [];
+  o.fields.forEach(function(f){
+    var r = el('div',{'class':'row'});
+    r.appendChild(el('span',null,f.label));
+    var w = makeNumInput(f.ph||''); r.appendChild(w); inputs.push(w.input);
+    if(f.unit) r.appendChild(el('span',{'class':'illus'},f.unit));
+    box.appendChild(r);
+  });
+  var go = el('button',{type:'button','class':'pri'},'تحقّق من إجابتي');
+  var fb = el('div',{'class':'fb',role:'status','aria-live':'polite'});
+  go.addEventListener('click', function(){
+    var vals = inputs.map(function(i){ return parseNum(i.value); });
+    if(vals.some(function(v){ return isNaN(v); })){
+      fb.className='fb show wait'; fb.innerHTML='اكتب عددًا في كل خانة أولًا (تقبل ١٢٣ أو 123، والكسر مثل 3/4، وزر ± للإشارة السالبة).'; return;
+    }
+    var ok = vals.every(function(v, k){ return Math.abs(v - o.fields[k].ans) <= (o.tol||1e-9); });
+    fb.className = 'fb show ' + (ok?'ok':'no');
+    fb.innerHTML = (ok?'✔ صحيح. ':'✘ ليست صحيحة. ') + o.why;
+  });
+  box.appendChild(go); box.appendChild(fb);
+  host.appendChild(box);
+}
+function initSteps(){
+  document.querySelectorAll('.steps').forEach(function(s){
+    var lis = Array.prototype.slice.call(s.querySelectorAll('ol > li'));
+    var n = 0;
+    lis.forEach(function(li){ li.classList.add('hid'); });
+    var row = el('div',{'class':'row'});
+    var next = el('button',{type:'button','class':'pri'},'');
+    var reset = el('button',{type:'button'},'↺ من البداية');
+    function upd(){ next.textContent = n<lis.length ? 'أظهر الخطوة التالية (' + (n+1) + ' من ' + lis.length + ')' : '✔ اكتمل الحل'; next.disabled = n>=lis.length; }
+    next.addEventListener('click', function(){ if(n<lis.length){ lis[n].classList.remove('hid'); lis[n].classList.add('new'); n++; upd(); } });
+    reset.addEventListener('click', function(){ n=0; lis.forEach(function(li){ li.classList.add('hid'); li.classList.remove('new'); }); upd(); });
+    row.appendChild(next); row.appendChild(reset); s.appendChild(row); upd();
+  });
+}
+function buildQuiz(host, items){
+  var state = items.map(function(){ return null; });
+  var warned = false, graded = false;
+  var nodes = items.map(function(it, idx){
+    var d = el('div',{'class':'qitem'});
+    d.appendChild(el('div',null,'<span class="qnum">' + (idx+1) + ')</span> ' + it.q));
+    var rec = {d:d};
+    if(it.type === 'num'){
+      var r = el('div',{'class':'row'}); var w = makeNumInput(it.ph||'');
+      r.appendChild(w); if(it.unit) r.appendChild(el('span',{'class':'illus'},it.unit));
+      d.appendChild(r); rec.input = w.input; rec.pm = w.pm;
+      w.input.addEventListener('input', function(){ state[idx] = w.input.value.trim() === '' ? null : w.input.value; });
+    } else {
+      var ob = el('div',{'class':'opts'});
+      rec.btns = it.opts.map(function(t, i){
+        var b = el('button',{type:'button'}, t);
+        b.addEventListener('click', function(){ if(graded) return; rec.btns.forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel'); state[idx] = i; });
+        ob.appendChild(b); return b;
+      });
+      d.appendChild(ob);
+    }
+    rec.fb = el('div',{'class':'fb'}); d.appendChild(rec.fb);
+    host.appendChild(d); return rec;
+  });
+  var row = el('div',{'class':'row'});
+  var submit = el('button',{type:'button','class':'pri'},'سلّم الإجابات');
+  var again = el('button',{type:'button'},'↺ أعد الاختبار'); again.hidden = true;
+  var msg = el('div',{'class':'fb',role:'status','aria-live':'polite'});
+  row.appendChild(submit); row.appendChild(again);
+  host.appendChild(row); host.appendChild(msg);
+  submit.addEventListener('click', function(){
+    var missing = state.filter(function(v){ return v===null; }).length;
+    if(missing > 0 && !warned){
+      warned = true;
+      msg.className='fb show wait';
+      msg.innerHTML='بقي ' + missing + ' سؤال بلا إجابة. أكملها، أو اضغط «سلّم» مرة ثانية للتصحيح كما هو.';
+      return;
+    }
+    graded = true; var score = 0;
+    items.forEach(function(it, idx){
+      var rec = nodes[idx], ok = false;
+      if(it.type === 'num'){
+        var v = parseNum(rec.input.value);
+        ok = !isNaN(v) && Math.abs(v - it.ans) <= (it.tol||1e-9);
+        rec.input.disabled = true; rec.pm.disabled = true;
+      } else {
+        ok = state[idx] === it.ans;
+        rec.btns.forEach(function(b, i){ b.disabled = true; if(i===it.ans) b.classList.add('right'); else if(i===state[idx]) b.classList.add('wrong'); });
+      }
+      if(ok) score++;
+      rec.d.classList.add(ok?'ok':'no');
+      rec.fb.className = 'fb show ' + (ok?'ok':'no');
+      rec.fb.innerHTML = (ok?'✔ صحيح. ':(state[idx]===null?'— لم تُجب. ':'✘ خطأ. ')) + (it.type==='num' ? 'الإجابة: <span class="ltr">' + it.ansText + '</span>. ' : '') + it.why;
+    });
+    msg.className='fb show ' + (score>=8?'ok':'wait');
+    msg.innerHTML='<span class="score">نتيجتك: ' + score + ' / ' + items.length + '</span><br>' + (score>=8 ? 'ممتاز يا يوسف! راجع أي سؤال أخطأت فيه.' : 'راجع التعليل تحت كل سؤال خاطئ، ثم ارجع للمحطة المناسبة وأعد الاختبار.');
+    submit.disabled = true; again.hidden = false;
+  });
+  again.addEventListener('click', function(){
+    graded=false; warned=false; state = items.map(function(){return null;});
+    nodes.forEach(function(rec){
+      rec.d.classList.remove('ok','no'); rec.fb.className='fb'; rec.fb.innerHTML='';
+      if(rec.input){ rec.input.value=''; rec.input.disabled=false; rec.pm.disabled=false; }
+      if(rec.btns) rec.btns.forEach(function(b){ b.disabled=false; b.classList.remove('sel','right','wrong'); });
+    });
+    msg.className='fb'; submit.disabled=false; again.hidden=true;
+    host.scrollIntoView({behavior: motionOn?'smooth':'auto'});
+  });
+}
+function fitCanvas(cv, ratio, maxH){
+  var w = cv.clientWidth || (cv.parentElement && cv.parentElement.clientWidth) || 320;
+  var h = Math.round(w*ratio); if(maxH && h>maxH) h = maxH;
+  var d = window.devicePixelRatio || 1;
+  cv.style.height = h + 'px';
+  cv.width = Math.round(w*d); cv.height = Math.round(h*d);
+  var c = cv.getContext('2d'); c.setTransform(d,0,0,d,0,0);
+  return {c:c, w:w, h:h};
+}
+function arrow(c, x1, y1, x2, y2, color, lw, head){
+  head = head || 10; c.strokeStyle = color; c.fillStyle = color; c.lineWidth = lw||3;
+  c.beginPath(); c.moveTo(x1,y1); c.lineTo(x2,y2); c.stroke();
+  var a = Math.atan2(y2-y1, x2-x1);
+  c.beginPath(); c.moveTo(x2,y2);
+  c.lineTo(x2 - head*Math.cos(a-0.45), y2 - head*Math.sin(a-0.45));
+  c.lineTo(x2 - head*Math.cos(a+0.45), y2 - head*Math.sin(a+0.45));
+  c.closePath(); c.fill();
+}
+function onResize(fn){ var t; window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(fn, 120); }); }
+/*CORE-JS-END*/
+</script>
+
+<script>
+/* ===================== MATH LESSON ===================== */
+var FONT = '12px -apple-system,Tahoma,sans-serif';
+/* coordinate plane helper */
+function plane(cv, ratio, maxH, o){
+  var f = fitCanvas(cv, ratio, maxH), c = f.c, w = f.w, h = f.h;
+  var L = o.padL||34, R = w-12, T = 12, B = h-(o.padB||26);
+  function X(x){ return L + (R-L)*(x-o.xmin)/(o.xmax-o.xmin); }
+  function Y(y){ return B - (B-T)*(y-o.ymin)/(o.ymax-o.ymin); }
+  c.clearRect(0,0,w,h);
+  c.strokeStyle='#e3e7ef'; c.lineWidth=1;
+  for(var x=o.xmin; x<=o.xmax+1e-9; x+=o.xs){ c.beginPath(); c.moveTo(X(x),T); c.lineTo(X(x),B); c.stroke(); }
+  for(var y=o.ymin; y<=o.ymax+1e-9; y+=o.ys){ c.beginPath(); c.moveTo(L,Y(y)); c.lineTo(R,Y(y)); c.stroke(); }
+  c.strokeStyle='#333'; c.lineWidth=1.6;
+  var ax = (o.ymin<=0 && o.ymax>=0) ? Y(0) : B, ay = (o.xmin<=0 && o.xmax>=0) ? X(0) : L;
+  c.beginPath(); c.moveTo(L,ax); c.lineTo(R,ax); c.moveTo(ay,T); c.lineTo(ay,B); c.stroke();
+  c.fillStyle='#555'; c.font=FONT;
+  if(o.labels!==false){
+    c.textAlign='center';
+    for(var x2=o.xmin; x2<=o.xmax+1e-9; x2+=(o.xl||o.xs)){ if(Math.abs(x2)<1e-9 && o.ymin<0) continue; c.fillText(String(+x2.toFixed(2)), X(x2), ax+15); }
+    c.textAlign='right';
+    for(var y2=o.ymin; y2<=o.ymax+1e-9; y2+=(o.yl||o.ys)){ if(Math.abs(y2)<1e-9 && o.xmin<0) continue; c.fillText(String(+y2.toFixed(2)), ay-4, Y(y2)+4); }
+  }
+  if(o.xname){ c.textAlign='right'; c.fillText(o.xname, R, ax-6); }
+  if(o.yname){ c.textAlign='left'; c.fillText(o.yname, ay+5, T+10); }
+  return {c:c, w:w, h:h, X:X, Y:Y, L:L, R:R, T:T, B:B};
+}
+function dot(c, x, y, r, col){ c.fillStyle=col; c.beginPath(); c.arc(x,y,r,0,Math.PI*2); c.fill(); }
+
+/* ---------- Station 1: mapping builder ---------- */
+(function(){
+  var XS = [1,2,3,4,5], YS = [1,2,3,4,5,6,7,8];
+  var pairs = [], pickX = null;
+  var hx = document.getElementById('mapX'), hy = document.getElementById('mapY');
+  var xb = {}, yb = {};
+  XS.forEach(function(x){ var b = el('button',{type:'button'},'x = ' + x); b.addEventListener('click', function(){ pickX = (pickX===x)?null:x; render(); }); hx.appendChild(b); xb[x]=b; });
+  YS.forEach(function(y){ var b = el('button',{type:'button'},'y = ' + y); b.addEventListener('click', function(){ if(pickX===null){ msg('اختر مدخلة x أولًا، ثم المخرجة.'); return; } if(!pairs.some(function(p){return p[0]===pickX && p[1]===y;})) pairs.push([pickX,y]); pickX=null; render(); }); hy.appendChild(b); yb[y]=b; });
+  function msg(t){ var f = document.getElementById('mapFb'); f.className='fb show wait'; f.innerHTML=t; }
+  function bad(){ var m = {}; pairs.forEach(function(p){ (m[p[0]] = m[p[0]] || {})[p[1]] = 1; }); return XS.filter(function(x){ return m[x] && Object.keys(m[x]).length>1; }); }
+  function render(){
+    XS.forEach(function(x){ xb[x].classList.toggle('sel', pickX===x); });
+    var B = bad();
+    var pl = document.getElementById('mapPairs'); pl.innerHTML='';
+    pairs.slice().sort(function(a,b){return a[0]-b[0]||a[1]-b[1];}).forEach(function(p){
+      var b = el('button',{type:'button','aria-label':'احذف الزوج'},'(' + p[0] + ', ' + p[1] + ') ✕');
+      if(B.indexOf(p[0])>=0) b.classList.add('bad');
+      b.addEventListener('click', function(){ pairs = pairs.filter(function(q){ return !(q[0]===p[0] && q[1]===p[1]); }); render(); });
+      pl.appendChild(b);
+    });
+    draw(B);
+    var f = document.getElementById('mapFb');
+    if(pickX!==null){ f.className='fb show wait'; f.innerHTML='اخترت x = ' + pickX + '. الآن اختر مخرجتها y.'; return; }
+    if(pairs.length===0){ f.className='fb show wait'; f.innerHTML='لا توجد أسهم بعد. أضف أزواجًا أو اختر مثالًا.'; return; }
+    if(B.length){ f.className='fb show no'; f.innerHTML='<b>ليست دالة</b>: المدخلة ' + B.join(' و ') + ' لها أكثر من مخرجة مختلفة (الأسهم الحمراء).'; }
+    else {
+      var outs = {}, rep = false; pairs.forEach(function(p){ if(outs[p[1]]) rep = true; outs[p[1]] = 1; });
+      f.className='fb show ok'; f.innerHTML='<b>دالة</b>: كل مدخلة لها مخرجة واحدة فقط.' + (rep ? ' لاحظ أن مخرجة تكررت لمدخلتين مختلفتين — وهذا مسموح.' : '');
+    }
+  }
+  function draw(B){
+    var cv = document.getElementById('mapCv');
+    var f = fitCanvas(cv, 0.6, 340), c = f.c, w = f.w, h = f.h;
+    c.clearRect(0,0,w,h);
+    var lx = w*0.25, rx = w*0.75, top = 26, bot = h-14;
+    c.fillStyle='#eef3ff'; c.beginPath(); c.ellipse(lx, (top+bot)/2, 40, (bot-top)/2+8, 0, 0, 7); c.fill();
+    c.fillStyle='#fff4e0'; c.beginPath(); c.ellipse(rx, (top+bot)/2, 40, (bot-top)/2+8, 0, 0, 7); c.fill();
+    function py(i, n){ return top + (bot-top)*(i+0.5)/n; }
+    c.font='14px -apple-system,Tahoma,sans-serif'; c.textAlign='center'; c.fillStyle='#222';
+    c.fillText('x', lx, 16); c.fillText('y', rx, 16);
+    XS.forEach(function(x,i){ c.fillStyle = B.indexOf(x)>=0 ? '#b3261e' : '#1f5fbf'; c.fillText(String(x), lx, py(i,XS.length)+5); });
+    YS.forEach(function(y,i){ c.fillStyle='#8a5a00'; c.fillText(String(y), rx, py(i,YS.length)+5); });
+    pairs.forEach(function(p){
+      var y1 = py(XS.indexOf(p[0]), XS.length), y2 = py(YS.indexOf(p[1]), YS.length);
+      arrow(c, lx+14, y1, rx-14, y2, B.indexOf(p[0])>=0 ? '#b3261e' : '#1b7f3b', 2.2, 9);
+    });
+  }
+  document.getElementById('mpA').addEventListener('click', function(){ pairs=[[1,3],[2,5],[3,6],[4,8]]; pickX=null; render(); });
+  document.getElementById('mpB').addEventListener('click', function(){ pairs=[[1,2],[3,5],[4,6],[4,7]]; pickX=null; render(); });
+  document.getElementById('mpC').addEventListener('click', function(){ pairs=[[1,4],[2,4],[3,4],[5,1]]; pickX=null; render(); });
+  document.getElementById('mpClr').addEventListener('click', function(){ pairs=[]; pickX=null; render(); });
+  render(); onResize(function(){ draw(bad()); });
+})();
+
+/* ---------- Station 1: vertical line test ---------- */
+(function(){
+  var cv = document.getElementById('vlCv'), sl = document.getElementById('vlX');
+  var maxSeen = 0, sweeping = false, raf = 0, last = 0, ran = false, sweepX = -4.5;
+  var gsel = choiceGroup(document.getElementById('vlGraph'), function(){ ran=false; maxSeen=0; pred.clear(); runBtn.disabled=true; document.getElementById('vlHint').textContent='تنبّأ أولًا.'; fb.className='fb'; draw(); });
+  var pred = choiceGroup(document.getElementById('vlPred'), function(){ runBtn.disabled=false; document.getElementById('vlHint').textContent='جاهز.'; });
+  var runBtn = document.getElementById('vlRun'), fb = document.getElementById('vlFb');
+  function ys(g, x){ // y-values on graph at x
+    if(g==='line') return [0.5*x+1];
+    if(g==='para') return [x*x/2-2];
+    if(g==='vee') return [3-Math.abs(x)];
+    if(g==='circ'){ var d = 9-x*x; if(d<-1e-9) return []; if(Math.abs(d)<1e-9) return [0]; return [Math.sqrt(d), -Math.sqrt(d)]; }
+    if(g==='side'){ var e = 2*(x+2); if(e<-1e-9) return []; if(Math.abs(e)<1e-9) return [0]; return [Math.sqrt(e), -Math.sqrt(e)]; }
+    return [];
+  }
+  function isFn(g){ return g==='line'||g==='para'||g==='vee'; }
+  function draw(xOverride){
+    var P = plane(cv, 0.8, 420, {xmin:-5,xmax:5,ymin:-5,ymax:5,xs:1,ys:1});
+    var c = P.c, g = gsel.value;
+    c.strokeStyle='#1f5fbf'; c.lineWidth=3; c.beginPath();
+    if(g==='circ'){ c.arc(P.X(0),P.Y(0),P.X(3)-P.X(0),0,Math.PI*2); }
+    else if(g==='side'){ for(var k=0;k<=200;k++){ var yy=-3.2+k*6.4/200; var xx=yy*yy/2-2; if(k===0) c.moveTo(P.X(xx),P.Y(yy)); else c.lineTo(P.X(xx),P.Y(yy)); } }
+    else { var first=true; for(var k2=0;k2<=400;k2++){ var x=-5+k2/40; var y=ys(g,x)[0]; if(y>5.5||y<-5.5){ first=true; continue; } if(first){ c.moveTo(P.X(x),P.Y(y)); first=false; } else c.lineTo(P.X(x),P.Y(y)); } }
+    c.stroke();
+    var xv = (typeof xOverride === 'number') ? xOverride : Number(sl.value);
+    document.getElementById('vlXv').textContent = 'x = ' + xv.toFixed(1);
+    if(!ran){ document.getElementById('vlN').textContent='—'; return; }
+    c.strokeStyle='#d0342c'; c.lineWidth=2.5; c.setLineDash([8,5]); c.beginPath(); c.moveTo(P.X(xv),P.T); c.lineTo(P.X(xv),P.B); c.stroke(); c.setLineDash([]);
+    var pts = ys(g, xv).filter(function(y){ return y>=-5 && y<=5; });
+    pts.forEach(function(y){ dot(c, P.X(xv), P.Y(y), 6, '#d0342c'); });
+    document.getElementById('vlN').textContent = pts.length;
+    if(pts.length > maxSeen) maxSeen = pts.length;
+  }
+  function verdict(){
+    var g = gsel.value, ok = (pred.value==='yes') === isFn(g);
+    fb.className='fb show ' + (ok?'ok':'no');
+    fb.innerHTML = (ok?'✔ تنبؤك صحيح. ':'✘ تنبؤك لم يطابق. ') + (isFn(g)
+      ? 'كل خط رأسي قطع الرسم في نقطة واحدة على الأكثر ← <b>دالة</b>: لكل x قيمة y واحدة.'
+      : 'وجدنا خطًا رأسيًا يقطع الرسم في <b>نقطتين</b> ← <b>ليست دالة</b>: قيمة x واحدة لها قيمتان لـ y.');
+  }
+  function step(ts){
+    if(!last) last = ts; var dt = Math.min(0.05,(ts-last)/1000); last = ts;
+    sweepX += dt*3;
+    if(sweepX >= 4.5){ sweepX = 4.5; sweeping = false; }
+    sl.value = String(sweepX); draw(sweepX);
+    if(sweeping) raf = requestAnimationFrame(step); else verdict();
+  }
+  runBtn.addEventListener('click', function(){
+    ran = true; maxSeen = 0; cancelAnimationFrame(raf);
+    if(!motionOn){ sl.value = isFn(gsel.value) ? '0' : '1'; draw(); verdict(); return; }
+    sweepX = -4.5; sl.value = '-4.5'; sweeping = true; last = 0; raf = requestAnimationFrame(step);
+  });
+  sl.addEventListener('input', function(){ if(!ran) return; draw(); });
+  document.addEventListener('motionchange', function(){ if(!motionOn && sweeping){ sweeping=false; cancelAnimationFrame(raf); sl.value = isFn(gsel.value)?'0':'1'; draw(); verdict(); } });
+  draw(); onResize(draw);
+
+  var h = document.getElementById('c1');
+  mcCheck(h,{label:'تحقق 1',q:'جدول <span class="eq">x: 2, 3, 2</span> و <span class="eq">y: 5, 7, 8</span>. هل العلاقة دالة؟',opts:['دالة','ليست دالة'],ans:1,inline:true,why:'المدخلة <b>2</b> ظهرت مرتين بمخرجتين مختلفتين: 5 و 8 ← <b>ليست دالة</b>.'});
+  mcCheck(h,{label:'تحقق 2',q:'العلاقة <span class="eq">(0, 4), (1, 4), (2, 4)</span>. هل هي دالة؟',opts:['نعم، دالة','لا، لأن المخرجة 4 تكررت'],ans:0,inline:true,why:'كل مدخلة (0، 1، 2) لها مخرجة واحدة. تكرار المخرجة 4 مسموح. إنها <b>دالة ثابتة</b> (y دائمًا 4).'});
+  mcCheck(h,{label:'تحقق 3',q:'إذا قطع مستقيم رأسي التمثيل البياني في نقطتين، فالعلاقة…',opts:['دالة','ليست دالة','دالة خطية'],ans:1,inline:true,why:'نقطتان على نفس الخط الرأسي = قيمة x واحدة لها قيمتان لـ y ← <b>ليست دالة</b>.'});
+})();
+
+/* ---------- Station 2: swim club ---------- */
+(function(){
+  var sl = document.getElementById('swX'), cv = document.getElementById('swCv'), tab = document.getElementById('swTab');
+  function f(x){ return 15*x + 40; }
+  function render(){
+    var x = Number(sl.value);
+    document.getElementById('swXv').textContent = x;
+    document.getElementById('swEq').textContent = 'y = 15(' + x + ') + 40 = ' + f(x);
+    var r1 = '<tr><th>x (حصص)</th>', r2 = '<tr><th>y (ر.ق)</th>';
+    for(var i=0;i<=10;i++){ var s = i===x ? ' style="background:#fff3c4;font-weight:700"' : ''; r1 += '<td' + s + '>' + i + '</td>'; r2 += '<td' + s + '>' + f(i) + '</td>'; }
+    tab.innerHTML = r1 + '</tr>' + r2 + '</tr>';
+    var P = plane(cv, 0.62, 360, {xmin:0,xmax:10,ymin:0,ymax:200,xs:1,ys:20,yl:40,padL:40,xname:'x',yname:'y'});
+    var c = P.c;
+    c.strokeStyle='#1f5fbf'; c.lineWidth=3; c.beginPath(); c.moveTo(P.X(0),P.Y(f(0))); c.lineTo(P.X(10),P.Y(f(10))); c.stroke();
+    for(var k=0;k<=10;k++) dot(c, P.X(k), P.Y(f(k)), 3.5, '#1f5fbf');
+    dot(c, P.X(0), P.Y(40), 6, '#1b7f3b'); c.fillStyle='#1b7f3b'; c.font=FONT; c.textAlign='left'; c.fillText('b = 40', P.X(0)+8, P.Y(40)+16);
+    // slope triangle from x=1 to 2
+    c.strokeStyle='#e07a2c'; c.lineWidth=2; c.beginPath(); c.moveTo(P.X(1),P.Y(f(1))); c.lineTo(P.X(2),P.Y(f(1))); c.lineTo(P.X(2),P.Y(f(2))); c.stroke();
+    c.fillStyle='#e07a2c'; c.fillText('+15', P.X(2)+4, P.Y((f(1)+f(2))/2)+4); c.fillText('+1', P.X(1.3), P.Y(f(1))+14);
+    dot(c, P.X(x), P.Y(f(x)), 7, '#d0342c');
+    c.fillStyle='#d0342c'; c.textAlign = x>6 ? 'right':'left'; c.fillText('(' + x + ', ' + f(x) + ')', P.X(x)+(x>6?-10:10), P.Y(f(x))-8);
+  }
+  sl.addEventListener('input', render); render(); onResize(render);
+  numCheck(document.getElementById('c2'),{label:'تحقق',q:'في <span class="eq">y = 15x + 40</span>: ما الميل m وما المقطع b؟',fields:[{label:'الميل m =',ans:15},{label:'المقطع b =',ans:40}],why:'<b>m = 15</b> ر.ق لكل حصة (معدل التغير الثابت)، و<b>b = 40</b> ر.ق رسوم التسجيل عند 0 حصص (القيمة الابتدائية).'});
+})();
+
+/* ---------- Station 3: classify + compare ---------- */
+(function(){
+  var grid = document.getElementById('clsGrid');
+  var G = [
+    {name:'(أ)', pts:function(x){ return 0.8*x+0.5; }, lin:true, why:'مستقيم صاعد: معدل التغير ثابت ← <b>خطية</b>.'},
+    {name:'(ب)', pts:function(){ return 3; }, lin:true, why:'مستقيم أفقي: معدل التغير ثابت = 0 (y = 3) ← <b>خطية</b>.'},
+    {name:'(ج)', pts:function(x){ return 0.12*x*x; }, lin:false, why:'منحنى: معدل التغير يكبر كلما زادت x ← <b>غير خطية</b>.'},
+    {name:'(د)', pts:function(x){ return x<=3 ? 1.5*x : 4.5+0.3*(x-3); }, lin:false, why:'خط ينكسر: معدله 1.5 ثم يصبح 0.3. على الفترة كلها المعدل غير ثابت ← <b>غير خطية</b>.'}
+  ];
+  var cvs = [];
+  G.forEach(function(g){
+    var card = el('div',{'class':'card'});
+    card.appendChild(el('b',null,'الرسم ' + g.name));
+    var cv = el('canvas',{dir:'ltr','aria-label':'رسم ' + g.name}); card.appendChild(cv); cvs.push([cv,g]);
+    mcCheck(card,{label:'صنّف',q:'هذا الرسم يمثل دالة…',opts:['خطية','غير خطية'],ans:g.lin?0:1,inline:true,why:g.why});
+    grid.appendChild(card);
+  });
+  function drawAll(){ cvs.forEach(function(p){
+    var P = plane(p[0], 0.62, 200, {xmin:0,xmax:8,ymin:0,ymax:8,xs:1,ys:1,labels:false});
+    var c = P.c; c.strokeStyle='#1f5fbf'; c.lineWidth=3; c.beginPath();
+    for(var k=0;k<=80;k++){ var x=k/10, y=p[1].pts(x); if(k===0) c.moveTo(P.X(x),P.Y(y)); else c.lineTo(P.X(x),P.Y(y)); } c.stroke();
+  }); }
+  drawAll(); onResize(drawAll);
+
+  var cv = document.getElementById('cmpCv'), sl = document.getElementById('cmpX');
+  function A(x){ return 8*x+20; } function Bf(x){ return 6*x+35; }
+  function render(){
+    var x = Number(sl.value);
+    document.getElementById('cmpXv').textContent = x;
+    document.getElementById('cmpA').textContent = A(x);
+    document.getElementById('cmpB').textContent = Bf(x);
+    document.getElementById('cmpW').textContent = A(x) < Bf(x) ? 'أ' : (A(x) > Bf(x) ? 'ب' : 'متساويتان');
+    var P = plane(cv, 0.62, 360, {xmin:0,xmax:12,ymin:0,ymax:120,xs:1,ys:10,yl:20,xl:2,padL:40,xname:'x',yname:'y'});
+    var c = P.c;
+    c.lineWidth=3; c.strokeStyle='#d0342c'; c.beginPath(); c.moveTo(P.X(0),P.Y(A(0))); c.lineTo(P.X(12),P.Y(A(12))); c.stroke();
+    c.strokeStyle='#1f5fbf'; c.beginPath(); c.moveTo(P.X(0),P.Y(Bf(0))); c.lineTo(P.X(12),P.Y(Bf(12))); c.stroke();
+    c.font=FONT; c.textAlign='left';
+    c.fillStyle='#d0342c'; c.fillText('أ: y = 8x + 20', P.X(0.3), P.Y(112));
+    c.fillStyle='#1f5fbf'; c.fillText('ب: y = 6x + 35', P.X(0.3), P.Y(100));
+    dot(c, P.X(7.5), P.Y(80), 5, '#222'); c.fillStyle='#222'; c.fillText('(7.5, 80)', P.X(7.5)+8, P.Y(80)+16);
+    c.strokeStyle='#999'; c.setLineDash([5,4]); c.lineWidth=1.5; c.beginPath(); c.moveTo(P.X(x),P.T); c.lineTo(P.X(x),P.B); c.stroke(); c.setLineDash([]);
+    dot(c, P.X(x), P.Y(A(x)), 6, '#d0342c'); dot(c, P.X(x), P.Y(Bf(x)), 6, '#1f5fbf');
+  }
+  sl.addEventListener('input', render); render(); onResize(render);
+
+  var h = document.getElementById('c3');
+  mcCheck(h,{label:'تحقق 1',q:'جدول <span class="eq">x: 1, 2, 3</span> و <span class="eq">y: 2, 4, 8</span>. هل الدالة خطية؟',opts:['خطية لأن y تزيد دائمًا','غير خطية لأن معدل التغير غير ثابت'],ans:1,why:'من 2 إلى 4 التغير <b>+2</b>، ومن 4 إلى 8 التغير <b>+4</b>، والخطوة في x ثابتة (+1). المعدل غير ثابت ← <b>غير خطية</b>. (الزيادة وحدها لا تكفي لتكون خطية.)'});
+  mcCheck(h,{label:'تحقق 2',q:'هل <span class="eq">y = −3x + 1</span> دالة خطية؟',opts:['نعم، خطية: ميلها ثابت = −3','لا، لأن الميل سالب','لا، لأنها تتناقص'],ans:0,why:'هي على الصورة <span class="eq">y = mx + b</span> بميل ثابت <b>m = −3</b> ← <b>خطية</b> (متناقصة). الميل السالب لا يجعلها غير خطية.'});
+})();
+
+/* ---------- Station 4: intervals ---------- */
+(function(){
+  var PTS = [[0,1],[2,5],[4,5],[6,1],[8,4]];
+  var KIND = ['inc','con','dec','inc'];
+  var NAME = {inc:'متزايدة', con:'ثابتة', dec:'متناقصة'};
+  var cv = document.getElementById('ivCv'), fb = document.getElementById('ivFb'), runBtn = document.getElementById('ivRun');
+  var prog = 0, raf = 0, last = 0, ran = false, running = false;
+  var sel = choiceGroup(document.getElementById('ivSel'), function(){ ran=false; prog=0; running=false; cancelAnimationFrame(raf); pred.clear(); runBtn.disabled=true; document.getElementById('ivHint').textContent='تنبّأ لهذه الفترة.'; fb.className='fb'; draw(); });
+  var pred = choiceGroup(document.getElementById('ivPred'), function(){ runBtn.disabled=false; document.getElementById('ivHint').textContent='جاهز.'; });
+  function yAt(x){ for(var i=0;i<PTS.length-1;i++){ var a=PTS[i], b=PTS[i+1]; if(x>=a[0] && x<=b[0]) return a[1] + (b[1]-a[1])*(x-a[0])/(b[0]-a[0]); } return PTS[PTS.length-1][1]; }
+  function draw(){
+    var P = plane(cv, 0.62, 360, {xmin:0,xmax:8,ymin:0,ymax:6,xs:1,ys:1,xname:'x',yname:'y'});
+    var c = P.c, k = Number(sel.value), x0 = PTS[k][0], x1 = PTS[k+1][0];
+    c.fillStyle='rgba(255,213,79,.35)'; c.fillRect(P.X(x0), P.T, P.X(x1)-P.X(x0), P.B-P.T);
+    c.strokeStyle='#1f5fbf'; c.lineWidth=3; c.beginPath();
+    PTS.forEach(function(p,i){ if(i===0) c.moveTo(P.X(p[0]),P.Y(p[1])); else c.lineTo(P.X(p[0]),P.Y(p[1])); }); c.stroke();
+    PTS.forEach(function(p){ dot(c, P.X(p[0]), P.Y(p[1]), 4, '#1f5fbf'); });
+    if(ran){
+      var colr = {inc:'#1b7f3b', con:'#8a5a00', dec:'#b3261e'}[KIND[k]];
+      c.strokeStyle=colr; c.lineWidth=6; c.beginPath(); c.moveTo(P.X(x0),P.Y(PTS[k][1]));
+      var xe = x0 + (x1-x0)*prog; c.lineTo(P.X(xe), P.Y(yAt(xe))); c.stroke();
+      dot(c, P.X(xe), P.Y(yAt(xe)), 7, '#d0342c');
+      c.fillStyle='#222'; c.font=FONT; c.textAlign='center';
+      c.fillText('x = ' + xe.toFixed(1) + ' ,  y = ' + yAt(xe).toFixed(1), (P.L+P.R)/2, P.T+14);
+    }
+  }
+  function finish(){
+    var k = Number(sel.value), kind = KIND[k], ok = pred.value === kind;
+    var a = PTS[k], b = PTS[k+1];
+    fb.className='fb show ' + (ok?'ok':'no');
+    fb.innerHTML = (ok?'✔ تنبؤك صحيح. ':'✘ تنبؤك لم يطابق. ') + 'عندما زادت x من ' + a[0] + ' إلى ' + b[0] + '، ' + (kind==='inc' ? 'زادت y من ' + a[1] + ' إلى ' + b[1] + ' ← الرسم يصعد ← <b>متزايدة</b>.' : kind==='dec' ? 'نقصت y من ' + a[1] + ' إلى ' + b[1] + ' ← الرسم ينزل ← <b>متناقصة</b>.' : 'بقيت y = ' + a[1] + ' لا تتغير ← الرسم أفقي ← <b>ثابتة</b> في هذه الفترة فقط.');
+  }
+  function step(ts){
+    if(!last) last = ts; var dt = Math.min(0.05,(ts-last)/1000); last = ts;
+    prog = Math.min(1, prog + dt*0.6); draw();
+    if(prog < 1 && running) raf = requestAnimationFrame(step); else { running=false; finish(); }
+  }
+  runBtn.addEventListener('click', function(){
+    ran = true; prog = 0; cancelAnimationFrame(raf); fb.className='fb';
+    if(!motionOn){ prog = 1; draw(); finish(); return; }
+    running = true; last = 0; raf = requestAnimationFrame(step);
+  });
+  document.addEventListener('motionchange', function(){ if(!motionOn && running){ running=false; cancelAnimationFrame(raf); prog=1; draw(); finish(); } });
+  draw(); onResize(draw);
+
+  /* bike qualitative graph */
+  var bcv = document.getElementById('bikeCv');
+  function bike(){
+    var f = fitCanvas(bcv, 0.45, 220), c = f.c, w = f.w, h = f.h;
+    var L = 30, R = w-12, T = 14, B = h-28;
+    c.clearRect(0,0,w,h);
+    arrow(c, L, B, R, B, '#333', 1.8, 8); arrow(c, L, B, L, T, '#333', 1.8, 8);
+    c.fillStyle='#333'; c.font=FONT; c.textAlign='right'; c.fillText('الزمن', R, B+18); c.textAlign='left'; c.fillText('السرعة', L+6, T+8);
+    var x1 = L+(R-L)*0.3, x2 = L+(R-L)*0.65, x3 = R-14, yTop = T+30;
+    c.lineWidth=4;
+    c.strokeStyle='#1b7f3b'; c.beginPath(); c.moveTo(L,B); c.quadraticCurveTo(L+(x1-L)*0.5, yTop+10, x1, yTop); c.stroke();
+    c.strokeStyle='#8a5a00'; c.beginPath(); c.moveTo(x1,yTop); c.lineTo(x2,yTop); c.stroke();
+    c.strokeStyle='#b3261e'; c.beginPath(); c.moveTo(x2,yTop); c.lineTo(x3,B); c.stroke();
+    c.fillStyle='#222'; c.textAlign='center';
+    c.fillText('(1) متزايدة', (L+x1)/2, B-8); c.fillText('(2) ثابتة', (x1+x2)/2, yTop-8); c.fillText('(3) متناقصة', (x2+x3)/2+10, (yTop+B)/2-6);
+  }
+  bike(); onResize(bike);
+
+  var h = document.getElementById('c4');
+  mcCheck(h,{label:'تحقق 1',q:'رسم يصعد من <span class="eq">x = 0</span> إلى <span class="eq">x = 2</span>، ثم أفقي من 2 إلى 4، ثم ينزل من 4 إلى 6. أي وصف صحيح؟',opts:['0–2 متزايدة، 2–4 ثابتة، 4–6 متناقصة','0–2 متناقصة، 2–4 ثابتة، 4–6 متزايدة','0–2 متزايدة، 2–4 متزايدة، 4–6 متناقصة','الدالة كلها ثابتة لأن فيها جزءًا أفقيًا'],ans:0,why:'نقرأ من اليسار لليمين: يصعد ← <b>متزايدة</b> (0–2)، أفقي ← <b>ثابتة</b> (2–4)، ينزل ← <b>متناقصة</b> (4–6). والجزء الأفقي يجعلها ثابتة <b>في تلك الفترة فقط</b>.'});
+  mcCheck(h,{label:'تحقق 2',q:'إذا كانت السرعة <b>متناقصة</b> مع الزمن، كيف يبدو تمثيلها (الزمن أفقي، السرعة رأسي)؟',opts:['خط أو منحنى يصعد','خط أفقي','خط أو منحنى ينزل'],ans:2,why:'متناقصة = كلما زاد الزمن قلّت السرعة ← الرسم <b>ينزل</b> من اليسار إلى اليمين.'});
+})();
+
+/* ---------- Station 5: tank ---------- */
+(function(){
+  var sl = document.getElementById('tkX'), cv = document.getElementById('tkCv');
+  function f(x){ return -5*x + 80; }
+  function render(){
+    var x = Number(sl.value);
+    document.getElementById('tkXv').textContent = x;
+    document.getElementById('tkEq').textContent = 'y = −5(' + x + ') + 80 = ' + f(x) + (f(x)===0 ? '  ← فرغ الخزان' : '');
+    var P = plane(cv, 0.6, 340, {xmin:0,xmax:16,ymin:0,ymax:80,xs:2,ys:10,yl:20,xl:2,padL:40,xname:'x (دقيقة)',yname:'y (لتر)'});
+    var c = P.c;
+    c.strokeStyle='#1f5fbf'; c.lineWidth=3; c.beginPath(); c.moveTo(P.X(0),P.Y(80)); c.lineTo(P.X(16),P.Y(0)); c.stroke();
+    dot(c, P.X(16), P.Y(0), 6, '#1b7f3b'); c.fillStyle='#1b7f3b'; c.font=FONT; c.textAlign='right'; c.fillText('(16, 0)', P.X(16)-6, P.Y(0)-10);
+    // mini tank
+    var tw = 36, th = (P.B-P.T)*0.6, tx = P.R-tw-6, ty = P.T+4;
+    c.strokeStyle='#333'; c.lineWidth=2; c.strokeRect(tx,ty,tw,th);
+    var lvl = th*f(x)/80; c.fillStyle='rgba(30,111,217,.55)'; c.fillRect(tx+2, ty+th-lvl, tw-4, lvl);
+    dot(c, P.X(x), P.Y(f(x)), 7, '#d0342c');
+  }
+  sl.addEventListener('input', render); render(); onResize(render);
+  numCheck(document.getElementById('c5'),{label:'تحقق',q:'سيارة أجرة (مثال مؤلف): تبدأ الرحلة بمبلغ 12 ر.ق ويزيد المبلغ 3 ر.ق لكل كيلومتر. اكتب الدالة <span class="eq">y = mx + b</span> بإدخال m و b.',fields:[{label:'m =',ans:3},{label:'b =',ans:12}],why:'المعدل 3 ر.ق لكل كيلومتر ← <b>m = 3</b>، والبداية 12 ر.ق ← <b>b = 12</b>. الدالة: <span class="eq">y = 3x + 12</span>. والمقطع منطقي: عند 0 كم تدفع مبلغ البداية.'});
+})();
+
+/* ---------- Final quiz ---------- */
+buildQuiz(document.getElementById('quizBox'), [
+  {q:'متى تكون العلاقة دالة؟', opts:['عندما تكون كل المخرجات مختلفة','عندما يكون لكل مدخلة مخرجة واحدة فقط','عندما يكون رسمها مستقيمًا','عندما تكون المدخلات أعدادًا موجبة'], ans:1, why:'تعريف الدالة: <b>لكل مدخلة مخرجة واحدة وواحدة فقط</b>.'},
+  {q:'العلاقة <span class="eq">(3, 2), (5, 2), (7, 1)</span>:', opts:['دالة','ليست دالة لأن المخرجة 2 تكررت'], ans:0, why:'كل مدخلة (3، 5، 7) لها مخرجة واحدة. تكرار المخرجة 2 <b>مسموح</b> ← دالة.'},
+  {q:'جدول فيه المدخلة 1 مرتين: مرة مع 4 ومرة مع 9. العلاقة:', opts:['دالة','ليست دالة'], ans:1, why:'مدخلة واحدة (1) لها مخرجتان مختلفتان ← <b>ليست دالة</b>.'},
+  {type:'num', q:'في <span class="eq">y = 7x − 4</span>، ما المقطع b؟', ans:-4, ansText:'−4', why:'الصورة <span class="eq">y = mx + b</span>، و <span class="eq">−4</span> هي b (قيمة y عند x = 0). انتبه للإشارة السالبة — استخدم زر ±.'},
+  {type:'num', q:'ما ميل <span class="eq">y = 7x − 4</span>؟', ans:7, ansText:'7', why:'المعامل أمام x هو الميل: <b>m = 7</b>.'},
+  {q:'الدالة <span class="eq">y = x²</span> (جدولها: 1، 2، 3 ← 1، 4، 9):', opts:['خطية','غير خطية لأن معدل التغير غير ثابت'], ans:1, why:'التغيرات +3 ثم +5 — غير ثابتة ← <b>غير خطية</b>، ورسمها منحنى.'},
+  {q:'ماذا يعني أن الدالة «متزايدة» في فترة؟', opts:['y تزيد عندما تزيد x','y تنقص عندما تزيد x','y لا تتغير','x لا تتغير'], ans:0, why:'متزايدة: كلما <b>زادت x زادت y</b>، والرسم يصعد من اليسار إلى اليمين.'},
+  {q:'فترة يكون فيها الرسم <b>أفقيًا</b> تعني أن الدالة في تلك الفترة:', opts:['متزايدة','متناقصة','ثابتة','ليست دالة'], ans:2, why:'أفقي ← y لا تتغير ← الدالة <b>ثابتة</b> في تلك الفترة.'},
+  {type:'num', q:'إذا كانت <span class="eq">y = 10x + 25</span>، فما قيمة y عندما <span class="eq">x = 3</span>؟', ans:55, ansText:'55', why:'<span class="eq">y = 10(3) + 25 = 30 + 25 = 55</span>.'},
+  {q:'في تمثيل بياني وصفي، جزء من الرسم <b>ينزل</b> من اليسار إلى اليمين. الدالة في هذه الفترة:', opts:['متزايدة','متناقصة','ثابتة'], ans:1, why:'النزول يعني أن y تنقص كلما زادت x ← <b>متناقصة</b>.'}
+]);
+initSteps();
+</script>
+</body>
+</html>
