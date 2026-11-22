@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب العلوم — نهاية الفصل الأول</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#0f766e;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go{flex:none;min-width:100px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 12px}
+.fi .go[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar{direction:rtl;text-align:right}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب العلوم — نهاية الفصل الأول</h1>
+  <p>يوسف • الصف الثامن / 1 • الجهاز الدوري والطاقة الحرارية</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق الرسمي (جدول مواصفات الوزارة 2026–2027):</b> وحدة الجهاز الدوري 19٪ — علاقة الرياضة بمعدل دقات القلب، تلاؤم الدم مع وظائفه، صحة الجهاز الدوري. ووحدة الطاقة الحرارية وطرائق انتقالها 81٪ — تحول الطاقة، طرائق الانتقال، استقصاء التوصيل، العوازل المنزلية، تيارات الحمل، التطبيقات العملية للحمل، نسيم البر والبحر، والأشعة تحت الحمراء.<br>
+الاختبار التحريري يوم الأحد 13 ديسمبر 2026. الاختبار القصير هذا الأسبوع من ص 190–226 جزء من الوحدة الحرارية فقط، أما تدريب نهاية الفصل فيشمل النطاق الوزاري كاملاً بما فيه ما بعد ص 226.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <button type="button" class="big" id="begin">ابدأ التدريب ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card">
+    <span class="kind" id="kind"></span>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big" id="restart" style="background:#163248;margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="endterm-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="endterm-index.html">كل مواد نهاية الفصل</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"sc1","t":"mc","q":"لماذا يزداد معدل دقات القلب أثناء ممارسة الرياضة؟","choices":["حتى تصل العضلات كمية أكبر من الأكسجين والغذاء","حتى يتوقف الدم عن الحركة في الأوعية","حتى تنخفض درجة حرارة الجسم فوراً إلى الصفر","حتى يقل عدد خلايا الدم الحمراء"],"ans":0,"ex":"عند المجهود تحتاج العضلات طاقة أكبر، فيضخ القلب الدم أسرع ليوصل أكسجيناً ومواد غذائية أكثر ويُخرج فضلات التنفس الخلوي."},{"id":"sc2","t":"mc","q":"ما وظيفة خلايا الدم الحمراء أساساً؟","choices":["نقل الأكسجين بواسطة الهيموغلوبين","محاربة الجراثيم مباشرة كخلايا بيضاء","تجلط الدم عند الجرح","إنتاج الحرارة في الكبد فقط"],"ans":0,"ex":"الخلايا الحمراء تحتوي هيموغلوبيناً يرتبط بالأكسجين في الرئتين ويوصله إلى الأنسجة. الخلايا البيضاء للدفاع، والصفائح للتجلط."},{"id":"sc3","t":"tf","q":"البلازما هي الجزء السائل من الدم، وتنقل الغذاء والفضلات والهرمونات.","ans":true,"ex":"صحيح. البلازما وسط سائل يحمل المواد الذائبة، بينما الخلايا (حمراء وبيضاء وصفائح) تسبح فيها."},{"id":"sc4","t":"mc","q":"أي عادة تساعد في الحفاظ على صحة الجهاز الدوري؟","choices":["ممارسة نشاط بدني منتظم وتقليل الدهون المشبعة","الإكثار من الملح والدهون المشبعة","التدخين لزيادة سعة الرئتين","الجلوس الطويل دون حركة كل يوم"],"ans":0,"ex":"الرياضة تقوّي القلب، والغذاء المتوازن يقلل خطر تضيق الشرايين. التدخين والملح الزائد والدهون المشبعة تضر الجهاز الدوري."},{"id":"sc5","t":"fi","q":"المادة في الدم المسؤولة عن تجلط الدم عند الجرح تُسمّى صفائح ……","ans":["دموية","الدم","صفائح دموية"],"hint":"كلمة واحدة أو كلمتان","ex":"الصفائح الدموية تساعد على تكوّن الخثرة لإيقاف النزيف."},{"id":"sc6","t":"mc","q":"في غلاية كهربائية، التحول الأساسي للطاقة هو من:","choices":["طاقة كهربائية إلى طاقة حرارية","طاقة حرارية إلى طاقة كيميائية","طاقة ضوئية إلى طاقة وضع","طاقة صوتية إلى طاقة نووية"],"ans":0,"ex":"التيار الكهربائي يسخّن ملف الغلاية فتتحول الطاقة الكهربائية إلى طاقة حرارية ترفع درجة حرارة الماء."},{"id":"sc7","t":"tf","q":"يمكن خلق طاقة من العدم إذا سخنّا جسماً بقوة كافية.","ans":false,"ex":"خطأ. الطاقة لا تُخلق ولا تفنى، وإنما تتحول من صورة إلى أخرى (قانون حفظ الطاقة)."},{"id":"sc8","t":"mc","q":"أي طرائق انتقال الطاقة الحرارية تحتاج إلى وسط مادي، وتكون أسرع عادة في الفلزات؟","choices":["التوصيل الحراري","الحمل الحراري فقط في الفراغ","الإشعاع عبر الفراغ فقط","التردد المغناطيسي"],"ans":0,"ex":"التوصيل يتم عبر تلامس الجسيمات في وسط مادي، والفلزات موصلة جيدة بسبب إلكتروناتها الحرة. الإشعاع لا يحتاج وسطاً."},{"id":"sc9","t":"mc","q":"كيف تصل طاقة الشمس إلى الأرض؟","choices":["بالإشعاع (أشعة تحت حمراء وضوء) عبر الفضاء","بالتوصيل عبر قضيب معدني بين الشمس والأرض","بحمل هوائي من سطح الشمس إلى قطر","بتيارات مائية في المحيط فقط"],"ans":0,"ex":"الفضاء شبه فراغ، فلا يحدث توصيل ولا حمل. الطاقة تصل بالإشعاع الكهرومغناطيسي بما فيه الضوء والأشعة تحت الحمراء."},{"id":"sc10","t":"fi","q":"انتقال الطاقة الحرارية بحركة السائل أو الغاز نفسه يُسمّى …… الحراري.","ans":["الحمل","حمل","تيارات الحمل","التيار","تيارات"],"hint":"الحمل","ex":"الحمل الحراري يحدث عندما يتحرك المائع: الجزء الساخن تقل كثافته فيرتفع، والبارد يهبط، فتتكون تيارات الحمل."},{"id":"sc11","t":"mc","q":"في استقصاء عادل لمقارنة توصيل قضبان مختلفة، يجب تثبيت كل المتغيرات ما عدا:","choices":["نوع مادة القضيب","طول القضيب ومساحة مقطعه","درجة حرارة مصدر الحرارة في البداية","كمية الشمع أو موضع الدبوس"],"ans":0,"ex":"الاختبار العادل يغيّر متغيراً مستقلاً واحداً فقط (مادة القضيب) ويثبّت الطول والمقطع والتسخين والشمع حتى تكون المقارنة صادقة."},{"id":"sc12","t":"tf","q":"الخشب والهواء المحبوس موصلان حراريان أفضل من النحاس.","ans":false,"ex":"خطأ. النحاس موصل جيد، أما الخشب والهواء فهما عازلان نسبياً؛ ولذلك تُستخدم مواد تحبس الهواء في العزل المنزلي."},{"id":"sc13","t":"mc","q":"لماذا تُعد النافذة المزدوجة (زجاجان وبينهما هواء) عازلاً أفضل من زجاج واحد؟","choices":["لأن طبقة الهواء المحبوس تقلل انتقال الحرارة بالتوصيل","لأن الهواء موصل أفضل من الزجاج","لأن الزجاج المزدوج يمنع الإشعاع تماماً كالمعدن","لأن الهواء يولّد حرارة إضافية"],"ans":0,"ex":"الهواء المحبوس عازل رديء التوصيل، فيقلل تسرب الحرارة. هذا مبدأ مهم في فاعلية العوازل المنزلية."},{"id":"sc14","t":"mc","q":"في تيار الحمل داخل حجرة، الهواء الساخن:","choices":["تقل كثافته فيرتفع إلى الأعلى","تزداد كثافته فيهبط إلى الأرض فوراً","يبقى مكانه لأن الهواء لا يتحرك","يتحول إلى ضوء ثم يختفي"],"ans":0,"ex":"التسخين يوسع الهواء فتقل كثافته ويرتفع، ويحل محله هواء أبرد وأكثف من الأسفل، فينشأ تيار حمل."},{"id":"sc15","t":"tf","q":"لحدوث تيارات حمل واضحة، يُفضَّل وضع مصدر التسخين أسفل السائل لا أعلاه.","ans":true,"ex":"صحيح. إذا سُخّن السائل من الأسفل ارتفع الجزء الحار وهبط البارد. التسخين من الأعلى لا يُنشئ تيارت حمل فعالة بالطريقة نفسها."},{"id":"sc16","t":"mc","q":"من التطبيقات العملية للحمل الحراري:","choices":["المشعّات (الردياتير) التي تدفئ هواء الغرفة بتيارات صاعدة","تسخين قضيب نحاس من طرفه فيصل الحرارة للطرف الآخر دون هواء","وصول حرارة الشمس عبر الفراغ","عزل جدار بصوف زجاجي لا يتحرك فيه الهواء"],"ans":0,"ex":"المشعّ يسخّن الهواء حوله فيرتفع، ويدور هواء الغرفة بالحمل. توصيل القضيب توصيل، وطاقة الشمس إشعاع، والصوف عزل."},{"id":"sc17","t":"mc","q":"لماذا تُركَّب فتحات التهوية غالباً في أعلى الغرفة؟","choices":["لأن الهواء الدافئ المحمّل ببخار أو روائح يرتفع بالحمل فيخرج منها","لأن الهواء البارد دائماً يصعد إلى السقف","حتى يدخل المطر صيفاً","لأن الإشعاع يخرج فقط من الأعلى"],"ans":0,"ex":"الحمل يدفع الهواء الدافئ للأعلى، ففتحات السقف أو أعلى الجدار تساعد على خروج هذا الهواء وتجديد الهواء في الغرفة."},{"id":"sc18","t":"mc","q":"ما سبب حدوث نسيم البحر نهاراً؟","choices":["اليابسة تسخن أسرع، فيرتفع هواؤها ويحل محله هواء أبرد قادم من البحر","البحر يسخن أسرع من اليابسة نهاراً فيخرج الهواء من البر إلى البحر","القمر يسحب الهواء نحو الشاطئ فقط ليلاً","الرياح دائماً من البر إلى البحر في الليل والنهار"],"ans":0,"ex":"سعة اليابسة الحرارية أصغر فتسخن أسرع نهاراً، ينخفض ضغط الهواء فوقها ويرتفع، فيهب نسيم من البحر (الأبرد) نحو البر."},{"id":"sc19","t":"tf","q":"ليلاً تهب الرياح غالباً من البر إلى البحر (نسيم البر)، لأن اليابسة تبرد أسرع من البحر.","ans":true,"ex":"صحيح. بعد الغروب تفقد اليابسة حرارتها أسرع، فيصبح هواؤها أبرد وأكثف ويهبط ويندفع نحو البحر الذي يبقى أدفأ نسبياً."},{"id":"sc20","t":"fi","q":"الرياح التي تهب نهاراً من البحر نحو البر تُسمّى نسيم ……","ans":["البحر","بحر"],"hint":"البحر أو البر","ex":"نسيم البحر نهاراً (من البحر إلى البر). نسيم البر ليلاً (من البر إلى البحر)."},{"id":"sc21","t":"mc","q":"كيف تصدر الأسطح أشعة تحت حمراء؟","choices":["كل جسم فوق الصفر المطلق يصدر أشعة تحت حمراء، ويزداد الإصدار كلما ارتفعت حرارته","الأجسام الباردة فقط هي التي تُصدر هذه الأشعة","المعادن اللامعة فقط تُصدر أشعة تحت حمراء","لا يصدر السطح أشعة إلا إذا كان في الفراغ"],"ans":0,"ex":"الإشعاع الحراري (تحت الأحمر) يصدر عن الأجسام بسبب درجة حرارتها. الجسم الأسخن يصدر طاقة أكبر. اللون وطبيعة السطح يؤثران أيضاً في الامتصاص والإصدار."},{"id":"sc22","t":"mc","q":"أي الأسطح يكون عادة أفضل في امتصاص وإصدار الأشعة تحت الحمراء؟","choices":["سطح داكن مطفأ (غير لامع)","سطح فضي لامع","سطح أبيض لامع كالمرآة","سطح شفاف تماماً كالزجاج فقط لأنه لا يمتص شيئاً"],"ans":0,"ex":"الأسطح الداكنة المطفأة تمتص وتُصدر الأشعة تحت الحمراء بكفاءة أعلى، أما الأسطح اللامعة الفضية فتعكس أكثر وتكون إصداراً أضعف."},{"id":"sc23","t":"tf","q":"الأشعة تحت الحمراء تحتاج إلى هواء كي تنتقل، لذلك لا تصل حرارة المدفأة عبر الغرفة المفرَّغة.","ans":false,"ex":"خطأ. الإشعاع ينتقل في الفراغ ولا يحتاج وسطاً. لذلك تصلنا حرارة الشمس، ويمكن أن نشعر بدفء مدفأة حتى مع قليل من حركة الهواء."},{"id":"sc24","t":"mc","q":"قارن: تسخين طرف ملعقة معدنية في كوب شاي ساخن يتم أساساً بـ:","choices":["التوصيل عبر الملعقة","الحمل داخل الملعقة الصلبة فقط","نسيم البر","انعدام الطاقة"],"ans":0,"ex":"المعادن الصلبة تنتقل فيها الحرارة بالتوصيل. الحمل يحدث في الموائع، ونسيم البر ظاهرة جوية من الحمل على نطاق كبير."}];
+var META = {"subject": "العلوم", "n": 24};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full'};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+
+  function prepare(list){
+    return list.map(function(q, idx){
+      var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||''};
+      if(q.t==='tf'){
+        item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+        item.ans = !!q.ans;
+        item.ansH = item.ans ? 'صح' : 'خطأ';
+      } else if(q.t==='fi'){
+        item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+        item.ansH = item.accepted[0];
+      } else {
+        var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+        item.opts = shuffle(opts);
+        item.ans = q.ans;
+        item.ansH = q.choices[q.ans];
+      }
+      return item;
+    });
+  }
+
+  function begin(list, mode){
+    state.qs = prepare(list);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!state.qs.length){ return; }
+    show('quiz');
+    render();
+  }
+
+  function render(){
+    var q = state.qs[state.i], n=state.qs.length;
+    state.answered = false;
+    $('prog').textContent = 'سؤال ' + (state.i+1) + ' / ' + n;
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (state.i/n*100) + '%';
+    $('kind').textContent = KINDS[q.t]||'';
+    $('qtext').innerHTML = q.q;
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('next').textContent = (state.i===n-1) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    var area = $('area'); area.innerHTML = '';
+    if(q.t==='fi'){
+      var wrap=document.createElement('div'); wrap.className='fi';
+      var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+      inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+      var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+      wrap.appendChild(inp); wrap.appendChild(go); area.appendChild(wrap);
+      go.onclick=function(){ submitFi(); };
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+      setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+    } else {
+      var box=document.createElement('div'); box.className='opts';
+      q.opts.forEach(function(o){
+        var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+        b.addEventListener('click', function(){ choose(o.k, b); });
+        box.appendChild(b);
+      });
+      area.appendChild(box);
+    }
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('.opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){ if(norm(q.accepted[i])===nval){ ok=true; break; } }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    $('next').focus();
+  }
+
+  function next(){
+    if(!state.answered) return;
+    if(state.i>=state.qs.length-1){ end(); return; }
+    state.i++; render();
+  }
+
+  function end(){
+    var n=state.qs.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    show('end');
+  }
+
+  $('intro').textContent = BANK.length + ' سؤالاً متنوعاً (اختيار من متعدد، صح وخطأ، وملء فراغ). خذ وقتك يا يوسف.';
+  $('begin').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){
+      var orig=null;
+      for(var i=0;i<BANK.length;i++){ if((BANK[i].id||'')===(r.q.id||'') && BANK[i].q===r.q.q){ orig=BANK[i]; break; } }
+      return orig;
+    }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed');
+  });
+  $('home').addEventListener('click', function(){
+    if(state.i===0 && !state.answered){ show('start'); return; }
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>
