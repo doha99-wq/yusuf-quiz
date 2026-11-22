@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#15803d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب شامل — التربية الإسلامية</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#15803d;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب شامل — التربية الإسلامية</h1>
+  <p>يوسف • الصف الثامن / 1 • ما دُرّس بعد منتصف الفصل</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق (من الرسائل الأسبوعية بعد منتصف الفصل، في غياب جدول مواصفات وزاري معلن لنهاية الفصل 2026–2027):</b> التجارة الرابحة (تفسير سورة الصف 10–14)، حق الطريق، حفظ سورة الحاقة، سنن الفطرة، مصعب بن عمير رضي الله عنه، والمسؤولية الأخلاقية في استخدام وسائل التواصل الاجتماعي.<br>تدريب شامل بنحو 60 سؤالاً. الاختبار التحريري يوم الاثنين 14 ديسمبر 2026.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">التدريب الشامل لكل الدروس ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="full-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب شامل تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="full-index.html">كل التدريبات الشاملة</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"is01","topic":"tijara","level":1,"t":"mc","q":"بأي أسلوب افتُتحت آيات التجارة الرابحة لتتشوّق القلوب إلى معرفة الجواب؟","choices":["أسلوب الأمر المباشر","أسلوب الاستفهام المفيد للتشويق","أسلوب القسم","أسلوب النفي"],"ans":1,"ex":"بدأت الآيات بسؤال يشوّق السامع إلى معرفة هذه التجارة. الاستفهام هنا يجعل القلوب تتطلع إلى الجواب."},{"id":"is02","topic":"tijara","level":1,"t":"mc","q":"ما الذي يميّز التجارة التي ترشد إليها الآيات عن تجارة الدنيا؟","choices":["ربحها مال كثير يأتي بسرعة","لا تحتاج إلى أي عمل","فيها النجاة من العذاب وسعادة الدارين","خاصة بالتجار دون غيرهم"],"ans":2,"ex":"الناس يحرصون على ربح الدنيا، لكن الآيات تدل على تجارة أعظم. ربحها النجاة من العذاب والسعادة في الدنيا والآخرة."},{"id":"is03","topic":"tijara","level":2,"t":"mc","q":"أي الخيارات يجمع متطلبات التجارة الرابحة كما بيّنتها الآيات؟","choices":["الإيمان بالله ورسوله والجهاد في سبيل الله بالمال والنفس","جمع المال وادّخاره للمستقبل","اعتزال الناس والانقطاع عنهم","كثرة السفر في طلب الرزق"],"ans":0,"ex":"شرط هذه التجارة أمران: الإيمان بالله ورسوله، والجهاد في سبيل الله بالمال والنفس. بقية الخيارات ليست من مضمون الآيات."},{"id":"is04","topic":"tijara","level":2,"t":"mc","q":"فسّر الكتاب «النصر والفتح القريب» الموعود به المؤمنين بأنه:","choices":["الهجرة إلى المدينة","بيعة العقبة الثانية","الهجرة إلى الحبشة","فتح مكة"],"ans":3,"ex":"يفسّر الكتاب النصر العاجل بفتح مكة. وهو ثمرة في الدنيا تضاف إلى ثمرات الآخرة."},{"id":"is05","topic":"tijara","level":3,"t":"mc","q":"تحقُّق بشارة النبي ﷺ بالفتح القريب يدل على:","choices":["كثرة أموال المسلمين","ضعف تجارة قريش","صدق نبوته ﷺ","انتهاء الحاجة إلى العمل"],"ans":2,"ex":"أخبر النبي ﷺ بالفتح قبل وقوعه، ثم وقع فتح مكة كما بشّر. هذا دليل على صدق نبوته ﷺ."},{"id":"is06","topic":"tijara","level":2,"t":"mc","q":"يذكر ختام المقطع «الحواريين» قدوةً للمؤمنين في نصرة الله، فمن هم؟","choices":["أصحاب موسى عليه السلام","أصفياء عيسى عليه السلام وأنصاره","أهل المدينة الذين بايعوا النبي ﷺ","تجار قريش في مكة"],"ans":1,"ex":"الحواريون هم أصفياء عيسى عليه السلام الذين نصروه. والآيات تدعو المؤمنين أن يكونوا أنصاراً لله مثلهم."},{"id":"is07","topic":"tijara","level":1,"t":"tf","q":"من ثمرات التجارة الرابحة: المغفرة، ودخول الجنات، والمساكن الطيبة في إقامة دائمة.","ans":true,"ex":"العبارة صحيحة. هذه من ثمرات الآخرة التي وعد الله بها من حقق شروط هذه التجارة."},{"id":"is08","topic":"tijara","level":2,"t":"tf","q":"ثمرات التجارة الرابحة كلها في الآخرة فقط، ولا تتضمن الآيات أي بشارة في الدنيا.","ans":false,"ex":"العبارة خاطئة. من الثمرات أيضاً نصر من الله وفتح قريب في الدنيا، وفسّره الكتاب بفتح مكة."},{"id":"is09","topic":"tijara","level":1,"t":"fi","q":"حبّب الله التجارة الرابحة إلى النفوس باستعمال أسلوب …… الذي يفيد التشويق.","ans":["الاستفهام","استفهام","أسلوب الاستفهام","الإستفهام"],"hint":"نوع الأسلوب","ex":"الأسلوب هو الاستفهام. السؤال في أول الآيات يثير الشوق لمعرفة الجواب."},{"id":"is10","topic":"tijara","level":2,"t":"match","q":"صِل كل عبارة بمعناها:","pairs":[["التجارة الرابحة","عمل ينجي من العذاب ويحقق سعادة الدارين"],["المساكن الطيبة","إقامة دائمة في الجنة"],["الفتح القريب","فتح مكة كما فسّره الكتاب"],["الحواريون","أصفياء عيسى عليه السلام"]],"ex":"كل عبارة لها معنى في الدرس. التجارة الرابحة طريق النجاة، والمساكن الطيبة إقامة دائمة، والفتح القريب فتح مكة، والحواريون أنصار عيسى عليه السلام."},{"id":"is11","topic":"tijara","level":3,"t":"order","q":"رتّب مضامين الآيات (10–14) من سورة الصف كما جاءت:","items":["سؤال تشويقي عن تجارة تنجي من العذاب","بيان المتطلبات: الإيمان بالله ورسوله والجهاد بالمال والنفس","ثمرات الآخرة: المغفرة والجنات والمساكن الطيبة","بشارة الدنيا: نصر من الله وفتح قريب","دعوة المؤمنين ليكونوا أنصار الله كالحواريين"],"ex":"تبدأ الآيات بالتشويق، ثم تذكر الشروط، ثم الجزاء في الآخرة، ثم النصر في الدنيا. وتختم بالدعوة إلى نصرة الله اقتداءً بالحواريين."},{"id":"is12","topic":"tijara","level":3,"t":"corr","q":"اختر التصحيح المناسب للعبارة الخاطئة:<br><b>«متطلبات التجارة الرابحة هي الإيمان بالله ورسوله فقط، أما الجهاد فليس منها.»</b>","choices":["متطلباتها الجهاد بالمال وحده دون الإيمان","متطلباتها الإيمان وكثرة الأموال","متطلباتها الجهاد بالنفس وحدها دون المال","متطلباتها الإيمان بالله ورسوله والجهاد في سبيل الله بالمال والنفس"],"ans":3,"ex":"الآيات تجمع بين الإيمان والجهاد بالمال والنفس معاً. لذلك لا يصح الاكتفاء بأحدهما."},{"id":"is13","topic":"tareeq","level":1,"t":"mc","q":"من الصحابي الذي روى حديث حق الطريق؟","choices":["أبو هريرة رضي الله عنه","أبو سعيد الخدري رضي الله عنه","أنس بن مالك رضي الله عنه","عبد الله بن عمر رضي الله عنهما"],"ans":1,"ex":"راوي الحديث هو أبو سعيد الخدري رضي الله عنه. ويجب تمييز الراوي عن غيره من الصحابة."},{"id":"is14","topic":"tareeq","level":2,"t":"mc","q":"ما الاسم الكامل للصحابي أبي سعيد الخدري رضي الله عنه؟","choices":["سعد بن معاذ الأنصاري","سعد بن أبي وقاص","سعد بن مالك بن سنان الأنصاري","مالك بن سعد بن سنان"],"ans":2,"ex":"اسمه سعد بن مالك بن سنان الأنصاري، وكنيته أبو سعيد الخدري. الأسماء الأخرى لصحابة آخرين أو ترتيب خاطئ."},{"id":"is15","topic":"tareeq","level":1,"t":"mc","q":"ما الموضوع الرئيس لحديث حق الطريق؟","choices":["النهي عن الجلوس على الطرقات إلا بإعطاء الطريق حقه","فضل التجارة في الأسواق","آداب الطعام والشراب","أحكام صلاة المسافر"],"ans":0,"ex":"الحديث ينهى عن الجلوس في الطرقات. فإن كان لا بد من الجلوس فيجب إعطاء الطريق حقه."},{"id":"is16","topic":"tareeq","level":2,"t":"mc","q":"جلس شاب عند مدخل السوق يطيل النظر إلى ما لا يحل له النظر إليه. أي حق من حقوق الطريق ضيّعه؟","choices":["رد السلام","الأمر بالمعروف","النهي عن المنكر","غض البصر"],"ans":3,"ex":"غض البصر هو عدم النظر إلى ما لا يحل. وهذا الشاب ضيّع هذا الحق."},{"id":"is17","topic":"tareeq","level":3,"t":"mc","q":"رأى طالب شخصاً يرمي المخلفات في الشارع. ما التصرف الأنسب وفق دروس الحديث؟","choices":["الصراخ عليه أمام الناس","السكوت وكأنه لم يرَ شيئاً","نصحه بلطف وبالكلمة الطيبة","تصويره ونشر صورته على الإنترنت"],"ans":2,"ex":"من دروس الحديث الأمر بالمعروف والنهي عن المنكر بالتي هي أحسن. الكلمة الطيبة أقرب إلى القبول من الشدة أو التشهير."},{"id":"is18","topic":"tareeq","level":1,"t":"tf","q":"معنى غض البصر: عدم النظر إلى ما لا يحل.","ans":true,"ex":"العبارة صحيحة. غض البصر أول حقوق الطريق، وهو حفظ النظر عن الحرام."},{"id":"is19","topic":"tareeq","level":3,"t":"tf","q":"يكفي من يجلس في الطريق أن يرد السلام، ولا يلزمه شيء آخر من حقوق الطريق.","ans":false,"ex":"العبارة خاطئة. للطريق حقوق أخرى مع رد السلام: غض البصر، وكف الأذى، والأمر بالمعروف والنهي عن المنكر."},{"id":"is20","topic":"tareeq","level":2,"t":"fi","q":"الصحابي سعد بن مالك بن سنان الأنصاري كنيته: أبو سعيد ……","ans":["الخدري","الخُدري","خدري"],"hint":"اللقب","ex":"كنيته أبو سعيد الخدري رضي الله عنه. وهو راوي حديث حق الطريق."},{"id":"is21","topic":"tareeq","level":2,"t":"match","q":"صِل كل حق من حقوق الطريق بمثال تطبيقي له:","pairs":[["غض البصر","عدم النظر إلى ما لا يحل"],["كف الأذى","عدم سدّ الممر أو رمي المخلفات فيه"],["رد السلام","إجابة من ألقى التحية"],["الأمر بالمعروف والنهي عن المنكر","نصح المخطئ بالكلمة الطيبة"]],"ex":"كل حق له صورة عملية في الطريق. تطبيق هذه الحقوق يجعل الطريق آمناً ومريحاً للمارة."},{"id":"is22","topic":"tareeq","level":3,"t":"corr","q":"اختر التصحيح المناسب للعبارة الخاطئة:<br><b>«الأمر بالمعروف والنهي عن المنكر في الطريق يكون بالشدة والتعنيف حتى يرتدع المخطئ.»</b>","choices":["يكون بالتي هي أحسن وبالكلمة الطيبة","يكون بالسكوت التام عن الخطأ","يكون بفضح المخطئ أمام الناس","يكون بترك الطريق وعدم المرور فيه"],"ans":0,"ex":"من دروس الحديث وجوب الأمر بالمعروف والنهي عن المنكر بالتي هي أحسن. الأسلوب اللطيف أدعى للقبول."},{"id":"is23","topic":"haqqa","level":1,"t":"mc","q":"سورة الحاقة من حيث مكان النزول:","choices":["مكية","مدنية","نصفها مكي ونصفها مدني","نزلت بعد فتح مكة"],"ans":0,"ex":"سورة الحاقة سورة مكية. وهي مثل كثير من السور المكية تتحدث عن يوم القيامة والإيمان به."},{"id":"is24","topic":"haqqa","level":1,"t":"fi","q":"عدد آيات سورة الحاقة …… آية.","ans":["52","٥٢","52 آية","٥٢ آية","اثنتان وخمسون","اثنتان وخمسون آية"],"hint":"عدد","ex":"عدد آيات سورة الحاقة 52 آية. حفظ هذا الرقم يساعد في معرفة طول السورة عند المراجعة."},{"id":"is25","topic":"haqqa","level":1,"t":"mc","q":"كلمة «الحاقة» اسم من أسماء:","choices":["الجنة","يوم القيامة","إحدى الأمم السابقة","الملائكة"],"ans":1,"ex":"الحاقة اسم من أسماء يوم القيامة. وليوم القيامة أسماء كثيرة يُطلب تعدادها في التهيئة."},{"id":"is26","topic":"haqqa","level":2,"t":"mc","q":"أقرب معنى لكلمة «الحاقة» كما شرحها الدرس:","choices":["الصوت الشديد","الريح الباردة","الحق الواقع الذي لا ريب فيه","الأرض المرتفعة"],"ans":2,"ex":"معنى الحاقة يدور على أنها حق واقع لا شك فيه. فيوم القيامة آتٍ لا محالة."},{"id":"is27","topic":"haqqa","level":2,"t":"mc","q":"أي مما يلي ليس من موضوعات سورة الحاقة؟","choices":["حال المصدقين بيوم القيامة","مصير أصحاب اليمين وأصحاب الشمال","ما أصاب بعض الأمم المكذبة","أحكام الصيام والزكاة"],"ans":3,"ex":"السورة تتحدث عن القيامة والمصدقين والمكذبين وعاقبة الأمم المكذبة. أما أحكام الصيام والزكاة فليست من موضوعاتها."},{"id":"is28","topic":"haqqa","level":1,"t":"tf","q":"لا تتعرض سورة الحاقة لذكر ما أصاب الأمم المكذبة السابقة.","ans":false,"ex":"العبارة خاطئة. السورة تذكّر بما أصاب بعض الأمم المكذبة لتكون عبرة."},{"id":"is29","topic":"haqqa","level":2,"t":"tf","q":"تصف سورة الحاقة مشاهد من يوم القيامة، وتبيّن مصير أصحاب اليمين ومصير أصحاب الشمال.","ans":true,"ex":"العبارة صحيحة. السورة تعرض مشاهد القيامة وتفرّق بين مصير الفريقين."},{"id":"is30","topic":"haqqa","level":2,"t":"fi","q":"في سورة الحاقة: الفريق الناجي الفائز يوم القيامة هم أصحاب ……","ans":["اليمين","أصحاب اليمين"],"hint":"كلمة واحدة","ex":"أصحاب اليمين هم الفائزون، وأصحاب الشمال هم الخاسرون. والسورة تقابل بين الفريقين."},{"id":"is31","topic":"haqqa","level":3,"t":"mc","q":"ما الحكمة من تذكير سورة الحاقة بما أصاب الأمم المكذبة؟","choices":["العبرة والتحذير من عاقبة التكذيب","بيان طرق التجارة عند الأمم","تعليم أحكام الطهارة","ذكر أنساب القبائل العربية"],"ans":0,"ex":"ذكر هلاك المكذبين يدعو إلى الاعتبار. فمن كذّب بالحق يلقى عاقبة سيئة، فيحذر القارئ من ذلك."},{"id":"is32","topic":"haqqa","level":3,"t":"corr","q":"اختر التصحيح المناسب للعبارة الخاطئة:<br><b>«تتحدث سورة الحاقة عن حال المصدقين بيوم القيامة فقط، ولا تذكر المكذبين.»</b>","choices":["تتحدث عن حال المكذبين فقط","تتحدث عن حال المصدقين والمكذبين بيوم القيامة","تتحدث عن أحكام البيع والشراء","تتحدث عن قصص الأنبياء فقط دون ذكر القيامة"],"ans":1,"ex":"السورة تذكر الفريقين: المصدقين ومصيرهم الحسن، والمكذبين ومصيرهم السيئ. فالمقابلة بينهما من أبرز موضوعاتها."},{"id":"is33","topic":"fitrah","level":1,"t":"mc","q":"معنى «الفطرة» كما ورد في الدرس:","choices":["الخِلقة التي جبل الله الخلق عليها","العادة التي يتعلمها الإنسان من أصدقائه","نوع من الطعام","الإفطار في رمضان"],"ans":0,"ex":"الفطرة هي الخلقة، أي ما جبل الله الخلق عليه مما يصلح حالهم. وسنن الفطرة توافق هذه الطبيعة السليمة."},{"id":"is34","topic":"fitrah","level":2,"t":"mc","q":"كم عدد خصال الفطرة المذكورة في حديث أبي هريرة رضي الله عنه المتفق عليه؟","choices":["ثلاث","أربع","خمس","ست"],"ans":2,"ex":"الحديث يذكر أن الفطرة خمس: الختان، والاستحداد، ونتف الإبط، وقص الشارب، وتقليم الأظفار."},{"id":"is35","topic":"fitrah","level":3,"t":"mc","q":"أي مما يلي ليس من الخصال الخمس في حديث أبي هريرة رضي الله عنه، مع أنه مذكور في الدرس من سنن الفطرة؟","choices":["الختان","تقليم الأظفار","قص الشارب","التسوك"],"ans":3,"ex":"الخمس في الحديث: الختان، والاستحداد، ونتف الإبط، وقص الشارب، وتقليم الأظفار. أما التسوك فيذكره الدرس من سنن الفطرة لكنه ليس من هذه الخمس."},{"id":"is36","topic":"fitrah","level":1,"t":"mc","q":"ما حكم التسوك؟","choices":["واجب","مستحب","مكروه","محرم"],"ans":1,"ex":"التسوك مستحب، أي يُثاب فاعله ولا يأثم تاركه. ويتأكد في مواضع ذكرها الدرس."},{"id":"is37","topic":"fitrah","level":2,"t":"mc","q":"استيقظ خالد من نومه، ثم توضأ ليصلي وقرأ القرآن. ما السنة التي يُستحب له أن يفعلها في هذه المواقف كلها؟","choices":["تقليم الأظفار","التسوك","قص الشارب","نتف الإبط"],"ans":1,"ex":"يُستحب السواك عند القيام من النوم والوضوء والصلاة وقراءة القرآن. أما بقية السنن فلا ترتبط بهذه المواقف."},{"id":"is38","topic":"fitrah","level":3,"t":"mc","q":"لماذا يرتبط تقليم الأظفار بصحة الطهارة؟","choices":["لأنه يغني عن الوضوء","لأنه واجب قبل كل صلاة","لأن الوسخ المتجمع تحت الأظفار قد يمنع وصول الماء","لأنه يقوّي أصابع اليد"],"ans":2,"ex":"الوسخ تحت الظفر الطويل قد يمنع وصول الماء في الوضوء والغسل. ومن فوائده أيضاً حسن الهيئة والوقاية من الجراثيم."},{"id":"is39","topic":"fitrah","level":1,"t":"tf","q":"سنن الفطرة تتوافق مع الطبيعة السليمة للإنسان، وتحافظ على نظافته وحسن هيئته.","ans":true,"ex":"العبارة صحيحة. سنن الفطرة أعمال أمرنا الله بها للنظافة وحسن الهيئة، وهي موافقة للطبيعة السليمة."},{"id":"is40","topic":"fitrah","level":2,"t":"fi","q":"استعمال عود الأراك أو نحوه لتنظيف الفم على سبيل التعبد يُسمّى ……","ans":["التسوك","التسوّك","تسوك","السواك","سواك"],"hint":"سنة من سنن الفطرة","ex":"هذا هو التسوك. ويُستعمل فيه عود الأراك أو نحوه تقرباً إلى الله ونظافةً للفم."},{"id":"is41","topic":"fitrah","level":2,"t":"fi","q":"قصّ الشعر النابت فوق الشفة العليا للرجل يُسمّى قصّ ……","ans":["الشارب","شارب"],"hint":"كلمة واحدة","ex":"هذا قص الشارب، وهو من خصال الفطرة الخمس. ويحافظ على النظافة وحسن الهيئة."},{"id":"is42","topic":"fitrah","level":3,"t":"match","q":"صِل كل مصطلح بمعناه:","pairs":[["الفطرة","الخِلقة التي جبل الله الخلق عليها"],["تقليم الأظفار","إزالة ما يزيد من الظفر عن رأس الإصبع"],["قص الشارب","قص الشعر النابت فوق الشفة العليا للرجل"],["التسوك","تنظيف الفم بعود الأراك أو نحوه تعبداً"]],"ex":"لكل مصطلح معنى محدد في الدرس. معرفة المعاني تساعد على تطبيق السنن تطبيقاً صحيحاً."},{"id":"is43","topic":"musab","level":1,"t":"mc","q":"كيف كانت حياة مصعب بن عمير رضي الله عنه قبل أن يسلم؟","choices":["فقيراً لا يجد ما يلبسه","شاباً منعّماً مدلّلاً يعتني بلباسه وهيئته","شيخاً كبيراً من سادة قريش","غريباً عن مكة لا أهل له"],"ans":1,"ex":"كان مصعب من شباب قريش المنعّمين، مدلّلاً في أهله، يعتني بلباسه وهيئته. ثم تغيّر حاله بعد الإسلام."},{"id":"is44","topic":"musab","level":1,"t":"mc","q":"في أي مكان أسلم مصعب بن عمير رضي الله عنه؟","choices":["في المدينة","في الحبشة","في الطائف","في دار الأرقم"],"ans":3,"ex":"أسلم مصعب في دار الأرقم بمكة. وكانت مكاناً يجتمع فيه المسلمون الأوائل."},{"id":"is45","topic":"musab","level":2,"t":"mc","q":"كم رجلاً من أهل المدينة أسلموا في بيعة العقبة الأولى حسب الدرس؟","choices":["سبعون رجلاً","اثنا عشر رجلاً","خمسة رجال","مئة رجل"],"ans":1,"ex":"في بيعة العقبة الأولى أسلم اثنا عشر رجلاً. أما السبعون فكانوا في وفد العقبة الثانية."},{"id":"is46","topic":"musab","level":2,"t":"mc","q":"ما المهمة التي أرسل النبي ﷺ مصعباً من أجلها إلى المدينة؟","choices":["تعليم أهلها أمور دينهم وإمامتهم في الصلاة","جمع المال لقريش","عقد صفقات تجارية","نقل أخبار المدينة إلى الحبشة"],"ans":0,"ex":"أرسله النبي ﷺ ليعلّم المسلمين الجدد دينهم ويؤمّهم في الصلاة. لذلك يُعد السفير الأول للإسلام."},{"id":"is47","topic":"musab","level":3,"t":"mc","q":"دخل معظم أهل المدينة في الإسلام بعد دعوة مصعب. أي مؤهلات الداعية يفسّر هذا النجاح أكثر؟","choices":["كثرة ماله وثرائه","الشدة والغلظة في الكلام","كثرة أتباعه من قريش","الحكمة في الدعوة وحسن الخلق"],"ans":3,"ex":"تميّز مصعب بالحكمة وحسن الخلق والأسلوب الراقي في التعامل. هذه الصفات تجذب الناس إلى الدعوة."},{"id":"is48","topic":"musab","level":1,"t":"tf","q":"يُعدّ مصعب بن عمير رضي الله عنه السفير الأول للإسلام.","ans":true,"ex":"العبارة صحيحة. أرسله النبي ﷺ إلى المدينة بعد بيعة العقبة الأولى ليعلّم أهلها، فكان أول سفير."},{"id":"is49","topic":"musab","level":3,"t":"tf","q":"بعد إسلامه بقي مصعب على حياة الترف نفسها، ولم يتعرض لأي أذى.","ans":false,"ex":"العبارة خاطئة. بعد الإسلام صبر مصعب على الأذى وزهد في الدنيا، وتغيّر حاله إلى التواضع والتضحية."},{"id":"is50","topic":"musab","level":2,"t":"fi","q":"عاد مصعب في موسم الحج التالي على رأس وفد فيه …… رجلاً وامرأتان لبيعة العقبة الثانية.","ans":["70","٧٠","سبعون","سبعين"],"hint":"عدد","ex":"كان الوفد سبعين رجلاً وامرأتين. وهذا يدل على نجاح مصعب في دعوته بالمدينة."},{"id":"is51","topic":"musab","level":2,"t":"order","q":"رتّب مراحل حياة مصعب بن عمير رضي الله عنه كما وردت في الدرس:","items":["شاب منعّم من شباب قريش","إسلامه في دار الأرقم","هجرته إلى الحبشة","إرساله إلى المدينة بعد بيعة العقبة الأولى","عودته بوفد بيعة العقبة الثانية"],"ex":"عاش مصعب منعّماً، ثم أسلم في دار الأرقم، ثم هاجر إلى الحبشة. بعد العقبة الأولى أُرسل إلى المدينة، ثم عاد بوفد العقبة الثانية."},{"id":"is52","topic":"musab","level":3,"t":"order","q":"رتّب أحداث سفارة مصعب إلى المدينة:","items":["إسلام اثني عشر رجلاً من أهل المدينة في بيعة العقبة الأولى","إرسال النبي ﷺ مصعباً معهم إلى المدينة","تعليمه لهم أمور دينهم وإمامتهم في الصلاة","دخول معظم أهل المدينة في الإسلام","عودته في الموسم التالي بسبعين رجلاً وامرأتين"],"ex":"بدأت السفارة بعد العقبة الأولى، ثم قام مصعب بالتعليم والإمامة. نجحت دعوته فأسلم معظم أهل المدينة، ثم عاد بوفد العقبة الثانية."},{"id":"is53","topic":"media","level":1,"t":"mc","q":"كتابة تعليقات مهذبة وحسن الظن بالآخرين في وسائل التواصل من مظاهر قيمة:","choices":["الاحترام","الشهرة","السرعة","المنافسة"],"ans":0,"ex":"من مظاهر الاحترام: النقد البنّاء، والتعليق المهذب، وحسن الظن، والتسامح. وهو أول قيم التعامل في الدرس."},{"id":"is54","topic":"media","level":2,"t":"mc","q":"قيمة من قيم التعامل في وسائل التواصل، من مظاهرها تقوى الله فيما يُنشر، وتحري الصدق والأمانة، وألّا يُنشر إلا الخير:","choices":["الاحترام","الاستقامة","التسامح","حسن الظن"],"ans":1,"ex":"هذه مظاهر الاستقامة. فالمستقيم لا ينشر إلا الصادق المفيد، ويراقب الله في كل ما يكتب."},{"id":"is55","topic":"media","level":2,"t":"mc","q":"دُشّن دليل المسؤولية الأخلاقية في العالم الرقمي في قطر ضمن حملة:","choices":["«قطر تقرأ»","«وطني أولاً»","«أخلاقي قطر»","«رقمي آمن»"],"ans":2,"ex":"دشّنت وزارة المواصلات والاتصالات الدليل ضمن حملة «أخلاقي قطر». والهدف نشر الأخلاق في العالم الرقمي."},{"id":"is56","topic":"media","level":1,"t":"tf","q":"من احترام خصوصيات الآخرين في العالم الرقمي: الحد من التقصّي والبحث عن تفاصيل حياتهم.","ans":true,"ex":"العبارة صحيحة. الخصوصية المعلوماتية حق للآخرين، فلا نتتبع أخبارهم الخاصة."},{"id":"is57","topic":"media","level":2,"t":"fi","q":"دشّنت وزارة المواصلات والاتصالات في قطر دليل المسؤولية الأخلاقية في العالم الرقمي في يناير عام ……","ans":["2018","٢٠١٨","2018م","٢٠١٨م"],"hint":"سنة","ex":"كان ذلك في يناير 2018 ضمن حملة «أخلاقي قطر». وهو مثال قطري على الاهتمام بأخلاق الإنترنت."},{"id":"is58","topic":"media","level":3,"t":"match","q":"صِل كل موقف بالقيمة التي يمثلها:","pairs":[["الرد على رأي مخالف بنقد بنّاء وأدب","الاحترام"],["التأكد من صدق الخبر قبل نشره","الاستقامة"],["التفكير في أثر المنشور لأنه قد يصل إلى أعداد كبيرة من الناس","المسؤولية"]],"ex":"الأدب مع المخالف احترام، وتحري الصدق استقامة. واستشعار أثر المنشور على المجتمع مسؤولية."},{"id":"is59","topic":"media","level":3,"t":"corr","q":"اختر التصحيح المناسب للعبارة الخاطئة:<br><b>«ما دام الحساب شخصياً فلا مسؤولية على صاحبه فيما ينشر، لأن المحتوى لا يؤثر في أحد.»</b>","choices":["المسؤولية على المنصة وحدها لا على الناشر","على الناشر مسؤولية قانونية فقط لا أخلاقية","لا مسؤولية إلا إذا كان الحساب مشهوراً","على الناشر مسؤولية مجتمعية وأخلاقية وقانونية، لأن المحتوى قد يصل إلى كثيرين ويؤثر فيهم"],"ans":3,"ex":"كل ناشر مسؤول عما ينشر مجتمعياً وأخلاقياً وقانونياً. فالمحتوى قد ينتشر ويؤثر في أعداد كبيرة."},{"id":"is60","topic":"media","level":1,"t":"order","q":"رتّب محاور قيم التعامل في وسائل التواصل كما وردت في الدرس:","items":["الاحترام","الاستقامة","المسؤولية"],"ex":"يعرض الدرس القيم الثلاث بهذا الترتيب: الاحترام، ثم الاستقامة، ثم المسؤولية."}];
+var META = {"subject":"التربية الإسلامية","n":60,"topics":[{"id":"tijara","title":"التجارة الرابحة (سورة الصف 10–14)","points":["الآيات تبدأ باستفهام يشوّق القلوب إلى تجارة تنجي من العذاب.","متطلباتها: الإيمان بالله ورسوله، والجهاد في سبيل الله بالمال والنفس.","ثمراتها: المغفرة، والجنات والمساكن الطيبة، ونصر من الله وفتح قريب (فتح مكة)."]},{"id":"tareeq","title":"حق الطريق","points":["راوي الحديث: أبو سعيد الخدري، واسمه سعد بن مالك بن سنان الأنصاري.","حقوق الطريق: غض البصر، كف الأذى، رد السلام، الأمر بالمعروف والنهي عن المنكر.","ننصح المخطئ بالتي هي أحسن وبالكلمة الطيبة."]},{"id":"haqqa","title":"سورة الحاقة","points":["سورة مكية، عدد آياتها 52 آية.","الحاقة من أسماء يوم القيامة، ومعناها: الحق الواقع الذي لا ريب فيه.","تعرض حال المصدقين والمكذبين، وعاقبة الأمم المكذبة، ومصير أصحاب اليمين والشمال."]},{"id":"fitrah","title":"سنن الفطرة","points":["الفطرة هي الخِلقة التي جبل الله الناس عليها مما يصلح حالهم.","خمس من الفطرة: الختان، الاستحداد، نتف الإبط، قص الشارب، تقليم الأظفار.","التسوك مستحب، ويتأكد عند الوضوء والصلاة والاستيقاظ وتغيّر رائحة الفم."]},{"id":"musab","title":"مصعب بن عمير رضي الله عنه","points":["كان شاباً منعّماً في قريش، ثم أسلم في دار الأرقم وصبر وزهد.","هاجر إلى الحبشة، ثم أرسله النبي ﷺ إلى المدينة بعد العقبة الأولى فكان أول سفير.","عاد في الموسم التالي بوفد سبعين رجلاً وامرأتين لبيعة العقبة الثانية."]},{"id":"media","title":"المسؤولية الأخلاقية في وسائل التواصل","points":["قيم التعامل ثلاث: الاحترام، الاستقامة، المسؤولية.","لا تنشر إلا الصادق المفيد، واحترم خصوصيات الآخرين.","في يناير 2018 دُشّن في قطر دليل المسؤولية الأخلاقية في العالم الرقمي ضمن حملة «أخلاقي قطر»."]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = shuffle(opts);
+      item.ans = q.ans;
+      item.ansH = q.choices[q.ans];
+    }
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        shuffle(qs).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        shuffle(rest).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    $('qmeta').innerHTML = '<span class="kind">'+(KINDS[q.t]||'')+'</span><span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qtext').innerHTML = q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = n+' سؤالاً شاملًا موزّعة على '+nt+' دروس، بثلاثة مستويات وأنواع متنوعة. يمكنك حل المادة كاملة، أو درسًا واحدًا، أو اختبارًا عشوائيًا من 20.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>

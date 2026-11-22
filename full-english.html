@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1e3a5f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Comprehensive practice — English</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#1e3a5f;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>Comprehensive practice — English</h1>
+  <p>Yusuf • Grade 8/1 • Modules 3 and 4 • explanations in Arabic</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>Scope (from weekly letters after midterm, plus the school’s “General revision”; no separate published MOEHE end-of-term table was found for English):</b> Module 3 — Present Perfect vs Past Simple, education collocations, giving news. Module 4 — Past Simple vs Past Progressive, -ed/-ing adjectives, sequencing past events, linking words, and story writing.<br>Comprehensive practice, about 60 questions. Written exam: Tuesday 8 December 2026, 8:00–9:30.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">التدريب الشامل لكل الدروس ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="full-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب شامل تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="full-index.html">كل التدريبات الشاملة</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"en01","topic":"pp-vs-ps","level":1,"t":"mc","q":"Which time expression usually goes with the <b>Present Perfect</b>?","choices":["last night","in 2018","so far","two days ago"],"ans":2,"ex":"عبارة so far (حتى الآن) تربط الماضي بالحاضر، لذلك تأتي مع المضارع التام. أما last night و in 2018 و two days ago فهي أوقات منتهية تأتي مع الماضي البسيط."},{"id":"en02","topic":"pp-vs-ps","level":1,"t":"mc","q":"Complete: My cousin ______ to Oman last summer.","choices":["has gone","went","has been","goes"],"ans":1,"ex":"عبارة last summer وقت محدد منتهٍ في الماضي، لذلك نستخدم الماضي البسيط went. لا نستخدم المضارع التام مع وقت منتهٍ."},{"id":"en03","topic":"pp-vs-ps","level":1,"t":"fi","q":"Complete with <b>for</b> or <b>since</b>: We have studied English ______ six years.","ans":["for","For"],"hint":"for / since","ex":"six years مدة زمنية وليست نقطة بداية، لذلك نستخدم for. نستخدم since مع نقطة البداية مثل since 2020."},{"id":"en04","topic":"pp-vs-ps","level":1,"t":"tf","q":"In the sentence “She has just finished her project”, the word <b>just</b> means “a long time ago”.","ans":false,"ex":"الجملة خاطئة؛ just تعني أن الحدث وقع قبل وقت قصير جداً (للتو). لذلك المعنى: لقد أنهت مشروعها للتو."},{"id":"en05","topic":"pp-vs-ps","level":2,"t":"mc","q":"Complete the question about experience: ______ you ever ______ a camel?","choices":["Did / ride","Did / ridden","Have / rode","Have / ridden"],"ans":3,"ex":"السؤال عن الخبرة مع ever يكون بالمضارع التام: Have + التصريف الثالث. التصريف الثالث للفعل ride هو ridden، أما rode فهو الماضي البسيط."},{"id":"en06","topic":"pp-vs-ps","level":2,"t":"mc","q":"Which sentence describes a finished action at a specific past time?","choices":["I have visited Muscat twice.","I have already done my homework.","I visited Muscat in 2022.","I have known Omar since Grade 5."],"ans":2,"ex":"عبارة in 2022 وقت محدد منتهٍ، والفعل visited ماضٍ بسيط. باقي الجمل بالمضارع التام لأنها خبرة أو نتيجة أو حالة مستمرة حتى الآن."},{"id":"en07","topic":"pp-vs-ps","level":2,"t":"fi","q":"Write the correct form: Mariam ______ (not finish) her science report yet.","ans":["hasn't finished","has not finished","hasn’t finished"],"hint":"has + ...","ex":"كلمة yet في آخر الجملة المنفية دليل على المضارع التام. الفاعل مفرد (Mariam) فنستخدم has not / hasn't + finished."},{"id":"en08","topic":"pp-vs-ps","level":2,"t":"match","q":"Match each word with its correct use.","pairs":[["already","usually in the middle of an affirmative sentence"],["yet","usually at the end of questions and negatives"],["since","a starting point in time"],["for","a period of time"]],"ex":"already تأتي غالباً في وسط الجملة المثبتة، و yet في آخر السؤال والنفي. since مع نقطة البداية، و for مع المدة."},{"id":"en09","topic":"pp-vs-ps","level":2,"t":"corr","q":"Choose the correct version of this sentence: <b>“I have seen that film yesterday.”</b>","choices":["I have saw that film yesterday.","I saw that film yesterday.","I seen that film yesterday.","I have see that film yesterday."],"ans":1,"ex":"كلمة yesterday وقت منتهٍ، فلا نستخدم معها المضارع التام. الصحيح الماضي البسيط: I saw that film yesterday."},{"id":"en10","topic":"pp-vs-ps","level":3,"t":"tf","q":"If today is Wednesday and the week is not finished, the sentence “I have read two books this week” is correct.","ans":true,"ex":"this week هنا فترة زمنية لم تنتهِ بعد، لذلك يصح استخدام المضارع التام. لو انتهى الأسبوع لقلنا: I read two books last week."},{"id":"en11","topic":"pp-vs-ps","level":3,"t":"corr","q":"Choose the correct version of this question: <b>“When did you have arrived in Doha?”</b>","choices":["When have you arrived in Doha?","When did you arrived in Doha?","When did you arrive in Doha?","When you have arrived in Doha?"],"ans":2,"ex":"السؤال بـ When يسأل عن وقت محدد في الماضي، لذلك نستخدم الماضي البسيط. بعد did يأتي الفعل في المصدر: did you arrive."},{"id":"en12","topic":"pp-vs-ps","level":3,"t":"mc","q":"“Noor has lost her school bag. She can't find it anywhere.” Why is the Present Perfect used here?","choices":["The action happened at a time we know.","The action will happen in the future.","The action is a habit in the past.","The result of the past action is important now."],"ans":3,"ex":"فقدت نور حقيبتها في الماضي، والنتيجة ما زالت الآن: لا تجدها. المضارع التام يُستخدم عندما تكون نتيجة الحدث الماضي مهمة في الحاضر."},{"id":"en13","topic":"mod3-vocab","level":1,"t":"mc","q":"Complete: Students ______ classes at school every morning.","choices":["attend","pass","fail","get"],"ans":0,"ex":"التلازم الصحيح هو attend a class أي يحضر الحصة. أما pass و fail فتأتيان مع exam، و get تأتي مع degree."},{"id":"en14","topic":"mod3-vocab","level":1,"t":"mc","q":"The opposite of “<b>pass</b> an exam” is “______ an exam”.","choices":["take","fail","attend","do"],"ans":1,"ex":"عكس pass (ينجح) هو fail (يرسب). أما take an exam فتعني يؤدي الامتحان، وليست عكس النجاح."},{"id":"en15","topic":"mod3-vocab","level":1,"t":"match","q":"Match each verb with the word it usually goes with.","pairs":[["do","homework"],["take","an exam"],["get","a degree"],["attend","a class"]],"ex":"هذه تلازمات لفظية شائعة في موضوع التعليم: do homework و take an exam و get a degree و attend a class. يحسن حفظها معاً كعبارات كاملة."},{"id":"en16","topic":"mod3-vocab","level":2,"t":"tf","q":"“I've just passed my maths exam!” is a natural way to give good news about something that happened very recently.","ans":true,"ex":"عند نقل خبر حديث نستخدم المضارع التام مع just لأنه حدث للتو وله صلة بالحاضر. لذلك الجملة صحيحة ومناسبة لنقل خبر سار."},{"id":"en17","topic":"mod3-vocab","level":2,"t":"fi","q":"Complete with one word: I can't go out tonight. I have to ______ my homework.","ans":["do","Do"],"hint":"one word","ex":"التلازم الصحيح مع homework هو do homework. لا نقول make homework."},{"id":"en18","topic":"mod3-vocab","level":2,"t":"mc","q":"Your friend tells you: “I've failed my English test.” Which reply is the most suitable?","choices":["Congratulations! Well done!","Oh no, I'm sorry to hear that.","That's great news!","Lucky you!"],"ans":1,"ex":"الخبر هنا سيئ (رسب في الاختبار)، فالرد المناسب يعبّر عن التعاطف: I'm sorry to hear that. باقي الردود تناسب الأخبار السارة فقط."},{"id":"en19","topic":"mod3-vocab","level":3,"t":"mc","q":"Which sentence gives the news correctly?","choices":["My brother has got his degree last month.","My brother getting his degree last month.","My brother has get his degree.","My brother got his degree last month."],"ans":3,"ex":"عبارة last month وقت منتهٍ، لذلك نستخدم الماضي البسيط got. الجملة الأولى خاطئة لأنها تجمع المضارع التام مع وقت منتهٍ."},{"id":"en20","topic":"mod3-vocab","level":3,"t":"order","q":"Put the events of Ali's exam news in a logical order.","items":["Ali studied hard and revised every evening.","He took the exam on Sunday.","A week later, he got his results.","He called his family to tell them the good news."],"ex":"التسلسل المنطقي: المذاكرة، ثم أداء الامتحان، ثم ظهور النتيجة، ثم نقل الخبر. عبارات مثل on Sunday و A week later تساعد على معرفة الترتيب."},{"id":"en21","topic":"ps-vs-pc","level":1,"t":"mc","q":"Complete: At 7 p.m. yesterday, they ______ dinner when the lights went out.","choices":["were having","had","have had","are having"],"ans":0,"ex":"الماضي المستمر (were having) يبيّن أن العشاء كان مستمرًا عند الساعة السابعة، ثم قاطعه انطفاء الأنوار (when the lights went out). أما had ففعل منتهٍ لا يناسب الحدث المستمر وقت المقاطعة."},{"id":"en22","topic":"ps-vs-pc","level":1,"t":"fi","q":"Complete with <b>was</b> or <b>were</b>: The students ______ waiting for the bus when it started to rain.","ans":["were","Were"],"hint":"was / were","ex":"الفاعل The students جمع، لذلك نستخدم were مع الفعل waiting. نستخدم was مع المفرد و I."},{"id":"en23","topic":"ps-vs-pc","level":1,"t":"tf","q":"The Past Continuous is formed with <b>have/has + verb-ing</b>.","ans":false,"ex":"الجملة خاطئة؛ الماضي المستمر يتكون من was/were + الفعل مع ing. أما have/has فتُستخدم في المضارع التام مع التصريف الثالث."},{"id":"en24","topic":"ps-vs-pc","level":1,"t":"mc","q":"Complete: I ______ my keys while I was running to the bus.","choices":["was dropping","dropped","drop","were dropping"],"ans":1,"ex":"سقوط المفاتيح حدث قصير وقع أثناء الركض، لذلك نستخدم الماضي البسيط dropped. أما الركض فهو الحدث المستمر was running."},{"id":"en25","topic":"ps-vs-pc","level":2,"t":"mc","q":"Complete so that the cooking was <b>already in progress</b>: When the phone ______, my mother ______ a cake.","choices":["was ringing / baked","rang / was baking","rang / baked","was ringing / was baking"],"ans":1,"ex":"الأم كانت تخبز (حدث مستمر) فنستخدم was baking، ثم رنّ الهاتف فقطعها (حدث قصير) فنستخدم rang. مع when نستخدم غالباً الماضي البسيط."},{"id":"en26","topic":"ps-vs-pc","level":2,"t":"fi","q":"Complete with the correct form: While Salem ______ (cross) the road, he saw an old friend.","ans":["was crossing","Was crossing"],"hint":"two words","ex":"بعد while نستخدم غالباً الماضي المستمر للحدث الأطول. الفاعل مفرد فنقول was crossing، أما saw فهو الحدث القصير."},{"id":"en27","topic":"ps-vs-pc","level":2,"t":"tf","q":"In “When the teacher came in, the students stood up”, both actions are finished and happen one after the other.","ans":true,"ex":"الفعلان came و stood بالماضي البسيط، ويدلان على حدثين متتابعين انتهيا: دخل المعلم ثم وقف الطلاب. نستخدم الماضي البسيط لسلسلة أحداث منتهية."},{"id":"en28","topic":"ps-vs-pc","level":2,"t":"corr","q":"Choose the correct version: <b>“While I walked home, I was seeing a strange light in the sky.”</b>","choices":["While I was walking home, I saw a strange light in the sky.","While I walked home, I seen a strange light in the sky.","While I was walk home, I saw a strange light in the sky.","When I was walked home, I saw a strange light in the sky."],"ans":0,"ex":"المشي حدث مستمر فنقول While I was walking، ورؤية الضوء حدث قصير فنقول I saw. باقي الخيارات فيها أخطاء في تكوين الفعل."},{"id":"en29","topic":"ps-vs-pc","level":2,"t":"mc","q":"Choose the best word: ______ we were watching the match, the lights went out.","choices":["Then","So","While","Finally"],"ans":2,"ex":"while تأتي عادة مع الماضي المستمر لتدل على حدث كان مستمراً (were watching). ثم جاء الحدث القصير went out فقطعه."},{"id":"en30","topic":"ps-vs-pc","level":3,"t":"order","q":"Put the parts in the correct order to make one sentence.","items":["It was raining heavily","and the wind was blowing","when the ferry finally","arrived at the port."],"ex":"تبدأ الجملة بوصف الخلفية بالماضي المستمر (was raining, was blowing)، ثم يأتي الحدث القصير بعد when بالماضي البسيط (arrived). الحرف الكبير والنقطة يساعدان على معرفة البداية والنهاية."},{"id":"en31","topic":"ps-vs-pc","level":3,"t":"corr","q":"Choose the correct version: <b>“Hessa was cooking when the smoke alarm was ringing suddenly.”</b>","choices":["Hessa cooked when the smoke alarm was ringing suddenly.","Hessa was cooking when the smoke alarm rang suddenly.","Hessa was cook when the smoke alarm rang suddenly.","Hessa were cooking when the smoke alarm rang suddenly."],"ans":1,"ex":"رنين الإنذار حدث مفاجئ قصير قطع الطبخ، فنستخدم معه الماضي البسيط rang. كلمة suddenly دليل على الحدث القصير، والطبخ مستمر was cooking."},{"id":"en32","topic":"ps-vs-pc","level":3,"t":"mc","q":"Which sentence describes <b>two actions in progress at the same time</b>?","choices":["While Dad was driving, we were singing songs.","When Dad stopped the car, we got out.","Dad drove to the beach and then we swam.","Dad was driving when a tyre burst."],"ans":0,"ex":"عندما يكون الفعلان بالماضي المستمر (was driving / were singing) فهما حدثان مستمران في الوقت نفسه. الجملة الأخيرة فيها حدث مستمر قطعه حدث قصير."},{"id":"en33","topic":"adj","level":1,"t":"mc","q":"The documentary about sharks was really ______. I learned a lot.","choices":["interested","interestedly","interest","interesting"],"ans":3,"ex":"الفيلم الوثائقي هو الشيء الذي يسبب الاهتمام، لذلك نستخدم الصفة بـ ing: interesting. الصفة interested تصف شعور الشخص."},{"id":"en34","topic":"adj","level":1,"t":"mc","q":"After the long football training, the players felt very ______.","choices":["tired","tiring","tire","tiringly"],"ans":0,"ex":"اللاعبون أشخاص يصفون شعورهم، لذلك نستخدم الصفة بـ ed: tired. أما tiring فتصف التدريب نفسه."},{"id":"en35","topic":"adj","level":1,"t":"tf","q":"“I am interesting in science” is the correct way to say that I like science and want to learn more.","ans":false,"ex":"الجملة خاطئة؛ لأن الشخص يصف شعوره فنقول I am interested in science. أما interesting فتصف الشيء نفسه: Science is interesting."},{"id":"en36","topic":"adj","level":2,"t":"fi","q":"Complete with an adjective from <b>surprise</b>: Everyone was ______ when the quiet student won the speech contest.","ans":["surprised","Surprised"],"hint":"-ed or -ing?","ex":"Everyone أشخاص يصفون شعورهم، لذلك نستخدم الصفة بـ ed: surprised. أما الخبر نفسه فهو surprising."},{"id":"en37","topic":"adj","level":2,"t":"match","q":"Match each description with the correct adjective.","pairs":[["How I feel when I have nothing to do","bored"],["A lesson that makes me want to sleep","boring"],["How I feel before a big trip","excited"],["A match with many goals and surprises","exciting"]],"ex":"ما يصف شعور الشخص يأخذ ed (bored, excited). وما يصف الشيء المسبب للشعور يأخذ ing (boring, exciting)."},{"id":"en38","topic":"adj","level":2,"t":"mc","q":"Pick the sentence that uses the adjective correctly.","choices":["I was so boring in the long meeting.","The roller coaster was terrified.","My little brother was frightened of the dark.","The news was very surprised."],"ans":2,"ex":"الأخ الصغير شخص يشعر بالخوف، فنقول frightened. في باقي الجمل وُضعت الصفة الخطأ: الصحيح I was bored و terrifying و surprising."},{"id":"en39","topic":"adj","level":3,"t":"corr","q":"Choose the correct version: <b>“Ahmed is very interesting in space, so he reads about planets every day.”</b>","choices":["Ahmed is very interest in space, so he reads about planets every day.","Ahmed is very interestingly in space, so he reads about planets every day.","Ahmed is very interested in space, so he reads about planets every day.","Ahmed very interesting in space, so he reads about planets every day."],"ans":2,"ex":"المقصود شعور أحمد بالاهتمام، فنستخدم interested in. الجملة الأصلية تعني أن أحمد نفسه شخص ممتع، وهذا ليس المقصود."},{"id":"en40","topic":"adj","level":3,"t":"mc","q":"Complete: The exam instructions were confusing, so many students felt ______.","choices":["confusing","confused","confuse","confusion"],"ans":1,"ex":"التعليمات هي المسببة للحيرة فهي confusing، أما الطلاب فيصفون شعورهم فهم confused. القاعدة نفسها: ed للشعور و ing للمسبب."},{"id":"en41","topic":"linkers","level":1,"t":"mc","q":"Which linker shows <b>contrast</b>?","choices":["so","because","however","then"],"ans":2,"ex":"however تدل على التضاد (ومع ذلك). أما so فللنتيجة، و because للسبب، و then للترتيب الزمني."},{"id":"en42","topic":"linkers","level":1,"t":"mc","q":"Complete: We stayed inside ______ it was very hot outside.","choices":["because","but","however","finally"],"ans":0,"ex":"الحرّ هو سبب البقاء في الداخل، لذلك نستخدم أداة السبب because. لا يوجد تضاد هنا حتى نستخدم but أو however."},{"id":"en43","topic":"linkers","level":1,"t":"match","q":"Match each linker with what it shows.","pairs":[["but","contrast"],["so","result"],["because","reason"],["finally","sequence (the last step)"]],"ex":"but للتضاد، و so للنتيجة، و because للسبب، و finally للترتيب وتدل على الخطوة الأخيرة."},{"id":"en44","topic":"linkers","level":2,"t":"tf","q":"“Therefore” and “as a result” are used to show contrast.","ans":false,"ex":"الجملة خاطئة؛ therefore و as a result تدلان على النتيجة. أدوات التضاد مثل however و although و whereas."},{"id":"en45","topic":"linkers","level":2,"t":"fi","q":"Complete with one word: I wanted to buy the book, ______ I didn't have enough money.","ans":["but","But","yet"],"hint":"contrast","ex":"بين الرغبة في الشراء وعدم وجود المال تضاد، فنستخدم but. لا يصح so لأنه للنتيجة."},{"id":"en46","topic":"linkers","level":2,"t":"mc","q":"Choose the best linker: Fatima revised every day. ______, she got the highest mark in the class.","choices":["However","Although","As a result","Whereas"],"ans":2,"ex":"الدرجة العالية نتيجة للمذاكرة اليومية، فنستخدم أداة النتيجة As a result. باقي الخيارات أدوات تضاد لا تناسب المعنى."},{"id":"en47","topic":"linkers","level":2,"t":"order","q":"Put the steps for making vegetable soup in the correct order.","items":["First, we washed the vegetables.","Then, we cut them into small pieces.","After that, we cooked them in a pan.","Finally, we served the soup."],"ex":"أدوات الترتيب الزمني: First للبداية، ثم Then و After that للخطوات التالية، و Finally للخطوة الأخيرة. والمعنى أيضاً يحدد الترتيب: الغسل ثم التقطيع ثم الطبخ ثم التقديم."},{"id":"en48","topic":"linkers","level":3,"t":"corr","q":"Choose the correct version: <b>“Although it was late, but we continued studying.”</b>","choices":["Although it was late, we continued studying.","Although it was late, so we continued studying.","Although it was late, however we continued studying.","Although it was late, because we continued studying."],"ans":0,"ex":"لا نجمع although و but في جملة واحدة لأن كلتيهما تدل على التضاد. يكفي استخدام although وحدها: Although it was late, we continued studying."},{"id":"en49","topic":"linkers","level":3,"t":"mc","q":"Which sentence uses the linker <b>logically and correctly</b>?","choices":["The road was closed, because we took another way.","She was ill; however, she stayed at home.","It was cold, so we left our jackets at home.","Omar loves maths, whereas his twin prefers art."],"ans":3,"ex":"whereas تقارن بين شيئين مختلفين، وهذا صحيح في جملة عمر وأخيه. في باقي الجمل الأداة لا تناسب المعنى؛ فالأصح: The road was closed, so we took another way."},{"id":"en50","topic":"linkers","level":3,"t":"mc","q":"“As soon as the bell rang, the students left the classroom.” What does <b>as soon as</b> mean?","choices":["in spite of","a long time before","because of","immediately after"],"ans":3,"ex":"as soon as أداة زمنية تعني «فور» أو «بمجرد أن»، أي أن الحدث الثاني وقع مباشرة بعد الأول. فالطلاب خرجوا فور رنين الجرس."},{"id":"en51","topic":"story","level":1,"t":"mc","q":"Which is the best <b>opening sentence</b> for a story?","choices":["This is the end of my story.","Stories are nice.","I will tell you something.","It was a dark, stormy night, and the old boat was rocking on the waves."],"ans":3,"ex":"الجملة الأولى تحدد الزمان والمكان وتستخدم صفات معبّرة، فتشد القارئ من البداية. باقي الجمل عامة ولا تقدم أي تفاصيل."},{"id":"en52","topic":"story","level":1,"t":"tf","q":"A good story usually has a beginning, a middle with a problem, and an ending.","ans":true,"ex":"الجملة صحيحة؛ القصة الجيدة تبدأ بتقديم الشخصيات والمكان والزمان، ثم تعرض مشكلة في الوسط، ثم تنتهي بحل أو خاتمة."},{"id":"en53","topic":"story","level":1,"t":"mc","q":"Which tenses do we mainly use to tell the events of a story?","choices":["The future simple","Past tenses (Past Simple and Past Continuous)","The Present Perfect only","The imperative"],"ans":1,"ex":"نروي أحداث القصة عادة بأزمنة الماضي: الماضي البسيط للأحداث المتتابعة، والماضي المستمر لوصف الخلفية والأحداث المستمرة."},{"id":"en54","topic":"story","level":2,"t":"order","q":"Put the parts of the story in the correct order.","items":["It was a sunny Friday, and Saeed was walking along the beach with his dog.","Suddenly, the dog ran into the water after a ball and couldn't swim back.","Saeed shouted for help, and a lifeguard jumped into the sea.","Finally, the dog was safe, and Saeed thanked the lifeguard."],"ex":"تبدأ القصة بالزمان والمكان والشخصية، ثم تظهر المشكلة (الكلب لا يستطيع العودة)، ثم محاولة الحل، ثم النهاية مع Finally."},{"id":"en55","topic":"story","level":2,"t":"mc","q":"Which sentence makes a story more interesting for the reader?","choices":["The house was big.","The house was a house.","The old house was dark, silent and frightening.","There was a house."],"ans":2,"ex":"الجملة الثانية تستخدم صفات معبّرة (old, dark, silent, frightening) ترسم صورة في ذهن القارئ. الصفات القوية تجعل القصة أكثر تشويقاً."},{"id":"en56","topic":"story","level":3,"t":"fi","q":"Complete the background description (two words): The sun ______ (shine) and the children were playing in the park when the storm began.","ans":["was shining","Was shining"],"hint":"was / were + -ing","ex":"وصف الخلفية في القصة يكون بالماضي المستمر، مثل were playing في الجملة نفسها. لذلك نقول The sun was shining، ثم جاء الحدث القصير began."},{"id":"en57","topic":"story","level":2,"t":"corr","q":"Choose the correct version for a story: <b>“Yesterday, I go to the market and I see a small cat.”</b>","choices":["Yesterday, I went to the market and I saw a small cat.","Yesterday, I have gone to the market and I have seen a small cat.","Yesterday, I was go to the market and I saw a small cat.","Yesterday, I going to the market and I seeing a small cat."],"ans":0,"ex":"كلمة Yesterday تدل على الماضي المنتهي، فنستخدم الماضي البسيط: went و saw. لا نستخدم المضارع التام مع yesterday."},{"id":"en58","topic":"story","level":2,"t":"mc","q":"Choose the best time linker to end a story: ______, we arrived home safe and happy.","choices":["Because","First","While","Finally"],"ans":3,"ex":"Finally أداة ربط زمنية تدل على الحدث الأخير، فتناسب نهاية القصة. First تناسب البداية، و because للسبب."},{"id":"en59","topic":"story","level":3,"t":"corr","q":"Choose the correct version: <b>“Mona was very boring because the journey was very bored.”</b>","choices":["Mona was very bored because the journey was very boring.","Mona was very boring because the journey was very boring.","Mona was very bored because the journey was very bored.","Mona very bored because the journey very boring."],"ans":0,"ex":"منى شخص يصف شعوره فنقول bored، والرحلة هي سبب الملل فنقول boring. الخيار الأخير ينقصه الفعل was."},{"id":"en60","topic":"story","level":3,"t":"mc","q":"Which sentence is the best <b>ending</b> for a story about a lost boy?","choices":["The boy was walking when he heard a noise.","Then the boy started walking into the forest.","Once upon a time there was a boy.","At last, the lost boy was back with his family, and everyone smiled with relief."],"ans":3,"ex":"الخيار الأول يحل المشكلة ويختم القصة بنهاية واضحة مع At last. باقي الجمل تناسب البداية أو الوسط لا النهاية."}];
+var META = {"subject":"اللغة الإنجليزية","n":60,"topics":[{"id":"pp-vs-ps","title":"Present Perfect vs Past Simple | المضارع التام والماضي البسيط","points":["الماضي البسيط لحدث انتهى في وقت محدد: yesterday, last week, in 2019.","المضارع التام have/has + التصريف الثالث لحدث له صلة بالحاضر: ever, never, already, yet, just.","since + نقطة بداية (since 2020)، و for + مدة (for three years)."]},{"id":"mod3-vocab","title":"Module 3: Education & Giving News | مفردات التعليم ونقل الأخبار","points":["تلازمات مهمة: take an exam, pass / fail an exam, do homework, get a degree, attend a class.","عند نقل خبر حديث نستخدم غالباً المضارع التام مع just: I've just passed my exam!","إذا ذكرنا وقتاً منتهياً للخبر (last month) نستخدم الماضي البسيط."]},{"id":"ps-vs-pc","title":"Past Simple vs Past Continuous | الماضي البسيط والماضي المستمر","points":["الماضي المستمر was/were + verb-ing لحدث كان مستمراً في لحظة ماضية أو لوصف الخلفية.","الماضي البسيط للحدث القصير الذي يقطع الحدث المستمر، أو لأحداث متتابعة انتهت.","غالباً: when + ماضٍ بسيط، و while / as + ماضٍ مستمر."]},{"id":"adj","title":"-ed / -ing Adjectives | الصفات المنتهية بـ ed و ing","points":["الصفة بـ ed- تصف شعور الشخص: I am bored / tired / excited.","الصفة بـ ing- تصف الشيء المسبب للشعور: The lesson is boring / interesting.","خطأ شائع: I am boring وأنت تقصد I am bored."]},{"id":"linkers","title":"Linkers | أدوات الربط","points":["الترتيب الزمني: first, then, next, after that, finally, when, while, as soon as.","التضاد: but, however, although, whereas؛ النتيجة: so, therefore, as a result.","السبب: because, since, as — ولا نستخدم أداة نتيجة مكان أداة تضاد."]},{"id":"story","title":"Story Writing | كتابة القصة","points":["القصة: بداية (الشخصيات والمكان والزمان)، ثم وسط فيه مشكلة، ثم نهاية.","نستخدم أزمنة الماضي (البسيط والمستمر) وأدوات الربط الزمنية.","الصفات المعبّرة تجعل القصة أكثر تشويقاً للقارئ."]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = shuffle(opts);
+      item.ans = q.ans;
+      item.ansH = q.choices[q.ans];
+    }
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        shuffle(qs).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        shuffle(rest).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    $('qmeta').innerHTML = '<span class="kind">'+(KINDS[q.t]||'')+'</span><span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qtext').innerHTML = q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = n+' سؤالاً شاملًا موزّعة على '+nt+' دروس، بثلاثة مستويات وأنواع متنوعة. يمكنك حل المادة كاملة، أو درسًا واحدًا، أو اختبارًا عشوائيًا من 20.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>

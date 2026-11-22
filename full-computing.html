@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6d28d9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب شامل — الحاسوب (Alice)</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#6d28d9;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب شامل — الحاسوب (Alice)</h1>
+  <p>يوسف • الصف الثامن / 1 • Alice ص 130–164</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق من رسالة 22–26 نوفمبر:</b> مراجعة المهارات العملية، واختبار الحاسوب العملي لنهاية الفصل الأول من صفحة 130 حتى صفحة 164 في كتاب تكنولوجيا المعلومات (بيئة Alice: إنشاء عالم ثلاثي الأبعاد، الأحداث والدوال، الجمل الشرطية، التصادم، وهياكل التحكم Do in order و Do together).<br>تدريب شامل بنحو 60 سؤالاً. العملي في الحصص من 24 نوفمبر إلى 3 ديسمبر 2026، والتحريري يوم الثلاثاء 15 ديسمبر 2026.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">التدريب الشامل لكل الدروس ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="full-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب شامل تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="full-index.html">كل التدريبات الشاملة</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"co01","topic":"alice-world","level":1,"t":"mc","q":"أي مما يلي يُعدّ كائنًا (Object) داخل عالم Alice؟","choices":["شجرة نخيل مضافة إلى المشهد","الضغط على مفتاح المسافة","تنفيذ الأوامر بالتتابع","الجزء else من جملة شرطية"],"ans":0,"ex":"الكائن عنصر موجود داخل العالم مثل شجرة أو أرنب أو سيارة. أما ضغط المفتاح فهو حدث، والتتابع طريقة تنفيذ، وelse جزء من جملة شرطية."},{"id":"co02","topic":"alice-world","level":1,"t":"tf","q":"يمكن في Alice مشاهدة المشهد من زوايا مختلفة، مثل الأمام Front والأعلى Top والجانب Side.","ans":true,"ex":"العبارة صحيحة. يوفّر Alice طرق عرض متعددة للمشهد مثل Front وTop وSide، وهذا يساعد على ضبط أماكن الكائنات."},{"id":"co03","topic":"alice-world","level":2,"t":"mc","q":"أضاف طالب أرنبًا وسلحفاة إلى عالم جديد، ثم شغّل العالم دون أن يكتب أي أمر داخل myFirstMethod. ماذا يتوقع أن يرى؟","choices":["يتسابق الكائنان تلقائيًا","تظهر الكائنات في أماكنها دون أي حركة","يُحذف العالم من الجهاز","يتحرك الأرنب فقط لأنه أُضيف أولًا"],"ans":1,"ex":"عند بدء العالم تُستدعى myFirstMethod، لكنها فارغة إذا لم يضع الطالب فيها أوامر. لذلك تظهر الكائنات ثابتة في أماكنها."},{"id":"co04","topic":"alice-world","level":1,"t":"fi","q":"العنصر الذي نضيفه إلى العالم ثلاثي الأبعاد، مثل سيارة أو شجرة، يُسمّى بالإنجليزية ……","ans":["Object","object","OBJECT","Objects","objects","كائن","الكائن"],"hint":"كلمة إنجليزية واحدة","ex":"كل عنصر داخل العالم في Alice يُسمّى Object أي كائن. من الأمثلة: الأرنب والسلحفاة وشجرة النخيل."},{"id":"co05","topic":"alice-world","level":2,"t":"match","q":"صِل كل مصطلح بمعناه في بيئة Alice:","pairs":[["Front","عرض المشهد من الأمام"],["Top","عرض المشهد من الأعلى"],["Side","عرض المشهد من الجانب"],["Object","عنصر داخل العالم مثل أرنب أو شجرة"]],"ex":"Front وTop وSide طرق لعرض المشهد من زوايا مختلفة. أما Object فهو الكائن الموجود داخل العالم."},{"id":"co06","topic":"alice-world","level":2,"t":"order","q":"رتّب خطوات تجهيز عالم بسيط في Alice ترتيبًا منطقيًا:","items":["إنشاء عالم جديد","إضافة الكائنات من المكتبات مثل Animals","ضبط أماكن الكائنات ومشاهدتها من طرق عرض مختلفة","كتابة الأوامر داخل myFirstMethod","تشغيل العالم ومشاهدة النتيجة"],"ex":"نبدأ بإنشاء العالم ثم نضيف الكائنات ونضبط أماكنها. بعد ذلك نكتب الأوامر، وأخيرًا نشغّل العالم لنرى النتيجة."},{"id":"co07","topic":"alice-world","level":3,"t":"mc","q":"لماذا يفيد التنقل بين طرق العرض (Top و Front و Side) أثناء تصميم المشهد؟","choices":["لأنه يغيّر ألوان الكائنات تلقائيًا","لأنه يكتب أوامر الحركة بدلًا من الطالب","لأنه يساعد على ضبط أماكن الكائنات بدقة في الأبعاد الثلاثة","لأنه يحفظ العالم دون الحاجة إلى اسم"],"ans":2,"ex":"العالم ثلاثي الأبعاد، والنظر من زاوية واحدة قد يخدعنا في المسافات. التنقل بين طرق العرض يساعد على وضع كل كائن في مكانه الصحيح."},{"id":"co08","topic":"alice-world","level":3,"t":"mc","q":"تريد طالبة أن يتحرك الأرنب فور تشغيل العالم دون أن يضغط المستخدم أي مفتاح. أين تضع أمر الحركة؟","choices":["في حدث النقر بالفأرة فقط","في خصائص الأرنب Properties","لا يمكن ذلك في Alice","داخل myFirstMethod لأنها تُستدعى عند بدء العالم"],"ans":3,"ex":"الحدث الافتراضي عند بدء العالم يستدعي myFirstMethod. لذلك أي أمر نضعه فيها يُنفَّذ مباشرة عند التشغيل دون تدخل من المستخدم."},{"id":"co09","topic":"events","level":1,"t":"mc","q":"أي تعريف يصف الحدث (Event) في Alice وصفًا صحيحًا؟","choices":["تفاعل من المستخدم مثل ضغط مفتاح أو نقرة فأرة يستجيب له البرنامج بتنفيذ إجراء","كائن ثلاثي الأبعاد يُضاف من المكتبة","زاوية لعرض المشهد من الأعلى","تركيب يجعل الأوامر تعمل في الوقت نفسه"],"ans":0,"ex":"الحدث هو تفاعل المستخدم مع البرنامج، كالضغط على الفأرة أو لوحة المفاتيح. يستجيب البرنامج له بتنفيذ إجراء أو أكثر."},{"id":"co10","topic":"events","level":1,"t":"mc","q":"أي مما يلي مثال على حدث؟","choices":["شجرة نخيل في المشهد","نقر المستخدم بالفأرة على كائن","طريقة العرض Top","تركيب Do together"],"ans":1,"ex":"نقر المستخدم بالفأرة تفاعل يستجيب له البرنامج، لذلك هو حدث. الشجرة كائن، وTop طريقة عرض، وDo together تركيب تنفيذ."},{"id":"co11","topic":"events","level":1,"t":"tf","q":"الحدث يحدد «متى» يبدأ التنفيذ، أما الإجراء أو الدالة فيحدد «ماذا» يحدث.","ans":true,"ex":"العبارة صحيحة. الحدث مثل ضغط مفتاح هو لحظة البدء، والإجراء هو الأوامر التي تُنفَّذ استجابة له."},{"id":"co12","topic":"events","level":2,"t":"tf","q":"الأحداث في Alice تقتصر على الفأرة فقط، ولا يمكن الاستجابة لأزرار لوحة المفاتيح.","ans":false,"ex":"العبارة خاطئة. من الأحداث الضغط على الفأرة أو على أحد أزرار لوحة المفاتيح، مثل التحكم في سيارة بمفاتيح الأسهم."},{"id":"co13","topic":"events","level":1,"t":"fi","q":"تفاعل المستخدم مع البرنامج، مثل الضغط على أحد المفاتيح، يُسمّى بالإنجليزية ……","ans":["Event","event","EVENT","Events","events","حدث","الحدث"],"hint":"كلمة إنجليزية واحدة","ex":"يُسمّى هذا التفاعل Event أي حدث. يستجيب له البرنامج بتنفيذ إجراء معيّن."},{"id":"co14","topic":"events","level":2,"t":"match","q":"في لعبة سيارات تدريبية، صِل كل حدث بالاستجابة المناسبة له:","pairs":[["الضغط على السهم الأيمن","تتجه السيارة نحو اليمين"],["الضغط على السهم الأيسر","تتجه السيارة نحو اليسار"],["الضغط على السهم الأعلى","تتقدم السيارة إلى الأمام"],["بدء تشغيل العالم","تُستدعى myFirstMethod"]],"ex":"كل حدث يرتبط بإجراء يناسبه، فمفاتيح الأسهم تتحكم في اتجاه السيارة. وبدء العالم حدث افتراضي يستدعي myFirstMethod."},{"id":"co15","topic":"events","level":2,"t":"order","q":"رتّب ما يحدث منذ ضغط اللاعب مفتاحًا حتى تتحرك السيارة:","items":["يضغط اللاعب على مفتاح السهم","يتعرّف Alice على الحدث المرتبط بهذا المفتاح","يُستدعى الإجراء المرتبط بالحدث","تتحرك السيارة في المشهد"],"ex":"يبدأ كل شيء بتفاعل المستخدم، ثم يُكتشف الحدث المرتبط به. بعد ذلك يُنفَّذ الإجراء فتظهر الحركة في المشهد."},{"id":"co16","topic":"events","level":2,"t":"corr","q":"اختر التصحيح الصحيح للعبارة الخاطئة:<br>«الحدث هو مجموعة الأوامر التي تحرّك السيارة، أما الإجراء فهو ضغط المستخدم على المفتاح.»","choices":["الحدث والإجراء كلاهما ضغط المستخدم على المفتاح","الحدث هو كائن السيارة، والإجراء هو المشهد كله","الحدث هو ضغط المستخدم على المفتاح، والإجراء هو الأوامر التي تحرّك السيارة استجابةً له","لا فرق بين الحدث والإجراء في Alice"],"ans":2,"ex":"العبارة عكست المفهومين. الحدث هو تفاعل المستخدم مثل ضغط المفتاح، والإجراء هو الأوامر المنفَّذة استجابةً لهذا الحدث."},{"id":"co17","topic":"events","level":2,"t":"mc","q":"ما الفائدة من أن Alice يقدّم مجموعة أحداث جاهزة؟","choices":["أنها تُغني عن كتابة أي أوامر حركة","أنها تغيّر ألوان المشهد","أنها تحفظ العالم تلقائيًا","أنها تسهّل ربط تفاعلات المستخدم بالإجراءات المطلوبة"],"ans":3,"ex":"الأحداث الجاهزة تجعل ربط ضغط مفتاح أو نقرة فأرة بإجراء معيّن أمرًا سهلًا. لكنها لا تكتب أوامر الحركة بدلًا منا."},{"id":"co18","topic":"events","level":3,"t":"mc","q":"وضع طالب أمر «الانعطاف يمينًا» داخل myFirstMethod، فانعطفت السيارة مرة واحدة عند بدء العالم ولم تستجب بعد ذلك لمفتاح السهم الأيمن. ما السبب؟","choices":["لأن الأمر لم يُربط بحدث ضغط المفتاح، فنُفّذ عند بدء العالم فقط","لأن السيارة ليست كائنًا","لأن طريقة العرض Front تمنع الحركة","لأن الطالب لم يستخدم else"],"ans":0,"ex":"myFirstMethod تُستدعى عند بدء العالم فقط، لذلك نُفّذ الأمر مرة واحدة. لكي تستجيب السيارة للمفتاح يجب ربط الأمر بحدث الضغط على السهم الأيمن."},{"id":"co19","topic":"events","level":3,"t":"mc","q":"في لعبة حدثان: «عند بدء العالم» يعرض نص «ابدأ»، و«عند ضغط مفتاح المسافة» تقفز الشخصية. شغّل اللاعب العالم ولم يضغط أي مفتاح. ماذا يرى؟","choices":["القفز فقط","نص «ابدأ» فقط دون قفز","النص والقفز معًا","لا شيء على الإطلاق"],"ans":1,"ex":"حدث بدء العالم يقع تلقائيًا فيظهر النص. أما القفز فمرتبط بضغط المسافة، ولم يحدث هذا الضغط فلا يُنفَّذ القفز. (مثال تدريبي)"},{"id":"co20","topic":"events","level":3,"t":"mc","q":"ما العلاقة الصحيحة بين الحدث When the world starts والدالة myFirstMethod؟","choices":["myFirstMethod تحدد متى يبدأ التنفيذ، والحدث يحتوي الأوامر","كلاهما كائنان داخل المشهد","الحدث يحدد لحظة البدء، وmyFirstMethod تحتوي الأوامر التي تُنفَّذ","الحدث يُحذف تلقائيًا عند حفظ العالم"],"ans":2,"ex":"الحدث يحدد اللحظة وهي بدء العالم، ويستدعي myFirstMethod. والدالة هي التي تحتوي الأوامر المطلوب تنفيذها."},{"id":"co21","topic":"functions","level":1,"t":"mc","q":"ما الفائدة الأساسية من إنشاء دالة بدلًا من كتابة الأوامر نفسها في أماكن كثيرة؟","choices":["زيادة عدد الكائنات في المشهد","تغيير طريقة عرض المشهد","منع المستخدم من استخدام لوحة المفاتيح","إعادة الاستخدام وتنظيم البرنامج وتقليل التكرار"],"ans":3,"ex":"الدالة تجمع الأوامر في مكان واحد ونستدعيها كلما احتجنا إليها. هذا ينظّم البرنامج ويقلل تكرار الأوامر."},{"id":"co22","topic":"functions","level":1,"t":"tf","q":"لا يمكن استدعاء أي دالة إلا من حدث بدء العالم فقط.","ans":false,"ex":"العبارة خاطئة. يمكن استدعاء الدالة من أي حدث مثل ضغط مفتاح، ويمكن استدعاؤها أيضًا من داخل دالة أخرى."},{"id":"co23","topic":"functions","level":1,"t":"mc","q":"عند فتح myFirstMethod لأول مرة في عالم جديد، تكون:","choices":["فارغة حتى يضع الطالب الأوامر فيها","مليئة بأوامر حركة جاهزة لكل الكائنات","مقفلة لا يمكن تعديلها","محذوفة ويجب إنشاؤها من جديد"],"ans":0,"ex":"تكون myFirstMethod فارغة في البداية. الطالب هو الذي يضع فيها الأوامر لتُنفَّذ عند بدء العالم."},{"id":"co24","topic":"functions","level":2,"t":"fi","q":"اسم الدالة التي يستدعيها الحدث الافتراضي عند بدء العالم في Alice هو ……","ans":["myFirstMethod","myfirstmethod","MyFirstMethod","my first method","World.myFirstMethod","World.myfirstmethod","world.myfirstmethod","myFirstMethod()"],"hint":"اسم إنجليزي","ex":"الحدث الافتراضي هو When the world starts، وهو يستدعي myFirstMethod (وقد تُكتب myfirstmethod). نضع فيها ما نريد تنفيذه عند التشغيل."},{"id":"co25","topic":"functions","level":2,"t":"match","q":"صِل كل مصطلح بوصفه المناسب:","pairs":[["Event","تفاعل المستخدم الذي يحدد متى يبدأ التنفيذ"],["الدالة (Method)","مجموعة أوامر يمكن استدعاؤها أكثر من مرة"],["myFirstMethod","الدالة التي تُستدعى عند بدء العالم"],["استدعاء الدالة","طلب تنفيذ أوامرها من حدث أو من دالة أخرى"]],"ex":"الحدث يحدد لحظة البدء، والدالة تحتوي الأوامر. myFirstMethod دالة خاصة تُستدعى عند بدء العالم، والاستدعاء هو طلب تنفيذ الدالة."},{"id":"co26","topic":"functions","level":2,"t":"order","q":"رتّب خطوات إنشاء دالة واستخدامها:","items":["تحديد المهمة التي تتكرر، مثل حركة ترحيب","إنشاء دالة جديدة باسم واضح","وضع أوامر الحركة داخل الدالة","استدعاء الدالة من حدث أو من myFirstMethod","تشغيل العالم لاختبار الدالة"],"ex":"نحدد أولًا المهمة المتكررة، ثم ننشئ الدالة ونضع فيها الأوامر. بعد ذلك نستدعيها ونشغّل العالم لنتأكد من عملها."},{"id":"co27","topic":"functions","level":2,"t":"corr","q":"اختر التصحيح الصحيح للعبارة الخاطئة:<br>«بعد إنشاء دالة يجب نسخ أوامرها في كل حدث نحتاجها فيه، لأن الدالة لا تُستدعى إلا مرة واحدة.»","choices":["يجب حذف الدالة بعد استدعائها أول مرة","يمكن استدعاء الدالة نفسها من عدة أحداث أو دوال، ومرات كثيرة، دون نسخ أوامرها","الدالة تُستدعى مرتين فقط ثم تتوقف","لا يمكن استدعاء الدالة من أي حدث"],"ans":1,"ex":"فائدة الدالة الأساسية هي إعادة الاستخدام. نستدعيها من أي حدث أو دالة أخرى كلما احتجنا، دون نسخ أوامرها."},{"id":"co28","topic":"functions","level":3,"t":"mc","q":"في لعبة ثلاثة أحداث (السهم الأيمن، السهم الأيسر، المسافة)، وكل منها يجب أن يجعل الشخصية تلوّح بيدها قبل حركتها الخاصة. ما أفضل تنظيم للبرنامج؟","choices":["كتابة أوامر التلويح ثلاث مرات في كل حدث","وضع أوامر التلويح في خصائص الشخصية Properties","إنشاء دالة «تلويح» واحدة واستدعاؤها في الأحداث الثلاثة","حذف الأحداث والاكتفاء بـ myFirstMethod"],"ans":2,"ex":"عندما تتكرر الأوامر نفسها في أكثر من مكان، الأفضل وضعها في دالة واحدة واستدعاؤها. هكذا يصبح البرنامج أقصر وأسهل في التعديل. (مثال تدريبي)"},{"id":"co29","topic":"functions","level":3,"t":"mc","q":"دالة تُستدعى من ثلاثة أحداث مختلفة، وعدّل الطالب أحد الأوامر داخلها. ماذا يحدث؟","choices":["يظهر التعديل في الحدث الأول فقط","لا يظهر التعديل إلا بعد حذف الأحداث","تُحذف الدالة تلقائيًا","يظهر أثر التعديل في الأحداث الثلاثة لأنها تستدعي الدالة نفسها"],"ans":3,"ex":"الأحداث الثلاثة تستدعي الدالة نفسها، لذلك أي تعديل داخلها يظهر في كل مكان تُستدعى منه. وهذه من فوائد تنظيم البرنامج بالدوال."},{"id":"co30","topic":"functions","level":3,"t":"mc","q":"في Alice قد يُفرَّق بين إجراء ينفّذ أمرًا وبين function تُرجع قيمة. أي مثال يناسب function تُرجع قيمة؟","choices":["معرفة المسافة بين السيارة والحائط","تحريك الأرنب خطوة إلى الأمام","تدوير السلحفاة نصف دورة","جعل الشخصية تلوّح بيدها"],"ans":0,"ex":"الـ function تعطينا نتيجة أو قيمة مثل المسافة بين كائنين. أما التحريك والتدوير والتلويح فهي إجراءات تنفّذ حركة ولا تُرجع قيمة."},{"id":"co31","topic":"conditionals","level":1,"t":"mc","q":"أي تركيب يسمح للبرنامج باختيار أحد مسارين حسب تحقق شرط معيّن؟","choices":["Do together","if / else","myFirstMethod","Object"],"ans":1,"ex":"الجملة الشرطية if / else تنفّذ أوامر إذا تحقق الشرط، وأوامر بديلة إذا لم يتحقق. أما Do together فللتنفيذ المتزامن."},{"id":"co32","topic":"conditionals","level":1,"t":"fi","q":"في الجملة الشرطية if / else، توضع الأوامر التي تُنفَّذ عندما لا يتحقق الشرط في جزء ……","ans":["else","Else","ELSE","وإلا","والا"],"hint":"كلمة إنجليزية واحدة","ex":"جزء else هو المسار البديل. يُنفَّذ فقط عندما تكون نتيجة الشرط خطأ."},{"id":"co33","topic":"conditionals","level":1,"t":"tf","q":"نتيجة الشرط في الجملة if تكون إما صحيحة (true) أو خاطئة (false).","ans":true,"ex":"العبارة صحيحة. الشرط قيمة منطقية، وحسب نتيجته يختار البرنامج جزء if أو جزء else."},{"id":"co34","topic":"conditionals","level":2,"t":"mc","q":"في برنامج تدريبي:<br><span dir=\"ltr\">if</span> المسافة بين الأرنب والجزرة أقل من 1 متر: يقول الأرنب «وجدتها»<br><span dir=\"ltr\">else</span>: يتقدم الأرنب خطوة.<br>إذا كانت المسافة 3 أمتار، ماذا يحدث؟","choices":["يقول الأرنب «وجدتها»","لا يحدث شيء","يتقدم الأرنب خطوة","يقول «وجدتها» ثم يتقدم خطوة"],"ans":2,"ex":"3 ليست أقل من 1، فالشرط خطأ. لذلك يُنفَّذ جزء else فيتقدم الأرنب خطوة. (الأرقام تدريبية من المؤلف)"},{"id":"co35","topic":"conditionals","level":2,"t":"mc","q":"شرط في لعبة: (المفتاح مضغوط) <span dir=\"ltr\">and</span> (السيارة على الطريق). متى يُنفَّذ جزء if؟","choices":["عند تحقق أي واحد من الشرطين","عند عدم تحقق أي منهما","في كل الحالات دائمًا","عند تحقق الشرطين معًا"],"ans":3,"ex":"الربط بـ and يعني أن الشرطين يجب أن يتحققا معًا. إذا لم يتحقق أحدهما تكون النتيجة خطأ."},{"id":"co36","topic":"conditionals","level":2,"t":"match","q":"صِل كل كلمة بمعناها في الجمل الشرطية:","pairs":[["if","فحص الشرط وتنفيذ أوامره عند تحققه"],["else","المسار البديل عند عدم تحقق الشرط"],["and","يجب تحقق الشرطين معًا"],["or","يكفي تحقق أحد الشرطين"]],"ex":"if تفحص الشرط، وelse للمسار البديل. and تتطلب تحقق الشرطين معًا، أما or فيكفيها تحقق أحدهما."},{"id":"co37","topic":"conditionals","level":2,"t":"order","q":"رتّب خطوات تنفيذ جملة if / else داخل البرنامج:","items":["يصل البرنامج إلى الجملة الشرطية","يفحص الشرط فتكون النتيجة صحيحة أو خاطئة","يُنفَّذ جزء if إن كانت صحيحة، أو جزء else إن كانت خاطئة","يكمل البرنامج الأوامر التي بعد الجملة الشرطية"],"ex":"يُفحص الشرط أولًا، ثم يُنفَّذ أحد الجزأين فقط حسب النتيجة. بعد ذلك يتابع البرنامج بقية الأوامر."},{"id":"co38","topic":"conditionals","level":3,"t":"mc","q":"قاعدة في لعبة: إذا (اصطدمت السيارة بالحائط) <span dir=\"ltr\">or</span> (انتهى الوقت) تنتهي اللعبة. اصطدمت السيارة بالحائط والوقت لم ينتهِ بعد. ما النتيجة؟","choices":["تنتهي اللعبة لأن تحقق أحد الشرطين يكفي مع or","تستمر اللعبة لأن الوقت لم ينتهِ","تستمر اللعبة لأن or تحتاج الشرطين معًا","يتوقف البرنامج برسالة خطأ"],"ans":0,"ex":"مع or يكفي أن يتحقق شرط واحد لتكون النتيجة صحيحة. الاصطدام تحقق، لذلك تنتهي اللعبة. (مثال تدريبي)"},{"id":"co39","topic":"conditionals","level":3,"t":"corr","q":"اختر التصحيح الصحيح للعبارة الخاطئة:<br>«في الجملة if / else يُنفَّذ جزء if وجزء else معًا في كل مرة.»","choices":["يُنفَّذ جزء else أولًا ثم جزء if","يُنفَّذ جزء واحد فقط: if عند تحقق الشرط، أو else عند عدم تحققه","لا يُنفَّذ أي جزء منهما أبدًا","يُنفَّذ جزء if دائمًا مهما كان الشرط"],"ans":1,"ex":"الجملة الشرطية تختار مسارًا واحدًا فقط. إذا تحقق الشرط نُفّذ if، وإلا نُفّذ else، ولا يُنفَّذان معًا."},{"id":"co40","topic":"conditionals","level":3,"t":"mc","q":"يريد طالب أن تقول السيارة «تمهّل» إذا اقتربت من الحائط، وألا تفعل شيئًا خاصًا غير ذلك. ما أنسب طريقة؟","choices":["وضع أمر القول في Do together دون شرط","وضع أمر القول في جزء else فقط","جملة if بشرط القرب من الحائط وأمر القول داخلها، مع ترك else فارغًا","وضع أمر القول في myFirstMethod دون شرط"],"ans":2,"ex":"الأمر يجب أن يُنفَّذ فقط عند تحقق شرط القرب، لذلك نضعه داخل if. ولأنه لا يوجد إجراء بديل نترك else فارغًا."},{"id":"co41","topic":"collision","level":1,"t":"mc","q":"أي موقف يُعدّ تصادمًا في لعبة داخل Alice؟","choices":["اختيار طريقة العرض Top","تسمية العالم وحفظه","فتح myFirstMethod","تلامس سيارة اللاعب مع حائط"],"ans":3,"ex":"التصادم هو تلامس كائنين أو تداخلهما أو اقترابهما من حد معيّن. تلامس السيارة مع الحائط مثال واضح على ذلك."},{"id":"co42","topic":"collision","level":1,"t":"tf","q":"يمكن اكتشاف التصادم بفحص ما إذا أصبحت المسافة بين كائنين أقل من حد معيّن.","ans":true,"ex":"العبارة صحيحة. من طرق اكتشاف التصادم فحص المسافة بين الكائنين، فإذا قلّت عن الحد نعدّه تصادمًا."},{"id":"co43","topic":"collision","level":1,"t":"fi","q":"الكلمة الإنجليزية التي تعني «التصادم» هي ……","ans":["Collision","collision","COLLISION","Collisions","collisions"],"hint":"كلمة إنجليزية واحدة","ex":"التصادم بالإنجليزية Collision. ويعني اكتشاف تلامس كائنين أو تداخلهما."},{"id":"co44","topic":"collision","level":1,"t":"mc","q":"في لعبة لجمع النجوم، عندما يصطدم اللاعب بنجمة، ما الإجراء المنطقي غالبًا؟","choices":["احتساب نقطة للاعب","حذف العالم","تغيير طريقة العرض إلى Side","إيقاف لوحة المفاتيح"],"ans":0,"ex":"الاصطدام بجائزة يعني عادة احتساب نقطة. أما الاصطدام بحائط فيعني التوقف، وبجسم خطر يعني الخسارة."},{"id":"co45","topic":"collision","level":2,"t":"tf","q":"يكفي فحص التصادم مرة واحدة عند بدء العالم ليكتشف البرنامج كل الاصطدامات أثناء اللعب.","ans":false,"ex":"العبارة خاطئة. الكائنات تتحرك وأماكنها تتغير، لذلك يُكتب فحص التصادم غالبًا داخل حلقة أو فحص متكرر."},{"id":"co46","topic":"collision","level":2,"t":"match","q":"صِل كل حالة تصادم بالإجراء المناسب لها في لعبة:","pairs":[["الاصطدام بجائزة","زيادة النقاط"],["الاصطدام بحائط","توقف السيارة"],["الاصطدام بجسم خطر","خسارة اللاعب"],["عدم حدوث أي تصادم","استمرار الحركة طبيعيًا"]],"ex":"نوع الكائن الذي يقع معه التصادم يحدد الإجراء. الجائزة تعطي نقطة، والحائط يوقف، والجسم الخطر يسبب الخسارة."},{"id":"co47","topic":"collision","level":2,"t":"order","q":"رتّب خطوات فحص التصادم في لعبة سيارة تجمع جوائز:","items":["تتحرك السيارة خطوة","يفحص البرنامج المسافة بين السيارة والجائزة","إذا كانت المسافة أقل من الحد تُحتسب نقطة","يتكرر الفحص مع الحركة التالية"],"ex":"بعد كل حركة يفحص البرنامج المسافة، فإن تحقق شرط التصادم نُفّذ الإجراء. ثم يتكرر الفحص لأن السيارة تتحرك باستمرار."},{"id":"co48","topic":"collision","level":2,"t":"mc","q":"لماذا يُكتب فحص التصادم غالبًا داخل حلقة أو فحص متكرر؟","choices":["لأن الحلقة تضيف كائنات جديدة","لأن أماكن الكائنات تتغير باستمرار فيلزم الفحص مرارًا أثناء الحركة","لأن الحلقة تغيّر طريقة العرض","لأن التصادم لا يعمل إلا مع Do together"],"ans":1,"ex":"الكائنات تتحرك طوال اللعبة، وقد يقع التصادم في أي لحظة. لذلك نكرر الفحص حتى لا يفوتنا الاصطدام."},{"id":"co49","topic":"collision","level":3,"t":"mc","q":"في لعبة تدريبية يُعدّ التصادم واقعًا إذا كانت المسافة بين السيارة والجائزة أقل من 2. قيست المسافة في ثلاث لحظات متتالية فكانت: 6 ثم 4 ثم 1. في أي لحظة يقع التصادم؟","choices":["الأولى فقط","الثانية والثالثة","الثالثة فقط","لا يقع في أي لحظة"],"ans":2,"ex":"6 و4 ليستا أقل من 2، أما 1 فهي أقل من 2. لذلك يقع التصادم في اللحظة الثالثة فقط. (الأرقام تدريبية من المؤلف)"},{"id":"co50","topic":"collision","level":3,"t":"mc","q":"ما العلاقة الصحيحة بين التصادم والجمل الشرطية في لعبة؟","choices":["التصادم يحل محل جميع الأحداث","التصادم يعني تنفيذ الأوامر في الوقت نفسه","التصادم اسم من أسماء طرق العرض","يُفحص التصادم كشرط: إذا تلامس الكائنان نُفّذ الإجراء، وإلا تستمر اللعبة"],"ans":3,"ex":"التصادم يُكتب عادة كشرط داخل if. إذا تحقق التلامس نُفّذ إجراء مثل احتساب نقطة، وإذا لم يتحقق تستمر اللعبة."},{"id":"co51","topic":"order-together","level":1,"t":"mc","q":"أي تركيب يجعل الأرنب يرفع أذنيه ويحرك رأسه في اللحظة نفسها؟","choices":["Do together","Do in order","else","myFirstMethod"],"ans":0,"ex":"Do together ينفّذ الأوامر في الوقت نفسه. أما Do in order فينفذها واحدًا بعد الآخر."},{"id":"co52","topic":"order-together","level":1,"t":"fi","q":"التركيب الذي يمثّل التوازي (Parallel) في Alice، أي تنفيذ الأوامر في الوقت نفسه، اسمه ……","ans":["Do together","do together","DO TOGETHER","Do Together","Dotogether","together","Together"],"hint":"كلمتان بالإنجليزية","ex":"Do together ينفّذ الأوامر معًا في اللحظة نفسها، وهذا هو التوازي Parallel. أما التسلسل فيكون بـ Do in order."},{"id":"co53","topic":"order-together","level":1,"t":"tf","q":"في Do in order يبدأ الأمر الثاني قبل أن ينتهي الأمر الأول.","ans":false,"ex":"العبارة خاطئة. Do in order تسلسل، فلا يبدأ الأمر التالي إلا بعد انتهاء الأمر الذي قبله."},{"id":"co54","topic":"order-together","level":2,"t":"match","q":"صِل كل عنصر بما يناسبه:","pairs":[["Do in order","تنفيذ متتابع (Sequence)"],["Do together","تنفيذ متزامن (Parallel)"],["تحريك الذراع والساق في اللحظة نفسها","مثال يحتاج Do together"],["التقدم خطوة بعد انتهاء حركة الأطراف","مثال يحتاج Do in order"]],"ex":"Do in order للتسلسل وDo together للتوازي. حركة الذراع والساق معًا تحتاج تزامنًا، أما التقدم بعدها فيأتي بالترتيب."},{"id":"co55","topic":"order-together","level":2,"t":"order","q":"داخل Do in order الأوامر الآتية:<br>1) يقول الأرنب «مرحبًا»<br>2) Do together { يقفز الأرنب، تدور السلحفاة }<br>3) تتقدم السلحفاة إلى الأمام<br>رتّب ما يراه المشاهد:","items":["يقول الأرنب «مرحبًا»","يقفز الأرنب وتدور السلحفاة في اللحظة نفسها","تتقدم السلحفاة إلى الأمام"],"ex":"التركيب الخارجي Do in order فتُنفَّذ أوامره بالتسلسل. الأمر الثاني Do together فيقع القفز والدوران معًا، ثم تتقدم السلحفاة."},{"id":"co56","topic":"order-together","level":2,"t":"corr","q":"اختر التصحيح الصحيح للعبارة الخاطئة:<br>«لكي تحرك السلحفاة أرجلها الأربع في وقت واحد نضع أوامر الأرجل داخل Do in order.»","choices":["نضع أوامر الأرجل داخل جزء else","نضع أوامر الأرجل داخل Do together لتُنفَّذ في الوقت نفسه","نكرر Do in order مرتين","نضع الأوامر في حدث بدء العالم دون أي تركيب"],"ans":1,"ex":"الحركات المتزامنة مكانها Do together. وضعها في Do in order يجعل كل رجل تتحرك بعد الأخرى فتبدو المشية غير طبيعية."},{"id":"co57","topic":"order-together","level":2,"t":"mc","q":"داخل Do in order ثلاثة أوامر، وكل أمر يستغرق ثانية واحدة (مثال تدريبي). كم ثانية تقريبًا يستغرق التركيب كله؟","choices":["ثانية واحدة","ثانيتان","3 ثوانٍ","6 ثوانٍ"],"ans":2,"ex":"في Do in order تُنفَّذ الأوامر واحدًا بعد الآخر، فنجمع أزمنتها: 1 + 1 + 1 = 3 ثوانٍ. (الأرقام تدريبية من المؤلف)"},{"id":"co58","topic":"order-together","level":3,"t":"mc","q":"داخل Do together أمران: الأول يستغرق ثانيتين والثاني يستغرق 3 ثوانٍ (مثال تدريبي). بعد كم ثانية تقريبًا ينتهي التركيب كله؟","choices":["ثانيتان","5 ثوانٍ","ثانية واحدة","3 ثوانٍ"],"ans":3,"ex":"في Do together يبدأ الأمران معًا، فلا نجمع الزمنين. ينتهي التركيب عندما ينتهي الأمر الأطول وهو 3 ثوانٍ. (الأرقام تدريبية من المؤلف)"},{"id":"co59","topic":"order-together","level":3,"t":"mc","q":"وضع طالب أمر تحريك الذراع وأمر تحريك الساق داخل Do in order، فبدت مشية الشخصية غير طبيعية. ما السبب؟","choices":["لأن الحركتين نُفّذتا واحدة بعد الأخرى بدلًا من أن تكونا متزامنتين","لأن Do in order يحذف الحركة الثانية","لأن الشخصية ليست كائنًا في العالم","لأن شرط else لم يتحقق"],"ans":0,"ex":"هذا خطأ شائع: حركات يجب أن تكون معًا وُضعت في تسلسل. الحل وضع حركة الذراع والساق داخل Do together."},{"id":"co60","topic":"order-together","level":3,"t":"mc","q":"برنامج فيه Do in order يحتوي أولًا Do together { الأمر أ، الأمر ب } ثم الأمر ج. أي وصف صحيح للتنفيذ؟","choices":["يبدأ ج مع أ وب في اللحظة نفسها","يبدأ أ وب معًا، ثم يبدأ ج بعد انتهائهما","تُنفَّذ أ ثم ب ثم ج كل واحد بعد الآخر","يُنفَّذ ج أولًا ثم أ وب معًا"],"ans":1,"ex":"التركيب الخارجي تسلسل، فأوله Do together ثم ج. داخل Do together يبدأ أ وب معًا، ولا يبدأ ج إلا بعد انتهاء هذه الخطوة."}];
+var META = {"subject":"الحاسوب","n":60,"topics":[{"id":"alice-world","title":"بيئة Alice والعالم ثلاثي الأبعاد","points":["Alice بيئة لبناء عوالم ثلاثية الأبعاد وقصص وألعاب بتحريك الكائنات.","الكائن Object عنصر داخل العالم مثل أرنب أو شجرة أو سيارة.","نضيف الكائنات من المكتبات مثل Animals وNature.","نرى المشهد من زوايا مختلفة: Front وTop وSide.","عند بدء العالم يُستدعى myFirstMethod، وتكون فارغة حتى نضع فيها الأوامر."]},{"id":"events","title":"الأحداث Events","points":["الحدث تفاعل من المستخدم مثل ضغط مفتاح أو نقرة فأرة.","البرنامج يستجيب للحدث بتنفيذ إجراء أو مجموعة إجراءات.","Alice يقدّم أحداثًا جاهزة نربطها بالأوامر.","الحدث يحدد «متى؟» والإجراء يحدد «ماذا يحدث؟».","مثال: التحكم في سيارة اللاعب بمفاتيح الأسهم."]},{"id":"functions","title":"الدوال والإجراءات","points":["الدالة/الإجراء مجموعة أوامر يمكن استدعاؤها أكثر من مرة.","فائدتها: إعادة الاستخدام وتنظيم البرنامج وتقليل تكرار الأوامر.","نستدعي الدالة من حدث أو من دالة أخرى.","myFirstMethod هي الدالة التي تُستدعى عند بدء العالم.","قد تُرجع function قيمة مثل المسافة، بينما الإجراء ينفّذ حركة."]},{"id":"conditionals","title":"الجمل الشرطية","points":["if تنفّذ أوامر عند تحقق الشرط.","else تنفّذ أوامر بديلة عند عدم تحقق الشرط.","نتيجة الشرط إما صحيح true أو خطأ false.","and: يجب تحقق الشرطين معًا، or: يكفي تحقق أحدهما.","الشرط قد يعتمد على المسافة أو العلاقة بين الكائنات."]},{"id":"collision","title":"التصادم Collision","points":["التصادم: تلامس كائنين أو تداخلهما أو اقتراب المسافة بينهما من حد معيّن.","يُستخدم في الألعاب: جائزة = نقطة، حائط = توقف، جسم خطر = خسارة.","نكتب فحص التصادم كشرط: إذا اصطدم أ بـ ب فافعل كذا.","يتكرر الفحص أثناء الحركة لأن أماكن الكائنات تتغير."]},{"id":"order-together","title":"Do in order و Do together","points":["Do in order: الأوامر تُنفَّذ واحدًا بعد الآخر (تسلسل Sequence).","Do together: الأوامر تُنفَّذ في الوقت نفسه (توازٍ Parallel).","مثال: الذراع والساق معًا بـ Do together ثم خطوة للأمام بالتسلسل.","خطأ شائع: وضع حركات متزامنة داخل Do in order فتبدو غير طبيعية."]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = shuffle(opts);
+      item.ans = q.ans;
+      item.ansH = q.choices[q.ans];
+    }
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        shuffle(qs).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        shuffle(rest).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    $('qmeta').innerHTML = '<span class="kind">'+(KINDS[q.t]||'')+'</span><span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qtext').innerHTML = q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = n+' سؤالاً شاملًا موزّعة على '+nt+' دروس، بثلاثة مستويات وأنواع متنوعة. يمكنك حل المادة كاملة، أو درسًا واحدًا، أو اختبارًا عشوائيًا من 20.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>

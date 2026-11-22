@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#9f1239">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب شامل — الاجتماعيات</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#9f1239;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب شامل — الاجتماعيات</h1>
+  <p>يوسف • الصف الثامن / 1 • المواطنة والسكان والعثمانيون والأمن</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق (من الرسائل الأسبوعية بعد منتصف الفصل، في غياب جدول مواصفات وزاري معلن لنهاية الفصل 2026–2027):</b> الوحدة الثالثة (المواطنة والمشاركة المدنية)، الوحدة الرابعة (مصادر البيانات ومناطق التركز السكاني)، الوحدة الخامسة (نشأة الدولة العثمانية وتوسعاتها في البلاد العربية)، وبداية الوحدة السادسة (الأمن الوطني والتغيّر الاجتماعي).<br>تدريب شامل بنحو 60 سؤالاً. الاختبار التحريري يوم الأربعاء 9 ديسمبر 2026.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">التدريب الشامل لكل الدروس ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="full-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب شامل تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="full-index.html">كل التدريبات الشاملة</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"so01","topic":"citizenship","level":1,"t":"mc","q":"أيّ العبارات التالية تصف المواطنة بوصفها رابطًا بين الفرد ودولته؟","choices":["علاقة قانونية تربط المواطن بدولة يحمل جنسيتها","علاقة تجارية مؤقتة بين الفرد والشركات","انتماء الفرد إلى قبيلته فقط","إقامة الفرد في بلد ما مدة قصيرة"],"ans":0,"ex":"المواطنة انتماء الفرد إلى دولة يحمل جنسيتها ويتمتع فيها بالحقوق ويلتزم بالواجبات. لذلك هي علاقة قانونية بين المواطن ودولته."},{"id":"so02","topic":"citizenship","level":1,"t":"mc","q":"المبدأ الذي يجعل المواطنين متساوين في الحقوق والواجبات دون تمييز بسبب الجنس أو اللون أو المعتقد هو:","choices":["سيادة القانون","المشاركة والمسؤولية","المساواة وتكافؤ الفرص","الضمانات الدستورية"],"ans":2,"ex":"مبدأ المساواة وتكافؤ الفرص يعني عدم التمييز بين المواطنين لأي سبب. وقد أكّده الدستور القطري."},{"id":"so03","topic":"citizenship","level":1,"t":"tf","q":"أكّد الدستور القطري مبدأ المساواة بين المواطنين في الحقوق والواجبات.","ans":true,"ex":"العبارة صحيحة؛ فالدرس يذكر أن الدستور القطري أكّد المساواة بين المواطنين دون تمييز."},{"id":"so04","topic":"citizenship","level":2,"t":"mc","q":"مواطن ترشّح لمنصب عام وأدلى بصوته في الانتخابات. هذا السلوك يمثّل مبدأ:","choices":["المساواة وتكافؤ الفرص","المشاركة والمسؤولية","سيادة القانون","الانتماء القبلي"],"ans":1,"ex":"تولّي المناصب العامة والمشاركة في الانتخابات من صور المشاركة والمسؤولية. وهي مشاركة في المجال السياسي تكفلها الدولة."},{"id":"so05","topic":"citizenship","level":2,"t":"mc","q":"وفق مبدأ سيادة القانون، علاقة المواطن بوطنه:","choices":["أقل أهمية من الانتماء القبلي","تتحدد حسب ثروة المواطن","تقتصر على دفع الرسوم","أكبر من الانتماء القبلي وغيره، ولا خضوع إلا للقانون"],"ans":3,"ex":"ينص مبدأ سيادة القانون على أن علاقة المواطن بوطنه أكبر من أي انتماء قبلي أو غيره. والجميع يخضع للقانون بحياد وموضوعية ومساواة."},{"id":"so06","topic":"citizenship","level":2,"t":"tf","q":"يسمح مبدأ المساواة بتفضيل مواطن على آخر في الحقوق بسبب انتمائه العرقي.","ans":false,"ex":"العبارة خاطئة؛ فالمساواة تعني عدم التمييز بسبب الجنس أو اللون أو الفكر أو الانتماء العرقي أو المعتقد."},{"id":"so07","topic":"citizenship","level":1,"t":"fi","q":"المواطنة علاقة ………… تربط المواطن بدولته.","ans":["قانونية","القانونية","علاقة قانونية"],"hint":"كلمة واحدة","ex":"المواطنة علاقة قانونية لأنها ترتبط بالجنسية وبالحقوق والواجبات التي يحددها الدستور والقوانين."},{"id":"so08","topic":"citizenship","level":2,"t":"match","q":"صِل كل مبدأ من مبادئ المواطنة بما يناسبه:","pairs":[["المساواة وتكافؤ الفرص","حصول الجميع على الفرصة نفسها دون تمييز"],["سيادة القانون","تطبيق القانون على الجميع بحياد وموضوعية"],["المشاركة والمسؤولية","المشاركة في الانتخابات وتولي المناصب العامة"],["الضمانات الدستورية والقانونية","نصوص في الدستور والقوانين تكفل حقوق المواطن"]],"ex":"لكل مبدأ معنى خاص: المساواة تمنع التمييز، وسيادة القانون تُخضع الجميع للقانون، والمشاركة تعني الإسهام في مجالات المجتمع، والضمانات تحمي الحقوق."},{"id":"so09","topic":"citizenship","level":3,"t":"mc","q":"كيف تسهم المواطنة في المحافظة على تماسك المجتمع؟","choices":["تُلغي الحقوق وتُبقي الواجبات فقط","تقتصر على فئة معيّنة من السكان","تمنع المواطن من المشاركة في الشأن العام","تنمّي الانتماء وتساعد الفرد على الانخراط في المجتمع"],"ans":3,"ex":"من أهمية المواطنة تنمية شعور الانتماء والمعارف والقيم. وهذا يساعد الأفراد على الانخراط في المجتمع فيحافظ على تماسكه ووحدته."},{"id":"so10","topic":"citizenship","level":3,"t":"corr","q":"اختر التصحيح المناسب للعبارة الخاطئة:<br><b>«المواطنة مجرد شعور عاطفي بالانتماء، ولا ترتبط بأي حقوق أو واجبات.»</b>","choices":["المواطنة ممارسات وقيم تعبّر عن الانتماء، ومجموعة حقوق وواجبات تضمن المساواة والعدالة وفق الدستور والقوانين.","المواطنة شعور عاطفي فقط، وترتبط بالواجبات دون الحقوق.","المواطنة حقوق يتمتع بها الفرد دون أي واجبات.","المواطنة تعني الإقامة في الدولة دون حمل جنسيتها."],"ans":0,"ex":"المواطنة ليست شعورًا فقط؛ بل هي ممارسات وقيم وحقوق وواجبات معًا. وهي تضمن المساواة والعدالة وفق دستور الدولة وقوانينها."},{"id":"so11","topic":"citizenship","level":2,"t":"order","q":"رتّب الخطوات ترتيبًا منطقيًا يوضح أثر المواطنة في المجتمع:","items":["معرفة الفرد بحقوقه وواجباته","التزامه بالقانون وأداؤه واجباته","مشاركته الفاعلة في مجالات المجتمع","تماسك المجتمع ووحدته"],"ex":"هذا تسلسل منطقي تدريبي: المعرفة تقود إلى الالتزام، والالتزام يقود إلى المشاركة، والمشاركة تحفظ تماسك المجتمع."},{"id":"so12","topic":"citizenship","level":3,"t":"mc","q":"تقدّم عدد من الطلاب لمنحة دراسية، فقُبلوا جميعًا وفق المعايير نفسها دون النظر إلى أصولهم أو ألوانهم. أيّ مبدأ تحقّق هنا؟","choices":["الانتماء القبلي","المشاركة السياسية","المساواة وتكافؤ الفرص","الإحصاءات الحيوية"],"ans":2,"ex":"المثال تدريبي ومؤلَّف. معاملة الجميع بالمعايير نفسها دون تمييز هي تطبيق لمبدأ المساواة وتكافؤ الفرص."},{"id":"so13","topic":"data","level":1,"t":"mc","q":"أيّ مما يلي <b>ليس</b> من مصادر البيانات السكانية المذكورة في الدرس؟","choices":["التعدادات السكانية","المسح بالعينة","إحصاءات الهجرة","الخرائط السياحية"],"ans":3,"ex":"مصادر البيانات السكانية في الدرس: التعدادات، والمسح بالعينة، والإحصاءات الحيوية، وإحصاءات الهجرة. أما الخرائط السياحية فليست منها."},{"id":"so14","topic":"data","level":1,"t":"mc","q":"الجهة الحكومية التي تمثّل جهاز التعداد السكاني في دولة قطر هي:","choices":["جهاز التخطيط والإحصاء","المؤسسة القطرية للعمل الاجتماعي","النوادي والجمعيات الشبابية","أجهزة الإعلام"],"ans":0,"ex":"تقوم بالتعداد أجهزة حكومية، ويمثلها في قطر جهاز التخطيط والإحصاء."},{"id":"so15","topic":"data","level":2,"t":"fi","q":"خاصية من خصائص التعداد الشامل تعني أن كل فرد يُعدّ على حدة وتُجمع بياناته منفصلة: ……","ans":["الفردية","فردية","الفرديه"],"hint":"كلمة واحدة","ex":"الفردية تعني عدّ كل شخص منفردًا وجمع بياناته بشكل مستقل عن غيره."},{"id":"so16","topic":"data","level":2,"t":"match","q":"صِل كل خاصية من خصائص التعداد الشامل بمعناها:","pairs":[["الفردية","يُعدّ كل فرد على حدة"],["الشمولية","يشمل جميع الأفراد دون حذف أو تكرار"],["الآنية","يُجرى في يوم محدد"],["الدورية","يتكرر كل فترة، مثل كل عشر سنوات في بعض الدول"]],"ex":"خصائص التعداد الأربع هي الفردية والشمولية والآنية والدورية. ولكل منها معنى يضمن دقة البيانات وشمولها."},{"id":"so17","topic":"data","level":1,"t":"tf","q":"اعتمدت الجمعية العامة للأمم المتحدة يوم 20 أكتوبر 2015 يومًا عالميًا للإحصاء.","ans":true,"ex":"العبارة صحيحة؛ وكان الشعار «بيانات أفضل من أجل حياة أفضل»."},{"id":"so18","topic":"data","level":2,"t":"mc","q":"طالبت الأمم المتحدة الدول بالاحتفال باليوم العالمي للإحصاء مرة كل:","choices":["سنة","سنتين","خمس سنوات","عشر سنوات"],"ans":2,"ex":"بحسب الإثراء في الدرس، طالبت الجمعية العامة الدول بالاحتفال باليوم العالمي للإحصاء كل خمس سنوات."},{"id":"so19","topic":"data","level":3,"t":"mc","q":"وزارة تريد تقدير عدد المدارس الجديدة التي ستحتاجها مستقبلًا. لماذا تعتمد على بيانات التعداد السكاني؟","choices":["لأنها أساس التخطيط وتعطي صورة شاملة دقيقة عن السكان","لأنها تُجرى مرة واحدة فقط في تاريخ الدولة","لأنها تشمل عينة صغيرة من السكان فقط","لأنها لا تحتاج إلى أي تحليل"],"ans":0,"ex":"المثال تدريبي. بيانات التعداد ضرورة اقتصادية لأنها أساس التخطيط، فهي دقيقة وشاملة لكل الأفراد."},{"id":"so20","topic":"data","level":3,"t":"order","q":"رتّب مراحل عملية التعداد السكاني ترتيبًا منطقيًا:","items":["تحديد تاريخ وزمن معيّن للتعداد","جمع البيانات عن كل فرد","تحليل البيانات الإحصائية","استخدام النتائج في التخطيط"],"ex":"التعداد عملية شاملة لجمع البيانات وتحليلها في تاريخ محدد، ثم تُستخدم النتائج أساسًا للتخطيط. الترتيب هنا تسلسل منطقي تدريبي."},{"id":"so21","topic":"concentration","level":1,"t":"mc","q":"أيّ المناطق التالية يُتوقَّع أن تجذب السكان أكثر بشكل عام؟","choices":["صحراء شديدة الجفاف","منطقة جبلية وعرة","سهل خصب معتدل المناخ قرب مصدر مياه","منطقة شديدة البرودة"],"ans":2,"ex":"يرتبط التركز السكاني بالمياه والأراضي الخصبة والمناخ المعتدل. أما المناطق الجافة جدًا أو الباردة جدًا أو الوعرة فأقل جذبًا."},{"id":"so22","topic":"concentration","level":1,"t":"mc","q":"تُحسب الكثافة السكانية بالعلاقة:","choices":["عدد السكان ÷ المساحة","المساحة ÷ عدد السكان","عدد السكان × المساحة","عدد السكان − المساحة"],"ans":0,"ex":"الكثافة السكانية هي عدد السكان مقسومًا على المساحة، أي عدد الأشخاص في كل وحدة مساحة."},{"id":"so23","topic":"concentration","level":1,"t":"tf","q":"تقلّ أعداد السكان عادة في المناطق الشديدة البرودة أو الوعرة.","ans":true,"ex":"العبارة صحيحة؛ فهذه المناطق أقل جذبًا للسكان في العموم لصعوبة العيش فيها."},{"id":"so24","topic":"concentration","level":2,"t":"fi","q":"مدينة (مثال تدريبي) عدد سكانها 6000 نسمة ومساحتها 30 كم². كثافتها السكانية = …… نسمة/كم²","ans":["200","٢٠٠","200 نسمة/كم²","٢٠٠ نسمة/كم²","200 نسمة/كم2"],"hint":"اكتب عددًا","ex":"الأرقام تدريبية مؤلَّفة. الكثافة = 6000 ÷ 30 = 200 نسمة لكل كيلومتر مربع."},{"id":"so25","topic":"concentration","level":2,"t":"mc","q":"يتناول درس مناطق التركز السكاني أهم مناطق التركز في:","choices":["القارة القطبية الجنوبية فقط","أستراليا وحدها","جزر المحيطات فقط","آسيا وإفريقيا وأوروبا وأمريكا الشمالية"],"ans":3,"ex":"يدرس الدرس أهم مناطق التركز السكاني في آسيا وإفريقيا وأوروبا وأمريكا الشمالية."},{"id":"so26","topic":"concentration","level":2,"t":"tf","q":"إذا بقي عدد السكان ثابتًا وزادت المساحة، فإن الكثافة السكانية تزداد.","ans":false,"ex":"العبارة خاطئة؛ لأن الكثافة = السكان ÷ المساحة، فإذا كبرت المساحة مع ثبات السكان قلّت الكثافة."},{"id":"so27","topic":"concentration","level":3,"t":"mc","q":"منطقتان لهما العدد نفسه من السكان، ومساحة الأولى ضعف مساحة الثانية. ماذا تستنتج؟","choices":["كثافة الأولى ضعف كثافة الثانية","كثافة الثانية ضعف كثافة الأولى","كثافتهما متساوية","لا يمكن المقارنة بينهما"],"ans":1,"ex":"عند ثبات عدد السكان، كلما صغرت المساحة زادت الكثافة. والثانية مساحتها نصف الأولى، فكثافتها ضعف كثافة الأولى."},{"id":"so28","topic":"concentration","level":3,"t":"corr","q":"اختر التصحيح المناسب للعبارة الخاطئة:<br><b>«يتركز السكان غالبًا في المناطق الجافة جدًا لأنها خالية من الزحام.»</b>","choices":["يتركز السكان غالبًا في المناطق الجافة جدًا لأنها واسعة.","يتركز السكان غالبًا في المناطق الوعرة لأنها بعيدة.","يتركز السكان غالبًا في المناطق الشديدة البرودة لاعتدالها.","يتركز السكان غالبًا حيث تتوافر المياه والأراضي الخصبة والمناخ المعتدل وفرص العمل."],"ans":3,"ex":"المناطق الجافة جدًا أقل جذبًا للسكان. ويرتبط التركز بمقومات مثل المياه والأرض الخصبة والمناخ المعتدل والسواحل وفرص العمل."},{"id":"so29","topic":"ottoman-rise","level":1,"t":"mc","q":"نشأت الدولة العثمانية في منطقة:","choices":["الأناضول (آسيا الصغرى)","شبه الجزيرة الإيبيرية","وادي النيل","المغرب العربي"],"ans":0,"ex":"نشأت الدولة العثمانية في الأناضول، وهي المعروفة باسم آسيا الصغرى."},{"id":"so30","topic":"ottoman-rise","level":1,"t":"mc","q":"قامت الدولة العثمانية وتوسعت في بداياتها على حساب الدولة:","choices":["المملوكية","البيزنطية","الإسبانية","البرتغالية"],"ans":1,"ex":"نشأت الدولة العثمانية في الأناضول على حساب الدولة البيزنطية، وساعد ضعف بيزنطة على اتساعها."},{"id":"so31","topic":"ottoman-rise","level":1,"t":"fi","q":"لُقّب السلطان سليمان بـ …… لأنه نظّم شؤون الدولة ووضع لها القوانين.","ans":["القانوني","قانوني","بالقانوني"],"hint":"لقب السلطان","ex":"وضع سليمان قوانين تحرص على الاتفاق مع الشريعة الإسلامية، وظلت تُطبق حتى القرن التاسع عشر، فلُقّب بالقانوني."},{"id":"so32","topic":"ottoman-rise","level":1,"t":"tf","q":"يُعدّ عصر سليمان القانوني العصر الذهبي للدولة العثمانية.","ans":true,"ex":"العبارة صحيحة؛ ففي عهده بلغت الدولة أقصى اتساعها وتنظّمت شؤونها."},{"id":"so33","topic":"ottoman-rise","level":2,"t":"mc","q":"أيّ مما يلي من عوامل اتساع الدولة العثمانية في مرحلة نشأتها؟","choices":["قوة الدولة البيزنطية وتماسكها","عزلة العثمانيين عن جيرانهم","ضعف الدولة البيزنطية ووجود سلاطين أقوياء","غياب الرغبة في نشر الإسلام"],"ans":2,"ex":"من عوامل الاتساع: وجود سلاطين أقوياء، والرغبة في نشر الإسلام، وضعف الدولة البيزنطية."},{"id":"so34","topic":"ottoman-rise","level":2,"t":"mc","q":"في عهد سليمان القانوني بلغت الجيوش العثمانية أسوار مدينة:","choices":["بغداد","فيينا عاصمة النمسا","القاهرة","دمشق"],"ans":1,"ex":"هزم سليمان القانوني ملك المجر، وبلغت جيوشه أسوار فيينا عاصمة النمسا."},{"id":"so35","topic":"ottoman-rise","level":2,"t":"tf","q":"ظلّت القوانين التي وضعها سليمان القانوني تُطبَّق حتى القرن التاسع عشر.","ans":true,"ex":"العبارة صحيحة؛ فقد استمر العمل بقوانينه حتى القرن التاسع عشر، وهذا من أسباب لقبه."},{"id":"so36","topic":"ottoman-rise","level":2,"t":"match","q":"صِل كل اسم بما يناسبه:","pairs":[["أرطغرل","من شخصيات بدايات الدولة العثمانية"],["سليم الأول","اتجه التوسع في عهده بقوة نحو العالم العربي"],["سليمان القانوني","بلغت الدولة في عهده أقصى اتساعها"],["الدولة البيزنطية","قامت الدولة العثمانية على حسابها"]],"ex":"أرطغرل من رجال البدايات، وسليم الأول وجّه التوسع نحو العالم العربي، وفي عهد سليمان بلغت الدولة أقصى اتساعها، ونشأت الدولة على حساب بيزنطة."},{"id":"so37","topic":"ottoman-rise","level":2,"t":"mc","q":"حكم السلطان سليم الأول في الفترة:","choices":["1412–1420م","1612–1620م","1712–1720م","1512–1520م"],"ans":3,"ex":"حكم سليم الأول من 1512 إلى 1520م، وفي عهده اتجه التوسع العثماني بقوة نحو العالم العربي."},{"id":"so38","topic":"ottoman-rise","level":3,"t":"order","q":"رتّب الشخصيات التالية زمنيًا من الأقدم إلى الأحدث:","items":["أرطغرل","عثمان","سليم الأول","سليمان القانوني"],"ex":"أرطغرل من البدايات ومنه خط عثمان، ثم جاء بعد ذلك بزمن طويل سليم الأول (1512–1520م)، ثم سليمان القانوني الذي بلغت الدولة في عهده أقصى اتساعها."},{"id":"so39","topic":"ottoman-rise","level":3,"t":"corr","q":"اختر التصحيح المناسب للعبارة الخاطئة:<br><b>«لُقّب سليمان بالقانوني لأنه هزم ملك المجر وبلغ أسوار فيينا.»</b>","choices":["لُقّب سليمان بالقانوني لأنه نقل العاصمة إلى فيينا.","لُقّب سليمان بالقانوني لأنه نظّم شؤون الدولة ووضع قوانين تحرص على الاتفاق مع الشريعة الإسلامية.","لُقّب سليمان بالقانوني لأنه أسّس الدولة العثمانية.","لُقّب سليمان بالقانوني لأنه نشأ في الأناضول."],"ans":1,"ex":"هزيمة ملك المجر وبلوغ فيينا إنجازات عسكرية، لكنها ليست سبب اللقب. سبب اللقب تنظيم الدولة ووضع القوانين الموافقة للشريعة."},{"id":"so40","topic":"ottoman-rise","level":3,"t":"mc","q":"ما العلاقة بين ضعف الدولة البيزنطية ونشأة الدولة العثمانية؟","choices":["لا توجد علاقة بينهما","ضعف بيزنطة أدى إلى ضعف العثمانيين","ضعف بيزنطة سهّل توسع العثمانيين في الأناضول على حسابها","قوة بيزنطة هي التي ساعدت العثمانيين على النشأة"],"ans":2,"ex":"نشأت الدولة العثمانية على حساب الدولة البيزنطية، فكان ضعف بيزنطة عاملًا مساعدًا على اتساع العثمانيين."},{"id":"so41","topic":"ottoman-arab","level":1,"t":"mc","q":"من دوافع التوسع العثماني في المنطقة العربية:","choices":["الرغبة في السيطرة على طرق التجارة","البحث عن مناطق شديدة البرودة","الابتعاد عن الأراضي الخصبة","تقليل عدد الولايات"],"ans":0,"ex":"من دوافع التوسع في المنطقة العربية الرغبة في السيطرة على طرق التجارة، ووجود الأراضي الخصبة في مصر والشام."},{"id":"so42","topic":"ottoman-arab","level":1,"t":"mc","q":"أيّ المناطق التالية جذبت العثمانيين بأراضيها الزراعية الخصبة؟","choices":["الصحراء الكبرى","مصر وبلاد الشام","المناطق القطبية","جبال الألب"],"ans":1,"ex":"وجود الأراضي الزراعية الخصبة في مصر وبلاد الشام كان من دوافع التوسع العثماني في المنطقة العربية."},{"id":"so43","topic":"ottoman-arab","level":1,"t":"tf","q":"جاء التدخل العثماني في المغرب العربي بطلب من الإسبان والبرتغاليين.","ans":false,"ex":"العبارة خاطئة؛ فأهل المغرب العربي وعلماؤه هم من طلبوا المساعدة من العثمانيين لمواجهة الإسبان والبرتغاليين."},{"id":"so44","topic":"ottoman-arab","level":1,"t":"fi","q":"طلب أهل المغرب العربي وعلماؤه المساعدة من الدولة العثمانية في مواجهة الإسبان و……","ans":["البرتغاليين","البرتغاليون","البرتغال"],"hint":"اسم قوة أوروبية","ex":"واجه المغرب العربي خطر الإسبان والبرتغاليين، فطلب أهله وعلماؤه مساعدة الدولة العثمانية."},{"id":"so45","topic":"ottoman-arab","level":2,"t":"match","q":"صِل كل عنصر بما يناسبه من دروس التوسع العثماني في البلاد العربية:","pairs":[["مصر وبلاد الشام","أراضٍ زراعية خصبة"],["طرق التجارة","رغب العثمانيون في السيطرة عليها"],["أهل المغرب العربي وعلماؤه","طلبوا المساعدة من الدولة العثمانية"],["الإسبان والبرتغاليون","القوى التي واجهها المغرب العربي"]],"ex":"دوافع التوسع شملت التجارة والأراضي الخصبة، وفي المغرب جاء الدور العثماني بعد طلب أهله المساعدة ضد الإسبان والبرتغاليين."},{"id":"so46","topic":"ottoman-arab","level":2,"t":"mc","q":"يذكر الكتاب أن السلطان سليم الأول حقّق فكرة:","choices":["توحيد العالم الإسلامي","فصل الشام عن مصر","التحالف مع البرتغاليين","نقل العاصمة إلى فيينا"],"ans":0,"ex":"في عهد سليم الأول اتجه التوسع نحو العالم العربي والإسلامي، ويذكر الكتاب أنه حقّق فكرة توحيد العالم الإسلامي."},{"id":"so47","topic":"ottoman-arab","level":2,"t":"tf","q":"شمل الاتجاه العام للتوسع العثماني في البلاد العربية مناطق مثل الشام ومصر والحجاز والمغرب.","ans":true,"ex":"العبارة صحيحة؛ فالتوسع العثماني في البلاد العربية اتجه نحو الشام ومصر والحجاز، كما امتد إلى المغرب بعد طلب أهله المساعدة."},{"id":"so48","topic":"ottoman-arab","level":2,"t":"mc","q":"أيّ مما يلي يُعدّ دافعًا اقتصاديًا للتوسع العثماني في البلاد العربية؟","choices":["طلب أهل المغرب المساعدة","السيطرة على طرق التجارة","هزيمة ملك المجر","بلوغ أسوار فيينا"],"ans":1,"ex":"السيطرة على طرق التجارة دافع اقتصادي. أما هزيمة ملك المجر وبلوغ فيينا فمن أحداث التوسع في أوروبا، وطلب المساعدة دافع آخر غير اقتصادي."},{"id":"so49","topic":"ottoman-arab","level":2,"t":"mc","q":"لماذا اتجه أهل المغرب العربي وعلماؤه إلى الدولة العثمانية؟","choices":["لمشاركتها في تجارة خاصة","لأنها طلبت منهم الهجرة إليها","لمواجهة الدولة البيزنطية","لطلب المساعدة في مواجهة الإسبان والبرتغاليين"],"ans":3,"ex":"تعرّض المغرب العربي لخطر الإسبان والبرتغاليين، فطلب أهله وعلماؤه المساعدة من الدولة العثمانية."},{"id":"so50","topic":"ottoman-arab","level":3,"t":"order","q":"رتّب الأحداث ترتيبًا منطقيًا يوضح وصول الدور العثماني إلى المغرب العربي:","items":["تعرّض المغرب العربي لخطر الإسبان والبرتغاليين","طلب أهل المغرب وعلماؤه المساعدة من الدولة العثمانية","تدخّل العثمانيين لمواجهة هذا الخطر"],"ex":"الخطر الخارجي جاء أولًا، ثم طلب أهل المغرب المساعدة، ثم جاء التدخل العثماني استجابة لهذا الطلب."},{"id":"so51","topic":"ottoman-arab","level":3,"t":"corr","q":"اختر التصحيح المناسب للعبارة الخاطئة:<br><b>«كان الدافع الوحيد للتوسع العثماني في البلاد العربية الوصول إلى أسوار فيينا.»</b>","choices":["كان الدافع الوحيد هزيمة ملك المجر.","لم يكن للتوسع العثماني في البلاد العربية أي دافع.","من دوافع التوسع في البلاد العربية: السيطرة على طرق التجارة، ووجود الأراضي الخصبة في مصر والشام.","كان الدافع الوحيد البحث عن مناطق وعرة."],"ans":2,"ex":"فيينا في أوروبا وليست من البلاد العربية. ودوافع التوسع العربي كانت متعددة، منها التجارة والأراضي الخصبة."},{"id":"so52","topic":"ottoman-arab","level":3,"t":"mc","q":"قوافل تجارية تعبر المنطقة العربية في ذلك العصر. أيّ دافع عثماني يفسّره هذا المثال؟","choices":["الرغبة في السيطرة على طرق التجارة المارة بالمنطقة","الرغبة في إغلاق جميع الطرق","عدم الاهتمام بالاقتصاد","الرغبة في الابتعاد عن الأراضي الخصبة"],"ans":0,"ex":"المثال تدريبي. مرور التجارة في المنطقة العربية يوضح دافع العثمانيين للسيطرة على طرق التجارة."},{"id":"so53","topic":"unit6","level":1,"t":"mc","q":"أيّ تعريف يصف الأمن الاقتصادي؟","choices":["تنظيم المباريات الرياضية","عدّ السكان كل عشر سنوات","القدرة على حماية وتأمين المصالح الاقتصادية للدولة وتوفير مقومات العيش","توجيه الرأي العام"],"ans":2,"ex":"الأمن الاقتصادي هو قدرة الدولة على حماية مصالحها الاقتصادية وتأمينها، وتوفير مقومات العيش للمواطنين."},{"id":"so54","topic":"unit6","level":1,"t":"fi","q":"من مؤسسات المجتمع المدني في قطر: المؤسسة القطرية للعمل ……","ans":["الاجتماعي","الإجتماعي"],"hint":"كلمة واحدة","ex":"المؤسسة القطرية للعمل الاجتماعي تقدّم خدمات أسرية وتأهيلية واستشارية وقانونية ونفسية."},{"id":"so55","topic":"unit6","level":2,"t":"match","q":"صِل كل مؤسسة بدورها في دعم الأمن الاجتماعي:","pairs":[["السلطة القضائية","تحقيق العدالة"],["المسجد","التوجيه والإرشاد"],["النوادي والجمعيات الشبابية","توجيه طاقات الشباب للعلم والعمل والتطوع"],["أجهزة الإعلام","توجيه الرأي العام"]],"ex":"لكل مؤسسة دور: القضاء يحقق العدالة، والمسجد يوجّه ويرشد، والنوادي توجّه طاقات الشباب، والإعلام يوجّه الرأي العام."},{"id":"so56","topic":"unit6","level":2,"t":"mc","q":"من الخدمات التي تقدّمها المؤسسة القطرية للعمل الاجتماعي:","choices":["إجراء التعداد السكاني","إصدار الأحكام القضائية","تنظيم الانتخابات","خدمات أسرية وتأهيلية واستشارية"],"ans":3,"ex":"تقدّم المؤسسة القطرية للعمل الاجتماعي خدمات أسرية وتأهيلية واستشارية وقانونية ونفسية. أما التعداد فيتولاه جهاز التخطيط والإحصاء."},{"id":"so57","topic":"unit6","level":2,"t":"tf","q":"يقتصر الأمن الوطني على جانب واحد، ولا يشمل الأمن الاجتماعي أو الأمن الاقتصادي.","ans":false,"ex":"العبارة خاطئة؛ فالأمن الوطني يشمل جوانب متعددة منها الأمن الاجتماعي والأمن الاقتصادي."},{"id":"so58","topic":"unit6","level":3,"t":"mc","q":"شاب لديه وقت فراغ كبير ويرغب في التطوع. أيّ مؤسسة تسهم مباشرة في توجيه طاقته؟","choices":["جهاز التخطيط والإحصاء","النوادي والجمعيات الشبابية","السلطة القضائية","المسح بالعينة"],"ans":1,"ex":"المثال تدريبي. النوادي والجمعيات الشبابية توجّه طاقات الشباب نحو العلم والعمل والتطوع."},{"id":"so59","topic":"unit6","level":3,"t":"order","q":"رتّب الخطوات ترتيبًا منطقيًا يوضح دور القضاء في الأمن الاجتماعي:","items":["نشوء خلاف بين طرفين","اللجوء إلى القضاء","صدور حكم يحقق العدالة","استقرار المجتمع وأمنه"],"ex":"هذا تسلسل منطقي تدريبي. تتولى دولة قطر ولاية القضاء بما يكفل العدالة، والعدالة تحقق استقرار المجتمع."},{"id":"so60","topic":"unit6","level":3,"t":"mc","q":"انتشرت أخبار غير دقيقة بين الناس. أيّ مؤسسة دورها الأبرز وفق الدرس هو توجيه الرأي العام؟","choices":["النوادي الرياضية","السلطة القضائية","أجهزة الإعلام","جهاز التخطيط والإحصاء"],"ans":2,"ex":"المثال تدريبي. أجهزة الإعلام تسهم في الأمن الاجتماعي بتوجيه الرأي العام."}];
+var META = {"subject":"الاجتماعيات","n":60,"topics":[{"id":"citizenship","title":"المواطنة والمشاركة المدنية","points":["المواطنة علاقة قانونية تربط المواطن بدولته، فيها حقوق وواجبات.","مبادئها: المساواة وتكافؤ الفرص، سيادة القانون، المشاركة والمسؤولية، الضمانات الدستورية.","تنمّي الانتماء وتحافظ على تماسك المجتمع ووحدته."]},{"id":"data","title":"مصادر البيانات السكانية","points":["المصادر: التعدادات، المسح بالعينة، الإحصاءات الحيوية، إحصاءات الهجرة.","التعداد أدق المصادر وأشملها، ويتولاه في قطر جهاز التخطيط والإحصاء.","خصائص التعداد: الفردية، الشمولية، الآنية، الدورية."]},{"id":"concentration","title":"مناطق التركز السكاني","points":["يتركز السكان حيث المياه والأرض الخصبة والمناخ المعتدل والسواحل وفرص العمل.","المناطق الجافة جدًا أو الشديدة البرودة أو الوعرة أقل جذبًا للسكان.","الكثافة السكانية = عدد السكان ÷ المساحة."]},{"id":"ottoman-rise","title":"نشأة الدولة العثمانية","points":["نشأت في الأناضول على حساب الدولة البيزنطية.","من عوامل اتساعها: سلاطين أقوياء، الرغبة في نشر الإسلام، ضعف بيزنطة.","سليمان القانوني: أقصى اتساع، بلغ أسوار فيينا، ووضع قوانين توافق الشريعة."]},{"id":"ottoman-arab","title":"التوسعات في البلاد العربية","points":["من الدوافع: السيطرة على طرق التجارة، والأراضي الخصبة في مصر والشام.","في عهد سليم الأول (1512–1520م) اتجه التوسع بقوة نحو العالم العربي.","طلب أهل المغرب وعلماؤه المساعدة ضد الإسبان والبرتغاليين."]},{"id":"unit6","title":"بداية الأمن الوطني والتغيّر الاجتماعي","points":["الأمن الوطني يشمل جوانب منها الأمن الاجتماعي والأمن الاقتصادي.","الأمن الاقتصادي: حماية المصالح الاقتصادية للدولة وتوفير مقومات العيش.","مؤسسات داعمة: القضاء، المسجد، النوادي الشبابية، الإعلام، المجتمع المدني."]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = shuffle(opts);
+      item.ans = q.ans;
+      item.ansH = q.choices[q.ans];
+    }
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        shuffle(qs).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        shuffle(rest).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    $('qmeta').innerHTML = '<span class="kind">'+(KINDS[q.t]||'')+'</span><span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qtext').innerHTML = q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = n+' سؤالاً شاملًا موزّعة على '+nt+' دروس، بثلاثة مستويات وأنواع متنوعة. يمكنك حل المادة كاملة، أو درسًا واحدًا، أو اختبارًا عشوائيًا من 20.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>
