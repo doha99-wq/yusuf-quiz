@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#b45309">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب شامل — اللغة العربية</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#b45309;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب شامل — اللغة العربية</h1>
+  <p>يوسف • الصف الثامن / 1 • الوحدات 4–7 والنحو والإملاء والبلاغة</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق الرسمي (جدول مواصفات الوزارة، النصف الثاني 2026–2027):</b> الوحدات من الرابعة إلى السابعة. الاستماع لنص إقناعي، الإملاء (همزة ابن وابنة والحروف المحذوفة والمزيدة)، القراءة والبلاغة (تشبيه، استعارة، طباق، مقابلة)، الأفعال الخمسة والمبني من الأفعال، والكتابة: نص سردي. ومن رسالة المدرسة: درسا التعليم فوق الجميع والرازي.<br>تدريب شامل بنحو 60 سؤالاً. الاختبار التحريري يوم الخميس 10 ديسمبر 2026.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">التدريب الشامل لكل الدروس ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="full-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب شامل تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="full-index.html">كل التدريبات الشاملة</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"ar01","topic":"listening","level":1,"t":"mc","q":"ما الغاية الأساسية التي يسعى إليها المتحدث في نص إقناعي مسموع؟","choices":["وصف منظر طبيعي وصفًا دقيقًا","إقناع المستمع برأي أو موقف مدعوم بالحجج","سرد أحداث قصة متتابعة","تسلية المستمع بالطرائف"],"ans":1,"ex":"النص الإقناعي يهدف إلى إقناع المتلقي برأي أو موقف. ويعتمد في ذلك على الحجج والأدلة لا على مجرد الوصف أو السرد."},{"id":"ar02","topic":"listening","level":2,"t":"match","q":"صِل كل مؤشر إقناعي بوظيفته في النص المسموع:","pairs":[["لأن","ذكر السبب أو التعليل"],["إذًا","الوصول إلى نتيجة أو استنتاج"],["علاوة على ذلك","إضافة حجة جديدة"],["ينبغي","الدعوة أو المطالبة بفعل شيء"]],"ex":"مؤشرات الإقناع تساعد المستمع على تتبع الحجة. فـ«لأن» تعلّل، و«إذًا» تستنتج، و«علاوة على» تضيف، و«ينبغي» تطالب."},{"id":"ar03","topic":"listening","level":2,"t":"mc","q":"استمعتَ إلى أربع عبارات. أيها <b>حقيقة</b> يمكن التحقق منها لا رأي شخصي؟","choices":["القراءة أمتع هواية على الإطلاق","كل الطلاب يكرهون الواجبات","أفضل وقت للدراسة هو الصباح","تقع دولة قطر في قارة آسيا"],"ans":3,"ex":"الحقيقة معلومة يمكن التحقق منها كموقع قطر في آسيا. أما بقية العبارات فآراء شخصية أو تعميمات لا تنطبق على الجميع."},{"id":"ar04","topic":"listening","level":1,"t":"tf","q":"عبارة «جميع الناس يحبون الرياضة» تعميم ينبغي أن ينتبه له المستمع الناقد.","ans":true,"ex":"كلمة «جميع» تجعل الحكم شاملًا لكل الناس دون دليل، وهذا تعميم. والمستمع الجيد يبحث عن المبالغة والتعميم في النص الإقناعي."},{"id":"ar05","topic":"listening","level":2,"t":"mc","q":"قال متحدث: «يجب أن نقلّل استخدام البلاستيك؛ لأنه يحتاج إلى سنوات طويلة ليتحلل». ما <b>الدليل</b> في هذا القول؟","choices":["المتحدث نفسه","يجب أن نقلّل استخدام البلاستيك","أنه يحتاج إلى سنوات طويلة ليتحلل","لا يوجد في القول دليل"],"ans":2,"ex":"الدعوى هي المطالبة بتقليل البلاستيك، والدليل ما جاء بعد «لأن». والمثال مؤلف للتدريب على التمييز بين الدعوى والدليل."},{"id":"ar06","topic":"listening","level":3,"t":"fi","q":"في العبارة: «ينبغي أن نحافظ على الماء؛ إذًا علينا إصلاح الصنابير المعطلة» — اكتب الكلمة التي تنقل الكلام إلى <b>النتيجة</b>.","ans":["إذًا","إذاً","اذًا","اذاً"],"hint":"كلمة واحدة","ex":"كلمة «إذًا» من مؤشرات الإقناع الدالة على الاستنتاج. فهي تربط الفكرة السابقة بالنتيجة المترتبة عليها."},{"id":"ar07","topic":"hamza","level":1,"t":"mc","q":"اختر الجملة التي كُتبت فيها كلمة «بن / ابن» كتابة صحيحة:","choices":["قرأتُ عن خالد ابن الوليد","زارنا سعدُ بنُ عليٍّ أمس","رأيتُ بن جارنا في المسجد","هذا بن صديقي"],"ans":1,"ex":"«بن» في «سعد بن علي» وقعت بين علمين نعتًا وليست أول السطر، فحُذفت ألفها. أما «خالد ابن الوليد» فيجب حذف الألف، و«بن جارنا» و«هذا بن» لم تقعا بين علمين فتثبت الألف."},{"id":"ar08","topic":"hamza","level":1,"t":"tf","q":"إذا جاءت كلمة «ابن» في أول السطر كُتبت بالألف حتى لو وقعت بين علمين.","ans":true,"ex":"من شروط حذف ألف «ابن» ألّا تقع في أول السطر. فإذا بدأ بها السطر تُكتب «ابن» بإثبات الألف."},{"id":"ar09","topic":"hamza","level":2,"t":"corr","q":"في الجملة خطأ إملائي: «هذا بن صديقي المخلص». اختر التصحيح الصحيح:","choices":["هاذا بن صديقي المخلص","هاذا ابن صديقي المخلص","هذا بنُ صديقي المخلص","هذا ابن صديقي المخلص"],"ans":3,"ex":"كلمة «ابن» هنا لم تقع بين علمين، فتثبت ألفها. واسم الإشارة «هذا» تُحذف منه الألف بعد الهاء رسمًا، فلا يُكتب «هاذا»."},{"id":"ar10","topic":"hamza","level":2,"t":"mc","q":"في أي جملة زِيدت الألف الفارقة زيادةً صحيحة؟","choices":["معلموا المدرسة حاضرون","الطفل يدعوا ربه","المهندسون لم يتأخروا عن الموعد","الأب يرجوا النجاح لابنه"],"ans":2,"ex":"الألف الفارقة تُزاد بعد واو الجماعة في الفعل مثل «لم يتأخروا». ولا تُزاد بعد واو جمع المذكر في الأسماء (معلمو) ولا بعد الواو الأصلية في الفعل (يدعو، يرجو)."},{"id":"ar11","topic":"hamza","level":2,"t":"fi","q":"اسم العلم «عمرو» فيه حرف يُكتب ولا يُنطق. اكتب هذا الحرف.","ans":["الواو","و","واو","الواو المزيدة"],"hint":"حرف واحد","ex":"تُزاد الواو في «عمرو» رسمًا ولا تُنطق. والغرض منها التفريق بينه وبين اسم «عُمَر»."},{"id":"ar12","topic":"hamza","level":2,"t":"match","q":"صِل كل كلمة بالظاهرة الإملائية المناسبة لها:","pairs":[["سافروا","ألف فارقة مزيدة بعد واو الجماعة"],["عمرو","واو مزيدة للتفريق"],["أولئك","ألف محذوفة رسمًا وتُنطق"],["يدعو","واو أصلية لا تُزاد بعدها ألف"]],"ex":"«سافروا» فعل اتصلت به واو الجماعة فزيدت الألف الفارقة. و«عمرو» زيدت فيها الواو، و«أولئك» حُذفت منها ألف تُنطق، و«يدعو» واوها أصلية فلا تُزاد بعدها ألف."},{"id":"ar13","topic":"hamza","level":3,"t":"corr","q":"في الجملة خطآن إملائيان: «كتب الطلاب رسالة إلى علي ابن أحمد ولاكن الرسالة تأخرت». اختر التصحيح الكامل:","choices":["كتب الطلاب رسالة إلى علي ابن أحمد ولكن الرسالة تأخرت","كتب الطلاب رسالة إلى علي بن أحمد ولاكن الرسالة تأخرت","كتبوا الطلاب رسالة إلى علي بن أحمد ولكن الرسالة تأخرت","كتب الطلاب رسالة إلى علي بن أحمد ولكن الرسالة تأخرت"],"ans":3,"ex":"«بن» بين العلمين «علي» و«أحمد» نعت فتُحذف ألفها. و«لكن» تُحذف منها الألف بعد اللام رسمًا. أما «كتبوا الطلاب» ففيها خطأ نحوي."},{"id":"ar14","topic":"hamza","level":3,"t":"mc","q":"أردنا أن نُخبر بأن محمدًا هو ابن سعيد، فقلنا: «محمدٌ ابنُ سعيدٍ» جملةً مستقلة. كيف تُكتب «ابن» هنا؟","choices":["بحذف الألف لأنها بين علمين","بحذف الألف لأنها في وسط الجملة","بإثبات الألف لأنها خبر لا نعت","يجوز الحذف والإثبات دائمًا"],"ans":2,"ex":"تُحذف ألف «ابن» إذا كانت نعتًا بين علمين. أما هنا فهي خبر للمبتدأ «محمد»، فتثبت الألف."},{"id":"ar15","topic":"hamza","level":1,"t":"fi","q":"أكمل باسم الإشارة المناسب للمفرد المذكر القريب مكتوبًا كتابة صحيحة: «…… الكتابُ مفيد».","ans":["هذا"],"hint":"اسم إشارة","ex":"اسم الإشارة للمفرد المذكر القريب هو «هذا». وتُحذف الألف بعد الهاء رسمًا مع أنها تُنطق، فلا نكتب «هاذا»."},{"id":"ar16","topic":"hamza","level":3,"t":"corr","q":"صحّح الأخطاء الإملائية في الجملة: «أولائك الطلاب لم يحضرو الحفل».","choices":["أولئك الطلاب لم يحضروا الحفل","أولائك الطلاب لم يحضروا الحفل","أولئك الطلاب لم يحضرو الحفل","أولاءك الطلاب لم يحضرون الحفل"],"ans":0,"ex":"«أولئك» تُحذف منها الألف بعد اللام رسمًا. و«يحضروا» فعل متصل بواو الجماعة فتُزاد بعده الألف الفارقة، وهو مجزوم بحذف النون بعد «لم»."},{"id":"ar17","topic":"balagha","level":1,"t":"mc","q":"«الكتابُ كالصديقِ الوفيّ» — ما اللون البلاغي في العبارة؟","choices":["طباق","استعارة مكنية","تشبيه","مقابلة"],"ans":2,"ex":"ذُكر المشبه (الكتاب) والمشبه به (الصديق الوفي) والأداة (الكاف). وذكر الطرفين يعني أن العبارة تشبيه."},{"id":"ar18","topic":"balagha","level":1,"t":"mc","q":"في أي جملة يوجد <b>طباق</b>؟","choices":["تعلّمتُ القراءة في المدرسة","يفرح الطفل بالهدية","يضيء القمر في السماء","يستوي القريب والبعيد عند الحاكم العادل"],"ans":3,"ex":"الطباق هو الجمع بين الكلمة وضدها. وفي الجملة الأخيرة جُمع بين «القريب» و«البعيد»، أما بقية الجمل فلا تضاد فيها."},{"id":"ar19","topic":"balagha","level":2,"t":"tf","q":"في عبارة «ضحكت الحديقة حين نزل المطر» استعارة مكنية؛ إذ شُبّهت الحديقة بإنسان، وحُذف المشبه به وبقي شيء من لوازمه وهو الضحك.","ans":true,"ex":"الضحك من صفات الإنسان، وقد نُسب إلى الحديقة. فالمشبه به (الإنسان) محذوف ورُمز إليه بلازمه، وهذه استعارة مكنية. والمثال مؤلف للتدريب."},{"id":"ar20","topic":"balagha","level":2,"t":"match","q":"صِل كل عبارة باللون البلاغي الموجود فيها:","pairs":[["المعلم كالشمعة تضيء للآخرين","تشبيه"],["همس الربيع في آذان الأزهار","استعارة مكنية"],["حضر الكبير والصغير إلى الحفل","طباق"],["يجتهد الناجح في الصباح ويكسل المهمل في المساء","مقابلة"]],"ex":"في الأولى ذُكر الطرفان مع الأداة فهي تشبيه، وفي الثانية شُبّه الربيع بإنسان يهمس فهي استعارة مكنية. والثالثة فيها كلمتان متضادتان (طباق)، والرابعة فيها عدة معانٍ قوبلت بأضدادها بالترتيب (مقابلة)."},{"id":"ar21","topic":"balagha","level":2,"t":"mc","q":"«رأيتُ أسدًا يخطب في الطلاب» — والمقصود رجل شجاع. ما نوع الاستعارة؟","choices":["تصريحية؛ صُرّح بالمشبه به (الأسد) وحُذف المشبه (الرجل الشجاع)","مكنية؛ حُذف المشبه به ورُمز إليه بلازمه","تشبيه؛ لأن الطرفين مذكوران","طباق بين الأسد والطلاب"],"ans":0,"ex":"المذكور في الجملة هو المشبه به «الأسد»، والمحذوف هو المشبه «الرجل الشجاع». وما صُرّح فيه بالمشبه به فهو استعارة تصريحية."},{"id":"ar22","topic":"balagha","level":2,"t":"fi","q":"أكمل: الاستعارة التي يُحذف فيها المشبه به ويُرمز إليه بشيء من لوازمه تُسمّى استعارة ……","ans":["مكنية","مكنيّة","المكنية","مكنيه"],"hint":"كلمة واحدة","ex":"إذا حُذف المشبه به وبقي ما يدل عليه من لوازمه فالاستعارة مكنية. أما إذا صُرّح بالمشبه به فهي تصريحية."},{"id":"ar23","topic":"balagha","level":3,"t":"corr","q":"قال طالب: في عبارة «يبني العلمُ الأممَ، ويهدمُ الجهلُ الشعوبَ» طباق فقط. اختر التصحيح الأدق:","choices":["العبارة فيها تشبيه لأن الطرفين مذكوران","العبارة فيها مقابلة؛ لأن «يبني» و«العلم» قوبلا بـ«يهدم» و«الجهل» على الترتيب","العبارة فيها استعارة تصريحية فقط","العبارة لا تتضمن أي لون بلاغي"],"ans":1,"ex":"الطباق يكون بين كلمتين متضادتين فقط. أما هنا فجاء معنيان ثم ما يقابلهما بالترتيب (يبني/يهدم، العلم/الجهل)، وهذه مقابلة. والمثال مؤلف للتدريب."},{"id":"ar24","topic":"balagha","level":3,"t":"corr","q":"قال طالب: في جملة «الجنديُّ يقاتل كالأسد» استعارة مكنية. اختر التصحيح الصحيح:","choices":["فيها طباق بين الجندي والأسد","فيها استعارة تصريحية لأن الأسد مذكور","فيها مقابلة بين الجندي والأسد","فيها تشبيه؛ لذكر المشبه (الجندي) والمشبه به (الأسد) والأداة (الكاف)"],"ans":3,"ex":"الاستعارة يُحذف فيها أحد الطرفين، أما هنا فالطرفان مذكوران. لذلك فالعبارة تشبيه أداته الكاف."},{"id":"ar25","topic":"balagha","level":1,"t":"order","q":"رتّب أركان التشبيه كما وردت في جملة: «الطالبُ كالنجمِ في التفوق».","items":["المشبه: الطالب","أداة التشبيه: الكاف","المشبه به: النجم","وجه الشبه: التفوق"],"ex":"بدأت الجملة بالمشبه «الطالب»، ثم الأداة «الكاف»، ثم المشبه به «النجم». وجاء وجه الشبه «التفوق» في آخرها."},{"id":"ar26","topic":"balagha","level":3,"t":"mc","q":"أي العبارات الآتية تجمع بين <b>تشبيه</b> و<b>طباق</b> معًا؟","choices":["الصديق الصادق كالمرآة يُريك القبيح والجميل","تبتسم الأرض للمطر","حضر الطلاب إلى المدرسة مبكرين","المعلم يشرح الدرس بوضوح"],"ans":0,"ex":"في العبارة الأولى تشبيه الصديق بالمرآة بأداة الكاف. وفيها طباق بين «القبيح» و«الجميل». أما «تبتسم الأرض» فاستعارة مكنية بلا طباق."},{"id":"ar27","topic":"afal5","level":1,"t":"mc","q":"أي الأفعال الآتية من الأفعال الخمسة؟","choices":["نلعبُ","تسافرين","كتبوا","يدرسْنَ"],"ans":1,"ex":"«تسافرين» مضارع اتصلت به ياء المخاطبة فهو من الأفعال الخمسة. و«نلعب» لم يتصل به شيء، و«كتبوا» ماضٍ، و«يدرسن» متصل بنون النسوة."},{"id":"ar28","topic":"afal5","level":1,"t":"tf","q":"الفعل «يكتبْنَ» المتصل بنون النسوة من الأفعال الخمسة.","ans":false,"ex":"الأفعال الخمسة تتصل بألف الاثنين أو واو الجماعة أو ياء المخاطبة فقط. أما المضارع المتصل بنون النسوة فهو مبني على السكون."},{"id":"ar29","topic":"afal5","level":2,"t":"mc","q":"«المهندسانِ يصمّمانِ جسرًا جديدًا» — ما حكم الفعل «يصمّمان»؟","choices":["مرفوع وعلامة رفعه ثبوت النون","منصوب وعلامة نصبه حذف النون","مجزوم وعلامة جزمه السكون","مبني على الفتح"],"ans":0,"ex":"«يصممان» مضارع متصل بألف الاثنين، ولم يسبقه ناصب ولا جازم. لذلك فهو مرفوع وعلامة رفعه ثبوت النون."},{"id":"ar30","topic":"afal5","level":1,"t":"fi","q":"أكمل: إذا لم يسبق الفعلَ من الأفعال الخمسة ناصبٌ ولا جازم فإنه يُرفع بـ…… النون.","ans":["ثبوت","بثبوت"],"hint":"كلمة واحدة","ex":"علامة رفع الأفعال الخمسة ثبوت النون، مثل: يلعبون، تلعبين. أما في النصب والجزم فتُحذف النون."},{"id":"ar31","topic":"afal5","level":2,"t":"mc","q":"اختر الجملة التي فيها فعل من الأفعال الخمسة <b>مجزوم</b>:","choices":["أنتم تحافظون على النظام","يا هندُ، لا تتأخري عن الصف","الطالبان لن يغيبا عن الدرس","اللاعبون يتدربون يوميًا"],"ans":1,"ex":"«لا» الناهية جازمة، فالفعل «تتأخري» مجزوم وعلامة جزمه حذف النون. أما «لن يغيبا» فمنصوب لأن «لن» ناصبة، والفعلان الآخران مرفوعان."},{"id":"ar32","topic":"afal5","level":2,"t":"corr","q":"في الجملة خطأ نحوي: «يجب أن تحافظون على نظافة الصف». اختر التصحيح الصحيح:","choices":["يجب أن تحافظوا على نظافة الصف","يجب أن يحافظون على نظافة الصف","يجب أن تحافظوان على نظافة الصف","يجب أن تحافظُ على نظافة الصف"],"ans":0,"ex":"«أنْ» حرف ناصب، والفعل «تحافظون» من الأفعال الخمسة. فيُنصب بحذف النون ويصبح «تحافظوا» مع زيادة الألف الفارقة."},{"id":"ar33","topic":"afal5","level":3,"t":"fi","q":"حوّل الفعل بين القوسين إلى الصورة الصحيحة: «أنتِ لن …… واجباتِك» (تنسين).","ans":["تنسي","تنسَيْ","تنسَي","تنسيْ"],"hint":"فعل واحد","ex":"«تنسين» من الأفعال الخمسة لاتصاله بياء المخاطبة. وبعد «لن» الناصبة تُحذف النون فيصبح «تنسَيْ»."},{"id":"ar34","topic":"afal5","level":3,"t":"corr","q":"في الجملة خطآن نحويان: «الطلاب لم يفهمون الدرس لأنهم لم يركزون». اختر التصحيح الكامل:","choices":["الطلاب لم يفهموا الدرس لأنهم لم يركزون","الطلاب لم يفهمون الدرس لأنهم لم يركزوا","الطلاب لم يفهموا الدرس لأنهم لم يركزوا","الطلاب لم يفهمو الدرس لأنهم لم يركزو"],"ans":2,"ex":"«لم» جازمة، والفعلان من الأفعال الخمسة فيُجزمان بحذف النون. وتُزاد الألف الفارقة بعد واو الجماعة: يفهموا، يركزوا."},{"id":"ar35","topic":"afal5","level":3,"t":"order","q":"رتّب خطوات تحديد إعراب فعل من الأفعال الخمسة:","items":["تأكد أن الفعل مضارع","تحقق من اتصاله بألف الاثنين أو واو الجماعة أو ياء المخاطبة","ابحث قبله عن أداة نصب أو جزم","حدد العلامة: ثبوت النون للرفع، وحذفها للنصب والجزم"],"ex":"نبدأ بالتأكد من أن الفعل مضارع، ثم من اتصاله بأحد الضمائر الثلاثة. بعد ذلك نبحث عن الناصب أو الجازم، ثم نحدد العلامة."},{"id":"ar36","topic":"afal5","level":1,"t":"mc","q":"ما علامة نصب الفعل «تنجحوا» في جملة: «اجتهدوا كي تنجحوا»؟","choices":["الفتحة","ثبوت النون","حذف النون","السكون"],"ans":2,"ex":"«كي» حرف ناصب، و«تنجحوا» من الأفعال الخمسة لاتصاله بواو الجماعة. فعلامة نصبه حذف النون."},{"id":"ar37","topic":"mabni","level":1,"t":"mc","q":"في جملة «لعبْنا في الساحة» الفعل الماضي «لعبْنا» مبني على:","choices":["الفتح","الضم","السكون","حذف النون"],"ans":2,"ex":"اتصل الفعل الماضي بـ«نا» وهي ضمير رفع متحرك. لذلك يُبنى على السكون."},{"id":"ar38","topic":"mabni","level":1,"t":"tf","q":"الفعل المضارع يكون معربًا في كل الأحوال مهما اتصل به.","ans":false,"ex":"المضارع معرب في الأصل، لكنه يُبنى على السكون إذا اتصلت به نون النسوة. ويُبنى على الفتح إذا اتصلت به نون التوكيد."},{"id":"ar39","topic":"mabni","level":2,"t":"match","q":"صِل كل فعل بحكم بنائه:","pairs":[["ادعُ","أمر مبني على حذف حرف العلة"],["اجلسْ","أمر مبني على السكون"],["اجلسوا","أمر مبني على حذف النون"],["جلسَ","ماضٍ مبني على الفتح"]],"ex":"الأمر المعتل الآخر يُبنى على حذف حرف العلة، والصحيح الآخر على السكون. والأمر المتصل بواو الجماعة يُبنى على حذف النون، والماضي المجرد يُبنى على الفتح."},{"id":"ar40","topic":"mabni","level":2,"t":"fi","q":"أكمل: الفعل المضارع المتصل بنون التوكيد اتصالًا مباشرًا مثل «لأجتهدَنَّ» مبني على ……","ans":["الفتح","فتح","الفتحة"],"hint":"كلمة واحدة","ex":"يخرج المضارع من الإعراب إلى البناء إذا اتصلت به نون التوكيد. وعندها يُبنى على الفتح."},{"id":"ar41","topic":"mabni","level":1,"t":"mc","q":"فعل الأمر من «يرمي» هو «ارمِ». على أي شيء بُني؟","choices":["السكون","حذف النون","الفتح","حذف حرف العلة"],"ans":3,"ex":"«يرمي» معتل الآخر بالياء، فيُبنى أمره على حذف حرف العلة. وتبقى الكسرة على الميم دليلًا على الياء المحذوفة."},{"id":"ar42","topic":"mabni","level":2,"t":"corr","q":"قال طالب: إن فعل الأمر «اسعَ» مبني على السكون. اختر التصحيح الصحيح:","choices":["مبني على الفتح","مبني على حذف حرف العلة (الألف)","مبني على حذف النون","معرب منصوب بالفتحة"],"ans":1,"ex":"الفعل «يسعى» معتل الآخر بالألف، فيُبنى أمره على حذف حرف العلة. والفتحة على العين دليل على الألف المحذوفة."},{"id":"ar43","topic":"mabni","level":3,"t":"order","q":"رتّب الأفعال لتكون على هذا الترتيب: ماضٍ مبني على الفتح، ثم ماضٍ مبني على السكون، ثم ماضٍ مبني على الضم، ثم أمر مبني على حذف النون.","items":["كتبَ","كتبْتُ","كتبُوا","اكتبُوا"],"ex":"«كتبَ» ماضٍ مجرد مبني على الفتح، و«كتبْتُ» اتصل بضمير رفع متحرك فبُني على السكون. و«كتبُوا» اتصل بواو الجماعة فبُني على الضم، و«اكتبوا» أمر مضارعه من الأفعال الخمسة فبُني على حذف النون."},{"id":"ar44","topic":"mabni","level":3,"t":"mc","q":"في أي جملة يوجد فعل مضارع <b>مبني</b>؟","choices":["الطالبات يشاركْنَ في المسابقة","الطلاب يشاركون في المسابقة","الطالبة تشارك في المسابقة","لن يشاركَ الطالب في المسابقة"],"ans":0,"ex":"«يشاركْنَ» اتصلت به نون النسوة فهو مبني على السكون. أما بقية الأفعال فمعربة: مرفوعة أو منصوبة."},{"id":"ar45","topic":"lessons","level":1,"t":"mc","q":"ما الهدف الرئيس لمبادرة «التعليم فوق الجميع»؟","choices":["تنظيم بطولات رياضية للشباب","بناء مصانع في الدول النامية","إتاحة التعليم للأطفال والشباب المتأثرين بالأزمات والنزاعات والفقر","نشر الألعاب الإلكترونية فقط"],"ans":2,"ex":"تهدف المبادرة إلى إتاحة التعليم لمن حرمتهم الأزمات والنزاعات والفقر منه. وهي تدعم حق كل طفل في التعليم."},{"id":"ar46","topic":"lessons","level":1,"t":"tf","q":"مبادرة «التعليم فوق الجميع» مرتبطة بدولة قطر.","ans":true,"ex":"«التعليم فوق الجميع» مبادرة مرتبطة بدولة قطر. وهي تعمل على دعم الحق في التعليم للأطفال والشباب المحتاجين."},{"id":"ar47","topic":"lessons","level":2,"t":"mc","q":"أي قيمة تبرز أكثر من غيرها في فكرة مبادرة «التعليم فوق الجميع»؟","choices":["الأنانية","التنافس التجاري","العزلة عن المجتمعات الأخرى","التضامن الإنساني ودعم حق التعليم"],"ans":3,"ex":"المبادرة تقوم على مساعدة الأطفال المحرومين من التعليم في أماكن مختلفة. وهذا يعبّر عن التضامن الإنساني والإيمان بأن التعليم حق."},{"id":"ar48","topic":"lessons","level":2,"t":"mc","q":"كيف تؤثر الحروب والنزاعات في تعليم الأطفال كما يُفهم من درس «التعليم فوق الجميع»؟","choices":["تحرم كثيرًا منهم من فرصة التعلم","تزيد عدد المدارس تلقائيًا","لا علاقة لها بالتعليم","تجعل التعليم أسهل وأسرع"],"ans":0,"ex":"يربط الدرس بين الأزمات والحروب وحرمان الأطفال من التعليم. ولهذا جاءت المبادرات الإنسانية لتعيد إليهم فرصة التعلم."},{"id":"ar49","topic":"lessons","level":1,"t":"mc","q":"في أي مجالين برع العالم المسلم أبو بكر الرازي؟","choices":["الفلك والجغرافيا","الشعر والنحو","الطب والكيمياء","العمارة والموسيقى"],"ans":2,"ex":"أبو بكر الرازي عالم مسلم برع في الطب والكيمياء. وعُرف بالتجربة السريرية وأخلاق الطبيب."},{"id":"ar50","topic":"lessons","level":2,"t":"fi","q":"اكتب اسم كتاب واحد من أشهر كتب الرازي في الطب.","ans":["الحاوي","المنصوري","الحاوى","حاوي","منصوري","كتاب الحاوي","كتاب المنصوري"],"hint":"اسم كتاب","ex":"من أشهر كتب الرازي في الطب «الحاوي» و«المنصوري». وقد تُرجمت بعض كتبه وانتفع بها الناس."},{"id":"ar51","topic":"lessons","level":2,"t":"tf","q":"عاش أبو بكر الرازي في العصر الأموي.","ans":false,"ex":"عاش الرازي في العصر العباسي لا الأموي. وكان من أبرز علماء الطب والكيمياء في عصره."},{"id":"ar52","topic":"lessons","level":3,"t":"mc","q":"أي صفة من صفات الرازي تجعله قدوة للباحث العلمي في عصرنا؟","choices":["الاعتماد على الملاحظة والتجربة مع الحرص على نفع الناس","الاكتفاء بالحفظ دون تجربة","إخفاء علمه عن الناس","السعي إلى الشهرة فقط"],"ans":0,"ex":"عُرف الرازي بالملاحظة والتجربة وأخلاق الطبيب ونفع الناس. وهذه الصفات أساس البحث العلمي الصحيح في كل زمن."},{"id":"ar53","topic":"narrative","level":1,"t":"mc","q":"أي مما يلي <b>لا</b> يُعد من عناصر القصة السردية؟","choices":["الشخصيات","الزمان والمكان","العقدة والحل","قائمة المصادر والمراجع"],"ans":3,"ex":"عناصر القصة: الشخصيات والزمان والمكان والعقدة والحل. أما قائمة المصادر فتخص البحوث والتقارير لا القصص."},{"id":"ar54","topic":"narrative","level":1,"t":"order","q":"رتّب أجزاء بناء القصة من البداية إلى النهاية:","items":["المقدمة","تطور الأحداث","الذروة","الخاتمة"],"ex":"تبدأ القصة بمقدمة تعرّف بالشخصيات والمكان، ثم تتطور الأحداث حتى تبلغ الذروة. وبعد ذلك تأتي الخاتمة التي تحمل الحل."},{"id":"ar55","topic":"narrative","level":2,"t":"mc","q":"اختر الرابط الأنسب لحدث مفاجئ: «كنا نسير بهدوء في الحديقة، …… انطفأت الأنوار كلها».","choices":["في البداية","وأخيرًا","فجأة","إضافة إلى ذلك"],"ans":2,"ex":"كلمة «فجأة» رابط زمني يدل على حدث غير متوقع يقطع ما قبله. أما «في البداية» و«وأخيرًا» فللترتيب، و«إضافة إلى ذلك» للإضافة."},{"id":"ar56","topic":"narrative","level":2,"t":"tf","q":"لا يجوز أن تُروى القصة بضمير المتكلم، بل بضمير الغائب فقط.","ans":false,"ex":"يمكن أن يكون ضمير السرد ضمير المتكلم أو ضمير الغائب. والمهم أن يلتزم الكاتب الضمير الذي اختاره في القصة كلها."},{"id":"ar57","topic":"narrative","level":2,"t":"mc","q":"ما أفضل جملة لبداية قصة عنوانها «يوم لا يُنسى»؟","choices":["في صباح يوم خميس مشمس، استيقظتُ مبكرًا أنتظر رحلة المدرسة إلى البحر.","القصص مفيدة جدًا للطلاب.","وأخيرًا عدنا إلى البيت.","الرحلات أنواع كثيرة."],"ans":0,"ex":"البداية الجيدة تحدد الزمان والمكان وتقدّم الشخصية وتشوّق القارئ. أما «وأخيرًا» فتصلح للخاتمة، والجملتان الأخريان عامتان لا تبدآن قصة."},{"id":"ar58","topic":"narrative","level":3,"t":"mc","q":"في قصة قصيرة: «ضلّ أحمد طريقه في الغابة، ثم وجد طريق العودة مستعينًا بخريطة». ما العقدة وما الحل؟","choices":["العقدة: الخريطة، والحل: الغابة","العقدة: ضياع أحمد في الغابة، والحل: إيجاد الطريق بمساعدة الخريطة","العقدة: إيجاد الطريق، والحل: الضياع","لا توجد في القصة عقدة"],"ans":1,"ex":"العقدة هي المشكلة التي تتأزم بها الأحداث، وهي هنا ضياع أحمد. والحل هو انفراج المشكلة بإيجاد طريق العودة. والمثال مؤلف للتدريب."},{"id":"ar59","topic":"narrative","level":3,"t":"mc","q":"فقرة سردية: «ذهبنا إلى السوق. اشترينا الخضار. عدنا إلى البيت. طبخت أمي الغداء». ما أفضل طريقة لتحسينها؟","choices":["حذف الأفعال كلها","إضافة روابط زمنية مثل: في البداية، ثم، بعد ذلك، وأخيرًا","تحويلها إلى جدول","كتابتها بزمن المستقبل"],"ans":1,"ex":"الفقرة جمل متقطعة بلا روابط، فتبدو ضعيفة. والروابط الزمنية تصل الأحداث وتوضح تتابعها، وزمن القص غالبًا الماضي."},{"id":"ar60","topic":"narrative","level":3,"t":"mc","q":"أي ترتيب للروابط الزمنية يناسب تسلسل الأحداث من بداية القصة إلى نهايتها؟","choices":["وأخيرًا ← ثم ← في البداية","بعد ذلك ← في البداية ← وأخيرًا","ثم ← وأخيرًا ← في البداية","في البداية ← ثم ← بعد ذلك ← وأخيرًا"],"ans":3,"ex":"«في البداية» تفتتح الأحداث، و«ثم» و«بعد ذلك» تنقلانها خطوة خطوة. و«وأخيرًا» تُختم بها الأحداث."}];
+var META = {"subject":"اللغة العربية","n":60,"topics":[{"id":"listening","title":"الاستماع والنص الإقناعي","points":["النص الإقناعي يعرض رأيًا ويدعمه بالحجج والأدلة.","الحقيقة يمكن التحقق منها، والرأي موقف شخصي.","المستمع الجيد يميّز الدعوى من الدليل، وينتبه للمبالغة والتعميم."]},{"id":"hamza","title":"همزة ابن وابنة والحروف المحذوفة والمزيدة","points":["تُحذف ألف «ابن» إذا وقعت بين علمين نعتًا ولم تكن أول السطر: محمد بن سعد.","تثبت ألف «ابن» أول السطر، أو إذا لم تقع بين علمين، أو إذا كانت خبرًا.","تُزاد الألف الفارقة بعد واو الجماعة في الفعل، والواو في «عمرو»، وتُحذف الألف رسمًا في: هذا، ذلك، أولئك، لكن."]},{"id":"balagha","title":"التشبيه والاستعارة والطباق والمقابلة","points":["التشبيه: يُذكر فيه الطرفان (المشبه والمشبه به) مع أداة أو دونها.","الاستعارة تشبيه حُذف أحد طرفيه: تصريحية (يُذكر المشبه به) أو مكنية (يُحذف المشبه به ويبقى شيء من لوازمه).","الطباق كلمة وضدها، والمقابلة معانٍ متعددة يقابلها أضدادها بالترتيب."]},{"id":"afal5","title":"الأفعال الخمسة","points":["الأفعال الخمسة: كل مضارع اتصلت به ألف الاثنين أو واو الجماعة أو ياء المخاطبة.","تُرفع بثبوت النون: يكتبان، تكتبون، تكتبين.","تُنصب وتُجزم بحذف النون: لن يكتبوا، لم تكتبي."]},{"id":"mabni","title":"المبني من الأفعال","points":["الماضي يُبنى على الفتح، أو السكون مع ضمير رفع متحرك، أو الضم مع واو الجماعة.","الأمر يُبنى على السكون، أو حذف حرف العلة، أو حذف النون.","المضارع معرب إلا مع نون النسوة (يُبنى على السكون) أو نون التوكيد (يُبنى على الفتح)."]},{"id":"lessons","title":"التعليم فوق الجميع والرازي","points":["«التعليم فوق الجميع» مبادرة قطرية تدعم حق التعليم للأطفال والشباب المتأثرين بالأزمات والفقر.","التعليم حق للجميع، والحروب والجهل يهددان فرص التعلم.","الرازي عالم مسلم في الطب والكيمياء، اعتمد الملاحظة والتجربة وأخلاق الطبيب، ومن كتبه «الحاوي»."]},{"id":"narrative","title":"الكتابة السردية","points":["عناصر القصة: شخصيات وزمان ومكان وعقدة وحل.","بناء القصة: مقدمة، ثم تطور الأحداث، ثم الذروة، ثم الخاتمة.","استعمل الروابط الزمنية: في البداية، ثم، بعد ذلك، فجأة، وأخيرًا."]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = shuffle(opts);
+      item.ans = q.ans;
+      item.ansH = q.choices[q.ans];
+    }
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        shuffle(qs).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        shuffle(rest).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    $('qmeta').innerHTML = '<span class="kind">'+(KINDS[q.t]||'')+'</span><span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qtext').innerHTML = q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = n+' سؤالاً شاملًا موزّعة على '+nt+' دروس، بثلاثة مستويات وأنواع متنوعة. يمكنك حل المادة كاملة، أو درسًا واحدًا، أو اختبارًا عشوائيًا من 20.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>

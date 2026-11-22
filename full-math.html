@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب شامل — الرياضيات</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#1d4ed8;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب شامل — الرياضيات</h1>
+  <p>يوسف • الصف الثامن / 1 • المعادلات الخطية والدوال • بلا آلة حاسبة</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق الرسمي (جدول مواصفات الوزارة، منهاج النصف الثاني 2026–2027):</b> من الوحدة الثانية: حل المعادلات متعددة الخطوات، المعادلات التي لا حل لها أو لها عدد لا نهائي من الحلول، الربط بين علاقات التناسب وميل المستقيم، تحليل y = mx، المقطع y، وتحليل y = mx + b. ومن الوحدة الثالثة: العلاقات والدوال، وفترات التزايد والتناقص.<br>تدريب شامل بنحو 60 سؤالاً. الاختبار التحريري يوم الاثنين 7 ديسمبر 2026 من 8:00 إلى 9:30، ومن غير آلة حاسبة.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">التدريب الشامل لكل الدروس ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="full-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب شامل تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="full-index.html">كل التدريبات الشاملة</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"m01","topic":"multi-step","level":1,"t":"mc","q":"حل المعادلة: <span dir=\"ltr\">4س − 7 = 21</span>","choices":["س = 3.5","س = 7","س = 14","س = 28"],"ans":1,"ex":"نضيف 7 إلى الطرفين فنحصل على 4س = 28. نقسم على 4 فيكون س = 7. التحقق: 4×7 − 7 = 21."},{"id":"m02","topic":"multi-step","level":1,"t":"mc","q":"حل المعادلة: <span dir=\"ltr\">3(س + 4) = 27</span>","choices":["س = 9","س = 7","س = 5","س = 11"],"ans":2,"ex":"نقسم الطرفين على 3 فنحصل على س + 4 = 9، ثم نطرح 4 فيكون س = 5. التحقق: 3×(5 + 4) = 27."},{"id":"m03","topic":"multi-step","level":2,"t":"fi","q":"حل المعادلة: <span dir=\"ltr\">6س + 5 = 2س + 25</span>","ans":["5","س=5","س = 5","x=5","x = 5","٥","س=٥","س = ٥"],"hint":"س = ...","ex":"نطرح 2س من الطرفين: 4س + 5 = 25. نطرح 5: 4س = 20، ثم نقسم على 4 فيكون س = 5. التحقق: 35 = 35."},{"id":"m04","topic":"multi-step","level":2,"t":"mc","q":"حل المعادلة: <span dir=\"ltr\">7 − 2(س − 3) = 1</span>","choices":["س = 0","س = −6","س = 4","س = 6"],"ans":3,"ex":"نوزّع −2: 7 − 2س + 6 = 1، أي 13 − 2س = 1. نطرح 13: −2س = −12، فيكون س = 6. الخطأ الشائع كتابة −6 بدل +6 عند التوزيع."},{"id":"m05","topic":"multi-step","level":1,"t":"tf","q":"للتأكد من صحة حل معادلة، نعوّض القيمة التي وجدناها في المعادلة الأصلية ونتحقق أن الطرفين متساويان.","ans":true,"ex":"العبارة صحيحة. التعويض في المعادلة الأصلية (لا في خطوة وسطى) يكشف أي خطأ في الخطوات."},{"id":"m06","topic":"multi-step","level":2,"t":"fi","q":"حل المعادلة: <span dir=\"ltr\">(س + 5) ÷ 3 = 4</span>","ans":["7","س=7","س = 7","x=7","x = 7","٧","س=٧","س = ٧"],"hint":"س = ...","ex":"نضرب الطرفين في 3 لإزالة المقام: س + 5 = 12. نطرح 5 فيكون س = 7. التحقق: (7 + 5) ÷ 3 = 4."},{"id":"m07","topic":"multi-step","level":2,"t":"order","q":"رتّب خطوات حل المعادلة <span dir=\"ltr\">2(س − 1) + 3س = 18</span> ترتيبًا صحيحًا:","items":["<span dir=\"ltr\">2س − 2 + 3س = 18</span> (توسيع القوس)","<span dir=\"ltr\">5س − 2 = 18</span> (جمع الحدود المتشابهة)","<span dir=\"ltr\">5س = 20</span> (إضافة 2 إلى الطرفين)","<span dir=\"ltr\">س = 4</span> (القسمة على 5)"],"ex":"نبدأ بتوسيع القوس، ثم نجمع 2س و 3س لتصبح 5س، ثم نضيف 2 للطرفين، وأخيرًا نقسم على 5. التحقق: 2×3 + 12 = 18."},{"id":"m08","topic":"multi-step","level":3,"t":"corr","q":"حلّ طالب المعادلة <span dir=\"ltr\">5 − (س − 4) = 2</span> فكتب في أول خطوة: <span dir=\"ltr\">5 − س − 4 = 2</span>. اختر التصحيح الصحيح:","choices":["<span dir=\"ltr\">5 − س + 4 = 2</span> ومنه س = 7","<span dir=\"ltr\">5 − س − 4 = 2</span> ومنه س = −1","<span dir=\"ltr\">5 + س − 4 = 2</span> ومنه س = 1","<span dir=\"ltr\">5 − س + 4 = 2</span> ومنه س = −7"],"ans":0,"ex":"السالب قبل القوس يغيّر إشارة كل حد داخله: −(س − 4) = −س + 4. فتصبح 9 − س = 2، ومنه س = 7. التحقق: 5 − (7 − 4) = 2."},{"id":"m09","topic":"multi-step","level":3,"t":"mc","q":"حل المعادلة: <span dir=\"ltr\">3(2س − 1) = 4(س + 3) − 1</span>","choices":["س = 4","س = 5","س = 7","س = 8"],"ans":2,"ex":"نوسّع: 6س − 3 = 4س + 12 − 1 = 4س + 11. نطرح 4س ونضيف 3: 2س = 14، فيكون س = 7. التحقق: 3×13 = 39 و 4×10 − 1 = 39."},{"id":"m10","topic":"multi-step","level":3,"t":"fi","q":"حل المعادلة: <span dir=\"ltr\">(2س − 1) ÷ 5 = (س + 4) ÷ 3</span>","ans":["23","س=23","س = 23","x=23","x = 23","٢٣","س=٢٣","س = ٢٣"],"hint":"س = ...","ex":"نضرب الطرفين في 15 (أو نضرب تبادليًا): 3(2س − 1) = 5(س + 4)، أي 6س − 3 = 5س + 20. نطرح 5س ونضيف 3 فيكون س = 23. التحقق: 45 ÷ 5 = 9 و 27 ÷ 3 = 9."},{"id":"m11","topic":"no-inf","level":1,"t":"mc","q":"بعد تبسيط معادلة وصل أحمد إلى العبارة <span dir=\"ltr\">0 = 7</span>. ماذا يستنتج؟","choices":["للمعادلة حل واحد هو 7","لا حل للمعادلة","للمعادلة عدد لا نهائي من الحلول","الحل هو س = 0"],"ans":1,"ex":"العبارة 0 = 7 خاطئة دائمًا مهما كانت قيمة س، لذلك لا يوجد عدد يحقق المعادلة، أي لا حل (مجموعة الحل فارغة)."},{"id":"m12","topic":"no-inf","level":1,"t":"tf","q":"إذا انتهى تبسيط معادلة إلى عبارة صحيحة دائمًا مثل <span dir=\"ltr\">4 = 4</span>، فإن كل عدد حقيقي حلٌّ للمعادلة.","ans":true,"ex":"العبارة صحيحة. اختفاء س مع بقاء عبارة صحيحة دائمًا يعني أن الطرفين متطابقان، فللمعادلة عدد لا نهائي من الحلول."},{"id":"m13","topic":"no-inf","level":2,"t":"mc","q":"كم حلًّا للمعادلة <span dir=\"ltr\">3(س − 2) + س = 4س − 6</span>؟","choices":["حل واحد","حلّان","لا حل","عدد لا نهائي من الحلول"],"ans":3,"ex":"نوسّع الطرف الأيسر: 3س − 6 + س = 4س − 6. الطرفان متطابقان، وبطرح 4س نحصل على −6 = −6 وهي صحيحة دائمًا، فللمعادلة عدد لا نهائي من الحلول."},{"id":"m14","topic":"no-inf","level":2,"t":"mc","q":"أي المعادلات الآتية <b>ليس لها حل</b>؟","choices":["<span dir=\"ltr\">4س + 2 = 2س + 2</span>","<span dir=\"ltr\">2س + 5 = 2(س + 3) − 1</span>","<span dir=\"ltr\">5س − 1 = 5س + 4</span>","<span dir=\"ltr\">3(س + 1) = 3س + 3</span>"],"ans":2,"ex":"في 5س − 1 = 5س + 4 نطرح 5س فنحصل على −1 = 4 وهي خاطئة، فلا حل. الأولى حلها س = 0، والثانية والرابعة متطابقتان فلهما عدد لا نهائي من الحلول."},{"id":"m15","topic":"no-inf","level":1,"t":"match","q":"صِل النتيجة النهائية بعد التبسيط بعدد حلول المعادلة:","pairs":[["<span dir=\"ltr\">س = −2</span>","حل واحد"],["<span dir=\"ltr\">6 = 6</span>","عدد لا نهائي من الحلول"],["<span dir=\"ltr\">0 = −3</span>","لا حل"]],"ex":"إذا بقي س = عدد فهناك حل واحد. العبارة الصحيحة دائمًا مثل 6 = 6 تعني عددًا لا نهائيًا من الحلول، والعبارة الخاطئة مثل 0 = −3 تعني لا حل."},{"id":"m16","topic":"no-inf","level":3,"t":"fi","q":"ما قيمة العدد أ التي تجعل للمعادلة <span dir=\"ltr\">4(س + 2) = 4س + أ</span> عددًا لا نهائيًا من الحلول؟","ans":["8","أ=8","أ = 8","٨","أ=٨","أ = ٨"],"hint":"أ = ...","ex":"نوسّع الطرف الأيسر: 4س + 8. ليتطابق الطرفان تمامًا يجب أن يكون أ = 8، فتصبح المعادلة 4س + 8 = 4س + 8 ويكون كل عدد حلًّا."},{"id":"m17","topic":"no-inf","level":2,"t":"corr","q":"قال طالب: «المعادلة <span dir=\"ltr\">6س − 2 = 2(3س − 1)</span> ليس لها حل لأن 6س اختفت من الطرفين». اختر التصحيح الصحيح:","choices":["لها حل واحد هو س = 0","لها عدد لا نهائي من الحلول لأن الطرفين متطابقان، وبعد التبسيط نحصل على −2 = −2","ليس لها حل لأن −2 لا تساوي −1","لها حل واحد هو س = 1/3"],"ans":1,"ex":"نوسّع الطرف الأيمن: 2(3س − 1) = 6س − 2، فالطرفان متطابقان. اختفاء س وحده لا يعني «لا حل»؛ المهم هل العبارة الباقية صحيحة (−2 = −2) أم خاطئة."},{"id":"m18","topic":"no-inf","level":3,"t":"mc","q":"أي عدد يوضع مكان □ لتصبح المعادلة <span dir=\"ltr\">5س + 3 = □س − 2</span> بلا حل؟","choices":["−5","3","5","−2"],"ans":2,"ex":"إذا كان معامل س في الطرفين متساويًا (5) نطرح 5س فنحصل على 3 = −2 وهي خاطئة، فلا حل. أي عدد آخر مكان □ يعطي حلًّا واحدًا."},{"id":"m19","topic":"slope-prop","level":1,"t":"mc","q":"ما ميل المستقيم المار بالنقطتين <span dir=\"ltr\">(1, 2)</span> و <span dir=\"ltr\">(3, 8)</span>؟","choices":["2","3","6","1/3"],"ans":1,"ex":"الميل = التغير في ص ÷ التغير في س = (8 − 2) ÷ (3 − 1) = 6 ÷ 2 = 3."},{"id":"m20","topic":"slope-prop","level":1,"t":"tf","q":"المستقيم الذي ميله سالب يصعد عند الانتقال من اليسار إلى اليمين.","ans":false,"ex":"العبارة خاطئة. الميل السالب يعني أن ص تنقص كلما زادت س، فالمستقيم ينزل من اليسار إلى اليمين. الميل الموجب هو الذي يصعد."},{"id":"m21","topic":"slope-prop","level":2,"t":"fi","q":"أوجد ميل المستقيم المار بالنقطتين <span dir=\"ltr\">(−2, 5)</span> و <span dir=\"ltr\">(2, −3)</span>.","ans":["-2","−2","م=-2","م = -2","م = −2","الميل = -2","-٢","−٢"],"hint":"الميل = ...","ex":"التغير في ص = −3 − 5 = −8، والتغير في س = 2 − (−2) = 4. الميل = −8 ÷ 4 = −2."},{"id":"m22","topic":"slope-prop","level":1,"t":"mc","q":"(مثال تدريبي) ثمن الدفاتر يتناسب مع عددها. إذا كان ثمن 3 دفاتر 12 ريالًا قطريًا، فما ثابت التناسب (ثمن الدفتر الواحد)؟","choices":["36","9","3","4"],"ans":3,"ex":"ثابت التناسب ك = ص ÷ س = 12 ÷ 3 = 4 ريالات لكل دفتر. فالعلاقة ص = 4س."},{"id":"m23","topic":"slope-prop","level":2,"t":"mc","q":"أي جدول يمثل علاقة تناسبية بين س و ص؟","choices":["س: 1، 2، 3 — ص: 3، 5، 7","س: 2، 4، 6 — ص: 3، 5، 7","س: 1، 2، 3 — ص: 4، 8، 12","س: 1، 2، 4 — ص: 5، 10، 15"],"ans":2,"ex":"في العلاقة التناسبية تكون النسبة ص ÷ س ثابتة. في الجدول الصحيح: 4÷1 = 8÷2 = 12÷3 = 4. في الجداول الأخرى تتغير النسبة (مثل 3÷1 و 5÷2)."},{"id":"m24","topic":"slope-prop","level":2,"t":"match","q":"صِل كل نوع من الميل بوصف المستقيم:","pairs":[["ميل موجب","يصعد من اليسار إلى اليمين"],["ميل سالب","ينزل من اليسار إلى اليمين"],["ميل يساوي صفرًا","مستقيم أفقي"],["مستقيم رأسي","ميله غير معرّف"]],"ex":"الميل يصف اتجاه المستقيم: الموجب يصعد، والسالب ينزل، والصفر أفقي (ص ثابتة). أما الرأسي فالتغير في س صفر ولا يمكن القسمة على صفر، فميله غير معرّف."},{"id":"m25","topic":"slope-prop","level":3,"t":"fi","q":"علاقة تناسبية يمر تمثيلها بالنقطة <span dir=\"ltr\">(6, 9)</span>. ما قيمة ص عندما س = 10؟","ans":["15","ص=15","ص = 15","y=15","١٥","ص=١٥","ص = ١٥"],"hint":"ص = ...","ex":"ثابت التناسب ك = 9 ÷ 6 = 3/2. إذن ص = 3/2 × 10 = 15. للتحقق: النسبة 15 ÷ 10 = 3/2 نفسها."},{"id":"m26","topic":"slope-prop","level":3,"t":"mc","q":"مستقيم ميله <span dir=\"ltr\">3/4</span> ويمر بالنقطة <span dir=\"ltr\">(4, 1)</span>. أي النقاط الآتية تقع عليه أيضًا؟","choices":["<span dir=\"ltr\">(7, 5)</span>","<span dir=\"ltr\">(5, 4)</span>","<span dir=\"ltr\">(8, 4)</span>","<span dir=\"ltr\">(6, 3)</span>"],"ans":2,"ex":"الميل 3/4 يعني: 3 وحدات إلى أعلى مقابل 4 وحدات إلى اليمين. من (4، 1) نصل إلى (8، 4). أما (7، 5) فهي خطأ تبديل الصعود مع الانتقال."},{"id":"m27","topic":"ymx","level":1,"t":"mc","q":"أي المعادلات الآتية يمر تمثيلها البياني بنقطة الأصل؟","choices":["<span dir=\"ltr\">ص = 3س + 1</span>","<span dir=\"ltr\">ص = −4س</span>","<span dir=\"ltr\">ص = س − 2</span>","<span dir=\"ltr\">ص = 6</span>"],"ans":1,"ex":"المعادلة من الصورة ص = م س تمر بالأصل لأن ص = 0 عندما س = 0. في ص = −4س: −4 × 0 = 0. أما البقية فقيمة ص عند س = 0 هي 1 أو −2 أو 6."},{"id":"m28","topic":"ymx","level":1,"t":"tf","q":"التمثيل البياني للمعادلة <span dir=\"ltr\">ص = −3س</span> لا يمر بنقطة الأصل لأن ميله سالب.","ans":false,"ex":"العبارة خاطئة. كل معادلة من الصورة ص = م س تمر بالأصل مهما كانت إشارة م، لأن ص = −3 × 0 = 0. الإشارة السالبة تجعله ينزل فقط."},{"id":"m29","topic":"ymx","level":2,"t":"mc","q":"مستقيم معادلته من الصورة ص = م س (y = mx) ويمر بالنقطة <span dir=\"ltr\">(−2, 10)</span>. ما ميله؟","choices":["−5","5","−1/5","8"],"ans":0,"ex":"نعوّض: 10 = م × (−2)، إذن م = 10 ÷ (−2) = −5. فالمعادلة ص = −5س."},{"id":"m30","topic":"ymx","level":2,"t":"fi","q":"(مثال تدريبي) تسير حافلة بسرعة ثابتة وفق العلاقة <span dir=\"ltr\">ص = 80س</span>، حيث ص المسافة بالكيلومتر و س الزمن بالساعات. كم كيلومترًا تقطع في 3 ساعات؟","ans":["240","240 كم","240كم","ص=240","ص = 240","٢٤٠","٢٤٠ كم"],"hint":"... كم","ex":"نعوّض س = 3: ص = 80 × 3 = 240 كم. الميل 80 هو معدل التغير: 80 كم لكل ساعة."},{"id":"m31","topic":"ymx","level":3,"t":"corr","q":"قالت سارة: «الجدول (0، 5)، (1، 7)، (2، 9) يمثل <span dir=\"ltr\">ص = 2س</span> لأن ص تزيد 2 في كل مرة». اختر التصحيح الصحيح:","choices":["يمثل <span dir=\"ltr\">ص = 5س</span> لأن ص = 5 عند البداية","يمثل <span dir=\"ltr\">ص = 2س</span> لأنه يمر بنقطة الأصل","يمثل <span dir=\"ltr\">ص = 7س</span> لأن ص = 7 عندما س = 1","لا يمثل ص = م س لأن ص = 5 عندما س = 0، والمعادلة الصحيحة <span dir=\"ltr\">ص = 2س + 5</span>"],"ans":3,"ex":"معدل التغير 2 صحيح، لكن ص لا تساوي صفرًا عندما س = 0 بل 5، فالمستقيم لا يمر بالأصل. لذلك لا نستخدم ص = م س، والمعادلة ص = 2س + 5."},{"id":"m32","topic":"ymx","level":3,"t":"mc","q":"في علاقة من الصورة ص = م س، كانت ص = 18 عندما س = 4. ما قيمة ص عندما س = 6؟","choices":["20","24","27","36"],"ans":2,"ex":"م = 18 ÷ 4 = 4.5. إذن ص = 4.5 × 6 = 27. طريقة أخرى: س زادت بنسبة 6/4 = 3/2، فتزيد ص بالنسبة نفسها: 18 × 3/2 = 27."},{"id":"m33","topic":"ymxb","level":1,"t":"mc","q":"ما ميل المستقيم <span dir=\"ltr\">ص = 4س − 9</span> وما مقطعه الصادي؟","choices":["الميل −9 والمقطع الصادي 4","الميل 4 والمقطع الصادي −9","الميل 4 والمقطع الصادي 9","الميل −4 والمقطع الصادي −9"],"ans":1,"ex":"في الصورة ص = م س + ب يكون م معامل س و ب الحد الثابت مع إشارته. هنا م = 4 و ب = −9، فالمستقيم يقطع محور الصادات عند (0، −9)."},{"id":"m34","topic":"ymxb","level":1,"t":"tf","q":"المقطع الصادي (المقطع y) لمستقيم هو قيمة ص عندما تكون س = 0.","ans":true,"ex":"العبارة صحيحة. المقطع الصادي هو النقطة التي يقطع فيها المستقيم محور الصادات، وعندها س = 0، أي النقطة (0، ب)."},{"id":"m35","topic":"ymxb","level":2,"t":"fi","q":"اكتب ميل المستقيم <span dir=\"ltr\">ص = 8 − 2س</span>.","ans":["-2","−2","م=-2","م = -2","م = −2","الميل = -2","-٢","−٢"],"hint":"الميل = ...","ex":"نعيد ترتيب المعادلة: ص = −2س + 8. الميل هو معامل س مع إشارته، أي −2، والمقطع الصادي 8."},{"id":"m36","topic":"ymxb","level":1,"t":"mc","q":"ما معادلة المستقيم الذي ميله −1 ومقطعه الصادي 5؟","choices":["<span dir=\"ltr\">ص = −س + 5</span>","<span dir=\"ltr\">ص = 5س − 1</span>","<span dir=\"ltr\">ص = س − 5</span>","<span dir=\"ltr\">ص = −5س + 1</span>"],"ans":0,"ex":"نعوّض م = −1 و ب = 5 في ص = م س + ب، فنحصل على ص = −1س + 5، أي ص = −س + 5."},{"id":"m37","topic":"ymxb","level":2,"t":"mc","q":"اكتب المعادلة <span dir=\"ltr\">2ص − 6س = 8</span> على الصورة ص = م س + ب:","choices":["<span dir=\"ltr\">ص = 6س + 8</span>","<span dir=\"ltr\">ص = −3س + 4</span>","<span dir=\"ltr\">ص = 3س + 8</span>","<span dir=\"ltr\">ص = 3س + 4</span>"],"ans":3,"ex":"نضيف 6س إلى الطرفين: 2ص = 6س + 8. نقسم كل الحدود على 2: ص = 3س + 4. فالميل 3 والمقطع الصادي 4."},{"id":"m38","topic":"ymxb","level":2,"t":"fi","q":"(مثال تدريبي) أجرة تاكسي: 4 ريالات قطرية رسوم بداية، ثم 2 ريال لكل كيلومتر. كم الأجرة لرحلة طولها 9 كم؟","ans":["22","22 ريال","22 ريالا","22 ريالًا","ص=22","ص = 22","٢٢","٢٢ ريال"],"hint":"... ريال","ex":"المعادلة ص = 2س + 4، حيث 4 هي القيمة الابتدائية (المقطع) و 2 هي الميل. نعوّض س = 9: ص = 18 + 4 = 22 ريالًا."},{"id":"m39","topic":"ymxb","level":2,"t":"order","q":"رتّب خطوات تمثيل المستقيم <span dir=\"ltr\">ص = (2/3)س − 1</span> بيانيًا:","items":["حدّد المقطع الصادي: ب = −1","عيّن النقطة <span dir=\"ltr\">(0, −1)</span> على محور الصادات","من هذه النقطة اصعد وحدتين وتحرك 3 وحدات يمينًا لتصل إلى <span dir=\"ltr\">(3, 1)</span>","صِل بين النقطتين بمستقيم ومدّه من الطرفين"],"ex":"نبدأ دائمًا من المقطع الصادي (0، ب)، ثم نستخدم الميل 2/3: صعود 2 وانتقال 3 يمينًا فنصل إلى (3، 1)، ثم نرسم المستقيم المار بالنقطتين."},{"id":"m40","topic":"ymxb","level":3,"t":"corr","q":"حوّل طالب المعادلة <span dir=\"ltr\">ص + 2س = 7</span> فكتب: <span dir=\"ltr\">ص = 2س + 7</span>، إذن الميل 2. اختر التصحيح الصحيح:","choices":["<span dir=\"ltr\">ص = 2س − 7</span>، الميل 2 والمقطع −7","<span dir=\"ltr\">ص = −2س − 7</span>، الميل −2 والمقطع −7","<span dir=\"ltr\">ص = −2س + 7</span>، الميل −2 والمقطع 7","<span dir=\"ltr\">ص = 7س + 2</span>، الميل 7 والمقطع 2"],"ans":2,"ex":"لعزل ص نطرح 2س من الطرفين، فتنتقل 2س بإشارة سالبة: ص = −2س + 7. إذن الميل −2 والمقطع الصادي 7."},{"id":"m41","topic":"ymxb","level":3,"t":"mc","q":"ما معادلة المستقيم المار بالنقطتين <span dir=\"ltr\">(2, 3)</span> و <span dir=\"ltr\">(4, 7)</span>؟","choices":["<span dir=\"ltr\">ص = 2س − 1</span>","<span dir=\"ltr\">ص = 2س + 3</span>","<span dir=\"ltr\">ص = 4س − 5</span>","<span dir=\"ltr\">ص = −2س + 7</span>"],"ans":0,"ex":"الميل = (7 − 3) ÷ (4 − 2) = 2. نعوّض النقطة (2، 3): 3 = 2×2 + ب، إذن ب = −1. المعادلة ص = 2س − 1، والتحقق بالنقطة الثانية: 2×4 − 1 = 7."},{"id":"m42","topic":"ymxb","level":3,"t":"mc","q":"(مثال تدريبي) تكلفة اشتراك نادٍ رياضي بالريال القطري: <span dir=\"ltr\">ص = 50س + 100</span>، حيث س عدد الأشهر و 100 رسوم تسجيل. بعد كم شهرًا تصبح التكلفة الكلية 400 ريال؟","choices":["5","8","10","6"],"ans":3,"ex":"نحل 50س + 100 = 400: نطرح 100 فيكون 50س = 300، ثم نقسم على 50 فيكون س = 6 أشهر. الخطأ الشائع 400 ÷ 50 = 8 بنسيان رسوم التسجيل (المقطع)."},{"id":"m43","topic":"functions","level":1,"t":"mc","q":"ما مجال العلاقة <span dir=\"ltr\">{(2, 5), (−1, 3), (4, 5)}</span>؟","choices":["<span dir=\"ltr\">{2, −1, 4}</span>","<span dir=\"ltr\">{5, 3}</span>","<span dir=\"ltr\">{2, 5}</span>","<span dir=\"ltr\">{−1, 3}</span>"],"ans":0,"ex":"المجال هو مجموعة قيم س (الإحداثي الأول في كل زوج): 2 و −1 و 4. أما {5، 3} فهي المدى."},{"id":"m44","topic":"functions","level":1,"t":"tf","q":"مدى العلاقة هو مجموعة قيم ص (الإحداثي الثاني) في أزواجها المرتبة.","ans":true,"ex":"العبارة صحيحة. المجال قيم س، والمدى قيم ص."},{"id":"m45","topic":"functions","level":2,"t":"tf","q":"يمكن أن تكون العلاقة دالة حتى لو وُجد خط رأسي يقطع تمثيلها البياني في نقطتين.","ans":false,"ex":"العبارة خاطئة. إذا قطع خط رأسي التمثيل في نقطتين فهناك قيمة س واحدة ترتبط بقيمتين لـ ص، وهذا يخالف تعريف الدالة."},{"id":"m46","topic":"functions","level":2,"t":"mc","q":"أي العلاقات الآتية <b>ليست</b> دالة؟","choices":["<span dir=\"ltr\">{(1, 2), (2, 3), (3, 4)}</span>","<span dir=\"ltr\">{(0, 5), (1, 5), (2, 5)}</span>","<span dir=\"ltr\">{(−1, 0), (0, 1), (1, 0)}</span>","<span dir=\"ltr\">{(3, 1), (3, −1), (4, 2)}</span>"],"ans":3,"ex":"في العلاقة الأخيرة ترتبط س = 3 بقيمتين (1 و −1)، فليست دالة. في البقية لكل س قيمة ص واحدة، وتكرار قيم ص مسموح."},{"id":"m47","topic":"functions","level":2,"t":"fi","q":"كم عنصرًا في مدى العلاقة <span dir=\"ltr\">{(1, 6), (2, 7), (3, 6), (4, 8)}</span>؟","ans":["3","٣","3 عناصر","ثلاثة"],"hint":"عدد العناصر","ex":"قيم ص هي 6 و 7 و 6 و 8. لا نكرر العنصر في المجموعة، فالمدى {6، 7، 8} وفيه 3 عناصر."},{"id":"m48","topic":"functions","level":1,"t":"match","q":"صِل كل مفهوم بمعناه:","pairs":[["المجال","مجموعة قيم س"],["المدى","مجموعة قيم ص"],["الدالة","كل قيمة س ترتبط بقيمة ص واحدة فقط"],["اختبار الخط الرأسي","طريقة بيانية لمعرفة هل العلاقة دالة"]],"ex":"المجال للمدخلات س، والمدى للمخرجات ص. الدالة تشترط مخرجًا واحدًا لكل مدخل، واختبار الخط الرأسي يتحقق من ذلك على التمثيل البياني."},{"id":"m49","topic":"functions","level":3,"t":"mc","q":"جدول قيمه: س: 1، 2، 2، 3 — ص: 4، 5، 6، 7. هل يمثل الجدول دالة؟","choices":["نعم، لأن قيم ص كلها مختلفة","لا، لأن س = 2 ترتبط بقيمتين هما 5 و 6","نعم، لأن قيم س مرتبة تصاعديًا","لا، لأن الجدول يحتوي على أربعة أزواج"],"ans":1,"ex":"الشرط في الدالة أن تكون لكل س قيمة ص واحدة. هنا س = 2 أعطت 5 مرة و 6 مرة أخرى، فليست دالة. اختلاف قيم ص لا يكفي."},{"id":"m50","topic":"functions","level":2,"t":"order","q":"رتّب خطوات استخدام اختبار الخط الرأسي:","items":["ارسم التمثيل البياني للعلاقة","مرّر خطًا رأسيًا (موازيًا لمحور الصادات) عبر أجزاء التمثيل كلها","لاحظ عدد نقاط تقاطع الخط مع التمثيل في كل موضع","إذا قطعه في أكثر من نقطة في أي موضع فليست دالة، وإلا فهي دالة"],"ex":"نحتاج أولًا إلى التمثيل، ثم نحرّك خطًا رأسيًا عليه، ونعدّ نقاط التقاطع، ثم نحكم: نقطتان أو أكثر في أي موضع تعني أن س ارتبطت بأكثر من ص."},{"id":"m51","topic":"functions","level":3,"t":"mc","q":"أي العلاقات الآتية دالة <b>غير خطية</b>؟","choices":["<span dir=\"ltr\">{(0, 1), (1, 3), (2, 5), (3, 7)}</span>","<span dir=\"ltr\">{(1, 2), (1, 3), (2, 4), (3, 5)}</span>","<span dir=\"ltr\">{(0, 4), (1, 4), (2, 4), (3, 4)}</span>","<span dir=\"ltr\">{(0, 0), (1, 1), (2, 4), (3, 9)}</span>"],"ans":3,"ex":"في الأخيرة لكل س قيمة ص واحدة فهي دالة، لكن ص تزيد بمقادير مختلفة (1 ثم 3 ثم 5) فليست خطية. الأولى خطية (تزيد 2 دائمًا)، والثالثة ثابتة (خطية أفقية)، والثانية ليست دالة."},{"id":"m52","topic":"functions","level":3,"t":"mc","q":"العلاقة <span dir=\"ltr\">{(−2, 4), (−1, 1), (1, 1), (2, 4)}</span> تربط كل عدد بمربعه. أي عبارة صحيحة؟","choices":["ليست دالة لأن القيمة 4 تكررت في المدى","دالة لأن كل قيمة س ترتبط بقيمة ص واحدة، وتكرار قيم ص مسموح","ليست دالة لأن مجالها يحتوي أعدادًا سالبة","دالة لأن كل قيمة ص ترتبط بقيمة س واحدة"],"ans":1,"ex":"قيم س (−2، −1، 1، 2) كلها مختلفة ولكل منها ص واحدة، فهي دالة. تكرار ص (4 و 1) لا يمنع كونها دالة، والعبارة الأخيرة خاطئة لأن ص = 4 ترتبط بقيمتين لـ س."},{"id":"m53","topic":"intervals","level":1,"t":"mc","q":"ماذا نسمّي سلوك دالة يصعد تمثيلها البياني كلما تحركنا من اليسار إلى اليمين؟","choices":["متزايدة","متناقصة","ثابتة","غير معرّفة"],"ans":0,"ex":"الصعود من اليسار إلى اليمين يعني أن ص ترتفع كلما زادت س، وهذا تعريف الدالة المتزايدة."},{"id":"m54","topic":"intervals","level":1,"t":"tf","q":"تُقرأ فترات التزايد والتناقص على محور الصادات (ص).","ans":false,"ex":"العبارة خاطئة. الفترات تُكتب بقيم س وتُقرأ على محور السينات من اليسار إلى اليمين، أما ص فنراقب فقط هل ترتفع أم تنخفض."},{"id":"m55","topic":"intervals","level":2,"t":"fi","q":"جدول لدالة: س: 0، 1، 2، 3، 4، 5 — ص: 1، 3، 6، 4، 2، 2. عند أي قيمة لـ س تتحول الدالة من التزايد إلى التناقص؟","ans":["2","س=2","س = 2","x=2","٢","س=٢","س = ٢"],"hint":"س = ...","ex":"من س = 0 إلى س = 2 ترتفع ص (1، 3، 6)، ثم من س = 2 إلى س = 4 تنخفض (6، 4، 2). إذن القمة عند س = 2. ومن س = 4 إلى 5 تكون ثابتة."},{"id":"m56","topic":"intervals","level":1,"t":"match","q":"صِل كل جزء من دالة بسلوكه:","pairs":[["من س = 0 إلى س = 3 تتغير ص من 2 إلى 8","متزايدة"],["من س = 3 إلى س = 5 تبقى ص = 8","ثابتة"],["من س = 5 إلى س = 9 تتغير ص من 8 إلى 1","متناقصة"]],"ex":"عندما ترتفع ص مع زيادة س فالدالة متزايدة، وعندما لا تتغير ص فهي ثابتة، وعندما تنخفض ص فهي متناقصة."},{"id":"m57","topic":"intervals","level":2,"t":"mc","q":"دالة لتمثيلها البياني قمة واحدة عند النقطة <span dir=\"ltr\">(3, 7)</span>، ترتفع قبلها وتنخفض بعدها. أي وصف صحيح؟","choices":["متزايدة عندما س &lt; 3، ومتناقصة عندما س &gt; 3","متزايدة عندما س &gt; 3، ومتناقصة عندما س &lt; 3","متزايدة عندما ص &lt; 7، ومتناقصة عندما ص &gt; 7","متزايدة على جميع الأعداد"],"ans":0,"ex":"الفترات تُحدد بقيم س لا ص. قبل القمة (س أقل من 3) ترتفع الدالة، وبعدها (س أكبر من 3) تنخفض."},{"id":"m58","topic":"intervals","level":2,"t":"fi","q":"الدالة <span dir=\"ltr\">ص = −2س + 5</span> خطية. هل هي متزايدة أم متناقصة على جميع الأعداد؟ (اكتب كلمة واحدة)","ans":["متناقصة","متناقص","تناقص","متناقصة على جميع الأعداد","متناقصه"],"hint":"متزايدة / متناقصة","ex":"ميل المستقيم −2 سالب، فكلما زادت س بمقدار 1 نقصت ص بمقدار 2. لذلك الدالة متناقصة على جميع الأعداد."},{"id":"m59","topic":"intervals","level":2,"t":"order","q":"رتّب خطوات تحديد فترات التزايد والتناقص من تمثيل بياني:","items":["تتبّع التمثيل من اليسار إلى اليمين","حدّد القمم والقيعان (النقاط التي يتغير عندها السلوك)","اقرأ قيم س لهذه النقاط على محور السينات","اكتب الفترات بين هذه القيم وصِف كل فترة: متزايدة أو متناقصة أو ثابتة"],"ex":"نتتبع التمثيل في اتجاه زيادة س، فنكتشف نقاط تغيّر السلوك، ثم نأخذ إحداثيات س لها، وأخيرًا نكتب الفترات ونصف كلًّا منها."},{"id":"m60","topic":"intervals","level":3,"t":"mc","q":"جدول لدالة: س: −3، −2، −1، 0، 1، 2، 3 — ص: 5، 2، 0، −1، 0، 2، 5. على أي فترة تكون الدالة <b>متناقصة</b>؟","choices":["من س = −3 إلى س = 0","من س = 0 إلى س = 3","من ص = 5 إلى ص = −1","من س = −1 إلى س = 1"],"ans":0,"ex":"من س = −3 إلى س = 0 تنخفض ص (5، 2، 0، −1)، فهي متناقصة. بعد القاع عند س = 0 ترتفع ص حتى 5 فهي متزايدة. الفترة تُكتب بقيم س لا ص."}];
+var META = {"subject":"الرياضيات","n":60,"topics":[{"id":"multi-step","title":"معادلات متعددة الخطوات","points":["وسّع الأقواس أولًا، وانتبه لتوزيع الإشارة السالبة: −(س − 3) = −س + 3","اجمع الحدود المتشابهة، ثم انقل حدود س إلى طرف والأعداد إلى الطرف الآخر، ثم اقسم","إذا وُجد كسر فاضرب الطرفين في المقام، وتحقق دائمًا بالتعويض في المعادلة الأصلية"]},{"id":"no-inf","title":"لا حل أو عدد لا نهائي من الحلول","points":["إذا انتهى التبسيط بعبارة خاطئة مثل 5 = 2 فلا حل للمعادلة","إذا انتهى التبسيط بعبارة صحيحة دائمًا مثل 3 = 3 فكل عدد حقيقي حل (عدد لا نهائي من الحلول)","إذا بقي س = عدد فللمعادلة حل واحد فقط"]},{"id":"slope-prop","title":"التناسب والميل","points":["الميل = التغير في ص ÷ التغير في س = (ص2 − ص1) ÷ (س2 − س1)","العلاقة التناسبية ص = ك س تمر بنقطة الأصل، والنسبة ص ÷ س ثابتة وتساوي الميل","الميل الموجب يصعد من اليسار إلى اليمين، والسالب ينزل، والصفر أفقي"]},{"id":"ymx","title":"تحليل y = mx","points":["المستقيم ص = م س يمر دائمًا بنقطة الأصل (0، 0) ومقطعه الصادي صفر","م هو الميل ومعدل التغير، ويمكن إيجاده بقسمة ص على س لأي نقطة غير الأصل","لا نستخدم ص = م س إذا كانت ص لا تساوي صفرًا عندما س = 0"]},{"id":"ymxb","title":"المقطع y والصيغة y = mx + b","points":["في ص = م س + ب: م هو الميل، و ب هو المقطع الصادي والنقطة (0، ب)","لإيجاد الميل والمقطع اعزل ص أولًا في طرف وحدها","في المسائل الحياتية يمثل ب غالبًا قيمة ابتدائية ثابتة، ويمثل م المعدل لكل وحدة"]},{"id":"functions","title":"العلاقات والدوال","points":["المجال هو مجموعة قيم س، والمدى هو مجموعة قيم ص","الدالة علاقة ترتبط فيها كل قيمة س بقيمة ص واحدة فقط (تكرار ص مسموح)","اختبار الخط الرأسي: إذا قطع خط رأسي التمثيل في أكثر من نقطة فليست دالة"]},{"id":"intervals","title":"فترات التزايد والتناقص","points":["متزايدة: ص ترتفع كلما زادت س، متناقصة: ص تنخفض، ثابتة: ص لا تتغير","نقرأ الفترات على محور س من اليسار إلى اليمين","عند القمة أو القاع يتغير السلوك عادة من تزايد إلى تناقص أو العكس"]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = shuffle(opts);
+      item.ans = q.ans;
+      item.ansH = q.choices[q.ans];
+    }
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        shuffle(qs).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        shuffle(rest).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    $('qmeta').innerHTML = '<span class="kind">'+(KINDS[q.t]||'')+'</span><span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qtext').innerHTML = q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = n+' سؤالاً شاملًا موزّعة على '+nt+' دروس، بثلاثة مستويات وأنواع متنوعة. يمكنك حل المادة كاملة، أو درسًا واحدًا، أو اختبارًا عشوائيًا من 20.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>

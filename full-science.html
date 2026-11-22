@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب شامل — العلوم</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#0f766e;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب شامل — العلوم</h1>
+  <p>يوسف • الصف الثامن / 1 • الجهاز الدوري والطاقة الحرارية</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق الرسمي (جدول مواصفات الوزارة 2026–2027):</b> وحدة الجهاز الدوري 19٪ — علاقة الرياضة بمعدل دقات القلب، تلاؤم الدم مع وظائفه، صحة الجهاز الدوري. ووحدة الطاقة الحرارية وطرائق انتقالها 81٪ — تحول الطاقة، طرائق الانتقال، استقصاء التوصيل، العوازل المنزلية، تيارات الحمل، التطبيقات العملية للحمل، نسيم البر والبحر، والأشعة تحت الحمراء.<br>تدريب شامل بنحو 60 سؤالاً موزّعة على الدروس، مع اختبار عشوائي من 20. الاختبار التحريري يوم الأحد 13 ديسمبر 2026.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">التدريب الشامل لكل الدروس ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="full-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب شامل تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="full-index.html">كل التدريبات الشاملة</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"sc01","topic":"circ-heart","level":1,"t":"mc","q":"ما المقصود بمعدل دقات القلب (Heart rate)؟","choices":["كمية الدم التي يضخها القلب في الثانية","عدد المرات التي يدق فيها القلب في دقيقة واحدة","عدد مرات التنفس في دقيقة واحدة","سرعة الدم داخل الشعيرات"],"ans":1,"ex":"معدل دقات القلب هو عدد دقات القلب في دقيقة واحدة. أما التنفس فشيء مختلف عن دقات القلب."},{"id":"sc02","topic":"circ-heart","level":2,"t":"fi","q":"عدّ يوسف نبضه بعد الركض فوجده 21 نبضة في 15 ثانية (قياس تدريبي). كم معدل نبضه في الدقيقة؟","ans":["84","٨٤","84 دقة/دقيقة","84 نبضة في الدقيقة","84 نبضة/دقيقة"],"hint":"عدد النبضات في الدقيقة","ex":"الدقيقة فيها 60 ثانية، أي 4 أضعاف 15 ثانية. إذن 21 × 4 = 84 نبضة في الدقيقة. الأرقام هنا مؤلفة للتدريب."},{"id":"sc03","topic":"circ-heart","level":1,"t":"tf","q":"يمكن الشعور بالنبض عند المعصم أو الرقبة باستخدام إصبعين.","ans":true,"ex":"النبض موجة تنتقل في جدران الشرايين، ونحسّها في أماكن مثل المعصم والرقبة. ونستخدم إصبعين لا الإبهام."},{"id":"sc04","topic":"circ-heart","level":3,"t":"mc","q":"قاس طالبان نبضهما ثلاث مرات (أرقام تدريبية): الأول 70، 72، 71، والثاني 64، 78، 70. أي العبارات صحيحة؟","choices":["قياسات الثاني أدق لأن مداها أكبر","القياسات متساوية في الدقة","قياسات الأول أدق لأن مداها أصغر","لا يمكن الحكم على الدقة من المدى"],"ans":2,"ex":"مدى الأول 72 − 70 = 2، ومدى الثاني 78 − 64 = 14. كلما صغر المدى تقاربت القياسات فكانت أدق، لذلك قياسات الأول أدق."},{"id":"sc05","topic":"circ-blood","level":1,"t":"match","q":"صِل كل مكوّن من مكونات الدم بوظيفته:","pairs":[["البلازما","تنقل الجلوكوز والفضلات والهرمونات"],["خلايا الدم الحمراء","تحمل الأكسجين بالهيموغلوبين"],["خلايا الدم البيضاء","تهاجم الكائنات الدقيقة وتهضمها"],["الصفائح الدموية","تساعد على تجلط الدم ووقف النزيف"]],"ex":"للدم أربعة مكونات لكل منها وظيفة. البلازما للنقل، والحمراء للأكسجين، والبيضاء للدفاع، والصفائح للتجلط."},{"id":"sc06","topic":"circ-blood","level":2,"t":"mc","q":"ما فائدة أن تكون خلية الدم الحمراء مقعّرة الوجهين؟","choices":["تصبح لها نواة كبيرة","تستطيع تغيير شكلها لتهضم الميكروبات","تصبح لاصقة عند الجرح","تزيد مساحة سطحها فيسهل تبادل الأكسجين"],"ans":3,"ex":"الشكل المقعّر من الجهتين يعطي مساحة سطحية كبيرة، فيدخل الأكسجين ويخرج بسهولة. الخلايا الحمراء لا نواة لها أصلًا."},{"id":"sc07","topic":"circ-blood","level":2,"t":"corr","q":"اختر التصحيح المناسب للجملة الخاطئة: «الصفائح الدموية نوع من خلايا الدم البيضاء ولها نوى كبيرة».","choices":["الصفائح الدموية قطع من خلايا بلا نوى، تساعد على تجلط الدم","الصفائح الدموية نوع من الخلايا الحمراء تحمل الأكسجين","الصفائح الدموية هي الجزء السائل من الدم","الصفائح الدموية خلايا بيضاء بلا نوى تهضم الميكروبات"],"ans":0,"ex":"الصفائح ليست خلايا بيضاء، بل أجزاء صغيرة من خلايا ولا نوى لها. تصبح أسطحها لاصقة عند الجرح فتساعد على التجلط."},{"id":"sc08","topic":"circ-blood","level":3,"t":"mc","q":"لماذا يُعدّ غياب النواة في خلية الدم الحمراء ميزة؟","choices":["لأنه يجعلها تهاجم الميكروبات أسرع","لأنه يترك مكانًا لكمية أكبر من الهيموغلوبين فتحمل أكسجينًا أكثر","لأنه يجعلها جزءًا من البلازما","لأنه يجعلها لاصقة فتوقف النزيف"],"ans":1,"ex":"بدون نواة يتسع داخل الخلية لهيموغلوبين أكثر. والهيموغلوبين يرتبط بالأكسجين، فتنقل الخلية أكسجينًا أكثر."},{"id":"sc09","topic":"circ-health","level":1,"t":"mc","q":"أي العادات التالية تضر الجهاز الدوري؟","choices":["المشي اليومي","تناول أطعمة غنية بالحديد","الإكثار من الملح والدهون المشبعة","ممارسة السباحة بانتظام"],"ans":2,"ex":"كثرة الملح والدهون المشبعة من العادات الضارة بالقلب والأوعية. أما الحركة والحديد فيفيدان الجهاز الدوري."},{"id":"sc10","topic":"circ-health","level":2,"t":"tf","q":"نقص الحديد في الغذاء قد يسبب فقر الدم (Anaemia) والشعور بالتعب، لأن الحديد لازم لصنع الهيموغلوبين.","ans":true,"ex":"الجسم يحتاج الحديد لصنع الهيموغلوبين الذي يحمل الأكسجين. إذا نقص الحديد قلّ الأكسجين الواصل للخلايا فيشعر الشخص بالتعب."},{"id":"sc11","topic":"circ-health","level":3,"t":"mc","q":"كيف يمكن أن تؤدي كثرة الدهون المشبعة إلى نوبة قلبية أو سكتة دماغية؟","choices":["تكوّن ترسبات (Plaques) تضيّق الأوعية فيقل تدفق الدم","تزيد عدد خلايا الدم الحمراء كثيرًا","تذيب جدران الشعيرات الدموية","توقف إنتاج البلازما في الجسم"],"ans":0,"ex":"الدهون المشبعة الكثيرة تساعد على تكوّن ترسبات داخل الأوعية فتضيق. إذا ضاق الوعاء أو انسد قلّ وصول الدم إلى القلب أو الدماغ."},{"id":"sc12","topic":"energy","level":1,"t":"mc","q":"ما وحدة قياس الطاقة؟","choices":["النيوتن","الواط","الجول","الدرجة السيليزية"],"ans":2,"ex":"وحدة الطاقة هي الجول ورمزها J. الطاقة كمية قياسية لها مقدار فقط بلا اتجاه."},{"id":"sc13","topic":"energy","level":1,"t":"fi","q":"المخطط الذي يمثّل الطاقة الداخلة والطاقة المفيدة والطاقة المبدَّدة بأسهم متفاوتة العرض يُسمّى مخطط ……","ans":["سانكي","Sankey","sankey","مخطط سانكي"],"hint":"اسم المخطط","ex":"مخطط سانكي يبيّن كيف تتوزع الطاقة بعد التحول. عرض كل سهم يدل على كمية الطاقة فيه."},{"id":"sc14","topic":"energy","level":2,"t":"order","q":"رتّب تحولات الطاقة في مصباح يعمل ببطارية (مثال تدريبي):","items":["طاقة كيميائية مخزنة في البطارية","طاقة كهربائية في الأسلاك","طاقة ضوئية وحرارية من المصباح"],"ex":"البطارية تخزن طاقة كيميائية تتحول إلى كهربائية تسري في الدائرة. ثم يحوّلها المصباح إلى ضوء مفيد وحرارة مبدّدة."},{"id":"sc15","topic":"energy","level":1,"t":"tf","q":"الكمية الكلية للطاقة في نظام معزول تبقى ثابتة مهما تحولت من شكل إلى آخر.","ans":true,"ex":"هذا هو مبدأ حفظ الطاقة. الطاقة لا تفنى ولا تُستحدث، بل تتغير أشكالها فقط."},{"id":"sc16","topic":"energy","level":2,"t":"mc","q":"كرة موضوعة على رف عالٍ تختزن أساسًا طاقة:","choices":["حركية","وضع تجاذبية","ضوئية","وضع مرونية"],"ans":1,"ex":"الجسم المرفوع إلى أعلى يختزن طاقة وضع تجاذبية. إذا سقط تتحول إلى طاقة حركية."},{"id":"sc17","topic":"energy","level":3,"t":"corr","q":"اختر التصحيح المناسب: «المروحة الكهربائية تفقد جزءًا من الطاقة فيختفي نهائيًا من الكون».","choices":["المروحة تصنع طاقة إضافية من الهواء","المروحة تحوّل كل الطاقة الكهربائية إلى حركية دون أي فقد","الطاقة المفقودة تتحول إلى طاقة كيميائية في المحرك دائمًا","الجزء غير المفيد لا يختفي، بل يتبدد غالبًا على شكل حرارة وصوت"],"ans":3,"ex":"الطاقة لا تفنى، لذلك لا يختفي أي جزء منها. الجزء غير المفيد يتبدد إلى المحيط كحرارة وصوت."},{"id":"sc18","topic":"energy","level":3,"t":"fi","q":"مصباح يستقبل 100 J من الطاقة الكهربائية ويعطي 15 J طاقة ضوئية (أرقام تدريبية). كم جولًا تتبدد حرارةً؟","ans":["85","٨٥","85 J","85 جول","85J"],"hint":"بالجول","ex":"حسب مبدأ حفظ الطاقة: الداخلة = المفيدة + المبددة. إذن 100 − 15 = 85 جول تتبدد حرارةً. الأرقام مؤلفة للتدريب."},{"id":"sc19","topic":"transfer","level":1,"t":"match","q":"صِل كل طريقة لانتقال الحرارة بوصفها:","pairs":[["التوصيل","اهتزاز الجسيمات وتصادمها، خاصة في الصلب"],["الحمل","حركة السائل أو الغاز بسبب اختلاف الكثافة"],["الإشعاع","موجات يمكنها عبور الفراغ"]],"ex":"لكل طريقة آلية مختلفة. التوصيل في الصلب، والحمل في الموائع، والإشعاع لا يحتاج إلى جسيمات."},{"id":"sc20","topic":"transfer","level":2,"t":"mc","q":"أي طرائق انتقال الحرارة لا تحتاج إلى جسيمات مادة إطلاقًا؟","choices":["التوصيل","الحمل","التوصيل والحمل معًا","الإشعاع"],"ans":3,"ex":"الإشعاع ينتقل بموجات ويعبر الفراغ. أما التوصيل والحمل فكلاهما يحتاج إلى جسيمات."},{"id":"sc21","topic":"transfer","level":2,"t":"tf","q":"يمكن أن تنتقل الحرارة بالحمل داخل قطعة حديد صلبة.","ans":false,"ex":"الحمل يحتاج إلى مائع تتحرك جسيماته من مكان إلى آخر. في الحديد الصلب تنتقل الحرارة بالتوصيل لا بالحمل."},{"id":"sc22","topic":"transfer","level":3,"t":"mc","q":"يجلس يوسف قرب نار مخيم. ما الطريقة الرئيسة التي تصل بها الحرارة إلى وجهه مباشرة عبر الهواء؟","choices":["الإشعاع","التوصيل عبر الهواء","الحمل لأن الهواء الساخن يتحرك أفقيًا نحوه","التوصيل عبر الأرض"],"ans":0,"ex":"الهواء الساخن فوق النار يصعد إلى أعلى بالحمل، فلا يتجه أفقيًا إلى الوجه. الحرارة التي نحسها على الوجه تصل غالبًا بالإشعاع (الأشعة تحت الحمراء)."},{"id":"sc23","topic":"transfer","level":1,"t":"mc","q":"في أي حالة تنتقل الحرارة أساسًا بالتوصيل؟","choices":["دفء الشمس على الأرض","سخونة مقبض قِدر معدني موضوع على الموقد","صعود الهواء الساخن في الغرفة","دوران الماء في إبريق يغلي"],"ans":1,"ex":"المعدن مادة صلبة تنتقل فيها الحرارة باهتزاز الجسيمات وتصادمها، وهذا هو التوصيل. الشمس إشعاع، وحركة الهواء والماء حمل."},{"id":"sc24","topic":"conduction","level":1,"t":"mc","q":"أي المواد التالية موصل حراري جيد؟","choices":["الخشب","البلاستيك","النحاس","الصوف"],"ans":2,"ex":"النحاس فلز، والفلزات موصلات جيدة للحرارة. الخشب والبلاستيك والصوف عوازل."},{"id":"sc25","topic":"conduction","level":1,"t":"fi","q":"قدرة المادة على السماح بانتقال الحرارة خلالها بالتوصيل تُسمّى …… الحرارية.","ans":["الموصلية","موصلية","Thermal conductivity","conductivity","الموصلية الحرارية"],"hint":"كلمة واحدة","ex":"الموصلية الحرارية تصف مدى سهولة مرور الحرارة في المادة. الفلزات موصليتها عالية واللافلزات منخفضة."},{"id":"sc26","topic":"conduction","level":2,"t":"mc","q":"لماذا يُصنع رأس أداة اللحام من فلز بينما يُصنع مقبضها من بلاستيك أو خشب؟","choices":["الرأس عازل ليحفظ الحرارة، والمقبض موصل لتبريد اليد","الرأس موصل لينقل الحرارة إلى مكان اللحام، والمقبض عازل ليحمي اليد","لأن البلاستيك أثقل فيثبّت الأداة","لأن الفلز يمنع انتقال الحرارة بالإشعاع"],"ans":1,"ex":"الرأس الفلزي يوصل الحرارة بسهولة إلى موضع العمل. والمقبض العازل يبطئ وصول الحرارة إلى اليد فيحميها."},{"id":"sc27","topic":"conduction","level":2,"t":"tf","q":"لمس القضبان باليد وحده طريقة علمية دقيقة للمقارنة بين توصيلها للحرارة.","ans":false,"ex":"الإحساس باللمس يتأثر بحرارة يد المختبِر نفسه، فلا يعطي نتيجة موثوقة. الأفضل استخدام أداة قياس وطريقة ثابتة."},{"id":"sc28","topic":"conduction","level":2,"t":"corr","q":"اختر التصحيح المناسب: «جميع الفلزات لها الموصلية الحرارية نفسها تمامًا».","choices":["جميع الفلزات عوازل حرارية","الفلزات موصلة لكن موصليتها تختلف؛ فالنحاس أكثر توصيلًا من الفولاذ في مقارنة الدرس","الفولاذ أكثر توصيلًا من النحاس دائمًا","اللافلزات أكثر توصيلًا من الفلزات"],"ans":1,"ex":"الفلزات موصلات أفضل من اللافلزات، لكنها تختلف فيما بينها. في مقارنة الدرس كان النحاس أكثرها توصيلًا."},{"id":"sc29","topic":"conduction","level":3,"t":"mc","q":"يقارن يوسف توصيل قضيب نحاس وقضيب ألومنيوم، لكنه استخدم قضيب نحاس أقصر. ما المشكلة في تجربته؟","choices":["لا مشكلة لأن نوع المادة هو المهم فقط","يجب أن يكون قضيب الألومنيوم أقصر أيضًا من النحاس","الاختبار غير عادل لأن الطول متغير آخر تغيّر مع نوع المادة","المشكلة أنه لم يستخدم يده للمقارنة"],"ans":2,"ex":"في الاختبار العادل نغيّر متغيرًا واحدًا فقط هو نوع المادة. تغيير الطول أيضًا يجعلنا لا نعرف سبب الفرق في النتيجة."},{"id":"sc30","topic":"conduction","level":3,"t":"order","q":"رتّب خطوات استقصاء عادل لمقارنة توصيل ثلاثة قضبان فلزية:","items":["اختيار قضبان متساوية في الطول والسمك من مواد مختلفة","تسخين طرف كل قضيب بالطريقة نفسها","قياس النتائج بالأداة والطريقة نفسها لكل قضيب","تكرار التجربة ومقارنة النتائج لاستنتاج الأكثر توصيلًا"],"ex":"نبدأ بتجهيز قضبان متماثلة إلا في نوع المادة، ثم نسخّن ونقيس بطريقة ثابتة. التكرار يجعل النتائج أوثق وقابلة للتكرار."},{"id":"sc31","topic":"insulation","level":1,"t":"mc","q":"ما الهدف الرئيس من وضع العوازل في جدران المنزل وسقفه؟","choices":["إبطاء انتقال الطاقة الحرارية للحفاظ على درجة حرارة المنزل","زيادة سرعة انتقال الحرارة بين الداخل والخارج","جعل المنزل يصدر أشعة تحت حمراء أكثر","تحويل الحرارة إلى كهرباء"],"ans":0,"ex":"العازل يبطئ انتقال الحرارة. فيبقى المنزل أبرد صيفًا وأدفأ شتاءً."},{"id":"sc32","topic":"insulation","level":2,"t":"mc","q":"لماذا تُعدّ المواد التي تحبس هواءً ساكنًا (مثل الألياف والرغوة) عوازل جيدة؟","choices":["لأن الهواء الساكن موصل جيد جدًا للحرارة","لأنها تمتص كل الأشعة تحت الحمراء","لأن الهواء المحبوس يتحرك بسرعة فيبرّد المنزل","لأن الهواء الساكن موصل ضعيف، وحبسه يمنع تيارات الحمل"],"ans":3,"ex":"الهواء موصل ضعيف للحرارة. وعندما يكون محبوسًا لا يتحرك فلا تتكون تيارات حمل تنقل الحرارة."},{"id":"sc33","topic":"insulation","level":2,"t":"fi","q":"في تجربة لمقارنة عدة مواد عازلة، المتغير الذي نغيّره عمدًا (المتغير المستقل) هو …… المادة.","ans":["نوع","نوع المادة"],"hint":"كلمة واحدة","ex":"عندما نقارن العوازل نغيّر نوع المادة فقط. ونثبّت السماكة وزمن الرصد وطريقة القياس."},{"id":"sc34","topic":"insulation","level":3,"t":"corr","q":"اختر التصحيح المناسب: «لمقارنة عازلين، نلف وعاءً بطبقة رقيقة من الأول وطبقة سميكة من الثاني، ونقيس الحرارة في أوقات مختلفة».","choices":["نلف الوعاءين بالمادة نفسها ونغيّر السماكة فقط","نستخدم سماكة واحدة للمادتين ونقيس بعد الزمن نفسه بالطريقة نفسها","نقيس الحرارة باللمس بدل الميزان الحراري","لا حاجة لتثبيت أي متغير ما دام العازلان مختلفين"],"ans":1,"ex":"المقارنة العادلة تحتاج سماكة واحدة وزمن رصد واحد وطريقة قياس واحدة. حينها يكون الفرق في النتيجة بسبب نوع المادة فقط."},{"id":"sc35","topic":"insulation","level":1,"t":"tf","q":"العازل الجيد في المنزل يفيد في الصيف فقط ولا فائدة له في الشتاء.","ans":false,"ex":"العازل يبطئ انتقال الحرارة في الاتجاهين. صيفًا يقلل دخول الحرارة، وشتاءً يقلل خروجها."},{"id":"sc36","topic":"convection","level":1,"t":"mc","q":"عند تسخين جزء من سائل، ماذا يحدث لكثافة الجزء الساخن؟","choices":["تزداد فيهبط","تقل فيصعد","لا تتغير","تقل فيهبط"],"ans":1,"ex":"عند التسخين تتباعد الجسيمات فتقل الكثافة. والمائع الأقل كثافة يصعد إلى أعلى."},{"id":"sc37","topic":"convection","level":2,"t":"order","q":"رتّب مراحل تكوّن تيار الحمل في ماء يُسخَّن من أسفل الوعاء:","items":["يسخن الماء في أسفل الوعاء","تقل كثافة الماء الساخن فيصعد","يحل محله ماء أبرد أعلى كثافة يهبط إلى الأسفل","يسخن الماء الهابط ويصعد بدوره فتتكون دورة مستمرة"],"ex":"الماء الساخن الأقل كثافة يصعد، والبارد الأكثف يهبط ليأخذ مكانه. تكرار ذلك يكوّن دورة هي تيار الحمل."},{"id":"sc38","topic":"convection","level":1,"t":"fi","q":"الدورة المستمرة التي يصعد فيها المائع الساخن ويهبط فيها البارد تُسمّى تيارات ……","ans":["الحمل","حمل","الحمل الحراري","convection","Convection"],"hint":"كلمة واحدة","ex":"صعود الساخن وهبوط البارد بشكل متكرر يكوّن تيارات الحمل. وهي تحدث في السوائل والغازات فقط."},{"id":"sc39","topic":"convection","level":2,"t":"mc","q":"في رسم يوضح تيارات الحمل داخل إناء، ماذا تبيّن الأسهم أساسًا؟","choices":["كمية الطاقة الدقيقة بالجول","درجة حرارة كل نقطة","اتجاه حركة المائع","سرعة انتقال الإشعاع"],"ans":2,"ex":"الأسهم في رسوم الحمل تبيّن اتجاه حركة السائل أو الغاز. ولا تقيس كمية الطاقة بدقة."},{"id":"sc40","topic":"convection","level":2,"t":"tf","q":"يحدث الحمل في السوائل والغازات لأن جسيماتها تستطيع الانتقال من مكان إلى آخر.","ans":true,"ex":"في الموائع تتحرك الجسيمات وتحمل معها الطاقة. أما في الصلب فالجسيمات تهتز في أماكنها فقط."},{"id":"sc41","topic":"convection","level":3,"t":"mc","q":"وُضعت بلورة ملونة في قاع كأس ماء، وسُخّن الكأس من جهته اليسرى السفلى فقط. أين يُتوقع أن يصعد اللون أولًا؟","choices":["فوق الجهة اليسرى حيث التسخين","فوق الجهة اليمنى البعيدة عن التسخين","يبقى في القاع ولا يتحرك","ينتشر أفقيًا في القاع فقط"],"ans":0,"ex":"الماء فوق موضع التسخين يسخن فتقل كثافته ويصعد حاملًا اللون. ثم يتحرك عبر السطح ويهبط في الجهة الأبرد فتكتمل الدورة."},{"id":"sc42","topic":"convection","level":3,"t":"corr","q":"اختر التصحيح المناسب: «الهواء البارد يصعد إلى أعلى الغرفة لأنه أخف من الهواء الساخن».","choices":["الهواء البارد والساخن لهما الكثافة نفسها","الهواء البارد يصعد لأنه أعلى كثافة","الهواء البارد أعلى كثافة فيهبط، والهواء الساخن أقل كثافة فيصعد","الهواء لا يتحرك داخل الغرفة إلا بالمراوح"],"ans":2,"ex":"البارد أكثف فيهبط، والساخن أقل كثافة فيصعد. هذه الحركة هي أساس تيارات الحمل في الغرفة."},{"id":"sc43","topic":"conv-apps","level":1,"t":"mc","q":"أين يوضع عادة ملف التسخين في سخان الماء الكهربائي؟","choices":["في أعلى الخزان","خارج الخزان","في منتصف الغطاء","في أسفل الخزان"],"ans":3,"ex":"يوضع ملف التسخين في الأسفل ليصعد الماء الساخن وينزل البارد إليه. هكذا يتكون تيار حمل يسخّن الماء كله."},{"id":"sc44","topic":"conv-apps","level":2,"t":"mc","q":"لماذا تُركَّب وحدات التكييف عادة قريبة من سقف الغرفة؟","choices":["لأن الهواء البارد أعلى كثافة فيهبط ويبرّد الغرفة كلها","لأن الهواء البارد يصعد إلى السقف","حتى تكون بعيدة عن الإشعاع فقط","لأن الحمل لا يحدث قرب الأرض"],"ans":0,"ex":"الهواء البارد الخارج من المكيف أكثف فيهبط، ويصعد الهواء الدافئ ليُبرَّد. فتتكون تيارات حمل تبرّد الغرفة."},{"id":"sc45","topic":"conv-apps","level":2,"t":"match","q":"صِل كل جهاز أو موقف بالتفسير المناسب:","pairs":[["ملف التسخين في أسفل الغلاية","الماء الساخن يصعد فتتكون دورة"],["المكيف قرب السقف","الهواء البارد يهبط"],["المروحة مع المكيف","تدفع الهواء فتسرّع التبريد"],["عزل جدران المبنى","يبطئ دخول الحرارة من الخارج"]],"ex":"كل تطبيق يستفيد من الحمل أو يكمّله. موضع التسخين أو التبريد والمراوح والعزل كلها تؤثر في حرارة المكان."},{"id":"sc46","topic":"conv-apps","level":3,"t":"mc","q":"سُخّن أنبوب ماء من أعلاه وفي قاعه قطعة ثلج مثبتة. غلى الماء في الأعلى بينما بقي الثلج تقريبًا دون انصهار. ما التفسير؟","choices":["الثلج موصل جيد للحرارة","الماء الساخن بقي في الأعلى لأنه أقل كثافة، فلم يتكون تيار حمل يصل إلى القاع","الحرارة انتقلت بالإشعاع إلى الثلج فقط","الماء البارد يصعد دائمًا إلى الأعلى"],"ans":1,"ex":"الماء الساخن أقل كثافة فيبقى في الأعلى ولا يهبط. لذلك لا يتكون تيار حمل جيد، والماء موصل ضعيف فلا تصل الحرارة للثلج بسهولة."},{"id":"sc47","topic":"conv-apps","level":2,"t":"fi","q":"في الثلاجة التي يتحرك فيها الهواء بحرية، الهواء الأبرد يهبط، فتكون المنطقة …… غالبًا أبرد.","ans":["السفلى","السفلية","الأسفل","السفلي"],"hint":"العليا أم السفلى؟","ex":"الهواء البارد أكثف فيهبط إلى أسفل الثلاجة. لذلك تكون المنطقة السفلى غالبًا أبرد إذا كان الهواء حر الحركة."},{"id":"sc48","topic":"conv-apps","level":2,"t":"mc","q":"أي مجموعة عوامل تساعد معًا على بقاء مبنى كبير في الدوحة باردًا صيفًا؟","choices":["ألوان داكنة وجدران بلا عزل ومكيفات قرب الأرض","مكيفات قرب السقف فقط مع نوافذ مفتوحة دائمًا","عزل جيد ومكيفات في موضع مناسب وتصميم يسمح بتدفق تيارات الحمل","تدفئة من الأسفل وعزل ضعيف"],"ans":2,"ex":"برودة المبنى تعتمد على موضع التبريد والعزل والتصميم معًا. ومن الأمثلة متحف الفن الإسلامي الذي يجمع الألوان الفاتحة وتيارات الحمل والمكيفات."},{"id":"sc49","topic":"conv-apps","level":1,"t":"tf","q":"تشغيل مروحة السقف مع المكيف يحرّك الهواء فيسرّع تبريد الغرفة.","ans":true,"ex":"المروحة تدفع الهواء فتساعد الهواء البارد على الانتشار في الغرفة أسرع. لذلك يتسارع التبريد مع بقاء دور تيارات الحمل."},{"id":"sc50","topic":"breeze","level":1,"t":"mc","q":"أيهما تتغير درجة حرارته بسرعة أكبر خلال اليوم؟","choices":["البحر","اليابسة","يتغيران بالسرعة نفسها","لا يتغير أي منهما"],"ans":1,"ex":"اليابسة تسخن نهارًا وتبرد ليلًا بسرعة. أما البحر فتتغير حرارته أقل بكثير."},{"id":"sc51","topic":"breeze","level":2,"t":"order","q":"رتّب خطوات تكوّن نسيم البحر نهارًا:","items":["تسخن اليابسة أسرع من البحر","يسخن الهواء فوق اليابسة وتقل كثافته فيصعد","يتحرك هواء أبرد من فوق البحر نحو اليابسة ليحل محله"],"ex":"نهارًا تسخن اليابسة فيصعد الهواء فوقها. ثم يأتي الهواء الأبرد من البحر نحو اليابسة، وهذا هو نسيم البحر."},{"id":"sc52","topic":"breeze","level":2,"t":"mc","q":"ليلًا على شاطئ الوكرة، أين يصعد الهواء الأدفأ نسبيًا؟","choices":["فوق اليابسة","لا يصعد الهواء ليلًا","فوق البحر","فوق اليابسة والبحر بالتساوي"],"ans":2,"ex":"ليلًا تبرد اليابسة أسرع فيكون البحر أدفأ نسبيًا. فيصعد الهواء فوق البحر ويتحرك الهواء من اليابسة نحوه، وهذا نسيم البر."},{"id":"sc53","topic":"breeze","level":3,"t":"corr","q":"اختر التصحيح المناسب: «نهارًا يهب نسيم البر من اليابسة إلى البحر لأن اليابسة أبرد».","choices":["نهارًا يهب نسيم البحر من البحر إلى اليابسة لأن اليابسة أسخن","نهارًا يهب نسيم البر من البحر إلى اليابسة لأن البحر أسخن","نهارًا لا تهب أي رياح لأن الحرارة متساوية","نهارًا يهب نسيم البحر من اليابسة إلى البحر لأن البحر أبرد"],"ans":0,"ex":"في النهار تكون اليابسة أسخن، فيصعد الهواء فوقها ويأتي هواء البحر نحوها. اسم هذه الرياح نسيم البحر، والرياح تُسمّى بالجهة التي تأتي منها."},{"id":"sc54","topic":"breeze","level":1,"t":"fi","q":"في المساء يلاحظ صياد أن الريح تتجه من الشاطئ نحو الماء. اسم هذه الريح: نسيم ……","ans":["البر","بر","Land breeze","land breeze"],"hint":"كلمة واحدة","ex":"ليلًا يكون البحر أدفأ نسبيًا فيصعد الهواء فوقه. فيتحرك الهواء من اليابسة إليه، ويُسمّى نسيم البر."},{"id":"sc55","topic":"breeze","level":3,"t":"mc","q":"لماذا يجب أن ينتبه ممارس الرياضة المائية بلوح طافٍ إلى نسيم البر في المساء؟","choices":["لأنه يدفعه نحو الشاطئ بقوة","لأنه يرفع حرارة الماء فجأة","لأنه يتوقف تمامًا في المساء","لأنه يهب من اليابسة نحو البحر فقد يدفعه بعيدًا عن الشاطئ"],"ans":3,"ex":"نسيم البر يتحرك من اليابسة إلى البحر. لذلك قد يدفع الشخص بعيدًا عن الشاطئ، ومعرفة اتجاه الريح مهمة للسلامة."},{"id":"sc56","topic":"infrared","level":1,"t":"mc","q":"يريد يوسف غطاءً لسيارته يجعلها تمتص أقل قدر من الأشعة تحت الحمراء تحت الشمس. أي سطح يختار؟","choices":["أسود باهت","رمادي داكن خشن","بني داكن غير لامع","فضي لامع"],"ans":3,"ex":"الأسطح الفاتحة اللامعة ضعيفة الامتصاص وضعيفة الإشعاع. أما الداكنة الباهتة فجيدة في الاثنين."},{"id":"sc57","topic":"infrared","level":2,"t":"match","q":"صِل كل هدف بنوع السطح الأنسب له:","pairs":[["مشعاع تدفئة يبث الحرارة جيدًا","سطح داكن باهت"],["سقف بيت يقلل امتصاص حرارة الشمس صيفًا","سطح فاتح لامع"],["لوح يمتص حرارة الشمس لتسخين الماء","سطح أسود باهت"]],"ex":"الداكن الباهت جيد في الإشعاع والامتصاص، فنختاره للبث أو للامتصاص. والفاتح اللامع نختاره لتقليل الامتصاص."},{"id":"sc58","topic":"infrared","level":2,"t":"mc","q":"في الفضاء بين الشمس والأرض لا توجد جسيمات مادة تقريبًا. أي طريقة لانتقال الحرارة تستطيع عبور هذا الفضاء؟","choices":["التوصيل","الحمل","الإشعاع بموجات الأشعة تحت الحمراء","التوصيل والحمل معًا"],"ans":2,"ex":"الفراغ لا جسيمات فيه، فلا يحدث فيه توصيل ولا حمل. الإشعاع وحده يعبر الفراغ."},{"id":"sc59","topic":"infrared","level":3,"t":"mc","q":"عُلبتان متماثلتان فيهما ماء ساخن بالدرجة نفسها: الأولى سوداء باهتة والثانية فضية لامعة. أيهما يُتوقع أن تبرد أسرع؟ ولماذا؟","choices":["الفضية اللامعة لأنها جيدة الإشعاع","تبردان معًا لأن اللون لا يؤثر","الفضية اللامعة لأنها تمتص الحرارة أكثر","السوداء الباهتة لأنها جيدة الإشعاع"],"ans":3,"ex":"السطح الداكن الباهت يشع الحرارة جيدًا فيفقد الماء طاقته أسرع. أما الفضي اللامع فضعيف الإشعاع فيحتفظ بالحرارة مدة أطول."},{"id":"sc60","topic":"infrared","level":3,"t":"mc","q":"تريد شركة تصميم خزان ماء على سطح بيت في قطر يبقى ماؤه أقل سخونة صيفًا. أي لون أنسب للخزان من الخارج؟","choices":["أسود باهت","أبيض لامع","بني داكن","أزرق داكن باهت"],"ans":1,"ex":"السطح الفاتح اللامع ضعيف امتصاص الأشعة تحت الحمراء. لذلك يمتص الخزان حرارة أقل من الشمس فيبقى ماؤه أبرد."}];
+var META = {"subject":"العلوم","n":60,"topics":[{"id":"circ-heart","title":"الرياضة ومعدل دقات القلب","points":["معدل دقات القلب = عدد الدقات في دقيقة واحدة، وفي الراحة عادة 60–100.","النبض موجة في جدار الشريان نحسّها عند المعصم أو الرقبة بإصبعين.","مع الرياضة يزيد المعدل لإيصال أكسجين وجلوكوز أكثر للعضلات وطرح الفضلات."]},{"id":"circ-blood","title":"تلاؤم الدم مع وظائفه","points":["البلازما سائل ينقل الغذاء والفضلات والهرمونات.","الخلايا الحمراء مقعرة الوجهين بلا نواة وفيها هيموغلوبين يحمل الأكسجين.","الخلايا البيضاء تحارب الميكروبات، والصفائح تساعد على تجلط الدم."]},{"id":"circ-health","title":"صحة الجهاز الدوري","points":["التمرين المنتظم يقوّي القلب ويحافظ على الأوعية.","الدهون المشبعة الكثيرة تكوّن ترسبات تضيّق الأوعية.","نقص الحديد يقلل الهيموغلوبين وقد يسبب فقر الدم والتعب."]},{"id":"energy","title":"تحول الطاقة وحفظها","points":["الطاقة هي القدرة على بذل شغل، ووحدتها الجول (J).","الطاقة لا تفنى ولا تُستحدث، بل تتحول من شكل إلى آخر.","في كل تحول جزء مفيد وجزء مُبدَّد، ومخطط سانكي يوضح ذلك."]},{"id":"transfer","title":"طرائق انتقال الحرارة الثلاث","points":["التوصيل: اهتزاز الجسيمات وتصادمها، خاصة في المواد الصلبة.","الحمل: حركة الموائع (سوائل وغازات) بسبب اختلاف الكثافة.","الإشعاع: موجات (مثل تحت الحمراء) تعبر الفراغ دون جسيمات."]},{"id":"conduction","title":"استقصاء التوصيل","points":["الفلزات موصلات جيدة، والخشب والبلاستيك عوازل.","النحاس أكثر توصيلًا من الألومنيوم والفولاذ في مقارنة الدرس.","الاختبار العادل: نغيّر نوع المادة فقط ونثبّت الباقي."]},{"id":"insulation","title":"العوازل المنزلية","points":["العوازل تبطئ انتقال الطاقة فتحافظ على حرارة المبنى صيفًا وشتاءً.","المواد التي تحبس هواءً ساكنًا عوازل جيدة.","للمقارنة العادلة: نفس السماكة ونفس الزمن ونغيّر نوع المادة فقط."]},{"id":"convection","title":"تيارات الحمل","points":["المائع الساخن تقل كثافته فيصعد، والبارد أكثف فيهبط.","الصعود والهبوط المتكرر يكوّن دورة اسمها تيار الحمل.","الحمل لا يحدث في المواد الصلبة."]},{"id":"conv-apps","title":"تطبيقات الحمل","points":["عنصر التسخين يوضع في الأسفل ليصعد الساخن وتتكوّن الدورة.","المكيفات توضع قرب السقف لأن الهواء البارد يهبط.","برودة المبنى تعتمد على موضع التبريد والعزل والتصميم."]},{"id":"breeze","title":"نسيم البر والبحر","points":["اليابسة تسخن وتبرد أسرع من البحر.","نهارًا: نسيم البحر يهب من البحر نحو اليابسة.","ليلًا: نسيم البر يهب من اليابسة نحو البحر."]},{"id":"infrared","title":"الأشعة تحت الحمراء","points":["الأشعة تحت الحمراء تنقل الحرارة ويمكنها عبور الفراغ.","الأسطح الداكنة الباهتة جيدة الإشعاع وجيدة الامتصاص.","الأسطح الفاتحة اللامعة ضعيفة الإشعاع وضعيفة الامتصاص."]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = shuffle(opts);
+      item.ans = q.ans;
+      item.ansH = q.choices[q.ans];
+    }
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        shuffle(qs).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        shuffle(rest).forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    $('qmeta').innerHTML = '<span class="kind">'+(KINDS[q.t]||'')+'</span><span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qtext').innerHTML = q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = n+' سؤالاً شاملًا موزّعة على '+nt+' دروس، بثلاثة مستويات وأنواع متنوعة. يمكنك حل المادة كاملة، أو درسًا واحدًا، أو اختبارًا عشوائيًا من 20.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>
