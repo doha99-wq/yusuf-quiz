@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1e3a5f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>English practice — Term 1 end-of-term</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#1e3a5f;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go{flex:none;min-width:100px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 12px}
+.fi .go[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar{direction:rtl;text-align:right}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>English practice — Term 1 end-of-term</h1>
+  <p>Yusuf • Grade 8/1 • Modules 3 and 4 • explanations in Arabic</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>Scope (from weekly letters after midterm, plus the school’s “General revision”; no separate published MOEHE end-of-term table was found for English):</b> Module 3 — Present Perfect vs Past Simple, education collocations, giving news. Module 4 — Past Simple vs Past Progressive, -ed/-ing adjectives, sequencing past events, linking words (time, contrast, result, reason), and story writing. This week’s short quiz is on 4b and 4c; the end-of-term practice covers Modules 3 and 4 as taught since 1 November.<br>
+Written exam: Tuesday 8 December 2026, 8:00–9:30. Speaking and Listening (Paper 1) in class from 24 November to 3 December.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <button type="button" class="big" id="begin">ابدأ التدريب ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card">
+    <span class="kind" id="kind"></span>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big" id="restart" style="background:#163248;margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="endterm-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="endterm-index.html">كل مواد نهاية الفصل</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"en1","t":"mc","q":"Aisha <b>has lived</b> in Doha since 2020. We use the Present Perfect here because:","choices":["the action started in the past and continues to now","the action happened only once in 2010 and finished then","it is happening at this exact second only","it is a future plan"],"ans":0,"ex":"نستخدم المضارع التام (has/have + V3) لحدث بدأ في الماضي وما زال مستمراً أو له أثر الآن، وغالباً مع since و for."},{"id":"en2","t":"mc","q":"Choose the correct sentence:","choices":["I visited my uncle last Friday.","I have visited my uncle last Friday.","I was visit my uncle last Friday.","I visiting my uncle last Friday."],"ans":0,"ex":"مع وقت محدد في الماضي (last Friday) نستخدم Past Simple، لا Present Perfect."},{"id":"en3","t":"tf","q":"We use the Present Perfect with time expressions like <b>yesterday</b>, <b>last week</b> and <b>in 2019</b>.","ans":false,"ex":"خطأ. هذه الظروف للماضي التام الانقطاع (Past Simple). المضارع التام يناسب: ever, never, already, yet, since, for, just."},{"id":"en4","t":"mc","q":"While Hamad <b>was trying</b> to take a photo, he <b>dropped</b> the camera. The longer background action is:","choices":["was trying (Past Progressive)","dropped (Past Simple)","both are short finished actions only","a future form"],"ans":0,"ex":"Past Progressive يصف الحدث الأطول المستمر، وPast Simple يصف الحدث الأقصر الذي قطعه (أسقط الكاميرا)."},{"id":"en5","t":"mc","q":"It was a quiet morning. The sun <b>was shining</b> and the birds <b>were singing</b>. We use the Past Progressive to:","choices":["describe the background scene of a story","talk about a habit in the future","form the Present Perfect","give a command"],"ans":0,"ex":"من استعمالات الماضي المستمر: وصف خلفية القصة (المشهد) عندما بدأت الأحداث."},{"id":"en6","t":"tf","q":"Tom and I were talking while the children were riding their bikes. This shows two actions in progress at the same time in the past.","ans":true,"ex":"صحيح. الماضي المستمر + while يصف عملين كانا جاريين معاً في الماضي."},{"id":"en7","t":"mc","q":"Yesterday’s match was very <b>______</b>. Our team lost.","choices":["disappointing","disappointed","disappoint","disappoints"],"ans":0,"ex":"الصفات بـ -ing تصف الشيء (المباراة مخيّبة). الصفات بـ -ed تصف شعور الشخص (نحن disappointed)."},{"id":"en8","t":"mc","q":"Aisha was <b>frightened</b> when she got stuck in the lift. The adjective describes:","choices":["Aisha’s feeling","the lift as a scary thing only, so we must say frightening here","a future plan","the Present Perfect"],"ans":0,"ex":"frightened = شعور عائشة. أما frightening فتصف الشيء المخيف نفسه."},{"id":"en9","t":"fi","q":"Complete: At 8 o’clock yesterday I ______ (ride) my bike to school. Write two words: was riding","ans":["was riding","I was riding"],"hint":"was/were + verb-ing","ex":"عند نقطة زمنية محددة في الماضي (at 8 o’clock yesterday) نستخدم Past Progressive: was riding."},{"id":"en10","t":"mc","q":"Choose the best linking word: I was tired, <b>______</b> I went to bed early.","choices":["so","although","but","while"],"ans":0,"ex":"so تعبّر عن النتيجة (result). although و but للتعارض، و while للزمن أو المقابلة."},{"id":"en11","t":"mc","q":"<b>Although</b> it was raining, we continued the match. Although shows:","choices":["contrast","result","reason only, like because","a date in the past"],"ans":0,"ex":"although / but / however للتعارض (contrast). because للسبب، so / therefore للنتيجة."},{"id":"en12","t":"tf","q":"We can use <b>because</b> to show a reason, and <b>so</b> to show a result.","ans":true,"ex":"صحيح. Linking words في الوحدة الرابعة تشمل الزمن، والتعارض، والنتيجة، والسبب."},{"id":"en13","t":"mc","q":"A good story in Module 4 writing should:","choices":["present events in a logical order with a clear beginning, middle and ending","list only ten Present Perfect verbs with no plot","avoid any time words","be a set of rules, not events"],"ans":0,"ex":"الكتابة في الوحدة الرابعة قصة: ترتّب الأحداث منطقياً، وتستخدم أزمنة الماضي وروابط التسلسل."},{"id":"en14","t":"mc","q":"I <b>have never eaten</b> sushi. The sentence talks about:","choices":["life experience up to now","a finished action at 6 p.m. yesterday","what I will do tomorrow","an action in progress at 8 a.m. yesterday"],"ans":0,"ex":"have never + V3 خبرة حياتية حتى الآن، وهو استعمال أساسي للمضارع التام في الوحدة الثالثة."},{"id":"en15","t":"mc","q":"Ali <b>went</b> to Spain two summers ago. He <b>hasn’t been</b> there since then. The forms are:","choices":["Past Simple, then Present Perfect","Present Perfect, then Past Simple","two Past Progressive verbs","two future forms"],"ans":0,"ex":"two summers ago يحتاج Past Simple (went). since then يناسب Present Perfect (hasn’t been)."},{"id":"en16","t":"tf","q":"The new ride looks really <b>exciting</b>, and the children are <b>excited</b> about it. Both adjectives are used correctly.","ans":true,"ex":"صحيح. exciting تصف الأفعوانية، وexcited تصف شعور الأطفال."},{"id":"en17","t":"mc","q":"As I was climbing a tree, a branch <b>broke</b> and I fell. Why Past Simple for <b>broke</b>?","choices":["it is the short completed action that happened during the longer one","it was still in progress for hours after the fall","it is a general truth in the present","it is Present Perfect with since"],"ans":0,"ex":"التسلق كان مستمراً (was climbing)، ثم انكسر الغصن وسقط: حدثان مكتملان قصيران بالماضي البسيط."},{"id":"en18","t":"mc","q":"Which time-sequence linker fits: First we packed. <b>______</b> we took a taxi to the station.","choices":["Then","However","Because","Although"],"ans":0,"ex":"Then / next / after that روابط تسلسل زمني. However و Although تعارض، و Because سبب."},{"id":"en19","t":"fi","q":"Complete with one word: I have lived here ______ 2021.","ans":["since"],"hint":"since or for","ex":"since + نقطة زمنية (2021). for + مدة (for three years)."},{"id":"en20","t":"mc","q":"Module 3 also practises writing an email that:","choices":["gives news and can respond to good or bad news","explains a science experiment only","lists Ottoman sultans","describes Alice collision events"],"ans":0,"ex":"من مهارات الوحدة الثالثة: تبادل الأخبار في بريد إلكتروني، والرد على خبر سار أو سيئ، إلى جانب الأزمنة."},{"id":"en21","t":"tf","q":"“I was wearing my pyjamas when my friends came to visit.” The first action was in progress; the second interrupted it.","ans":true,"ex":"صحيح. هذا النمط الأساسي: Past Progressive + when + Past Simple."},{"id":"en22","t":"mc","q":"Choose the correct option: Hiking on a hot day can be very <b>______</b>.","choices":["exhausting","exhausted","exhausts","exhaustingest"],"ans":0,"ex":"نصف النشاط (المشي في الحر) بـ exhausting. الشخص يشعر بأنه exhausted."},{"id":"en23","t":"mc","q":"“Yet” in “I haven’t taken my driving test <b>yet</b>” means:","choices":["up to now, the test has not happened","the test happened last month","the test is happening right now","the test is a past background scene"],"ans":0,"ex":"yet تُستخدم غالباً في النفي أو السؤال مع Present Perfect بمعنى «حتى الآن»."},{"id":"en24","t":"mc","q":"Which sentence is correct?","choices":["She was reading when the lights went out.","She read when the lights were go out.","She has read when the lights go out yesterday.","She reading when the lights went out."],"ans":0,"ex":"النمط الصحيح: was reading (مستمر) + when + went out (حدث قصير مكتمل)."}];
+var META = {"subject": "اللغة الإنجليزية", "n": 24};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full'};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+
+  function prepare(list){
+    return list.map(function(q, idx){
+      var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||''};
+      if(q.t==='tf'){
+        item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+        item.ans = !!q.ans;
+        item.ansH = item.ans ? 'صح' : 'خطأ';
+      } else if(q.t==='fi'){
+        item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+        item.ansH = item.accepted[0];
+      } else {
+        var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+        item.opts = shuffle(opts);
+        item.ans = q.ans;
+        item.ansH = q.choices[q.ans];
+      }
+      return item;
+    });
+  }
+
+  function begin(list, mode){
+    state.qs = prepare(list);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!state.qs.length){ return; }
+    show('quiz');
+    render();
+  }
+
+  function render(){
+    var q = state.qs[state.i], n=state.qs.length;
+    state.answered = false;
+    $('prog').textContent = 'سؤال ' + (state.i+1) + ' / ' + n;
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (state.i/n*100) + '%';
+    $('kind').textContent = KINDS[q.t]||'';
+    $('qtext').innerHTML = q.q;
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('next').textContent = (state.i===n-1) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    var area = $('area'); area.innerHTML = '';
+    if(q.t==='fi'){
+      var wrap=document.createElement('div'); wrap.className='fi';
+      var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+      inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+      var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+      wrap.appendChild(inp); wrap.appendChild(go); area.appendChild(wrap);
+      go.onclick=function(){ submitFi(); };
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+      setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+    } else {
+      var box=document.createElement('div'); box.className='opts';
+      q.opts.forEach(function(o){
+        var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+        b.addEventListener('click', function(){ choose(o.k, b); });
+        box.appendChild(b);
+      });
+      area.appendChild(box);
+    }
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('.opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){ if(norm(q.accepted[i])===nval){ ok=true; break; } }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    $('next').focus();
+  }
+
+  function next(){
+    if(!state.answered) return;
+    if(state.i>=state.qs.length-1){ end(); return; }
+    state.i++; render();
+  }
+
+  function end(){
+    var n=state.qs.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    show('end');
+  }
+
+  $('intro').textContent = BANK.length + ' سؤالاً متنوعاً (اختيار من متعدد، صح وخطأ، وملء فراغ). خذ وقتك يا يوسف.';
+  $('begin').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){
+      var orig=null;
+      for(var i=0;i<BANK.length;i++){ if((BANK[i].id||'')===(r.q.id||'') && BANK[i].q===r.q.q){ orig=BANK[i]; break; } }
+      return orig;
+    }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed');
+  });
+  $('home').addEventListener('click', function(){
+    if(state.i===0 && !state.answered){ show('start'); return; }
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>

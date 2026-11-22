@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#15803d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب التربية الإسلامية — نهاية الفصل الأول</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#15803d;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go{flex:none;min-width:100px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 12px}
+.fi .go[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar{direction:rtl;text-align:right}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب التربية الإسلامية — نهاية الفصل الأول</h1>
+  <p>يوسف • الصف الثامن / 1 • ما دُرّس بعد منتصف الفصل</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق (من الرسائل الأسبوعية بعد اختبار منتصف الفصل، في غياب جدول مواصفات وزاري معلن لنهاية الفصل 2026–2027):</b> التجارة الرابحة (تفسير سورة الصف 10–14)، حق الطريق، حفظ سورة الحاقة، سنن الفطرة، مصعب بن عمير رضي الله عنه، والمسؤولية الأخلاقية في استخدام وسائل التواصل الاجتماعي. يُعد هذا النطاق افتراضاً مبنياً على ما دُرّس منذ مطلع نوفمبر، وليس جدولاً وزارياً مطبوعاً لنهاية الفصل.<br>
+الاختبار التحريري يوم الاثنين 14 ديسمبر 2026، مع اختبار شفهي في القرآن الكريم ضمن الحصص.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <button type="button" class="big" id="begin">ابدأ التدريب ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card">
+    <span class="kind" id="kind"></span>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big" id="restart" style="background:#163248;margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="endterm-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="endterm-index.html">كل مواد نهاية الفصل</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"is1","t":"mc","q":"سنن الفطرة هي أعمال أمرنا الله بها من أجل:","choices":["المحافظة على النظافة وحسن الهيئة بما يوافق الطبيعة السليمة","زيادة المال فقط","ترك النظافة في السفر","إبطال الوضوء"],"ans":0,"ex":"يعرف الكتاب سنن الفطرة بأنها أعمال أمرنا الله بها للمحافظة على النظافة وحسن الهيئة، وتتوافق مع الطبيعة السليمة للإنسان."},{"id":"is2","t":"mc","q":"من سنن الفطرة الواردة في حديث أبي هريرة رضي الله عنه:","choices":["الختان وقص الشارب وتقليم الأظفار ونتف الإبط والاستحداد","صيام الدهر كله","ترك الأسنان دون عناية","حلق شعر الرأس يومياً وجوباً"],"ans":0,"ex":"الحديث المتفق عليه: «الفطرة خمس: الختان، والاستحداد، ونتف الإبط، وقص الشارب، وتقليم الأظفار». ويُذكر السواك أيضاً ضمن سنن الفطرة في الدرس."},{"id":"is3","t":"tf","q":"السواك مستحب، ويُستحب عند الوضوء والصلاة وتغيّر رائحة الفم وقراءة القرآن.","ans":true,"ex":"صحيح. حكمه الاستحباب، ومن مواضع استحبابه: الوضوء، الصلاة، القيام من النوم، تغيّر الفم، دخول البيت، وقراءة القرآن."},{"id":"is4","t":"fi","q":"إزالة ما يزيد من الظفر عن رأس الإصبع تُسمّى …… الأظفار.","ans":["تقليم","قص","تقليم الأظفار"],"hint":"تقليم / قص","ex":"تقليم الأظفار من سنن الفطرة، وله فوائد صحية ونظافة ظاهرة."},{"id":"is5","t":"mc","q":"لماذا اختار النبي ﷺ مصعب بن عمير سفيراً إلى المدينة بعد بيعة العقبة الأولى؟","choices":["لقوة إيمانه ورجاحة عقله وحسن خلقه وحكمته في الدعوة","لأنه كان أكبر أهل مكة سناً فقط","لأنه رفض تعلم القرآن","لأنه لم يقابل أحداً من الأنصار"],"ans":0,"ex":"نص الكتاب: اختاره النبي ﷺ لقوة الإيمان، وثبات العقيدة، ورجاحة العقل، والحماس، وحسن الخلق، والحكمة في الدعوة."},{"id":"is6","t":"mc","q":"مصعب بن عمير رضي الله عنه هو:","choices":["السفير الأول للإسلام إلى المدينة، ومعلّم أهلها أمور دينهم","أول خليفة بعد النبي ﷺ","فاتح القسطنطينية","كاتب صلح الحديبية فقط"],"ans":0,"ex":"بعد بيعة العقبة الأولى أرسله النبي ﷺ ليعلّم من أسلم من أهل المدينة ويؤمهم في الصلاة، وهو السفير الأول للإسلام."},{"id":"is7","t":"tf","q":"أسلم على يد مصعب في المدينة سادات مثل أسيد بن حضير وسعد بن معاذ بعد أن استمعوا إليه بهدوء وحكمة.","ans":true,"ex":"صحيح. استقبل أسيد بن حضير مصعباً بشدة أولاً، ثم جلس واستمع فأسلم، وتبعه سعد بن معاذ وغيره، حتى ظهر الإسلام في بيوت الأنصار."},{"id":"is8","t":"mc","q":"في غزوة أحد كان مصعب بن عمير رضي الله عنه:","choices":["حامل اللواء وقاتل حتى استُشهد دفاعاً عن الراية وعن رسول الله ﷺ","في مكة لم يحضر المعركة","قائد الرماة الذين تركوا الجبل","كاتب الجيش فقط"],"ans":0,"ex":"كان حامل اللواء كما في بدر، وشُغِل المشركين عن رسول الله ﷺ حتى قُطعت يداه واستُشهد بعد طعنة رمح، ودُفن في أحد."},{"id":"is9","t":"mc","q":"من حقوق الطريق الواردة في الهدي النبوي:","choices":["غض البصر وكف الأذى ورد السلام والأمر بالمعروف والنهي عن المنكر","رفع الصوت بالخصام وتعويق المارة","تصوير الناس بغير إذنهم","إغلاق الطريق للعب دائماً"],"ans":0,"ex":"إذا جلس الناس في الطرقات فحق الطريق: غض البصر، وكف الأذى، ورد السلام، والأمر بالمعروف، والنهي عن المنكر."},{"id":"is10","t":"tf","q":"كف الأذى في الطريق يشمل عدم إيذاء المارة بالقول أو الفعل أو إعاقة الطريق.","ans":true,"ex":"صحيح. كف الأذى معنى واسع: لا ضرر ولا ضيق على الناس في طريقهم."},{"id":"is11","t":"mc","q":"سُمّيت سورة الحاقة بهذا الاسم لأن:","choices":["فيها ذكر القيامة التي هي حق واقع لا ريب فيه","فيها أحكام الزكاة فقط","نزلت كلها في غزوة أحد","موضوعها التجارة في مكة"],"ans":0,"ex":"الحاقة من أسماء يوم القيامة، سُمّيت بذلك لأنها حق ثابت يقع لا محالة. السورة من محفوظاتكم هذا الفصل (آيات متدرجة حتى 52)."},{"id":"is12","t":"tf","q":"سورة الحاقة تتحدث عن يوم القيامة وعن مصارع بعض الأمم المكذبة.","ans":true,"ex":"صحيح. السورة تصوّر أهوال القيامة، وتذكّر بمصير ثمود وعاد وفرعون ومن كذّبوا."},{"id":"is13","t":"mc","q":"«التجارة الرابحة» في تفسير سورة الصف (10–14) تعني أساساً:","choices":["الإيمان بالله ورسوله والجهاد في سبيل الله تجارة تنجي من العذاب","ربح الذهب في السوق فقط","ترك الصلاة من أجل البيع","الاحتكار لرفع الأسعار"],"ans":0,"ex":"الآيات: «يا أيها الذين آمنوا هل أدلكم على تجارة تنجيكم من عذاب أليم: تؤمنون بالله ورسوله وتجاهدون في سبيل الله…». فالتجارة الرابحة هي الإيمان والعمل في سبيل الله."},{"id":"is14","t":"mc","q":"من المسؤولية الأخلاقية عند استخدام وسائل التواصل:","choices":["الصدق والتثبت واحترام الخصوصية وعدم نشر الشائعات أو الإيذاء","نشر كل خبر بسرعة دون تحقق","استخدام حسابات مزيفة للنميمة","تصوير الناس في الطريق بلا علمهم دائماً"],"ans":0,"ex":"الدرس يربط الأخلاق الإسلامية باستخدام المنصات: صدق، تثبت، حفظ أعراض الناس وأسرارهم، وترك التنمر والإشاعة."},{"id":"is15","t":"tf","q":"يجوز شرعاً نشر صورة شخص أو سرّه على الإنترنت بغير إذنه لأن المنصات عامة.","ans":false,"ex":"خطأ. احترام الخصوصية من المسؤولية الأخلاقية، ونشر الصور والأسرار بغير إذن أذى وغيبة أو اعتداء على الحق الخاص."},{"id":"is16","t":"mc","q":"مقارنة حال مصعب قبل إسلامه وبعده تُظهر أنه:","choices":["ترك حياة الترف وتمسّك بالإسلام رغم ضيق العيش","ازداد ترفاً بعد الإسلام","عاد عن الإسلام حين ضُيّق عليه","لم يتغير شيء في حياته"],"ans":0,"ex":"كان من أكثر شباب مكة نعمة وترفاً، ثم ضحّى بذلك لتمسكه بالإسلام حتى عرف بالثوب المتواضع، وهذا من دروس القدوة في سيرته."},{"id":"is17","t":"mc","q":"بعد نجاح مصعب في المدينة عاد في موسم الحج التالي ومعه:","choices":["وفد بايع بيعة العقبة الثانية (نحو سبعين رجلاً وامرأتان)","جيش لقتال قريش فوراً في مكة","لا أحد، فقد فشلت الدعوة","سكان الطائف جميعاً"],"ans":0,"ex":"نص الكتاب: عاد على رأس وفد عدده سبعون رجلاً وامرأتان من المؤمنين، بايعوا الرسول ﷺ بيعة العقبة الثانية."},{"id":"is18","t":"tf","q":"قص الشارب من سنن الفطرة، أما إعفاء اللحية فيُذكر في سياق الهيئة الموافقة للسنة.","ans":true,"ex":"صحيح. قص الشارب ورد صراحة في حديث الفطرة الخمس. والعناية بالهيئة من أهداف الدرس."},{"id":"is19","t":"mc","q":"من آفات التواصل الاجتماعي التي يحذّر منها درس المسؤولية الأخلاقية:","choices":["الشائعات والتنمر وإضاعة الوقت والكذب","صلة الرحم بالكلمة الطيبة","نشر العلم النافع بصدق","رد السلام والنصيحة بأدب"],"ans":0,"ex":"المسؤولية تعني استعمال هذه الوسائل في الخير، وترك الشائعة والتنمر والكذب وإضاعة الأوقات عن الصلاة والواجبات."},{"id":"is20","t":"fi","q":"حامل لواء المسلمين يوم أحد من هذا الدرس هو …… بن عمير.","ans":["مصعب","مصعب بن عمير"],"hint":"مصعب","ex":"مصعب بن عمير رضي الله عنه حامل اللواء يوم أحد، واستُشهد هناك."},{"id":"is21","t":"mc","q":"معنى «الاستحداد» ضمن سنن الفطرة:","choices":["حلق شعر العانة","قص الأظفار فقط","السواك عند النوم","الختان"],"ans":0,"ex":"الاستحداد: إزالة شعر العانة، وهو من الخمس المذكورة في الحديث. لا تخلطه بتقليم الأظفار أو الختان."},{"id":"is22","t":"tf","q":"من استخدم فرشاة الأسنان ومعجونها للعناية بأسنانه فقد أخذ بمعنى السواك في التنظيف، مع بقاء فضل السواك في السنة.","ans":true,"ex":"الكتاب يفتح مجال العناية بالفم بالفرشاة والمعجون، مع بيان فضل السواك النبوي وأنه مطهرة للفم مرضاة للرب."},{"id":"is23","t":"mc","q":"حق رد السلام في الطريق يعني:","choices":["إفشاء السلام وردّه على من سلّم","تجاهل المارة دائماً","الرد بالسب إذا أُسيء إليك فقط","السلام بالإشارة في مواقع الأذى دون كلمة أبداً في كل حال"],"ans":0,"ex":"من حقوق الطريق رد السلام، وهو من شعائر الإسلام التي تزرع الألفة وتكف الأذى."},{"id":"is24","t":"mc","q":"من دروس حوار مصعب مع أسيد بن حضير:","choices":["الهدوء والحكمة والإنصاف في الدعوة خير من المواجهة العنيفة","رفع الصوت دائماً يفتح القلوب","ترك الدعوة عند أول اعتراض","السخرية ممن يخالفك"],"ans":0,"ex":"قال مصعب: اجلس فاستمع، فإن رضيت قبلت، وإن كرهت كففنا. فأنصفه أسيد ثم أسلم. هذا أسلوب دعوي راقٍ."}];
+var META = {"subject": "التربية الإسلامية", "n": 24};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full'};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+
+  function prepare(list){
+    return list.map(function(q, idx){
+      var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||''};
+      if(q.t==='tf'){
+        item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+        item.ans = !!q.ans;
+        item.ansH = item.ans ? 'صح' : 'خطأ';
+      } else if(q.t==='fi'){
+        item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+        item.ansH = item.accepted[0];
+      } else {
+        var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+        item.opts = shuffle(opts);
+        item.ans = q.ans;
+        item.ansH = q.choices[q.ans];
+      }
+      return item;
+    });
+  }
+
+  function begin(list, mode){
+    state.qs = prepare(list);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!state.qs.length){ return; }
+    show('quiz');
+    render();
+  }
+
+  function render(){
+    var q = state.qs[state.i], n=state.qs.length;
+    state.answered = false;
+    $('prog').textContent = 'سؤال ' + (state.i+1) + ' / ' + n;
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (state.i/n*100) + '%';
+    $('kind').textContent = KINDS[q.t]||'';
+    $('qtext').innerHTML = q.q;
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('next').textContent = (state.i===n-1) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    var area = $('area'); area.innerHTML = '';
+    if(q.t==='fi'){
+      var wrap=document.createElement('div'); wrap.className='fi';
+      var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+      inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+      var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+      wrap.appendChild(inp); wrap.appendChild(go); area.appendChild(wrap);
+      go.onclick=function(){ submitFi(); };
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+      setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+    } else {
+      var box=document.createElement('div'); box.className='opts';
+      q.opts.forEach(function(o){
+        var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+        b.addEventListener('click', function(){ choose(o.k, b); });
+        box.appendChild(b);
+      });
+      area.appendChild(box);
+    }
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('.opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){ if(norm(q.accepted[i])===nval){ ok=true; break; } }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    $('next').focus();
+  }
+
+  function next(){
+    if(!state.answered) return;
+    if(state.i>=state.qs.length-1){ end(); return; }
+    state.i++; render();
+  }
+
+  function end(){
+    var n=state.qs.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    show('end');
+  }
+
+  $('intro').textContent = BANK.length + ' سؤالاً متنوعاً (اختيار من متعدد، صح وخطأ، وملء فراغ). خذ وقتك يا يوسف.';
+  $('begin').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){
+      var orig=null;
+      for(var i=0;i<BANK.length;i++){ if((BANK[i].id||'')===(r.q.id||'') && BANK[i].q===r.q.q){ orig=BANK[i]; break; } }
+      return orig;
+    }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed');
+  });
+  $('home').addEventListener('click', function(){
+    if(state.i===0 && !state.answered){ show('start'); return; }
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>

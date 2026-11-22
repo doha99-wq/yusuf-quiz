@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6d28d9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب الحاسوب العملي — نهاية الفصل الأول</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#6d28d9;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go{flex:none;min-width:100px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 12px}
+.fi .go[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar{direction:rtl;text-align:right}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب الحاسوب العملي — نهاية الفصل الأول</h1>
+  <p>يوسف • الصف الثامن / 1 • Alice ص 130–164</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق من رسالة 22–26 نوفمبر صراحة:</b> مراجعة المهارات العملية، واختبار الحاسوب العملي لنهاية الفصل الأول من صفحة 130 حتى صفحة 164 في كتاب تكنولوجيا المعلومات (بيئة Alice: إنشاء لعبة ثلاثية الأبعاد، الأحداث والدوال، الجمل الشرطية، التصادم، وهياكل التحكم مثل التسلسل والتوازي).<br>
+الاختبار العملي في الحصص من 24 نوفمبر إلى 3 ديسمبر 2026، والاختبار التحريري يوم الثلاثاء 15 ديسمبر 2026.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <button type="button" class="big" id="begin">ابدأ التدريب ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card">
+    <span class="kind" id="kind"></span>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big" id="restart" style="background:#163248;margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="endterm-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="endterm-index.html">كل مواد نهاية الفصل</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"co1","t":"mc","q":"بيئة Alice التي تراجعونها في الصفحات 130–164 تُستخدم أساساً لـ:","choices":["إنشاء وتطوير ألعاب وعوالم ثلاثية الأبعاد","تحرير صور GIMP فقط في هذا النطاق","كتابة نظام تشغيل جديد","تصميم صفحات وزارة فقط"],"ans":0,"ex":"رسالة المدرسة ونطاق العملي يركزان على مهارات Alice: بناء عالم ثلاثي الأبعاد ولعبة بسيطة بالأحداث والدوال والتصادم."},{"id":"co2","t":"mc","q":"عند بدء العالم في Alice يُنفَّذ عادة الحدث:","choices":["When the world starts, do World.myFirstMethod","When the user prints a document in Word","When the computer shuts down only","When a PDF is opened"],"ans":0,"ex":"الحدث الافتراضي: عندما يبدأ العالم تُنفَّذ أوامر الدالة World.myFirstMethod، وتكون فارغة حتى نضع فيها التعليمات."},{"id":"co3","t":"mc","q":"لتحريك سيارة اللاعب بأسهم لوحة المفاتيح ننشئ حدثاً من نوع:","choices":["Let the arrow keys move subject","Do in order only, without an event","Save the world as an image","Print the scene"],"ans":0,"ex":"الكتاب: Create new event ثم اختيار Let the arrow keys move subject وربطه بكائن السيارة."},{"id":"co4","t":"tf","q":"يمكن جعل الكاميرا تتبع كائناً متحركاً (مثل السيارة) حتى يبقى في المشهد أثناء الحركة.","ans":true,"ex":"صحيح. نستخدم خاصية الكاميرا (مثل vehicle/follow) لتتبع الكائن دون تحريكها يدوياً في كل لحظة."},{"id":"co5","t":"mc","q":"التحقق من التصادم في اللعبة يعني:","choices":["اختبار ما إذا تلامس كائنان ثم تنفيذ رد فعل (إخفاء، إيقاف، نقاط)","حذف بيئة Alice","تغيير لغة نظام التشغيل","إغلاق نافذة الكود دائماً"],"ans":0,"ex":"في نهاية مسار أو عند اصطدام سيارة اللاعب بكائن خط النهاية أو عائق، نفحص التصادم ونظهر نصاً أو نخفيه أو ننهي الجولة."},{"id":"co6","t":"mc","q":"تركيب Do in order في Alice يعني أن التعليمات:","choices":["تُنفَّذ واحدة تلو الأخرى بالترتيب","تُنفَّذ كلها في اللحظة نفسها حتماً","لا تُنفَّذ أبداً","تُحذف بعد التشغيل الأول"],"ans":0,"ex":"Do in order = تسلسل: كل لبنة تنتظر انتهاء السابقة. معظم الدوال في Alice تبدأ بهذا التركيب."},{"id":"co7","t":"mc","q":"تركيب Do together يعني أن التعليمات:","choices":["تُنفَّذ معاً في الوقت نفسه (توازٍ)","تُنفَّذ بترتيب إجباري واحداً بعد الآخر فقط","تُترجم إلى لغة بايثون تلقائياً في هذا الدرس","توقف الكاميرا دائماً"],"ans":0,"ex":"Do together يتيح تزامن حركتين، مثل حركة السيارة وتشغيل صوت في آن واحد."},{"id":"co8","t":"tf","q":"الجمل الشرطية (If / Else) تسمح بتنفيذ أوامر مختلفة حسب تحقق شرط، كحدوث تصادم أو عدمه.","ans":true,"ex":"صحيح. الشرط أساس آليات اللعبة: إذا اصطدم الكائن فافعل كذا، وإلا فاستمر."},{"id":"co9","t":"fi","q":"فحص تلامس كائنين في Alice مهارة اسمها التحقق من ……","ans":["التصادم","تصادم","الاصطدام"],"hint":"التصادم","ex":"التحقق من التصادم (collision) مهارة واردة في نطاق الصفحات 130–164."},{"id":"co10","t":"mc","q":"الدالة (method / function) في Alice هي:","choices":["مجموعة أوامر نسميها ونستدعيها لتنفيذ سلوك الكائن أو العالم","صورة PNG فقط","حدث لوحة مفاتيح لا يحتوي أوامر","اسم الملف الشخصي للمعلم"],"ans":0,"ex":"الدوال تنظّم الكود: مثلاً myFirstMethod أو دالة حركة. الأحداث تستدعي الدوال عند وقوع شيء."},{"id":"co11","t":"mc","q":"الفرق المناسب: الحدث (Event) مقابل الدالة (Method):","choices":["الحدث يَرصد متى يحدث شيء، والدالة تحدّد ماذا يُنفَّذ","هما كلمة واحدة بلا فرق","الدالة لا يمكن استدعاؤها","الحدث يطبع أوراق الإملاء"],"ans":0,"ex":"الحدث: عندما تبدأ اللعبة أو يُضغط سهم. الدالة: جسم الأوامر الذي يُنفَّذ عند ذلك."},{"id":"co12","t":"tf","q":"Object في Alice كائن داخل المشهد (سيارة، شجرة، نص)، وWorld هو العالم الذي يحتوي المشهد والكائنات.","ans":true,"ex":"صحيح. عالم، مشهد، كائن: مستويات التنظيم في Alice كما في مراجعة الوحدة."},{"id":"co13","t":"mc","q":"إضافة نص ثلاثي الأبعاد على الشاشة (مثل «بداية» أو «لقد فزت») ثم إخفاؤه بعد التصادم مهارة من:","choices":["مراجعة المهارات العملية في نطاق الاختبار","تحرير الصوت في نظام أندرويد فقط","إعداد البريد الإلكتروني المدرسي","إحصاء السكان"],"ans":0,"ex":"الكتاب يدرّب على إضافة نص ثلاثي الأبعاد وإظهاره أو إخفائه حسب الأحداث، مثل وصول السيارة لخط النهاية."},{"id":"co14","t":"mc","q":"هيكل التكرار (Repetition / loop) يُستخدم لـ:","choices":["إعادة تنفيذ مجموعة أوامر مرات عدة أو بينما الشرط صحيح","تنفيذ الأمر مرة واحدة فقط دائماً","حذف الكائن من جهاز الحاسوب","إيقاف نظام التشغيل"],"ans":0,"ex":"التكرار من هياكل التحكم مع التسلسل والتوازي، ويختصر إعادة الحركة أو فحص التصادم باستمرار."},{"id":"co15","t":"tf","q":"من خطوات بناء لعبة بسيطة: إنشاء العالم، إضافة الكائنات، ضبط الأحداث، كتابة الدوال، ثم اختبار آليات اللعبة.","ans":true,"ex":"صحيح. هذا تسلسل المهارات العملية المطلوبة في مراجعة نهاية الفصل."},{"id":"co16","t":"mc","q":"إذا أردت أن تتحرك السيارة ويتغيّر منظر الكاميرا معها في الوقت نفسه، الأنسب:","choices":["Do together أو ربط الكاميرا بتتبع السيارة","Do in order لحركة السيارة بعد انتهاء اللعبة فقط","حذف حدث الأسهم","إيقاف عالم Alice قبل التشغيل"],"ans":0,"ex":"التزامن يكون بـ Do together، ومتابعة المشهد بخاصية تتبع الكاميرا للكائن."},{"id":"co17","t":"mc","q":"لماذا نختبر اللعبة (Test) بعد بناء الأحداث؟","choices":["للتحقق أن الشروط والتصادم والحركة تعمل كما خططنا","لأن الاختبار يلغي الحاجة إلى أي كود","حتى نبدّل Alice ببرنامج حساب","لأن الكتاب يمنع التشغيل"],"ans":0,"ex":"اختبار آليات اللعبة جزء من المهارات العملية: نكتشف الأخطاء قبل الاختبار العملي المدرسي."},{"id":"co18","t":"fi","q":"التركيب الذي ينفّذ الأوامر واحدة بعد الأخرى اسمه Do in ……","ans":["order","Order"],"hint":"order / together","ex":"Do in order = تسلسل. Do together = تزامن."},{"id":"co19","t":"mc","q":"حفظ العالم الافتراضي في Alice مهم حتى:","choices":["لا تضيع مشاهدك وكودك عند إغلاق البرنامج","يتصل الإنترنت تلقائياً بالمدرسة","يُطبع الكتاب المدرسي من جديد","يُلغى حدث لوحة المفاتيح"],"ans":0,"ex":"من مهارات الوحدة: حفظ العالم الافتراضي باستمرار أثناء التصميم، خصوصاً قبل الاختبار العملي."},{"id":"co20","t":"tf","q":"يمكن إضافة صوت إلى المشهد بوضعه في لوحة الكود وتشغيله ضمن تسلسل أو تزامن الحركة.","ans":true,"ex":"صحيح. الكتاب يشير إلى إمكانية إثراء العالم بالصوت ضمن التحكم في الكود."},{"id":"co21","t":"mc","q":"إذا اصطدمت سيارة اللاعب بخط النهاية فالمطلوب غالباً في التدريب:","choices":["تنفيذ أمر شرطي: إظهار رسالة الفوز أو إخفاء نص أو إيقاف الحركة","حذف نظام التشغيل","إرسال بريد إلى الصف تلقائياً","تحويل Alice إلى جدول بيانات"],"ans":0,"ex":"هذا تطبيق مباشر للشرط + التصادم، وهو من صميم صفحات النطاق 130–164."},{"id":"co22","t":"mc","q":"الخاصية Properties لكائن في Alice تتيح غالباً تعديل:","choices":["مظهره وموضعه وحجمه ولونه وروابط تتبعه","درجات اختبار الاجتماعيات","قواعد الأفعال الخمسة","معادلة ص = م س + ب"],"ans":0,"ex":"تبويب Properties للتحكم في خصائص الكائن، ومنها ما يُستخدم لجعل الكاميرا تتبعه."},{"id":"co23","t":"tf","q":"التحكم في الكائنات وتعديل حركتها ضمن عالم ثلاثي الأبعاد جزء من اختبار الحاسوب العملي لهذا النطاق.","ans":true,"ex":"صحيح. رسالة المدرسة: مراجعة المهارات العملية، والاختبار العملي من ص 130 إلى 164."},{"id":"co24","t":"mc","q":"أفضل ترتيب عملي قبل يوم الاختبار العملي:","choices":["راجع الأحداث والدوال والشرط والتصادم وهياكل التحكم ثم تمرّن على مشروع مشابه","احفظ المشروع دون أن تجرّبه أبداً","ارجئ فتح Alice حتى داخل اللجنة فقط من دون تدريب","احذف الكائنات كلها لتصغير الملف"],"ans":0,"ex":"المهارة العملية تُتقن بالتدريب: ابنِ عالماً بسيطاً، اربط الأحداث، افحص التصادم، واختبر التشغيل كما في الكتاب."}];
+var META = {"subject": "الحاسوب", "n": 24};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full'};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+
+  function prepare(list){
+    return list.map(function(q, idx){
+      var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||''};
+      if(q.t==='tf'){
+        item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+        item.ans = !!q.ans;
+        item.ansH = item.ans ? 'صح' : 'خطأ';
+      } else if(q.t==='fi'){
+        item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+        item.ansH = item.accepted[0];
+      } else {
+        var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+        item.opts = shuffle(opts);
+        item.ans = q.ans;
+        item.ansH = q.choices[q.ans];
+      }
+      return item;
+    });
+  }
+
+  function begin(list, mode){
+    state.qs = prepare(list);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!state.qs.length){ return; }
+    show('quiz');
+    render();
+  }
+
+  function render(){
+    var q = state.qs[state.i], n=state.qs.length;
+    state.answered = false;
+    $('prog').textContent = 'سؤال ' + (state.i+1) + ' / ' + n;
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (state.i/n*100) + '%';
+    $('kind').textContent = KINDS[q.t]||'';
+    $('qtext').innerHTML = q.q;
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('next').textContent = (state.i===n-1) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    var area = $('area'); area.innerHTML = '';
+    if(q.t==='fi'){
+      var wrap=document.createElement('div'); wrap.className='fi';
+      var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+      inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+      var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+      wrap.appendChild(inp); wrap.appendChild(go); area.appendChild(wrap);
+      go.onclick=function(){ submitFi(); };
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+      setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+    } else {
+      var box=document.createElement('div'); box.className='opts';
+      q.opts.forEach(function(o){
+        var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+        b.addEventListener('click', function(){ choose(o.k, b); });
+        box.appendChild(b);
+      });
+      area.appendChild(box);
+    }
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('.opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){ if(norm(q.accepted[i])===nval){ ok=true; break; } }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    $('next').focus();
+  }
+
+  function next(){
+    if(!state.answered) return;
+    if(state.i>=state.qs.length-1){ end(); return; }
+    state.i++; render();
+  }
+
+  function end(){
+    var n=state.qs.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    show('end');
+  }
+
+  $('intro').textContent = BANK.length + ' سؤالاً متنوعاً (اختيار من متعدد، صح وخطأ، وملء فراغ). خذ وقتك يا يوسف.';
+  $('begin').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){
+      var orig=null;
+      for(var i=0;i<BANK.length;i++){ if((BANK[i].id||'')===(r.q.id||'') && BANK[i].q===r.q.q){ orig=BANK[i]; break; } }
+      return orig;
+    }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed');
+  });
+  $('home').addEventListener('click', function(){
+    if(state.i===0 && !state.answered){ show('start'); return; }
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>

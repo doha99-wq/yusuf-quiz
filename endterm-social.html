@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#9f1239">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>تدريب الاجتماعيات — نهاية الفصل الأول</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#9f1239;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go{flex:none;min-width:100px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 12px}
+.fi .go[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar{direction:rtl;text-align:right}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>تدريب الاجتماعيات — نهاية الفصل الأول</h1>
+  <p>يوسف • الصف الثامن / 1 • المواطنة والسكان والعثمانيون</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope"><b>النطاق (من الرسائل الأسبوعية بعد منتصف الفصل، في غياب جدول مواصفات وزاري معلن لنهاية الفصل 2026–2027):</b> مراجعة الوحدة الثالثة (المواطنة والمشاركة المدنية)، الوحدة الرابعة (السكان: مصادر البيانات ومناطق التركز السكاني)، الوحدة الخامسة (نشأة الدولة العثمانية وتوسعاتها في البلاد العربية وحل التدريبات)، وبداية الوحدة السادسة (الأمن الاجتماعي والاقتصادي). يُعد هذا النطاق افتراضاً مبنياً على ما دُرّس منذ نوفمبر وما حددته رسالة 22–26 نوفمبر.<br>
+الاختبار التحريري يوم الأربعاء 9 ديسمبر 2026.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <p class="muted">تظهر النتيجة والشرح مباشرة بعد كل سؤال. لا يوجد مؤقت. الأسئلة تدريبية من إعدادنا، وليست ورقة المدرسة.</p>
+  <button type="button" class="big" id="begin">ابدأ التدريب ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card">
+    <span class="kind" id="kind"></span>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big" id="restart" style="background:#163248;margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="endterm-index.html">العودة إلى قائمة المواد</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  تدريب تفاعلي ليوسف — الصف الثامن ١ — مدارس الفرقان. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="endterm-index.html">كل مواد نهاية الفصل</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id":"so1","t":"mc","q":"المواطنة تعني أساساً:","choices":["انتماء الفرد للوطن مع حقوق وواجبات ومشاركة مسؤولة","الإقامة السياحية لأيام معدودة فقط","إلغاء الواجبات مقابل الحقوق","الانتماء لمدينة أخرى غير الوطن"],"ans":0,"ex":"الوحدة الثالثة تعالج المواطنة والمشاركة المدنية: انتماء، حقوق، واجبات، ومسؤولية تجاه المجتمع والدولة."},{"id":"so2","t":"mc","q":"من أمثلة المشاركة المدنية في قطر:","choices":["التطوع والالتزام بالنظام والمشاركة في الأنشطة المجتمعية النافعة","إعاقة الطرق وإتلاف الممتلكات العامة","رفض العمل الجماعي دائماً","إهمال نظرات الآخرين لحقوقهم"],"ans":0,"ex":"المشاركة المدنية سلوك إيجابي يخدم الصالح العام، كالتطوع واحترام القانون والمساهمة في خدمة المجتمع."},{"id":"so3","t":"tf","q":"من واجبات المواطن احترام القانون والمحافظة على الممتلكات العامة.","ans":true,"ex":"صحيح. الحقوق تقابلها واجبات، ومنها احترام النظام وحماية المال العام."},{"id":"so4","t":"mc","q":"من أهم مصادر البيانات السكانية:","choices":["التعداد السكاني والإحصاءات الحيوية والمسوح","القصص الخيالية فقط","توقعات غير موثقة على وسائل التواصل","أسعار العملات فقط"],"ans":0,"ex":"الوحدة الرابعة تبدأ بمصادر البيانات: التعداد، والإحصاءات الحيوية (مواليد ووفيات وزواج)، والمسوح والدراسات."},{"id":"so5","t":"fi","q":"عملية عدّ السكان في الدولة في فترة محددة تُسمّى …… السكاني.","ans":["التعداد","التعداد السكاني","إحصاء"],"hint":"التعداد","ex":"التعداد السكاني مصدر رئيس لمعرفة عدد السكان وخصائصهم."},{"id":"so6","t":"mc","q":"تزداد مناطق التركز السكاني غالباً في:","choices":["المناطق الساحلية والخصبة وذات الموارد وفرص العمل","الصحارى الجافة الخالية من الماء والعمل","قمم الجبال الجليدية فقط","البحار المفتوحة وسط المحيط"],"ans":0,"ex":"الناس يتمركزون حيث الماء والمناخ المناسب والموارد والخدمات. المناطق القاسية تقل فيها الكثافة."},{"id":"so7","t":"tf","q":"العوامل الطبيعية (كالمناخ والماء) والعوامل البشرية (كالصناعة والخدمات) تؤثر في توزيع السكان.","ans":true,"ex":"صحيح. توزيع السكان نتيجة عوامل طبيعية وبشرية معاً."},{"id":"so8","t":"mc","q":"مؤسس الدولة العثمانية هو:","choices":["عثمان بن أرطغرل","محمد الفاتح فقط دون أسرة سابقة","صلاح الدين الأيوبي","هارون الرشيد"],"ans":0,"ex":"تُنسب الدولة إلى عثمان بن أرطغرل، الذي قامت على يديه في الأناضول بعد ضعف السلاجقة."},{"id":"so9","t":"mc","q":"فتح السلطان محمد الثاني (الفاتح) مدينة القسطنطينية في:","choices":["مايو 1453م واتخذها عاصمة وسمّاها إسطنبول","1258م عند سقوط بغداد","2017م","عام الفيل"],"ans":0,"ex":"ورد في الكتاب: فُتحت القسطنطينية في مايو 1453م، وأطلق عليها الفاتح اسم إسطنبول واتخذها عاصمة."},{"id":"so10","t":"mc","q":"قام السلطان مراد الأول بنقل العاصمة إلى:","choices":["أدرنة","صوفيا","روما","بغداد"],"ans":0,"ex":"هذا مما ورد في تدريبات الكتاب: نقل مراد الأول العاصمة إلى أدرنة، قبل أن تصبح إسطنبول العاصمة بعد الفتح."},{"id":"so11","t":"tf","q":"من أسباب تفكير محمد الفاتح في فتح القسطنطينية موقعها الاستراتيجي بين آسيا وأوروبا.","ans":true,"ex":"صحيح. الكتاب يذكر أسباباً عدة، منها أهمية موقع المدينة وربط أراضي الدولة في آسيا وأوروبا."},{"id":"so12","t":"mc","q":"وصلت الفتوحات العثمانية أقصى اتساع لها في أوروبا عند:","choices":["فيينا","روما","باريس","البندقية"],"ans":0,"ex":"حسب تدريبات الكتاب: أقصى اتساع في أوروبا كان عند مدينة فيينا."},{"id":"so13","t":"mc","q":"حدث تغيّر مهم في اتجاه التوسع العثماني نحو البلاد العربية في عهد:","choices":["السلطان سليم الأول (1512–1520م)","الخليفة عمر بن الخطاب","السلطان عبد الحميد دون سليم","دولة المماليك نفسها"],"ans":0,"ex":"سليم الأول أحدث تغييراً جذرياً في حركة التوسع باتجاه المشرق العربي، وضم الشام ومصر نحو 1516–1517م."},{"id":"so14","t":"mc","q":"ضم العثمانيون الشام ومصر وأنهوا حكم المماليك تقريباً في:","choices":["1516–1517م","1453م مع فتح القسطنطينية فقط","1900م","قبل تأسيس عثمان للدولة"],"ans":0,"ex":"التوسعات في البلاد العربية: الشام ومصر في 1516–1517م في عهد سليم الأول، بعد ضعف المماليك."},{"id":"so15","t":"tf","q":"من عوامل توجه العثمانيين إلى بلاد المماليك ضعف دولة المماليك سياسياً وتأثر العلاقات بينهما.","ans":true,"ex":"صحيح. يذكر الكتاب ضعف المماليك، ومنها هزائمهم أمام البرتغال، واستقبالهم لاجئين عثمانيين مما أثر في العلاقة."},{"id":"so16","t":"mc","q":"الأمن الاجتماعي يهدف أساساً إلى:","choices":["حماية المجتمع من المخاطر وتحقيق التكافل والاستقرار بين الناس","رفع أسعار السلع الضرورية عمداً","إلغاء التعليم","عزل الدولة عن مواطنيها"],"ans":0,"ex":"درس الأمن الاجتماعي والاقتصادي (الوحدة السادسة) يعالج حماية المجتمع واستقراره وتكافله، لا اضطراب حياته."},{"id":"so17","t":"mc","q":"الأمن الاقتصادي يرتبط بـ:","choices":["توفير فرص العمل واستقرار الدخل والغذاء والموارد","إغلاق الأسواق كلها","منع التجارة الحلال","زيادة البطالة عمداً"],"ans":0,"ex":"الأمن الاقتصادي يعني أن يجد الناس رزقاً مستقراً وغذاء وموارد، فيطمئن المجتمع اقتصادياً."},{"id":"so18","t":"tf","q":"الأمن الاجتماعي والأمن الاقتصادي يكمل أحدهما الآخر في استقرار الوطن.","ans":true,"ex":"صحيح. لا يستقر مجتمع إذا اهتز رزق الناس، ولا ينمو اقتصاد في مجتمع مضطرب غير متكافل."},{"id":"so19","t":"mc","q":"لماذا تُعد البيانات السكانية مهمة للدولة؟","choices":["لتخطيط الخدمات والمدارس والمستشفيات والإسكان","للزينة في الكتب فقط","لإلغاء التعداد إلى الأبد","لأنها لا علاقة لها بالتنمية"],"ans":0,"ex":"معرفة عدد السكان وتوزيعهم وخصائصهم أساس لتخطيط التنمية والخدمات."},{"id":"so20","t":"fi","q":"المدينة التي فتحها محمد الفاتح سنة 1453م كانت تُسمّى القسطنطينية ثم إسطنبول أو مدينة ……","ans":["الإسلام","الاسلام","إسطنبول"],"hint":"الإسلام / إسطنبول","ex":"الكتاب: أطلق عليها اسم إسطنبول «مدينة الإسلام» واتخذها عاصمة."},{"id":"so21","t":"mc","q":"أي مما يلي واجب وطني لا حق شخصي فقط؟","choices":["الدفاع عن الوطن والمحافظة على ممتلكاته","اختيار هواية رياضية في وقت الفراغ","تفضيل لون على لون في الملابس","مشاهدة فيلم في المنزل"],"ans":0,"ex":"من الواجبات الكبرى حماية الوطن وصون الممتلكات العامة. الهوايات المباحة حقوق أو اختيارات شخصية."},{"id":"so22","t":"tf","q":"الكثافة السكانية ترتفع حيث تتوافر الخدمات وفرص العمل، كما في المدن الكبرى غالباً.","ans":true,"ex":"صحيح. المدن تجذب السكان للعمل والتعليم والخدمات فترتفع الكثافة مقارنة بالمناطق النائية."},{"id":"so23","t":"mc","q":"التوسعات العثمانية في البلاد العربية موضوع يدرسه الصف الثامن في:","choices":["الوحدة الخامسة، الدرس الثاني من كتاب الاجتماعيات","وحدة الطاقة الحرارية","قواعد الأفعال الخمسة","بيئة Alice"],"ans":0,"ex":"الوحدة الخامسة: نشأة الدولة العثمانية ثم التوسعات في البلاد العربية، مع حل التدريبات في رسالة هذا الأسبوع."},{"id":"so24","t":"mc","q":"نقل العاصمة إلى إسطنبول بعد 1453م ساعد الدولة على:","choices":["السيطرة على موقع يربط آسيا بأوروبا ويحصّن مركز الدولة","إضعاف موقعها البحري عمداً","الخروج من قارة آسيا نهائياً","إلغاء الجيش"],"ans":0,"ex":"موقع إسطنبول الاستراتيجي بين القارتين وعلى المضائق عزّز قوة الدولة بعد اتخاذها عاصمة."}];
+var META = {"subject": "الاجتماعيات", "n": 24};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full'};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+
+  function prepare(list){
+    return list.map(function(q, idx){
+      var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||''};
+      if(q.t==='tf'){
+        item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+        item.ans = !!q.ans;
+        item.ansH = item.ans ? 'صح' : 'خطأ';
+      } else if(q.t==='fi'){
+        item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+        item.ansH = item.accepted[0];
+      } else {
+        var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+        item.opts = shuffle(opts);
+        item.ans = q.ans;
+        item.ansH = q.choices[q.ans];
+      }
+      return item;
+    });
+  }
+
+  function begin(list, mode){
+    state.qs = prepare(list);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!state.qs.length){ return; }
+    show('quiz');
+    render();
+  }
+
+  function render(){
+    var q = state.qs[state.i], n=state.qs.length;
+    state.answered = false;
+    $('prog').textContent = 'سؤال ' + (state.i+1) + ' / ' + n;
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (state.i/n*100) + '%';
+    $('kind').textContent = KINDS[q.t]||'';
+    $('qtext').innerHTML = q.q;
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('next').textContent = (state.i===n-1) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    var area = $('area'); area.innerHTML = '';
+    if(q.t==='fi'){
+      var wrap=document.createElement('div'); wrap.className='fi';
+      var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+      inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+      var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+      wrap.appendChild(inp); wrap.appendChild(go); area.appendChild(wrap);
+      go.onclick=function(){ submitFi(); };
+      inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+      setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+    } else {
+      var box=document.createElement('div'); box.className='opts';
+      q.opts.forEach(function(o){
+        var b=document.createElement('button'); b.type='button'; b.className='opt'; b.innerHTML=o.h;
+        b.addEventListener('click', function(){ choose(o.k, b); });
+        box.appendChild(b);
+      });
+      area.appendChild(box);
+    }
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('.opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){ if(norm(q.accepted[i])===nval){ ok=true; break; } }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + (ok?'':'<div class="ans">الإجابة الصحيحة: '+esc(q.ansH)+'</div>')
+      + '<div class="ex">'+q.ex+'</div></div>';
+    $('next').classList.remove('hidden');
+    $('next').focus();
+  }
+
+  function next(){
+    if(!state.answered) return;
+    if(state.i>=state.qs.length-1){ end(); return; }
+    state.i++; render();
+  }
+
+  function end(){
+    var n=state.qs.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    show('end');
+  }
+
+  $('intro').textContent = BANK.length + ' سؤالاً متنوعاً (اختيار من متعدد، صح وخطأ، وملء فراغ). خذ وقتك يا يوسف.';
+  $('begin').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){ begin(shuffle(BANK), 'full'); });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){
+      var orig=null;
+      for(var i=0;i<BANK.length;i++){ if((BANK[i].id||'')===(r.q.id||'') && BANK[i].q===r.q.q){ orig=BANK[i]; break; } }
+      return orig;
+    }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed');
+  });
+  $('home').addEventListener('click', function(){
+    if(state.i===0 && !state.answered){ show('start'); return; }
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+})();
+</script>
+</body>
+</html>
