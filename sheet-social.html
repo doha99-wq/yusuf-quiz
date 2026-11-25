@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#9f1239">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>ورقة الاجتماعيات الإثرائية — نهاية الفصل</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#9f1239;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+
+.passage{background:#f4f8fb;border:1px solid #d3e2e8;border-radius:16px;padding:12px 14px;margin:10px 0;font-size:16px;line-height:1.85;white-space:pre-wrap}
+.passage h3{margin:0 0 8px;font-size:15px;color:#3d5566}
+.fig{margin:12px 0;text-align:center;overflow-x:auto}
+.fig img,.fig svg{max-width:100%;height:auto}
+.qnum{display:inline-block;background:#e8eef2;color:#345;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.ta{width:100%;min-height:120px;border:3px solid #d3e2e8;border-radius:16px;padding:12px;font:600 17px/1.7 inherit;background:#fff;color:var(--ink);outline:none;resize:vertical;margin-top:12px}
+.ta:focus{border-color:var(--accent)}
+.markrow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.markrow button{flex:1;min-height:52px;border:0;border-radius:16px;font:800 16px inherit;color:#fff}
+.markok{background:var(--ok)}
+.markbad{background:var(--bad)}
+.model{background:#f4f8fb;border-radius:16px;padding:12px 14px;margin-top:12px;border:1px solid #d3e2e8;white-space:pre-wrap;line-height:1.8}
+.opt .let{display:inline-block;width:28px;height:28px;border-radius:50%;background:#163248;color:#fff;font-size:14px;font-weight:800;text-align:center;line-height:28px;margin-inline-end:8px}
+.notice{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8;margin:0 0 12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>ورقة الاجتماعيات الإثرائية — نهاية الفصل</h1>
+  <p>الصف الثامن • الوحدات 3 إلى 6 (الأمن الاجتماعي والاقتصادي)</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope">المقرر: من ص 75 إلى 148 (بدون درس المواطنة ص 66–74، وبدون درس التغيّر الاجتماعي ص 150–157). الاختبار التحريري: الأربعاء 9 ديسمبر 2026، من 8:00 إلى 9:30.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <div class="notice" id="notice">نسخة تفاعلية من ورقة المدرسة الإثرائية — الإجابات من إعدادنا وليست رسمية. الاختبار التحريري: الأربعاء 9 ديسمبر 2026، من 8:00 إلى 9:30.</div>
+  <p class="muted">تظهر النتيجة والشرح بعد كل سؤال موضوعي. في الأسئلة المقالية تكتب إجابتك ثم تظهر الإجابة النموذجية، وتُقيّمها بنفسك (صح/خطأ). لا يوجد مؤقت.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">حل الورقة بالترتيب ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="sheet-index.html">العودة إلى أوراق المدرسة</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  نسخة تفاعلية من ورقة المدرسة الإثرائية ليوسف — الصف الثامن ١ — مدارس الفرقان. الإجابات من إعدادنا وليست رسمية. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="sheet-index.html">كل أوراق المدرسة الإثرائية</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id": "u3-mc01", "topic": "u3", "level": 1, "t": "mc", "num": "و3 / س1 / 1", "q": "تهدف جمعية الهلال الأحمر القطري إلى :", "choices": ["رعاية كبار السن", "تمويل المشاريع الصغيرة", "تقديم مساعدات للفئات المتضررة", "إقامة المعسكرات التدريبية للشباب"], "ans": 2, "ex": "تأسست الجمعية في مارس 1978م كأول منظمة خيرية تطوعية في قطر، ومن أهدافها تقديم مساعدات مالية وعينية للفئات الضعيفة لتغطية مصاريف المعيشة، ونشر ثقافة العمل التطوعي. أما رعاية كبار السن فمن أهداف إحسان، وتمكين الشباب من أهداف نماء.", "fig": "", "passage": ""}, {"id": "u3-mc02", "topic": "u3", "level": 1, "t": "mc", "num": "و3 / س1 / 2", "q": "مبادرة شبابية غير ربحية تسعى لتكون رائدة العمل التطوعي في قطر :", "choices": ["نماء", "طموح", "إحسان", "الهلال الأحمر القطري"], "ans": 1, "ex": "هذا تعريف الكتاب لطموح لإدارة العمل التطوعي: مبادرة شبابية غير ربحية تسعى لتكون رائدة العمل التطوعي في قطر والعالم العربي.", "fig": "", "passage": ""}, {"id": "u3-mc03", "topic": "u3", "level": 1, "t": "mc", "num": "و3 / س1 / 3", "q": "تلبية احتياجات أجهزة الدولة الحكومية والخاصة من المتطوعين، من أهداف :", "choices": ["نماء", "طموح", "إحسان", "الهلال الأحمر القطري"], "ans": 1, "ex": "من أهداف طموح: تلبية احتياجات أجهزة الدولة الحكومية والخاصة من المتطوعين، وتنسيق الدورات وورش العمل لصقل مهارات التطوع.", "fig": "", "passage": ""}, {"id": "u3-mc04", "topic": "u3", "level": 1, "t": "mc", "num": "و3 / س1 / 4", "q": "بناء قدرات الشباب ورعايتهم ، من أهداف :", "choices": ["نماء", "دريمة", "الشفلح", "إحسان"], "ans": 0, "ex": "نماء أحد المراكز العاملة لخدمة الأجيال الشابة، ويهدف إلى توسيع الخيارات المتاحة للشباب وبناء قدراتهم وتمكينهم لخدمة المجتمع القطري. أما إحسان فلكبار السن.", "fig": "", "passage": ""}, {"id": "u3-mc05", "topic": "u3", "level": 1, "t": "mc", "num": "و3 / س1 / 5", "q": "تأسست جمعية الهلال الأحمر القطري في عام :", "choices": ["1975 م", "1976 م", "1977 م", "1978 م"], "ans": 3, "ex": "ينص الكتاب على أنها تأسست في مارس عام 1978م كأول منظمة خيرية تطوعية في قطر.", "fig": "", "passage": ""}, {"id": "u3-mc06", "topic": "u3", "level": 1, "t": "mc", "num": "و3 / س1 / 6", "q": "أي الأهداف الآتية تقوم بها جمعية نماء القطرية ؟", "choices": ["رعاية الاطفال", "مساندة الشباب", "مساعدة المعاقين", "رعاية كبار السن"], "ans": 1, "ex": "نماء مختص بخدمة الأجيال الشابة: توسيع خياراتهم وبناء قدراتهم وتمكينهم. رعاية كبار السن من أهداف إحسان، وليست رعاية الأطفال أو مساعدة المعاقين من أهداف نماء في الدرس.", "fig": "", "passage": ""}, {"id": "u3-mc07", "topic": "u3", "level": 1, "t": "mc", "num": "و3 / س1 / 7", "q": "تمكين كبار السن ورعايتهم، من أهداف :", "choices": ["نماء", "دريمة", "احسان", "الشفلح"], "ans": 2, "ex": "مركز تمكين ورعاية كبار السن (إحسان) مؤسسة نفع عام تهدف إلى تمكين كبار السن ورعايتهم ليتمتعوا بحياة كريمة وآمنة ومنتجة، ونشر الوعي بحقوقهم.", "fig": "", "passage": ""}, {"id": "u3-op01", "topic": "u3", "level": 2, "t": "open", "num": "و3 / س2 / 1", "q": "عدد هيئات المجتمع المدني .", "model": "من أمثلة هيئات المجتمع المدني في دولة قطر كما وردت في الكتاب:\n• جمعية الهلال الأحمر القطري.\n• نماء (لخدمة الأجيال الشابة).\n• مركز تمكين ورعاية كبار السن (إحسان).\n• طموح لإدارة العمل التطوعي.\nويذكر الكتاب أن هناك هيئات أخرى تقدّم خدماتها للمجتمع القطري.", "ansH": "من أمثلة هيئات المجتمع المدني في دولة قطر كما وردت في الكتاب:\n• جمعية الهلال الأحمر القطري.\n• نماء (لخدمة الأجيال الشابة).\n• مركز تمكين ورعاية كبار السن (إحسان).\n• طموح لإدارة العمل التطوعي.\nويذكر الكتاب أن هناك هيئات أخرى تقدّم خدماتها للمجتمع القطري.", "ex": "الدرس يعرّف أربع هيئات بالتفصيل. دريمة والشفلح وردتا في أسئلة الورقة كخيارات، لكن الكتاب لم يشرحهما في هذا الدرس، فيكفي أن تذكر الأربع المعرَّفة في الكتاب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u3-op02", "topic": "u3", "level": 2, "t": "open", "num": "و3 / س2 / 2", "q": "عرف العمل التطوعي .", "model": "العمل التطوعي: عمل غير ربحي، يقوم به الأفراد بغرض تقديم النفع والعون والمساعدة إلى شخص أو مجموعة.", "ansH": "العمل التطوعي: عمل غير ربحي، يقوم به الأفراد بغرض تقديم النفع والعون والمساعدة إلى شخص أو مجموعة.", "ex": "هذا تعريف الكتاب حرفيًا تقريبًا. ركّز على أن العمل غير ربحي وأنه لنفع الآخرين.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u3-op03", "topic": "u3", "level": 2, "t": "open", "num": "و3 / س2 / 3", "q": "عرف هيئات المجتمع المدني .", "model": "هيئات المجتمع المدني: جمعيات غير ربحية مستقلة عن الحكومة، ينشئها أشخاص بغرض خدمة المجتمع وتحقيق أهدافه، وتتعاون مع هيئات الدولة في مجالات مختلفة (اجتماعية وخيرية وتطوعية وثقافية واقتصادية) لتحقيق النفع العام.\nويمكن القول أيضًا إنها مجموعة واسعة من المنظمات غير الحكومية التي لها وجود في الحياة العامة وتعبّر عن اهتمامات وقيم أعضائها.", "ansH": "هيئات المجتمع المدني: جمعيات غير ربحية مستقلة عن الحكومة، ينشئها أشخاص بغرض خدمة المجتمع وتحقيق أهدافه، وتتعاون مع هيئات الدولة في مجالات مختلفة (اجتماعية وخيرية وتطوعية وثقافية واقتصادية) لتحقيق النفع العام.\nويمكن القول أيضًا إنها مجموعة واسعة من المنظمات غير الحكومية التي لها وجود في الحياة العامة وتعبّر عن اهتمامات وقيم أعضائها.", "ex": "ركّز على ثلاث صفات: غير ربحية، ومستقلة عن الحكومة، وتهدف إلى خدمة المجتمع والنفع العام.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u3-op04", "topic": "u3", "level": 2, "t": "open", "num": "و3 / س2 / 4", "q": "ما الهدف من جمعية الهلال الأحمر القطري ؟", "model": "تهدف جمعية الهلال الأحمر القطري إلى:\n• تقديم مساعدات مالية وعينية للفئات الضعيفة لتغطية مصاريف المعيشة.\n• تقديم محاضرات ودورات تدريبية وورش عمل لأفراد المجتمع ومؤسساته.\n• نشر ثقافة العمل التطوعي واستقطاب المتطوعين.", "ansH": "تهدف جمعية الهلال الأحمر القطري إلى:\n• تقديم مساعدات مالية وعينية للفئات الضعيفة لتغطية مصاريف المعيشة.\n• تقديم محاضرات ودورات تدريبية وورش عمل لأفراد المجتمع ومؤسساته.\n• نشر ثقافة العمل التطوعي واستقطاب المتطوعين.", "ex": "الجمعية أول منظمة خيرية تطوعية في قطر (مارس 1978م)، وأهدافها الثلاثة مذكورة في الكتاب بهذا الترتيب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u3-op05", "topic": "u3", "level": 2, "t": "open", "num": "و3 / س2 / 5", "q": "عدد جهود مؤسسة طموح القطرية لإدارة العمل التطوعي .", "model": "طموح مبادرة شبابية غير ربحية تسعى لتكون رائدة العمل التطوعي في قطر والعالم العربي، ومن جهودها وأهدافها:\n• تلبية احتياجات أجهزة الدولة الحكومية والخاصة من المتطوعين.\n• تنسيق الدورات وورش العمل التي تساعد على تطوير وصقل مهارات التطوع.", "ansH": "طموح مبادرة شبابية غير ربحية تسعى لتكون رائدة العمل التطوعي في قطر والعالم العربي، ومن جهودها وأهدافها:\n• تلبية احتياجات أجهزة الدولة الحكومية والخاصة من المتطوعين.\n• تنسيق الدورات وورش العمل التي تساعد على تطوير وصقل مهارات التطوع.", "ex": "إذا كتب يوسف هذين الجهدين من الكتاب فإجابته مكتملة.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u3-op06", "topic": "u3", "level": 2, "t": "open", "num": "و3 / س2 / 6", "q": "عدد جهود مؤسسة نماء القطرية .", "model": "نماء أحد المراكز العاملة لخدمة الأجيال الشابة، ومن جهوده وأهدافه:\n• توسيع الخيارات المتاحة للشباب.\n• بناء قدرات الشباب وتمكينهم لخدمة المجتمع القطري.", "ansH": "نماء أحد المراكز العاملة لخدمة الأجيال الشابة، ومن جهوده وأهدافه:\n• توسيع الخيارات المتاحة للشباب.\n• بناء قدرات الشباب وتمكينهم لخدمة المجتمع القطري.", "ex": "نماء للشباب وليس لكبار السن ولا لإدارة التطوع؛ تلك لإحسان وطموح.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u3-fi01", "topic": "u3", "level": 2, "t": "open", "num": "و3 / س3 / 1", "q": "من أهمية هيئات المجتمع المدني <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> ودعم وتنفيذ المشاريع و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي نقطتين من أهمية الهيئات في الكتاب غير «دعم وتنفيذ المشاريع»، مثل:\n• تنفيذ برامج متكاملة لخدمة المجتمع.\n• المساعدة في وصول الخدمات والمعونات إلى مستحقيها.\n• المساهمة في العملية التنموية من خلال التدريب في مختلف المجالات.\n• تعزيز القيم والأخلاق الحميدة بما يساهم في بناء القدوة والمثل الأعلى.\n(والنقطة المعطاة في السؤال: دعم وتنفيذ المشاريع الخاصة بالشباب وأفراد المجتمع كافة، بما ينهض باقتصاد الدولة.)", "ansH": "أي نقطتين من أهمية الهيئات في الكتاب غير «دعم وتنفيذ المشاريع»، مثل:\n• تنفيذ برامج متكاملة لخدمة المجتمع.\n• المساعدة في وصول الخدمات والمعونات إلى مستحقيها.\n• المساهمة في العملية التنموية من خلال التدريب في مختلف المجالات.\n• تعزيز القيم والأخلاق الحميدة بما يساهم في بناء القدوة والمثل الأعلى.\n(والنقطة المعطاة في السؤال: دعم وتنفيذ المشاريع الخاصة بالشباب وأفراد المجتمع كافة، بما ينهض باقتصاد الدولة.)", "ex": "السؤال يعطيك واحدة من خمس نقاط في الكتاب (دعم وتنفيذ المشاريع)، فاطلب اثنتين من الأربع الباقية. الترتيب غير لازم.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u3-fi02", "topic": "u3", "level": 2, "t": "fi", "num": "و3 / س3 / 2", "q": "تمكين كبار السن ورعايتهم من أهداف <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "ans": ["إحسان", "احسان", "مركز إحسان", "مركز تمكين ورعاية كبار السن", "مركز تمكين ورعاية كبار السن (إحسان)", "مؤسسة إحسان"], "ex": "إحسان هو مركز تمكين ورعاية كبار السن، وهذا الهدف منصوص في الكتاب.", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u3-fi03", "topic": "u3", "level": 2, "t": "open", "num": "و3 / س3 / 3", "q": "من أثر مشاركة الفرد في هيئات المجتمع المدني <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "من أثر مشاركة الفرد في هيئات المجتمع المدني:\n• ترسيخ القيم كالتعاون والتسامح واحترام الآخر.\n• ممارسة الفرد لحقوقه وواجباته.\n• تعزيز الروابط الاجتماعية بين أفراد المجتمع وتقويتها.", "ansH": "من أثر مشاركة الفرد في هيئات المجتمع المدني:\n• ترسيخ القيم كالتعاون والتسامح واحترام الآخر.\n• ممارسة الفرد لحقوقه وواجباته.\n• تعزيز الروابط الاجتماعية بين أفراد المجتمع وتقويتها.", "ex": "هذه الآثار الثلاثة مذكورة في شكل الكتاب. إذا ذكر يوسف معناها ولو بعبارة من عنده فإجابته صحيحة.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-mc01", "topic": "u4", "level": 1, "t": "mc", "num": "و4 / س1 / 1", "q": "أي الدول التالية تقوم بعمل تعداد للسكان على فترات غير منتظمة ؟", "choices": ["قطر", "مصر", "الهند", "فرنسا"], "ans": 0, "ex": "في شكل الكتاب: فرنسا واليابان والدانمارك كل خمس سنوات، والولايات المتحدة والهند ومصر كل عشر سنوات، والبرازيل وقطر وفنزويلا على فترات غير منتظمة. فالإجابة من الخيارات هي قطر.", "fig": "", "passage": ""}, {"id": "u4-mc02", "topic": "u4", "level": 1, "t": "mc", "num": "و4 / س1 / 2", "q": "أي الدول التالية تقوم بعمل تعداد للسكان كل خمس سنوات :", "choices": ["قطر", "مصر", "الهند", "فرنسا"], "ans": 3, "ex": "فرنسا (ومعها اليابان والدانمارك) تجري التعداد كل خمس سنوات. مصر والهند كل عشر سنوات، وقطر على فترات غير منتظمة.", "fig": "", "passage": ""}, {"id": "u4-mc03", "topic": "u4", "level": 1, "t": "mc", "num": "و4 / س1 / 3", "q": "أدق وأشمل المصادر الإحصائية :", "choices": ["سجلات الهجرة", "الدراسات السكانية", "التعدادات السكانية", "الإحصاءات الحيوية"], "ans": 2, "ex": "ينص الكتاب: يُعدّ التعداد السكاني من أدق وأشمل المصادر الإحصائية، ويُجرى في وقت محدد ويشمل كل الأفراد.", "fig": "", "passage": ""}, {"id": "u4-mc04", "topic": "u4", "level": 1, "t": "mc", "num": "و4 / س1 / 4", "q": "من الدول التي تشهد معدلات مواليد مرتفعة:", "choices": ["النيجر", "بلغاريا", "ايطاليا", "البرتغال"], "ans": 0, "ex": "الدول ذات المواليد المرتفعة في الكتاب: النيجر ومالي وبوروندي وبوركينا فاسو. أما إيطاليا والبرتغال وبلغاريا وأوكرانيا وكرواتيا فذات معدلات مواليد منخفضة.", "fig": "", "passage": ""}, {"id": "u4-mc05", "topic": "u4", "level": 2, "t": "mc", "num": "و4 / س1 / 5", "q": "من الدول التي تشهد معدلات مواليد مخفضة:", "choices": ["مالي", "أوكرانيا", "بوروندي", "بوركينا فاسو"], "ans": 1, "ex": "كلمة «مخفضة» في الورقة بمعنى منخفضة. أوكرانيا من دول المواليد المنخفضة في الكتاب. أما مالي وبوروندي وبوركينا فاسو فمن دول المواليد المرتفعة.", "fig": "", "passage": ""}, {"id": "u4-mc06", "topic": "u4", "level": 1, "t": "mc", "num": "و4 / س1 / 6", "q": "الجهة المسؤولة عن إجراء التعدادات السكانية بدولة قطر :", "choices": ["الداخلية", "البلدية", "التربية والتعليم", "جهاز التخطيط والإحصاء"], "ans": 3, "ex": "الكتاب: تقوم بالتعداد الأجهزة التابعة للحكومة، ويمثله في دولة قطر جهاز التخطيط والإحصاء.", "fig": "", "passage": ""}, {"id": "u4-mc07", "topic": "u4", "level": 1, "t": "mc", "num": "و4 / س1 / 7", "q": "من مصادر البيانات السكانية :", "choices": ["الكتب", "الوزارات", "الدوريات", "الاحصاءات الحيوية"], "ans": 3, "ex": "مصادر البيانات السكانية في الدرس أربعة: التعدادات السكانية، والمسح بالعينة، والإحصاءات الحيوية، وإحصاءات الهجرة. الكتب والوزارات والدوريات ليست من هذه المصادر الأربعة.", "fig": "", "passage": ""}, {"id": "u4-mc08", "topic": "u4", "level": 2, "t": "mc", "num": "و4 / س1 / 8", "q": "الآنية من أهم خصائص التعداد السكاني وتعني :", "choices": ["يعد كل فرد على حده", "شاملة لكل أفراد المجتمع", "إجراء التعداد بشكل دوري منتظم", "إجراء التعداد السكاني في يوم محدد"], "ans": 3, "ex": "الآنية: إجراء التعداد في يوم محدد. والخيار الأول هو الفردية، والثاني الشمولية، والثالث الدورية. انتبه: الكلمة في الورقة «الآنية» لا «الآتية».", "fig": "", "passage": ""}, {"id": "u4-mc09", "topic": "u4", "level": 1, "t": "mc", "num": "و4 / س1 / 9", "q": "معظم سكان العالم يتركزون في قارة :", "choices": ["آسيا", "أوروبا", "إفريقيا", "أستراليا"], "ans": 0, "ex": "النطاق الآسيوي (شرق وجنوب شرق آسيا: الهند والصين وإندونيسيا وبنغلاديش) يضم ما يقرب من نصف سكان العالم، فهو أكبر أقاليم العالم السكانية.", "fig": "", "passage": ""}, {"id": "u4-mc10", "topic": "u4", "level": 2, "t": "mc", "num": "و4 / س1 / 10", "q": "أكثر جهات القارة الأوربية ارتفاعا في الكثافة :", "choices": ["الشرق", "الغرب", "الشمال", "الجنوب"], "ans": 1, "ex": "الكتاب يصف النطاق الأوروبي بأنه منطقة ذات كثافة مرتفعة خاصة غربها، بسبب صغر مساحتها وتركّز السكان في العواصم والمدن الصناعية.", "fig": "", "passage": ""}, {"id": "u4-mc11", "topic": "u4", "level": 1, "t": "mc", "num": "و4 / س1 / 11", "q": "من أكثر الدول انخفاضا في معدلات الوفيات على مستوى العالم :", "choices": ["قطر", "اليمن", "صربيا", "الصومال"], "ans": 0, "ex": "أقل الوفيات في الكتاب: قطر والكويت والبحرين وعُمان، وتُعدّ قطر أقل دول العالم في معدلات الوفيات (0.99 لكل ألف نسمة لعام 2020م). أما الصومال وأفغانستان واليمن وصربيا فمرتفعة الوفيات.", "fig": "", "passage": ""}, {"id": "u4-mc12", "topic": "u4", "level": 2, "t": "mc", "num": "و4 / س1 / 12", "q": "يندر السكان في المناطق الشمالية من قارة أمريكا الشمالية بسبب:", "choices": ["الحرارة", "الامطار", "البرودة", "الجفاف"], "ans": 2, "ex": "الكتاب: هناك مساحات شاسعة تكاد تخلو من السكان لصعوبة الحياة، وتشمل المناطق الباردة والمتجمدة والحارة والجافة والمرتفعات والغابات. وشمال أمريكا الشمالية وآسيا يندر فيهما السكان بسبب البرودة.", "fig": "", "passage": ""}, {"id": "u4-op01", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س2 / 1", "q": "عرف كلًا مما يأتي.<br><b>البيانات السكانية :</b>", "model": "بحسب الكتاب تحت عنوان «تعريف البيانات السكانية» (والمقصود بها في العالم): هي بيانات يتم تجميعها من أجهزة الإحصاء في دول العالم، وتُصدرها الأمم المتحدة منذ عام 1948–1949م، بالإضافة إلى كتاب الإحصاء السنوي، كما يقوم البنك الدولي بنشر بيانات عن سكّان العالم والإحصاءات الحيوية، وهذه الإصدارات مهمّة للدارسين في دول العالم. وقد سهّلت تقنية الحاسب الآلي نشر البيانات على المواقع الإلكترونية للهيئات والمنظّمات الدولية والأفراد.\nويمكن أن يُضاف أن الدراسات السكانية تساعد على فهم التغيرات التي تحدث على السكّان ونموّهم وتركيبهم وتوزيعهم، ولذلك تحرص الدول ومنها قطر على جمع البيانات السكانية لوضع الخطط.", "ansH": "بحسب الكتاب تحت عنوان «تعريف البيانات السكانية» (والمقصود بها في العالم): هي بيانات يتم تجميعها من أجهزة الإحصاء في دول العالم، وتُصدرها الأمم المتحدة منذ عام 1948–1949م، بالإضافة إلى كتاب الإحصاء السنوي، كما يقوم البنك الدولي بنشر بيانات عن سكّان العالم والإحصاءات الحيوية، وهذه الإصدارات مهمّة للدارسين في دول العالم. وقد سهّلت تقنية الحاسب الآلي نشر البيانات على المواقع الإلكترونية للهيئات والمنظّمات الدولية والأفراد.\nويمكن أن يُضاف أن الدراسات السكانية تساعد على فهم التغيرات التي تحدث على السكّان ونموّهم وتركيبهم وتوزيعهم، ولذلك تحرص الدول ومنها قطر على جمع البيانات السكانية لوضع الخطط.", "ex": "هذا نص تعريف الكتاب في ص 88 تحت عنوان «تعريف البيانات السكانية»، في جواب سؤال «ما المقصود بالبيانات السكانية في العالم؟». الفقرة الأولى هي الجواب النموذجي المطلوب، والفقرة الثانية من مقدمة الدرس وتُعد إثراءً صحيحًا.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-op02", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س2 / 1ب", "q": "<b>الاحصاءات الحيوية:</b>", "model": "الإحصاءات الحيوية: جمع وتسجيل البيانات الخاصة بالمواليد والوفيات وحالات الزواج والطلاق.", "ansH": "الإحصاءات الحيوية: جمع وتسجيل البيانات الخاصة بالمواليد والوفيات وحالات الزواج والطلاق.", "ex": "هذا تعريف الكتاب. المواليد تساعد على معرفة معدل النمو الطبيعي، والوفيات تساعد على التعرف على حالة المجتمع الصحية.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-op03", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س3 / 1", "q": "للبيانات السكانية مصادر متعددة اذكرها .", "model": "مصادر البيانات السكانية أربعة:\n• التعدادات السكانية.\n• المسح بالعينة.\n• الإحصاءات الحيوية.\n• إحصاءات الهجرة.", "ansH": "مصادر البيانات السكانية أربعة:\n• التعدادات السكانية.\n• المسح بالعينة.\n• الإحصاءات الحيوية.\n• إحصاءات الهجرة.", "ex": "هذه المصادر الأربعة هي الواردة في شكل الكتاب. لا تضع «الكتب» أو «الدوريات» مكانها.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi01", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 1", "q": "من خصائص التعداد السكاني الشامل <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> والشمولية و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "الفردية، والآنية، والدورية (مع الشمولية المعطاة في السؤال).\n• الفردية: يُعدّ كل فرد على حدة وتُسجَّل بياناته منفصلة.\n• الآنية: إجراء التعداد في يوم محدد.\n• الدورية: إجراء التعداد بشكل دوري منتظم.\n• الشمولية (معطاة): أن يكون التعداد شاملًا لجميع أفراد المجتمع دون حذف أو تكرار.", "ansH": "الفردية، والآنية، والدورية (مع الشمولية المعطاة في السؤال).\n• الفردية: يُعدّ كل فرد على حدة وتُسجَّل بياناته منفصلة.\n• الآنية: إجراء التعداد في يوم محدد.\n• الدورية: إجراء التعداد بشكل دوري منتظم.\n• الشمولية (معطاة): أن يكون التعداد شاملًا لجميع أفراد المجتمع دون حذف أو تكرار.", "ex": "الخصائص أربع، والورقة أعطتك الشمولية فاكتب الثلاث الباقية بأي ترتيب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi02", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 2", "q": "ترتفع الكثافة السكانية في قارة أوروبا ناحية <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> وتقل الكثافة السكانية في قارة اوروبا ناحية <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "ترتفع ناحية <b>الغرب</b>، وتقل ناحية <b>الشرق</b>.", "ansH": "ترتفع ناحية <b>الغرب</b>، وتقل ناحية <b>الشرق</b>.", "ex": "الكتاب ينص على أن الكثافة مرتفعة خاصة غرب أوروبا. ولم يصرّح بجهة الانخفاض، لكن مقابل الغرب في الخيارات هو الشرق، وهو الاستنتاج المعتمد هنا.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi03", "topic": "u4", "level": 2, "t": "fi", "num": "و4 / س4 / 3", "q": "تضم قارة <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> ما يقرب من نصف سكان العالم تقريبا", "ans": ["آسيا", "اسيا", "قارة آسيا", "شرق آسيا", "آسيا (شرق وجنوب شرق آسيا)"], "ex": "النطاق الآسيوي في شرق وجنوب شرق آسيا يضم ما يقرب من نصف سكان العالم.", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u4-fi04", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 4", "q": "من خصائص التركز السكاني في الجناح الاسيوي <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي اثنتين من:\n• الخصوبة السكانية المرتفعة.\n• سيادة الزراعة كنشاط اقتصادي.\n• وفرة المياه.", "ansH": "أي اثنتين من:\n• الخصوبة السكانية المرتفعة.\n• سيادة الزراعة كنشاط اقتصادي.\n• وفرة المياه.", "ex": "هذه خصائص النطاق الآسيوي كما في جدول الكتاب (الهند والصين وإندونيسيا وبنغلاديش).", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi05", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 5", "q": "من الدول التي تجري تعدادها السكاني على فترات غير منتظمة <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> ومن الدول التي تجري تعداد سكانها كل خمس سنوات <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> ومن الدول التي تجري تعدادها كل عشر سنوات <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "• فترات غير منتظمة: البرازيل وقطر وفنزويلا (يُكتفى بدولتين).\n• كل خمس سنوات: فرنسا واليابان والدانمارك (يُكتفى بدولتين).\n• كل عشر سنوات: الولايات المتحدة الأمريكية والهند ومصر (يُكتفى بدولتين).", "ansH": "• فترات غير منتظمة: البرازيل وقطر وفنزويلا (يُكتفى بدولتين).\n• كل خمس سنوات: فرنسا واليابان والدانمارك (يُكتفى بدولتين).\n• كل عشر سنوات: الولايات المتحدة الأمريكية والهند ومصر (يُكتفى بدولتين).", "ex": "هذا التقسيم من شكل الكتاب. أي دولتين من كل مجموعة صحيحة.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi06", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 6", "q": "من أهمية استخدام البيانات السكانية <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> وتحديد حجم القوى العاملة و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي ثلاث نقاط من أهمية البيانات في الكتاب، مع أن «تحديد حجم القوى العاملة» معطاة. الباقي:\n• أغراض التخطيط للتنمية (الخصائص الديموغرافية والاجتماعية والاقتصادية للسكان والمساكن).\n• تحديد دور المرأة ووضعها الاقتصادي والاجتماعي.\n• الاطلاع على أوضاع المجموعات الخاصة (الأطفال والشباب والمسنون والمعوقون وغيرهم).\n• استخدامها لأغراض اقتصادية واتخاذ القرارات ووضع الخطط المبنية على الحقائق العلمية.", "ansH": "أي ثلاث نقاط من أهمية البيانات في الكتاب، مع أن «تحديد حجم القوى العاملة» معطاة. الباقي:\n• أغراض التخطيط للتنمية (الخصائص الديموغرافية والاجتماعية والاقتصادية للسكان والمساكن).\n• تحديد دور المرأة ووضعها الاقتصادي والاجتماعي.\n• الاطلاع على أوضاع المجموعات الخاصة (الأطفال والشباب والمسنون والمعوقون وغيرهم).\n• استخدامها لأغراض اقتصادية واتخاذ القرارات ووضع الخطط المبنية على الحقائق العلمية.", "ex": "اكتب نقطتين من النقاط الأربع الباقية بعد «تحديد حجم القوى العاملة»، وأي نقطة تصلح للفراغ الأول.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi07", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 7", "q": "من أسباب التركز السكاني في النطاق الامريكي <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> واعتدال المناخ و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي سببين مع «اعتدال المناخ» المعطى، مثل:\n• أنها أول منطقة عُمِّرت في القارة بواسطة المهاجرين من أوروبا (شمال وشرق الولايات المتحدة).\n• خصوبة التربة.\n• تركز الصناعة بها.", "ansH": "أي سببين مع «اعتدال المناخ» المعطى، مثل:\n• أنها أول منطقة عُمِّرت في القارة بواسطة المهاجرين من أوروبا (شمال وشرق الولايات المتحدة).\n• خصوبة التربة.\n• تركز الصناعة بها.", "ex": "الكتاب يجمع: استيطان المهاجرين الأوروبيين، وخصوبة التربة، واعتدال المناخ، وتركز الصناعة.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi08", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 8", "q": "من مميزات المسح بالعينة <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "يوفر جزءًا من الجهد والوقت والنفقات، ويساعد على معرفة مدى دقة التعداد.", "ansH": "يوفر جزءًا من الجهد والوقت والنفقات، ويساعد على معرفة مدى دقة التعداد.", "ex": "هذان هما الميزتان المنصوص عليهما في الكتاب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi09", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 9", "q": "من طرق اجراء التعداد السكاني <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> والعد الفعلي و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "طريقة العد النظري، والطرق الإلكترونية (مع العد الفعلي المعطى في السؤال).\n• العد الفعلي: يُعدّ السكان حسب مناطق وجودهم يوم التعداد ولو كانوا زائرين.\n• العد النظري: يُعدّ السكان حسب مناطق إقامتهم المعتادة.\n• الطرق الإلكترونية: جمع البيانات بالحاسوب بسرعة ودقة.", "ansH": "طريقة العد النظري، والطرق الإلكترونية (مع العد الفعلي المعطى في السؤال).\n• العد الفعلي: يُعدّ السكان حسب مناطق وجودهم يوم التعداد ولو كانوا زائرين.\n• العد النظري: يُعدّ السكان حسب مناطق إقامتهم المعتادة.\n• الطرق الإلكترونية: جمع البيانات بالحاسوب بسرعة ودقة.", "ex": "الطرق ثلاث، والورقة أعطتك العد الفعلي.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi10", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 10", "q": "من أكثر الدول انخفاضا في معدلات المواليد <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> واوكرانيا و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي دولتان من: إيطاليا، والبرتغال، وبلغاريا، وكرواتيا (أوكرانيا معطاة).", "ansH": "أي دولتان من: إيطاليا، والبرتغال، وبلغاريا، وكرواتيا (أوكرانيا معطاة).", "ex": "دول المواليد المنخفضة في الكتاب: إيطاليا والبرتغال وبلغاريا وأوكرانيا وكرواتيا.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi11", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 11", "q": "من أكثر الدول ارتفاعا في معدل الوفيات <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> والصومال و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي دولتان من: أفغانستان، واليمن، وصربيا (الصومال معطى).", "ansH": "أي دولتان من: أفغانستان، واليمن، وصربيا (الصومال معطى).", "ex": "دول الوفيات المرتفعة في الكتاب: الصومال وأفغانستان واليمن وصربيا.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi12", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 12", "q": "من اسباب تركز السكان في النطاق الاوروبي <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي سببين من:\n• صغر مساحة القارة (ولذا ترتفع الكثافة خاصة غربها).\n• تركز السكان في العواصم والمدن الصناعية مثل لندن وباريس وهامبورج.\n• تركزهم في المناطق الصناعية.", "ansH": "أي سببين من:\n• صغر مساحة القارة (ولذا ترتفع الكثافة خاصة غربها).\n• تركز السكان في العواصم والمدن الصناعية مثل لندن وباريس وهامبورج.\n• تركزهم في المناطق الصناعية.", "ex": "الكتاب يعلّل الكثافة الأوروبية بصغر المساحة وبتركز السكان في المدن والمناطق الصناعية.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi13", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 13", "q": "من أهم نطاقات تركز السكان في العالم النطاق <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> والنطاق الاوروبي والنطاق <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> والنطاق <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "النطاق الآسيوي، والنطاق الأوروبي (معطى)، والنطاق الأمريكي، والنطاق الإفريقي.", "ansH": "النطاق الآسيوي، والنطاق الأوروبي (معطى)، والنطاق الأمريكي، والنطاق الإفريقي.", "ex": "هذه النطاقات الأربعة الرئيسة في جدول الكتاب. وذكر أيضًا مناطق تركز أخرى في أمريكا الجنوبية وأستراليا، لكنها ليست من النطاقات الأربعة الأساسية.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi14", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 14", "q": "يرجع انخفاض معدل الوفيات في العالم إلى <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "التقدم الطبي، وجودة الخدمات الصحية، والرعاية الطبية التي تقدمها الدول للأمهات والأطفال.", "ansH": "التقدم الطبي، وجودة الخدمات الصحية، والرعاية الطبية التي تقدمها الدول للأمهات والأطفال.", "ex": "هذا تعليل الكتاب لانخفاض الوفيات في دول مثل قطر والكويت والبحرين وعُمان، وهو نفسه يصلح إجابة لهذا الفراغ.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi15", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 15", "q": "يرجع تركز السكان في النطاق الأفريقي إلى <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "تركز السكان في أودية الأنهار مثل النيل والنيجر (حوض النيل في مصر والسودان وإثيوبيا وغرب إفريقيا)، وفي المدن الساحلية حيث المواني والعواصم.", "ansH": "تركز السكان في أودية الأنهار مثل النيل والنيجر (حوض النيل في مصر والسودان وإثيوبيا وغرب إفريقيا)، وفي المدن الساحلية حيث المواني والعواصم.", "ex": "هذان موضعا التركز في النطاق الإفريقي كما في جدول الكتاب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi16", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 16", "q": "من أسباب تركز السكان في دول الخليج العربي <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "توافر الموارد المعدنية ومصادر الطاقة، مثل مناطق إنتاج النفط على ساحل الخليج العربي.", "ansH": "توافر الموارد المعدنية ومصادر الطاقة، مثل مناطق إنتاج النفط على ساحل الخليج العربي.", "ex": "الكتاب يربط تركز السكان على ساحل الخليج بتوافر الموارد المعدنية ومصادر الطاقة.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi17", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 17", "q": "من أماكن تركز السكان في النطاق الآسيوي <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> وفي النطاق الأوروبي <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> وفي النطاق الأمريكي <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "• الآسيوي: شرق وجنوب شرق آسيا (الهند والصين وإندونيسيا وبنغلاديش).\n• الأوروبي: العواصم والمدن الصناعية مثل لندن وباريس وهامبورج، والمناطق الصناعية، وخاصة الغرب.\n• الأمريكي: شمال وشرق الولايات المتحدة الأمريكية.", "ansH": "• الآسيوي: شرق وجنوب شرق آسيا (الهند والصين وإندونيسيا وبنغلاديش).\n• الأوروبي: العواصم والمدن الصناعية مثل لندن وباريس وهامبورج، والمناطق الصناعية، وخاصة الغرب.\n• الأمريكي: شمال وشرق الولايات المتحدة الأمريكية.", "ex": "هذه الأماكن من جدول النطاقات في الكتاب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u4-fi18", "topic": "u4", "level": 2, "t": "open", "num": "و4 / س4 / 18", "q": "يعد من أسباب ارتفاع الكثافة السكانية في قارة أوروبا <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "صغر مساحتها.", "ansH": "صغر مساحتها.", "ex": "الكتاب: النطاق الأوروبي منطقة ذات كثافة مرتفعة بسبب صغر مساحتها، وخاصة غربها.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-mc01", "topic": "u5", "level": 1, "t": "mc", "num": "و5 / س1 / 1", "q": "أستمر حكم الدولة العثمانية نحو ؟", "choices": ["أربعة قرون من الزمن", "خمسة قرون من الزمن", "ستة قرون من الزمن", "سبعة قرون من الزمن"], "ans": 2, "ex": "الكتاب: امتدت الدولة على أراضي ثلاث قارات، واستمر حكمها نحو ستة قرون من الزمن. (الهمزة في «أستمر» كما طُبعت في الورقة).", "fig": "", "passage": ""}, {"id": "u5-mc02", "topic": "u5", "level": 1, "t": "mc", "num": "و5 / س1 / 2", "q": "أي مما يلي تنتسب اليه الدولة العثمانية ؟", "choices": ["ارطغرل", "عثمان الاول", "مراد الاول", "محمد الفاتح"], "ans": 1, "ex": "بعد وفاة أرطغرل تولى ابنه عثمان الأول، وهو مؤسّس الدولة العثمانية وإليه تنتسب.", "fig": "", "passage": ""}, {"id": "u5-mc03", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 3", "q": "السلطان الذي اتخذ مدينة اسكي شهر عاصمة لدولته:", "choices": ["ارطغرل", "عثمان الاول", "مراد الاول", "محمد الفاتح"], "ans": 1, "ex": "حكم عثمان الأول نحو 1299–1324م، واتخذ من مدينة أسكي شهر في الأناضول عاصمة له، وبدأ توسيع ممتلكاته على حساب أراضي الدولة البيزنطية.", "fig": "", "passage": ""}, {"id": "u5-mc04", "topic": "u5", "level": 1, "t": "mc", "num": "و5 / س1 / 4", "q": "وصلت الفتوحات العثمانية أقصى اتساع لها في أوروبا في عهد السلطان :", "choices": ["بايزيد الأول", "مراد الثاني", "مراد الاول", "سليمان القانوني"], "ans": 3, "ex": "يُعد عصر سليمان القانوني العصر الذهبي؛ بلغت الدولة في عهده أقصى اتساعها، وهزم ملك المجر، وبلغت جيوشه أسوار فيينا عاصمة النمسا.", "fig": "", "passage": ""}, {"id": "u5-mc05", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 5", "q": "السلطان العثماني الذي أنشأ جيشا نظاميا عُرف بالإنكشارية هو :", "choices": ["مراد الأول", "محمد الثاني", "بايزيد الأول", "أورخان بن عثمان"], "ans": 3, "ex": "أورخان بن عثمان (1324–1360م) وسّع حدود الدولة في شمال غرب آسيا الصغرى، وأنشأ جيشًا نظاميًا عُرف بالإنكشارية أي الجنود الجدد.", "fig": "", "passage": ""}, {"id": "u5-mc06", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 6", "q": "اختر الترتيب الصحيح لأهم خلفاء الدولة العثمانية من القديم للحديث", "choices": ["اورخان بن عثمان - مراد الاول - بايزيد الاول - محمد الثاني", "مراد الاول - اورخان بن عثمان - محمد الثاني - بايزيد الاول", "محمد الثاني - بايزيد الاول - مراد الاول - اورخان بن عثمان", "بايزيد الاول - مراد الاول - اورخان بن عثمان - محمد الثاني"], "ans": 0, "ex": "الترتيب الزمني في عصر القوة: أورخان (1324–1360م) ثم مراد الأول (1360–1389م) ثم بايزيد الأول (1389–1402م) ثم محمد الثاني الفاتح (1451–1481م). الخيار الأول هو الترتيب الصحيح من القديم إلى الحديث.", "fig": "", "passage": ""}, {"id": "u5-mc07", "topic": "u5", "level": 1, "t": "mc", "num": "و5 / س1 / 7", "q": "الحدث التاريخي الذي يمثل حدثا فاصلا بين العصور الوسطى والعصور الحديثة :", "choices": ["فتح القسطنطينية.", "سن سليمان للقوانين.", "محاولة فتح مدينة فيينا.", "هجرة العثمانيين إلى الاناضول."], "ans": 0, "ex": "من نتائج فتح القسطنطينية سنة 1453م أن الفتح شكّل الحدّ التاريخي الفاصل بين العصور الوسطى والعصور الحديثة.", "fig": "", "passage": ""}, {"id": "u5-mc08", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 8", "q": "تعرضت مصر لضعف اقتصادي بسبب اكتشاف طريق رأس الرجاء الصالح على يد:", "choices": ["الفرنسين", "اليونانين", "البريطانيين", "البرتغاليين"], "ans": 3, "ex": "كانت دولة المماليك قوية بسيطرتها على طريق التجارة عبر البحر الأحمر والبحر المتوسط، ثم تعرضت في أواخر القرن الخامس عشر لضعف سياسي واقتصادي بسبب اكتشاف البرتغاليين طريق رأس الرجاء الصالح.", "fig": "", "passage": ""}, {"id": "u5-mc09", "topic": "u5", "level": 3, "t": "mc", "num": "و5 / س1 / 9", "q": "أي من السلاطين الآتي أسماؤهم استطاع فتح بلغاريا :", "choices": ["ارطغرل", "عثمان الاول", "مراد الاول", "بايزيد الأول"], "ans": 3, "ex": "الكتاب ينسب فتح بلغاريا إلى بايزيد الأول (1389–1402م)، الذي سار على خطى والده مراد وثبّت حكم الدولة في بلاد البلقان ففتح بلغاريا. انتبه: ليس مراد الأول.", "fig": "", "passage": ""}, {"id": "u5-mc10", "topic": "u5", "level": 1, "t": "mc", "num": "و5 / س1 / 10", "q": "قام بالقضاء على الدولة المملوكية السلطان :", "choices": ["مراد الأول", "سليم الأول", "سليم الثاني", "سليمان القانوني"], "ans": 1, "ex": "سليم الأول انتصر على قنصوه الغوري في مرج دابق 1516م، ثم على طومان باي في الريدانية 1517م، واستولى على القاهرة، فانتهت الدولة المملوكية وأصبحت مصر ولاية عثمانية.", "fig": "", "passage": ""}, {"id": "u5-mc11", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 11", "q": "قام العثمانيين بضم بلاد المغرب العربي عدا:", "choices": ["تونس", "مراكش", "الجزائر", "الدار البيضاء"], "ans": 1, "ex": "استجاب العثمانيون لاستغاثة أهل المغرب وعلمائه، وقاموا بضم بلاد المغرب العربي (عدا مراكش): الجزائر 1518م، وطرابلس 1551م، وتونس 1574م. الدار البيضاء مدينة في المغرب وليست الولاية المستثناة في نص الكتاب.", "fig": "", "passage": ""}, {"id": "u5-mc12", "topic": "u5", "level": 1, "t": "mc", "num": "و5 / س1 / 12", "q": "الاطراف التي شاركت بمعركة جالديران", "choices": ["العثمانيين والصفويين", "العثمانيين والمماليك", "العثمانيين والصليبيين", "العثمانيين والمغول"], "ans": 0, "ex": "جالديران 1514م بين جيوش السلطان سليم الأول والدولة الصفوية في فارس. أما العثمانيون والمماليك فالتَقَوا في مرج دابق والريدانية.", "fig": "", "passage": ""}, {"id": "u5-mc13", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 13", "q": "أي من السلاطين الآتي أسماؤهم قام بالتحالف مع دولة السلاجقة :", "choices": ["ارطغرل", "عثمان الاول", "مراد الاول", "بايزيد الأول"], "ans": 0, "ex": "قام زعيمهم أرطغرل بن سليمان شاه بالتحالف مع دولة السلاجقة بقيادة علاء الدين السلجوقي، الذي سمح له بالإقامة في منطقة الحدود الغربية للأناضول المتاخمة للدولة البيزنطية.", "fig": "", "passage": ""}, {"id": "u5-mc14", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 14", "q": "قام بالقضاء على الدولة الصفوية ودخول عاصمتها تبريز السلطان :", "choices": ["مراد الأول", "سليم الأول", "سليم الثاني", "سليمان القانوني"], "ans": 1, "ex": "هزم سليم الأول الصفويين في جالديران 1514م، ودخلت تبريز عاصمة الصفويين تحت سيطرة العثمانيين، وضُمّ شمال العراق. (الكتاب يتحدث عن هزيمة الصفويين ودخول تبريز، لا عن محو دولتهم نهائيًا).", "fig": "", "passage": ""}, {"id": "u5-mc15", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 15", "q": "السلطان العثماني الذي عمل على ضم العراق بشكل كامل :", "choices": ["مراد الأول", "سليم الأول", "سليم الثاني", "سليمان القانوني"], "ans": 3, "ex": "سليم الأول ضمّ شمال العراق بعد جالديران 1514م، ثم أصبح العراق كله تحت الحكم العثماني في عهد السلطان سليمان القانوني.", "fig": "", "passage": ""}, {"id": "u5-mc16", "topic": "u5", "level": 1, "t": "mc", "num": "و5 / س1 / 16", "q": "الاطراف التي شاركت بمعركة مرج دابق :", "choices": ["العثمانيين والصفويين", "العثمانيين والمماليك", "العثمانيين والصليبيين", "العثمانيين والمغول"], "ans": 1, "ex": "مرج دابق 1516م: التقى سليم الأول بالسلطان المملوكي قنصوه الغوري في بلاد الشام (حلب) وانتصر عليه، ودخل العثمانيون دمشق.", "fig": "", "passage": ""}, {"id": "u5-mc17", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 17", "q": "سيطر العثمانيون على تبريز عاصمة الصفويين بعد معركة :", "choices": ["انقرة", "الريدانية", "مرج دابق", "جالديران"], "ans": 3, "ex": "من نتائج جالديران 1514م: دخول تبريز عاصمة الصفويين تحت سيطرة العثمانيين، وضم شمال العراق. الريدانية ومرج دابق ضد المماليك.", "fig": "", "passage": ""}, {"id": "u5-mc18", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 18", "q": "خرج العثمانيون من موطنهم وسط اسيا فرارا من الخطر :", "choices": ["الصفويين", "المماليك", "الصليبيين", "المغولي"], "ans": 3, "ex": "العثمانيون إحدى القبائل التركمانية التي استوطنت تركستان في وسط آسيا شرق بحر قزوين، ثم ارتحلوا عنها بعد أن تعرضت المنطقة لهجمات المغول بقيادة جنكيز خان، واستوطنوا بلاد الأناضول.", "fig": "", "passage": ""}, {"id": "u5-mc19", "topic": "u5", "level": 1, "t": "mc", "num": "و5 / س1 / 19", "q": "يطلق على الدولة التي استطاع العثمانيون التوسع على حسابها في اوروبا اسم الدولة :", "choices": ["المملوكية", "السلجوقية", "البيزنطية", "اليونانية"], "ans": 2, "ex": "نشأت الدولة في الأناضول وتوسعت على حساب أراضي الدولة البيزنطية حتى هددت القسطنطينية عاصمتها، ثم فتحها محمد الفاتح.", "fig": "", "passage": ""}, {"id": "u5-mc20", "topic": "u5", "level": 2, "t": "mc", "num": "و5 / س1 / 20", "q": "اتجهت الدولة العثمانية على البلاد العربية في القرن الميلادي:", "choices": ["الخامس عشر", "السادس عشر", "السابع عشر", "الثامن عشر"], "ans": 1, "ex": "اتجه سليم الأول بجيوشه إلى المشرق العربي الإسلامي (مرج دابق 1516م والريدانية 1517م)، وهو القرن السادس عشر الميلادي. وخريطة الكتاب عن دول العالم الإسلامي في بداية القرن السادس عشر.", "fig": "", "passage": ""}, {"id": "u5-op01", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س2 / 1", "q": "عرف من هم العثمانيين:", "model": "العثمانيون هم إحدى القبائل التركمانية التي استوطنت في منطقة تركستان الواقعة اليوم في وسط آسيا شرق بحر قزوين، ثم ارتحلوا عنها بعد هجمات المغول بقيادة جنكيز خان واستوطنوا بلاد الأناضول. وتُنسب الدولة إلى عثمان الأول بن أرطغرل مؤسّسها.", "ansH": "العثمانيون هم إحدى القبائل التركمانية التي استوطنت في منطقة تركستان الواقعة اليوم في وسط آسيا شرق بحر قزوين، ثم ارتحلوا عنها بعد هجمات المغول بقيادة جنكيز خان واستوطنوا بلاد الأناضول. وتُنسب الدولة إلى عثمان الأول بن أرطغرل مؤسّسها.", "ex": "إذا جمع يوسف الأصل التركماني، والموطن (تركستان/وسط آسيا)، وسبب الارتحال (المغول)، والاستقرار في الأناضول، والنسبة إلى عثمان، فإجابته كاملة.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-op02", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س2 / 2", "q": "كان للسلطان محمد الثاني الرغبة الشديدة لفتح القسطنطينية ... فما أسباب ذلك؟", "model": "من أهم الأسباب التي دفعت محمد الفاتح إلى فتح القسطنطينية:\n• كانت القسطنطينية مركز المؤامرات ضد الدولة العثمانية.\n• الرغبة في تأمين طرق المواصلات بين أملاك الدولة العثمانية في آسيا وأوروبا.", "ansH": "من أهم الأسباب التي دفعت محمد الفاتح إلى فتح القسطنطينية:\n• كانت القسطنطينية مركز المؤامرات ضد الدولة العثمانية.\n• الرغبة في تأمين طرق المواصلات بين أملاك الدولة العثمانية في آسيا وأوروبا.", "ex": "هذان السببان منصوصان في الكتاب تحت عنوان «الأسباب التي دفعت محمد الثاني إلى فتح القسطنطينية».", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-op03", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س2 / 3", "q": "عدد أعمال السلطان سليم الاول .", "model": "من أعمال السلطان سليم الأول (1512–1520م):\n• أحدث تغييرًا جذريًا في حركة التوسعات العسكرية باتجاه المشرق العربي الإسلامي.\n• واجه الخطر الصفوي في آسيا الصغرى والعراق، وهزم الصفويين في جالديران 1514م ودخل تبريز وضمّ شمال العراق.\n• دخل في مواجهات عسكرية بحرية مع البرتغال والإسبان.\n• قضى على الدولة المملوكية: انتصر في مرج دابق 1516م والريدانية 1517م، وأصبحت مصر ولاية عثمانية.\n• في عهده تحققت فكرة توحيد العالم الإسلامي، وانتقلت الدولة إلى مرحلة الخلافة الإسلامية، وانضمّت الأماكن المقدسة في مكة والمدينة إليه (انضمام الحجاز سلمًا).", "ansH": "من أعمال السلطان سليم الأول (1512–1520م):\n• أحدث تغييرًا جذريًا في حركة التوسعات العسكرية باتجاه المشرق العربي الإسلامي.\n• واجه الخطر الصفوي في آسيا الصغرى والعراق، وهزم الصفويين في جالديران 1514م ودخل تبريز وضمّ شمال العراق.\n• دخل في مواجهات عسكرية بحرية مع البرتغال والإسبان.\n• قضى على الدولة المملوكية: انتصر في مرج دابق 1516م والريدانية 1517م، وأصبحت مصر ولاية عثمانية.\n• في عهده تحققت فكرة توحيد العالم الإسلامي، وانتقلت الدولة إلى مرحلة الخلافة الإسلامية، وانضمّت الأماكن المقدسة في مكة والمدينة إليه (انضمام الحجاز سلمًا).", "ex": "ركّز على الاتجاه نحو المشرق، وجالديران، والقضاء على المماليك، وانتقال الخلافة.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-op04", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س2 / 4", "q": "عدد أعمال السلطان سليمان القانوني.", "model": "من أعمال السلطان سليمان الأول «القانوني» (1520–1566م):\n• يُعد عصره العصر الذهبي للدولة العثمانية؛ كانت الأقوى في العالم والمسيطرة على البحر المتوسط، وبلغت أقصى اتساعها.\n• هزم ملك المجر، وبلغت جيوشه أسوار فيينا عاصمة النمسا.\n• نظّم شؤون الحياة في دولته، ووضع القوانين وحرص على أن تتفق مع الشريعة الإسلامية، وظلت تُطبَّق حتى القرن التاسع عشر الميلادي؛ ولذا لُقّب بالقانوني.\n• أصبح العراق كله تحت الحكم العثماني في عهده.\n• دخل العثمانيون في عهده عدن 1538م وصنعاء 1551م.", "ansH": "من أعمال السلطان سليمان الأول «القانوني» (1520–1566م):\n• يُعد عصره العصر الذهبي للدولة العثمانية؛ كانت الأقوى في العالم والمسيطرة على البحر المتوسط، وبلغت أقصى اتساعها.\n• هزم ملك المجر، وبلغت جيوشه أسوار فيينا عاصمة النمسا.\n• نظّم شؤون الحياة في دولته، ووضع القوانين وحرص على أن تتفق مع الشريعة الإسلامية، وظلت تُطبَّق حتى القرن التاسع عشر الميلادي؛ ولذا لُقّب بالقانوني.\n• أصبح العراق كله تحت الحكم العثماني في عهده.\n• دخل العثمانيون في عهده عدن 1538م وصنعاء 1551م.", "ex": "أهم ما يطلبه السؤال: أقصى الاتساع، فيينا والمجر، القوانين واللقب، وضم العراق كاملًا.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-op05", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س2 / 5", "q": "وضح خطوات فتح الدولة العثمانية لبلاد المغرب العربي :", "model": "طلب أهالي وعلماء المغرب العربي المساعدة من الدولة العثمانية في مواجهة الإسبان والبرتغاليين، فاستجاب العثمانيون وضمّوا بلاد المغرب العربي عدا مراكش، وذلك من خلال:\n• قيام القائد خير الدين بربروسا بضم الجزائر سنة 1518م.\n• استيلاء القائد العثماني سنان باشا على طرابلس سنة 1551م.\n• سيطرة الدولة العثمانية على تونس منذ سنة 1574م.", "ansH": "طلب أهالي وعلماء المغرب العربي المساعدة من الدولة العثمانية في مواجهة الإسبان والبرتغاليين، فاستجاب العثمانيون وضمّوا بلاد المغرب العربي عدا مراكش، وذلك من خلال:\n• قيام القائد خير الدين بربروسا بضم الجزائر سنة 1518م.\n• استيلاء القائد العثماني سنان باشا على طرابلس سنة 1551م.\n• سيطرة الدولة العثمانية على تونس منذ سنة 1574م.", "ex": "الخطوات ثلاث مدن/تواريخ، مع الاستثناء المهم: مراكش لم تُضم.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-op06", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س2 / 6", "q": "قارن بين معركتي جالديران و مرج دابق في الجدول الآتي :\n<table style=\"width:100%;border-collapse:collapse;font-size:16px;margin-top:10px\">\n<tr><th style=\"border:1px solid #d3e2e8;padding:8px;background:#f4f8fb\">وجه المقارنة</th>\n<th style=\"border:1px solid #d3e2e8;padding:8px;background:#f4f8fb\">جالديران</th>\n<th style=\"border:1px solid #d3e2e8;padding:8px;background:#f4f8fb\">مرج دابق</th></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">الاسباب</td><td style=\"border:1px solid #d3e2e8;padding:8px\"></td><td style=\"border:1px solid #d3e2e8;padding:8px\"></td></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">الاطراف</td><td style=\"border:1px solid #d3e2e8;padding:8px\"></td><td style=\"border:1px solid #d3e2e8;padding:8px\"></td></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">النتائج</td><td style=\"border:1px solid #d3e2e8;padding:8px\"></td><td style=\"border:1px solid #d3e2e8;padding:8px\"></td></tr>\n</table>", "model": "<table style=\"width:100%;border-collapse:collapse;font-size:16px;margin-top:8px\">\n<tr><th style=\"border:1px solid #d3e2e8;padding:8px;background:#e8eef2\">وجه المقارنة</th>\n<th style=\"border:1px solid #d3e2e8;padding:8px;background:#e8eef2\">جالديران 1514م</th>\n<th style=\"border:1px solid #d3e2e8;padding:8px;background:#e8eef2\">مرج دابق 1516م</th></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">الأسباب</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">تأمين حدود الدولة العثمانية ضد الخطر الصفوي، وإثارة الأقليات في أطراف الدولة ضد العثمانيين.</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">التوجه لضم الشام ومصر بعد ضعف المماليك، ومن الدوافع حماية المقدسات والسيطرة على طرق التجارة، وسوء العلاقة بعد استقبال المماليك للمتمردين.</td></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">الأطراف</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">العثمانيون (سليم الأول) والصفويون.</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">العثمانيون (سليم الأول) والمماليك (قنصوه الغوري).</td></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">النتائج</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">انتصار العثمانيين، وضم شمال العراق، ودخول تبريز عاصمة الصفويين تحت سيطرتهم.</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">انتصار سليم الأول، ودخول دمشق، ثم التمهيد لفتح مصر في الريدانية 1517م وانهيار الدولة المملوكية.</td></tr>\n</table>", "ansH": "<table style=\"width:100%;border-collapse:collapse;font-size:16px;margin-top:8px\">\n<tr><th style=\"border:1px solid #d3e2e8;padding:8px;background:#e8eef2\">وجه المقارنة</th>\n<th style=\"border:1px solid #d3e2e8;padding:8px;background:#e8eef2\">جالديران 1514م</th>\n<th style=\"border:1px solid #d3e2e8;padding:8px;background:#e8eef2\">مرج دابق 1516م</th></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">الأسباب</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">تأمين حدود الدولة العثمانية ضد الخطر الصفوي، وإثارة الأقليات في أطراف الدولة ضد العثمانيين.</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">التوجه لضم الشام ومصر بعد ضعف المماليك، ومن الدوافع حماية المقدسات والسيطرة على طرق التجارة، وسوء العلاقة بعد استقبال المماليك للمتمردين.</td></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">الأطراف</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">العثمانيون (سليم الأول) والصفويون.</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">العثمانيون (سليم الأول) والمماليك (قنصوه الغوري).</td></tr>\n<tr><td style=\"border:1px solid #d3e2e8;padding:8px\">النتائج</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">انتصار العثمانيين، وضم شمال العراق، ودخول تبريز عاصمة الصفويين تحت سيطرتهم.</td>\n<td style=\"border:1px solid #d3e2e8;padding:8px\">انتصار سليم الأول، ودخول دمشق، ثم التمهيد لفتح مصر في الريدانية 1517م وانهيار الدولة المملوكية.</td></tr>\n</table>", "ex": "جالديران ضد الصفويين في الشرق، ومرج دابق ضد المماليك في الشام. لا تخلط بين المعركتين ولا مع الريدانية (1517م ضد طومان باي في مصر).", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-fi01", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س3 / 1", "q": "من النتائج المترتبة على فتح القسطنطينية <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي نتيجتين من:\n• توحيد أراضي الخلافة العثمانية في آسيا وأوروبا.\n• أصبحت الدولة العثمانية قوة بحرية هائلة ومركزًا تجاريًا هامًا.\n• شكّل الفتح الحدّ التاريخي الفاصل بين العصور الوسطى والعصور الحديثة.\n(وفُتحت في مايو 1453م وأُطلق عليها إسطنبول واتُّخذت عاصمة.)", "ansH": "أي نتيجتين من:\n• توحيد أراضي الخلافة العثمانية في آسيا وأوروبا.\n• أصبحت الدولة العثمانية قوة بحرية هائلة ومركزًا تجاريًا هامًا.\n• شكّل الفتح الحدّ التاريخي الفاصل بين العصور الوسطى والعصور الحديثة.\n(وفُتحت في مايو 1453م وأُطلق عليها إسطنبول واتُّخذت عاصمة.)", "ex": "النتائج الثلاث مذكورة بهذا الترتيب في الكتاب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-fi02", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س3 / 2", "q": "من عوامل توسع و تطور الدولة العثمانية: <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي ثلاثة من عوامل الاتساع في شكل الكتاب:\n• الرغبة في نشر الإسلام.\n• وجود سلاطين أقوياء.\n• ضعف الدولة البيزنطية.\n• الإمكانيات المادية والمعنوية.\n• التنظيم السياسي والعسكري.\n• قوة الجيش (الإنكشارية).", "ansH": "أي ثلاثة من عوامل الاتساع في شكل الكتاب:\n• الرغبة في نشر الإسلام.\n• وجود سلاطين أقوياء.\n• ضعف الدولة البيزنطية.\n• الإمكانيات المادية والمعنوية.\n• التنظيم السياسي والعسكري.\n• قوة الجيش (الإنكشارية).", "ex": "العوامل ستة في شكل الكتاب، فيكفي ثلاثة منها.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-fi03", "topic": "u5", "level": 2, "t": "fi", "num": "و5 / س3 / 3", "q": "وصلت الفتوحات العثمانية في أوروبا اقصى اتساع لها عند مدينة <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "ans": ["فيينا", "فيينا عاصمة النمسا", "اسوار فيينا", "أسوار فيينا", "مدينة فيينا"], "ex": "في عهد سليمان القانوني بلغت جيوشه أسوار فيينا عاصمة النمسا، وهناك وصل أقصى الاتساع في أوروبا.", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u5-fi04", "topic": "u5", "level": 2, "t": "fi", "num": "و5 / س3 / 4", "q": "الحد التاريخي الفاصل بين العصور الوسطى والعصور الحديثة هو <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "ans": ["فتح القسطنطينية", "فتح القسطنطينية 1453م", "فتح القسطنطينية سنة 1453م", "فتح محمد الفاتح للقسطنطينية"], "ex": "هذه نتيجة صريحة لفتح القسطنطينية سنة 1453م.", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u5-fi05", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س3 / 5", "q": "من أهم أعمال عثمان الأول <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي عملين من:\n• تأسيس الدولة العثمانية وإليه تنتسب.\n• اتخاذ مدينة أسكي شهر في الأناضول عاصمة له.\n• توسيع ممتلكاته على حساب أراضي الدولة البيزنطية.\n• أصبح للدولة منفذ على بحر مرمرة، وبذلك هدد القسطنطينية عاصمة الدولة البيزنطية.", "ansH": "أي عملين من:\n• تأسيس الدولة العثمانية وإليه تنتسب.\n• اتخاذ مدينة أسكي شهر في الأناضول عاصمة له.\n• توسيع ممتلكاته على حساب أراضي الدولة البيزنطية.\n• أصبح للدولة منفذ على بحر مرمرة، وبذلك هدد القسطنطينية عاصمة الدولة البيزنطية.", "ex": "عثمان الأول هو المؤسس وصاحب عاصمة أسكي شهر، وليس أرطغرل.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-fi06", "topic": "u5", "level": 2, "t": "fi", "num": "و5 / س3 / 6", "q": "دخلت كل بلاد المغرب العربي للحكم العثماني ماعدا <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "ans": ["مراكش", "المغرب", "المغرب (مراكش)", "عدا مراكش"], "ex": "نص الكتاب: ضمّوا بلاد المغرب العربي عدا مراكش.", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u5-fi07", "topic": "u5", "level": 2, "t": "fi", "num": "و5 / س3 / 7", "q": "في عهد سليمان القانوني أصبحت كل بلاد <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> تحت الحكم العثماني", "ans": ["العراق", "العراق كله", "كل العراق"], "ex": "سليم الأول ضمّ شمال العراق، ثم أصبح العراق كله تحت الحكم العثماني في عهد سليمان القانوني. وهذا أوضح ما يطابق عبارة «كل بلاد».", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u5-fi08", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س3 / 8", "q": "قامت معركة الريدانية بين <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> ومن نتائجها انتهت الدولة المملوكية <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "قامت بين العثمانيين (السلطان سليم الأول) والمماليك (السلطان طومان باي) سنة 1517م (قرب القاهرة).\nومن نتائجها — إضافة إلى انتهاء الدولة المملوكية المعطى في السؤال — أصبحت مصر ولاية عثمانية، وأصبحت الدولة العثمانية زعيمة العالم الإسلامي ومركز الخلافة الإسلامية.", "ansH": "قامت بين العثمانيين (السلطان سليم الأول) والمماليك (السلطان طومان باي) سنة 1517م (قرب القاهرة).\nومن نتائجها — إضافة إلى انتهاء الدولة المملوكية المعطى في السؤال — أصبحت مصر ولاية عثمانية، وأصبحت الدولة العثمانية زعيمة العالم الإسلامي ومركز الخلافة الإسلامية.", "ex": "الريدانية 1517م بعد مرج دابق 1516م. الأطراف: سليم الأول وطومان باي. والنتيجة المعطاة في الورقة: انتهت الدولة المملوكية، ويُكمل يوسف بأن مصر صارت ولاية عثمانية.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-fi09", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س3 / 9", "q": "من أسباب ضعف دولة المماليك في سياسيا واقتصاديا <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "اكتشاف البرتغاليين طريقًا تجاريًا جديدًا هو رأس الرجاء الصالح في أواخر القرن الخامس عشر، مما أضعف سيطرة المماليك على طريق التجارة عبر البحر الأحمر والبحر المتوسط.", "ansH": "اكتشاف البرتغاليين طريقًا تجاريًا جديدًا هو رأس الرجاء الصالح في أواخر القرن الخامس عشر، مما أضعف سيطرة المماليك على طريق التجارة عبر البحر الأحمر والبحر المتوسط.", "ex": "عبارة الورقة «في سياسيا واقتصاديا» مطبوعة هكذا. السبب الاقتصادي/السياسي المذكور في الكتاب هو طريق رأس الرجاء الصالح.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-fi10", "topic": "u5", "level": 2, "t": "fi", "num": "و5 / س3 / 10", "q": "السلطان الذي نقل عاصمة الدولة العثمانية إلى أدرنة هو <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "ans": ["مراد الأول", "مراد الاول", "السلطان مراد الأول"], "ex": "نقل مراد الأول مقر حكمه إلى أوروبا، فاستولى على أدرنة سنة 1362م واتخذها عاصمة للدولة العثمانية.", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u5-fi11", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س3 / 11", "q": "من دوافع الدولة العثمانية للتوجه نحو العالم العربي دافع <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> ودافع اقتصادي ودافع <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "دافع ديني، ودافع اقتصادي (معطى)، ودافع سياسي.\n• الديني: الرغبة في زعامة العالم الإسلامي والحصول على لقب الخلافة، وحماية المقدسات في مكة والمدينة من الخطر الإسباني والبرتغالي.\n• السياسي: استقبال المماليك للمتمردين، وضعف دولة المماليك سياسيًا بعد هزيمتهم أمام البرتغال.\n• الاقتصادي: السيطرة على طرق التجارة، ووجود الأراضي الزراعية الخصبة في مصر وبلاد الشام.", "ansH": "دافع ديني، ودافع اقتصادي (معطى)، ودافع سياسي.\n• الديني: الرغبة في زعامة العالم الإسلامي والحصول على لقب الخلافة، وحماية المقدسات في مكة والمدينة من الخطر الإسباني والبرتغالي.\n• السياسي: استقبال المماليك للمتمردين، وضعف دولة المماليك سياسيًا بعد هزيمتهم أمام البرتغال.\n• الاقتصادي: السيطرة على طرق التجارة، ووجود الأراضي الزراعية الخصبة في مصر وبلاد الشام.", "ex": "الكتاب يقسم الدوافع إلى دينية وسياسية واقتصادية. الفراغان: ديني وسياسي بأي ترتيب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u5-fi12", "topic": "u5", "level": 2, "t": "open", "num": "و5 / س3 / 12", "q": "من أهم أعمال أورخان <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أنشأ جيشًا نظاميًا عُرف بالإنكشارية (أي الجنود الجدد)، وسار على درب أبيه في توسيع حدود الدولة ففتح أجزاء واسعة من شمال غرب آسيا الصغرى.", "ansH": "أنشأ جيشًا نظاميًا عُرف بالإنكشارية (أي الجنود الجدد)، وسار على درب أبيه في توسيع حدود الدولة ففتح أجزاء واسعة من شمال غرب آسيا الصغرى.", "ex": "أشهر أعمال أورخان في المقرر إنشاء جيش الإنكشارية.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u6-mc01", "topic": "u6", "level": 1, "t": "mc", "num": "و6 / س1 / 1", "q": "الجهة التي تسهم في خلق و توجيه الراي العام:", "choices": ["النوادي", "المساجد", "الإعلام", "الجامعات"], "ans": 2, "ex": "الكتاب: أجهزة الإعلام تسهم في إيجاد وتوجيه الرأي العام. أما النوادي فتوجّه طاقات الشباب، والمساجد للتوجيه والإرشاد الديني.", "fig": "", "passage": ""}, {"id": "u6-mc02", "topic": "u6", "level": 2, "t": "mc", "num": "و6 / س1 / 2", "q": "النهوض بالقطاع الزراعي وتطويره من اختصاص ؟", "choices": ["وزارة الاعلام", "مركز قطرللمال", "وزارة البلدية", "بنك قطر الوطني"], "ans": 2, "ex": "النهوض بالقطاع الزراعي وتطويره من خلال وزارة البلدية، ليسهم في تحقيق الاكتفاء الذاتي من السلع الغذائية الاستراتيجية والتقليل من الاعتماد على الاستيراد، والحفاظ على الموارد البحرية.", "fig": "", "passage": ""}, {"id": "u6-mc03", "topic": "u6", "level": 2, "t": "mc", "num": "و6 / س1 / 3", "q": "وضع السياسات العامة في المجالات الاقتصادية من مهام :", "choices": ["جهاز قطر للاستثمار", "مركز قطر للمال والأعمال", "بنك قطر للتنمية الصناعية", "المجلس الأعلى للشؤون الاقتصادية والاستثمار"], "ans": 3, "ex": "وضع السياسات العامة في المجالات الاقتصادية والمالية والتجارية وشؤون الطاقة يتم عن طريق المجلس الأعلى للشؤون الاقتصادية والاستثمار. أما جهاز قطر للاستثمار فللاستثمار في الأسواق العالمية، ومركز قطر للمال لتعزيز النشاط الاقتصادي وتوفير مناخ الاستثمار، وبنك قطر للتنمية لتمويل المشروعات الصناعية.", "fig": "", "passage": ""}, {"id": "u6-fi01", "topic": "u6", "level": 2, "t": "open", "num": "و6 / س2 / 1", "q": "من مقومات الامن الاقتصادي في دولة قطر توفر مصادر الطاقة وتوفر <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "توافر مصادر الطاقة معطى (البترول والغاز الطبيعي). والفراغان من المقومات الباقية:\n• توفر الموارد المالية اللازمة لتنفيذ مشاريع اقتصادية كبرى في جميع المجالات.\n• توفر الموارد البشرية الوطنية المدرَّبة والمؤهلة.\n• انفتاح دولة قطر على العالم الخارجي بفضل قيادتها الحكيمة، وتشجيع الشركات العملاقة على إقامة مشاريعها وتطوير الصناعات القطرية.", "ansH": "توافر مصادر الطاقة معطى (البترول والغاز الطبيعي). والفراغان من المقومات الباقية:\n• توفر الموارد المالية اللازمة لتنفيذ مشاريع اقتصادية كبرى في جميع المجالات.\n• توفر الموارد البشرية الوطنية المدرَّبة والمؤهلة.\n• انفتاح دولة قطر على العالم الخارجي بفضل قيادتها الحكيمة، وتشجيع الشركات العملاقة على إقامة مشاريعها وتطوير الصناعات القطرية.", "ex": "المقومات أربعة في الكتاب، والورقة أعطتك مصادر الطاقة فاطلب اثنين من الثلاثة الباقية.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u6-fi02", "topic": "u6", "level": 2, "t": "fi", "num": "و6 / س2 / 2", "q": "من المؤسسات الاقتصادية التي تشارك في تمويل المشروعات الصناعية في دولة قطر <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "ans": ["بنك قطر للتنمية", "بنك قطر للتنميه", "بنك التنمية"], "ex": "الكتاب: المشاركة في تمويل المشروعات الصناعية من خلال بنك قطر للتنمية.", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u6-fi03", "topic": "u6", "level": 2, "t": "open", "num": "و6 / س2 / 3", "q": "من مقومات الأمن الاجتماعي القطري <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> و<span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span>", "model": "أي ثلاثة من مقومات الأمن الاجتماعي الستة:\n• سيادة القانون.\n• التكافل الاجتماعي.\n• التعايش.\n• التعاون الاقتصادي.\n• الشعور بالمسؤولية.\n• المواطنة.", "ansH": "أي ثلاثة من مقومات الأمن الاجتماعي الستة:\n• سيادة القانون.\n• التكافل الاجتماعي.\n• التعايش.\n• التعاون الاقتصادي.\n• الشعور بالمسؤولية.\n• المواطنة.", "ex": "هذه المقومات الستة مذكورة في شكل الكتاب.", "fig": "", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "passage": ""}, {"id": "u6-fi04", "topic": "u6", "level": 2, "t": "fi", "num": "و6 / س2 / 4", "q": "من مهام الأجهزة القضائية انها تقوم بإرساء <span style=\"display:inline-block;min-width:7em;border-bottom:2px dotted #345;margin:0 .2em\">........</span> والمساواة في المجتمع", "ans": ["قواعد العدالة", "العدالة", "قواعد العدالة والمساواة", "العدل", "قواعد العدل", "العدالة والمساواة"], "ex": "الأجهزة القضائية والأمنية تطبق القانون بما يسهم في إرساء قواعد العدالة والمساواة في المجتمع، وتتولى دولة قطر ولاية القضاء بما يكفل تحقيق العدالة وضمان الحقوق والحريات.", "fig": "", "hint": "الإجابة", "passage": ""}, {"id": "u6-match01", "topic": "u6", "level": 2, "t": "match", "num": "و6 / س3", "q": "صنف الجمل الآتية في الجدول الآتي<br>( تتولى اعداد النشأ اجتماعيا ونفسيا — تبرز دور المسجد في الارشاد — تسهم في توجيه الرأي العام — توجيه طاقات الشباب واكتشاف المواهب — تطبيق القانون وقواعد العدل )", "pairs": [["المؤسسات التربوية", "تتولى اعداد النشأ اجتماعيا ونفسيا"], ["الأجهزة القضائية والأمنية", "تطبيق القانون وقواعد العدل"], ["المؤسسات الدينية", "تبرز دور المسجد في الارشاد"], ["النوادي والجمعيات الشبابية", "توجيه طاقات الشباب واكتشاف المواهب"], ["أجهزة الإعلام", "تسهم في توجيه الرأي العام"]], "ex": "التصنيف مطابق لنص الكتاب: التربية لإعداد النشء، والقضاء لتطبيق القانون والعدل، والدين لدور المسجد في الإرشاد، والنوادي لتوجيه طاقات الشباب واكتشاف المواهب، والإعلام لتوجيه الرأي العام.", "fig": "", "passage": ""}];
+var META = {"subject": "social", "title": "ورقة الاجتماعيات الإثرائية — نهاية الفصل", "n": 95, "exam": "المقرر: من ص 75 إلى 148 (بدون درس المواطنة ص 66–74، وبدون درس التغيّر الاجتماعي ص 150–157). الاختبار التحريري: الأربعاء 9 ديسمبر 2026، من 8:00 إلى 9:30.", "topics": [{"id": "u3", "title": "الوحدة الثالثة • المشاركة المدنية وهيئات المجتمع المدني في قطر (ص 75–83)", "points": ["هيئات المجتمع المدني: جمعيات غير ربحية مستقلة عن الحكومة، ينشئها أشخاص لخدمة المجتمع.", "من أمثلتها في الكتاب: الهلال الأحمر القطري (تأسس في مارس 1978م)، ونماء، وإحسان، وطموح.", "العمل التطوعي: عمل غير ربحي يقدّم النفع والعون لشخص أو مجموعة."]}, {"id": "u4", "title": "الوحدة الرابعة • مصادر البيانات السكانية ومناطق التركز (ص 88–107)", "points": ["مصادر البيانات: التعدادات السكانية، والمسح بالعينة، والإحصاءات الحيوية، وإحصاءات الهجرة.", "خصائص التعداد الشامل: الفردية، والشمولية، والآنية (في يوم محدد)، والدورية.", "في قطر يتولى التعداد جهاز التخطيط والإحصاء. وأكثر جهات أوروبا كثافةً غربها، ونحو نصف سكان العالم في آسيا."]}, {"id": "u5", "title": "الوحدة الخامسة • الدولة العثمانية (ص 112–135)", "points": ["العثمانيون قبائل تركمانية من تركستان، ارتحلوا إلى الأناضول فرارًا من هجمات المغول، وتُنسب الدولة إلى عثمان الأول.", "أورخان أنشأ جيش الإنكشارية، ومراد الأول نقل العاصمة إلى أدرنة، وبايزيد الأول فتح بلغاريا، ومحمد الفاتح فتح القسطنطينية 1453م.", "جالديران 1514م: عثمانيون وصفويون. مرج دابق 1516م: عثمانيون ومماليك. ضمّوا المغرب العربي عدا مراكش."]}, {"id": "u6", "title": "الوحدة السادسة • الأمن الاجتماعي والاقتصادي فقط (ص 139–148)", "points": ["مقومات الأمن الاجتماعي: سيادة القانون، والتكافل، والتعايش، والتعاون الاقتصادي، والشعور بالمسؤولية، والمواطنة.", "مقومات الأمن الاقتصادي: مصادر الطاقة، والموارد المالية، والموارد البشرية المؤهلة، والانفتاح على العالم.", "تمويل المشروعات الصناعية: بنك قطر للتنمية. السياسات الاقتصادية: المجلس الأعلى للشؤون الاقتصادية والاستثمار. الزراعة: وزارة البلدية."]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح', open:'اكتب ثم قارن'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else if(q.t==='open'){
+      item.ansH = q.model || q.ansH || '';
+      item.model = q.model || q.ansH || '';
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = opts; // keep printed A–D order so Yusuf can follow the paper
+      item.ans = q.ans;
+      item.ansH = (q.choices && q.choices[q.ans] != null) ? q.choices[q.ans] : '';
+    }
+    item.num = q.num || '';
+    item.passage = q.passage || '';
+    item.fig = q.fig || '';
+    item.letters = 'ABCDEFGH';
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        qs.forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        rest.forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    var meta = '';
+    if(q.num) meta += '<span class="qnum">س '+esc(String(q.num))+'</span>';
+    meta += '<span class="kind">'+(KINDS[q.t]||'')+'</span>';
+    if(q.level) meta += '<span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qmeta').innerHTML = meta;
+    var head = '';
+    if(q.passage) head += '<div class="passage"><h3>النص</h3>'+q.passage+'</div>';
+    if(q.fig) head += '<div class="fig">'+q.fig+'</div>';
+    $('qtext').innerHTML = head + q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else if(q.t==='open') renderOpen(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt';
+      var letter = (q.letters||'ABCDEFGH')[o.k] || '';
+      b.innerHTML = (letter?('<span class="let">'+letter+'</span>'):'') + o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+
+  function renderOpen(q){
+    var ta=document.createElement('textarea'); ta.className='ta'; ta.id='openans';
+    ta.placeholder = q.hint || 'اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية';
+    $('area').appendChild(ta);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='opengo'; go.textContent='أظهر الإجابة النموذجية';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var yours=(ta.value||'').trim();
+      if(!yours){ ta.focus(); return; }
+      ta.disabled=true; go.disabled=true;
+      var model=document.createElement('div'); model.className='model';
+      model.innerHTML = '<b>الإجابة النموذجية:</b><br>'+(q.model||q.ansH||'');
+      $('area').appendChild(model);
+      var row=document.createElement('div'); row.className='markrow';
+      var okb=document.createElement('button'); okb.type='button'; okb.className='markok'; okb.textContent='إجابتي صحيحة ✓';
+      var badb=document.createElement('button'); badb.type='button'; badb.className='markbad'; badb.textContent='أخطأت، سأراجع ✗';
+      okb.addEventListener('click', function(){ if(state.answered) return; finish(true, yours); okb.disabled=true; badb.disabled=true; });
+      badb.addEventListener('click', function(){ if(state.answered) return; finish(false, yours); okb.disabled=true; badb.disabled=true; });
+      row.appendChild(okb); row.appendChild(badb);
+      $('area').appendChild(row);
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    var ansLine = (q.t==='open') ? '' : (ok?'':'<div class="ans">الإجابة الصحيحة: '+q.ansH+'</div>');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + ansLine
+      + '<div class="ex">'+(q.ex||'')+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = 'في هذه الصفحة '+n+' عنصرًا من ورقة المدرسة، موزّعة على '+nt+' أقسام بنفس ترتيب الورقة المطبوعة. يمكنك حل الورقة كاملة أو قسمًا واحدًا أو مجموعة عشوائية من 20، ثم إعادة الأسئلة الغلط.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+  window.__sheetState = state;
+})();
+</script>
+</body>
+</html>
