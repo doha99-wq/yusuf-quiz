@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6d28d9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>ورقة الحاسوب الإثرائية — نهاية الفصل</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#163248;--accent:#6d28d9;--bg:#eef4f7;--ok:#1b8a4a;--okbg:#e6f7ee;--bad:#c4452d;--badbg:#fdecea;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Arabic","Geeza Pro","Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.75;font-size:18px;touch-action:manipulation;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+header{background:linear-gradient(135deg,#12273b,var(--accent));color:#fff;padding:28px 16px 24px;margin:0 -16px 16px}
+header h1{font-size:clamp(24px,5.2vw,34px);margin:8px 0 4px;line-height:1.35}
+header p{margin:4px 0;color:#d7eef2;font-size:16px}
+.pill{display:inline-block;background:#ffffff22;color:#ffe7b0;border-radius:999px;padding:3px 12px;font-size:13px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 8px 28px #102b3e0f;padding:18px 18px 20px;margin:14px 0}
+.scope{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8}
+.big{display:block;width:100%;min-height:56px;border:0;border-radius:18px;background:var(--accent);color:#fff;font:800 20px/1.3 inherit;padding:14px 16px;cursor:pointer;margin-top:8px}
+.big.alt{background:#163248}
+.big:active{transform:translateY(1px)}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation}
+.muted{color:#526b7e;font-size:14px}
+.top{position:sticky;top:0;z-index:5;background:rgba(238,244,247,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);margin:0 -16px;padding:10px 16px 8px}
+.stats{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700;flex-wrap:wrap}
+.chip{background:#fff;border-radius:999px;padding:4px 10px;box-shadow:0 2px 8px #102b3e12;white-space:nowrap}
+.bar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .3s}
+.qtext{font-size:clamp(19px,4.3vw,24px);line-height:1.85;overflow-wrap:anywhere;margin:8px 0 0}
+.kind,.lvl{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.kind{background:var(--accent);color:#fff}
+.lvl{background:#e8eef2;color:#345}
+.opts{display:grid;gap:10px;margin-top:16px}
+.opt{min-height:54px;border-radius:16px;background:#f5fafb;border:2px solid #d3e2e8;color:var(--ink);padding:12px 14px;font:700 18px/1.55 inherit;text-align:start}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);color:#11643a}
+.opt.bad{background:var(--badbg);border-color:var(--bad);color:#8a2618}
+.opt.dim{opacity:.55}
+.opt[disabled]{cursor:default}
+.opt.on{border-color:var(--accent);background:#e8f4f8;box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+.fi{display:flex;gap:8px;margin-top:16px;align-items:stretch}
+.fi input{flex:1;min-width:0;font:700 22px inherit;text-align:center;border:3px solid #d3e2e8;border-radius:16px;padding:10px;background:#fff;color:var(--ink);outline:none}
+.fi input:focus{border-color:var(--accent)}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}
+.fi input.bad{border-color:var(--bad);background:var(--badbg)}
+.fi .go,.chk{flex:none;min-width:100px;min-height:54px;border:0;border-radius:16px;background:var(--accent);color:#fff;font:800 18px inherit;padding:0 16px;margin-top:12px}
+.fi .go[disabled],.chk[disabled]{opacity:.5}
+.fb{border-radius:18px;padding:14px 16px;margin-top:14px}
+.fb.ok{background:var(--okbg);border:2px solid var(--ok)}
+.fb.bad{background:var(--badbg);border:2px solid var(--bad)}
+.fb h3{margin:0 0 6px;font-size:20px}
+.fb.ok h3{color:#11643a}.fb.bad h3{color:#8a2618}
+.fb .ex{font-size:16px;color:#3d5566;line-height:1.8}
+.fb .ans{font-weight:700;margin:4px 0}
+.next{margin-top:12px}
+.homebtn{background:#fff;border:0;border-radius:999px;width:38px;height:34px;font-size:18px;box-shadow:0 2px 8px #102b3e12}
+.score{font-size:56px;font-weight:800;color:var(--accent);text-align:center;line-height:1.2}
+.pct{font-size:22px;text-align:center;font-weight:700}
+.msg{text-align:center;font-size:18px}
+.rev{border-radius:16px;padding:14px;margin:12px 0;background:#fff;border:1px solid #dce7ec}
+.rev.ok{border-inline-start:5px solid var(--ok)}
+.rev.bad{border-inline-start:5px solid #d58838}
+.hidden{display:none!important}
+a{color:#006f83}
+footer{font-size:13px;color:#4b6576;margin:18px 0}
+[dir=ltr] .scope,[dir=ltr] .fb .ex,[dir=ltr] .rev .ex,[dir=ltr] header .ar,[dir=ltr] .points,[dir=ltr] .breakdown,[dir=ltr] #intro,[dir=ltr] .muted,[dir=ltr] #msg,[dir=ltr] #endLabel,[dir=ltr] #revTitle,[dir=ltr] .sec h2,[dir=ltr] .sec li{direction:rtl;text-align:right}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.tchip{border:2px solid #d3e2e8;background:#fff;border-radius:999px;padding:8px 12px;font:700 14px inherit;color:var(--ink);min-height:44px}
+.tchip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.points{background:#f3faf8;border-radius:16px;padding:14px 16px;margin:12px 0;border-inline-start:4px solid var(--accent)}
+.points h3{margin:0 0 6px;font-size:17px}
+.points ul{margin:0;padding-inline-start:20px}
+.points li{margin:4px 0}
+.sec{background:#f7fbfc}
+.sec h2{margin:0 0 8px;font-size:22px}
+.match{display:grid;gap:14px;margin-top:14px}
+.mrow{background:#f5fafb;border-radius:16px;padding:12px;border:2px solid #d3e2e8}
+.mleft{font-weight:800;margin-bottom:8px}
+.mrights{display:flex;flex-wrap:wrap;gap:8px}
+.mrights button{border:2px solid #d3e2e8;background:#fff;border-radius:14px;padding:8px 10px;font:700 15px inherit;min-height:44px;color:var(--ink)}
+.orow{display:flex;align-items:center;gap:8px;background:#f5fafb;border:2px solid #d3e2e8;border-radius:16px;padding:8px 10px;margin-top:8px;min-height:54px}
+.orow b{width:28px;text-align:center;color:var(--accent)}
+.orow span{flex:1;font-weight:700}
+.arrow{width:44px;height:44px;border:0;border-radius:12px;background:#163248;color:#fff;font:800 18px inherit;flex:none}
+.arrow[disabled]{opacity:.35}
+.breakdown{margin:16px 0}
+.brow{margin:10px 0}
+.brow .lab{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:4px}
+.bbar{height:10px;background:#d7e4ea;border-radius:999px;overflow:hidden}
+.bbar>i{display:block;height:100%;background:var(--accent)}
+
+.passage{background:#f4f8fb;border:1px solid #d3e2e8;border-radius:16px;padding:12px 14px;margin:10px 0;font-size:16px;line-height:1.85;white-space:pre-wrap}
+.passage h3{margin:0 0 8px;font-size:15px;color:#3d5566}
+.fig{margin:12px 0;text-align:center;overflow-x:auto}
+.fig img,.fig svg{max-width:100%;height:auto}
+.qnum{display:inline-block;background:#e8eef2;color:#345;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;margin-inline-end:6px}
+.ta{width:100%;min-height:120px;border:3px solid #d3e2e8;border-radius:16px;padding:12px;font:600 17px/1.7 inherit;background:#fff;color:var(--ink);outline:none;resize:vertical;margin-top:12px}
+.ta:focus{border-color:var(--accent)}
+.markrow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.markrow button{flex:1;min-height:52px;border:0;border-radius:16px;font:800 16px inherit;color:#fff}
+.markok{background:var(--ok)}
+.markbad{background:var(--bad)}
+.model{background:#f4f8fb;border-radius:16px;padding:12px 14px;margin-top:12px;border:1px solid #d3e2e8;white-space:pre-wrap;line-height:1.8}
+.opt .let{display:inline-block;width:28px;height:28px;border-radius:50%;background:#163248;color:#fff;font-size:14px;font-weight:800;text-align:center;line-height:28px;margin-inline-end:8px}
+.notice{background:#fff6e4;border-inline-start:4px solid #dba34a;padding:12px 14px;border-radius:12px;font-size:15px;line-height:1.8;margin:0 0 12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">الصف الثامن • ٨/١ • الفرقان • قطر</span>
+  <h1>ورقة الحاسوب الإثرائية — نهاية الفصل</h1>
+  <p>الصف الثامن • الوحدة 2: تصميم الألعاب، بيئة Alice، الأحداث والدوال</p>
+</header>
+
+<section id="start" class="card">
+  <div class="scope">المقرر على الورقة: من ص 116 إلى 169. الاختبار التحريري: الثلاثاء 15 ديسمبر 2026، من 8:00 إلى 9:30. العملي حتى 3 ديسمبر.</div>
+  <p id="intro" style="margin:14px 0 8px"></p>
+  <div class="notice" id="notice">نسخة تفاعلية من ورقة المدرسة الإثرائية — الإجابات من إعدادنا وليست رسمية. الاختبار التحريري: الثلاثاء 15 ديسمبر 2026، من 8:00 إلى 9:30. العملي حتى 3 ديسمبر.</div>
+  <p class="muted">تظهر النتيجة والشرح بعد كل سؤال موضوعي. في الأسئلة المقالية تكتب إجابتك ثم تظهر الإجابة النموذجية، وتُقيّمها بنفسك (صح/خطأ). لا يوجد مؤقت.</p>
+  <div class="topics" id="topics"></div>
+  <div id="topicPoints" class="points hidden"></div>
+  <button type="button" class="big" id="beginAll">حل الورقة بالترتيب ←</button>
+  <button type="button" class="big alt" id="beginMix">اختبار عشوائي من 20 سؤالاً</button>
+  <button type="button" class="big hidden" id="beginTopic">ابدأ أسئلة هذا الدرس ←</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="top">
+    <div class="stats">
+      <button type="button" class="homebtn" id="home" title="خروج">⌂</button>
+      <span class="chip" id="prog"></span>
+      <span class="chip" id="sc"></span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+  <article class="card" id="qcard">
+    <div id="qmeta"></div>
+    <div class="qtext" id="qtext"></div>
+    <div id="area"></div>
+    <div id="fb"></div>
+    <button type="button" class="big next hidden" id="next">السؤال التالي ←</button>
+  </article>
+</section>
+
+<section id="end" class="card hidden">
+  <p class="muted" style="text-align:center" id="endLabel">انتهى التدريب يا يوسف ✨</p>
+  <div class="score" id="score" dir="ltr"></div>
+  <div class="pct" id="pct"></div>
+  <p class="msg" id="msg"></p>
+  <div id="breakdown" class="breakdown"></div>
+  <button type="button" class="big" id="retryMissed">راجع الأخطاء فقط</button>
+  <button type="button" class="big alt" id="restart" style="margin-top:10px">أعد التدريب من البداية</button>
+  <p style="text-align:center;margin-top:12px"><a href="sheet-index.html">العودة إلى أوراق المدرسة</a></p>
+  <h2 id="revTitle">التصحيح والتعليل</h2>
+  <div id="review"></div>
+</section>
+
+<footer>
+  نسخة تفاعلية من ورقة المدرسة الإثرائية ليوسف — الصف الثامن ١ — مدارس الفرقان. الإجابات من إعدادنا وليست رسمية. تعمل الصفحة دون تسجيل أو إرسال بيانات.
+  <br><a href="sheet-index.html">كل أوراق المدرسة الإثرائية</a>
+</footer>
+</div>
+<script>
+var BANK = [{"id": "c01", "topic": "s1", "t": "mc", "num": "1", "q": "عملية برمجة تتم من خلال الإشارة والضغط والسحب والإفلات والاختيار من القوائم:", "choices": ["البرمجة النصية", "البرمجة المرئية", "البرمجة الكائنية", "البرمجة الخطية"], "ans": 1, "ex": "هذا تعريف البرمجة المرئية في الكتاب (ص 116): تتم بالإشارة والضغط والسحب والإفلات والاختيار من القوائم.", "fig": "", "passage": "", "level": 2}, {"id": "c02", "topic": "s1", "t": "mc", "num": "2", "q": "من مميزات استخدام البرمجة المرئية:", "choices": ["بطء إنشاء البرامج", "سهولة إنشاء البرامج وتعديلها", "الحاجة لحفظ أوامر كثيرة", "صعوبة التعديل"], "ans": 1, "ex": "الكتاب (ص 116) يذكر من مميزات البرمجة المرئية: سهولة إنشاء البرامج وتعديلها، وتوسيع أفق الإبداع في عالم ثلاثي الأبعاد.", "fig": "", "passage": "", "level": 2}, {"id": "c03", "topic": "s1", "t": "mc", "num": "3", "q": "المرحلة التي يتم فيها تحديد الفئة المستهدفة باللعبة والأجهزة التي ستعمل عليها:", "choices": ["التخطيط والبحث", "تصميم النموذج الأولي", "التنفيذ", "الاختبار"], "ans": 0, "ex": "في مرحلة التخطيط والبحث (ص 118) نحدد الهدف، والفئة المستهدفة، والأجهزة، وطريقة اللعب، ومستويات الصعوبة.", "fig": "", "passage": "", "level": 2}, {"id": "c04", "topic": "s1", "t": "mc", "num": "4", "q": "النموذج الأولي للعبة Prototype يعكس نتائج مرحلة:", "choices": ["الاختبار", "التنفيذ", "التخطيط والبحث", "النشر"], "ans": 2, "ex": "الكتاب (ص 119): يعكس النموذج الأولي النتائج التي تم التوصل إليها في مرحلة التخطيط والبحث، بشكل مكتوب أو رسومي.", "fig": "", "passage": "", "level": 2}, {"id": "c05", "topic": "s1", "t": "mc", "num": "5", "q": "تصميم مستويات صعوبة اللعبة المخطط لها يعد من:", "choices": ["المميزات الأساسية", "المميزات الثانوية", "مرحلة الاختبار", "مرحلة البحث"], "ans": 0, "ex": "تحت المميزات الأساسية في مرحلة التنفيذ (ص 119): تصميم مستويات صعوبة اللعبة المخطط لها. تحديد المستويات يكون في التخطيط، أما تصميمها المخطط له فيُعد من المميزات الأساسية.", "fig": "", "passage": "", "level": 2}, {"id": "c06", "topic": "s1", "t": "mc", "num": "6", "q": "يشير رمز تصنيف ESRB الخاص بسن 13 سنة وما فوق إلى أن اللعبة مناسبة لفئة:", "choices": ["الطفولة المبكرة", "المراهقين الشباب", "الشباب الناضجين", "الكبار"], "ans": 1, "ex": "جدول ESRB في الكتاب (ص 120): سن 13 وما فوق = فئة المراهقين الشباب. الشباب الناضجون من سن 17، والكبار من سن 18.", "fig": "", "passage": "", "level": 2}, {"id": "c07", "topic": "s1", "t": "mc", "num": "7", "q": "برنامج Alice هو بيئة برمجة قائمة على:", "choices": ["كتابة الأوامر النصية", "اللبنات البرمجية", "الجداول الإلكترونية", "قواعد البيانات"], "ans": 1, "ex": "الكتاب (ص 124): Alice بيئة برمجة قائمة على اللبنات البرمجية، لإنشاء رسوم متحركة وقصص أو برمجة ألعاب بسيطة ثلاثية الأبعاد.", "fig": "", "passage": "", "level": 2}, {"id": "c08", "topic": "s1", "t": "mc", "num": "8", "q": "مساحة وضع اللبنات البرمجية لكود البرنامج أو القصة تسمى:", "choices": ["محرر المشهد", "شجرة الكائنات", "محرر الكود", "سلة المحذوفات"], "ans": 2, "ex": "من مكونات واجهة Alice (ص 128): محرر الكود هو مساحة وضع اللبنات البرمجية لكود البرنامج أو القصة.", "fig": "", "passage": "", "level": 2}, {"id": "c09", "topic": "s1", "t": "mc", "num": "9", "q": "الجزء الذي يعرض جميع الكائنات المستخدمة في العالم الافتراضي هو:", "choices": ["الحافظة Clipboard", "شجرة الكائنات Objects tree", "منطقة الأحداث", "تفاصيل العوالم"], "ans": 1, "ex": "الكتاب (ص 128): شجرة الكائنات تعرض جميع الكائنات المستخدمة في العالم الافتراضي. الحافظة تحتفظ بنسخ من أجزاء الكود.", "fig": "", "passage": "", "level": 2}, {"id": "c10", "topic": "s1", "t": "mc", "num": "10", "q": "أي تفاعل للمستخدم مع البرنامج يستجيب له البرنامج بتنفيذ إجراء يسمى:", "choices": ["الدالة", "الكائن", "الحدث", "الخاصية"], "ans": 2, "ex": "تعريف الحدث في الكتاب (ص 148): أي تفاعل للمستخدم مع البرنامج، ويُستجاب له بتنفيذ إجراء أو مجموعة إجراءات، مثل الضغط على الفأرة أو أحد أزرار لوحة المفاتيح.", "fig": "", "passage": "", "level": 2}, {"id": "c11", "topic": "s2", "t": "fi", "num": "1", "q": "يقوم مجلس تصنيف البرمجيات الترفيهية .................... بتصنيف الألعاب الإلكترونية إلى فئات مختلفة.", "ans": ["ESRB", "E.S.R.B", "esrb", "مجلس ESRB"], "ex": "الكتاب (ص 120): يقوم مجلس تصنيف البرمجيات الترفيهية (ESRB) بتصنيف الألعاب الإلكترونية إلى فئات مختلفة، ولكل فئة رمز يدل على المحتوى والعمر المناسب.", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c12", "topic": "s2", "t": "fi", "num": "2", "q": "المرحلة الأخيرة من مراحل تصميم اللعبة هي مرحلة ....................", "ans": ["الاختبار", "اختبار", "Testing", "مرحلة الاختبار", "الاختبار Testing"], "ex": "مراحل تصميم اللعبة في الكتاب أربعة (ص 118–119): التخطيط والبحث، تصميم النموذج الأولي، التنفيذ، ثم الاختبار. فالاختبار هي المرحلة الأخيرة. (النشر ورد في الورقة كخيار مضلّل، وليس مرحلة مستقلة في الكتاب).", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c13", "topic": "s2", "t": "fi", "num": "3", "q": "يُطلق مصطلح .................... على كل ما هو موجود في عالم Alice ويمكن تمييزه وتحديده.", "ans": ["الكائن", "كائن", "Object", "الكائن Object", "object"], "ex": "الكتاب (ص 131): يُطلق مصطلح الكائن على كل ما هو موجود في عالم Alice يمكن تمييزه وتحديده، ويمثّل مكونات اللعبة من شخصيات وأماكن.", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c14", "topic": "s2", "t": "fi", "num": "4", "q": "العالم أو World في برنامج Alice هو .................... التي يتم فيها إدراج الكائنات.", "ans": ["البيئة الافتراضية", "بيئة افتراضية", "البيئة الافتراضيه", "البيئة الافترضية", "بيئة افترضية"], "ex": "الكتاب (ص 130): العالم أو World في برنامج Alice هو البيئة الافتراضية التي يتم فيها إدراج الكائنات الممثلة للشخصيات والأماكن والأحداث، وجميع المؤثرات الأخرى مثل الأصوات والنصوص.", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c15", "topic": "s2", "t": "fi", "num": "5", "q": "لكل كائن في Alice اسم يميزه وله خصائص Properties وله .................... وسلوكيات معينة.", "ans": ["دوال", "دوال Methods", "Methods", "methods", "دوال (Methods)", "له دوال"], "ex": "الكتاب (ص 131): لكل كائن اسم يميزه، وله خصائص Properties (مثل العرض والطول واللون)، وله دوال Methods، وسلوكيات معينة مثل التحرك والدوران والتحدث.", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c16", "topic": "s2", "t": "fi", "num": "6", "q": "تسمح خاصية .................... في الكاميرا بربط كائنين معًا لتتبع حركة الكائن.", "ans": ["vehicle", "Vehicle", "المركبة", "مركبة", "خاصية المركبة", "vehicle (مركبة)", "مركبة الكاميرا"], "ex": "الكتاب (ص 149): تسمح خاصية vehicle (مركبة) بربط كائنين معًا. نستخدم خاصية مركبة الكاميرا حتى تتبع الكاميرا حركة الكائن تلقائيًا.", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c17", "topic": "s2", "t": "fi", "num": "7", "q": "الدالة الافتراضية التي تتكون عند تشغيل Alice تسمى ....................", "ans": ["world.my first method", "World.my first method", "world.myfirstmethod", "World.myfirstmethod", "my first method", "myfirstmethod", "world.my first"], "ex": "الكتاب (ص 148 و150): عند تشغيل Alice تتكون دالة افتراضية باسم world.my first method، ويرتبط بها الحدث When the world starts. تكون هذه الدالة فارغة حتى نضع فيها الأوامر.", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c18", "topic": "s2", "t": "fi", "num": "8", "q": "تُستخدم دالة .................... لعرض رسائل في منطقة الطباعة أسفل شاشة عرض اللعبة.", "ans": ["print", "Print", "الطباعة", "دالة print", "لبنة print"], "ex": "الكتاب (ص 153): في منطقة الطباعة أسفل شاشة عرض اللعبة نستخدم لبنة print لعرض رسائل على شكل نص بسيط.", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c19", "topic": "s2", "t": "fi", "num": "9", "q": "التكرار الذي يُنفذ اللبنات البرمجية إلى ما لانهاية يسمى التكرار ....................", "ans": ["اللانهائي", "اللا نهائي", "اللانهائي (infinite loop)", "infinite loop", "النهائي", "اللانهائى"], "ex": "الكتاب (ص 160): أنواع التكرار ثلاثة: الشرطي (while)، والمحدد (counted loop)، واللانهائي (infinite loop) الذي تُنفَّذ لبناته إلى ما لا نهاية.", "hint": "اكتب الكلمة أو المصطلح المناسب", "fig": "", "passage": "", "level": 2}, {"id": "c20", "topic": "s3", "t": "fi", "num": "1", "q": "صحّح الكلمة التي تحتها خط فقط.\nيُعد برنامج Scratch من أدوات البرمجة المرئية لإنتاج القصص والألعاب ثلاثية الأبعاد.", "ans": ["Alice", "alice", "برنامج Alice", "ألِس"], "ex": "الكلمة المخطوءة هي Scratch. الكتاب (ص 116 و124) يعدّ برنامج Alice من أدوات البرمجة المرئية لإنتاج القصص والألعاب ثلاثية الأبعاد. برنامج Scratch أداة برمجة مرئية أيضًا، لكنه ليس أداة هذا المقرر للألعاب ثلاثية الأبعاد.", "hint": "اكتب التصحيح فقط (الكلمة أو الرقم البديل)", "fig": "", "passage": "", "level": 2}, {"id": "c21", "topic": "s3", "t": "fi", "num": "2", "q": "صحّح الرقم الذي تحته خط فقط.\nتشير علامة تصنيف ESRB الخاصة بسن 13 سنة وما فوق إلى أن اللعبة مناسبة لفئة الشباب الناضجين.", "ans": ["17", "١٧", "سن 17", "17 سنة"], "ex": "الخطأ في الرقم 13. جدول ESRB (ص 120): فئة الشباب الناضجين من سن 17 سنة وما فوق. أما سن 13 وما فوق فهي فئة المراهقين الشباب.", "hint": "اكتب التصحيح فقط (الكلمة أو الرقم البديل)", "fig": "", "passage": "", "level": 2}, {"id": "c22", "topic": "s3", "t": "fi", "num": "3", "q": "صحّح الكلمة التي تحتها خط فقط.\nتُستخدم دالة print لجعل الكائن يتحدث داخل فقاعة نصية.", "ans": ["say", "Say", "التحدث", "دالة التحدث", "دالة say", "say (التحدث)"], "ex": "الكلمة المخطوءة هي print. الكتاب (ص 151): دالة say (التحدث) تعطي الكائن فقاعة نصية. أما print (ص 153) فتعرض نصًا في منطقة الطباعة أسفل شاشة اللعبة.", "hint": "اكتب التصحيح فقط (الكلمة أو الرقم البديل)", "fig": "", "passage": "", "level": 2}, {"id": "c23", "topic": "s3", "t": "fi", "num": "4", "q": "صحّح الكلمة التي تحتها خط فقط.\nالتكرار المحدد ينفذ اللبنات البرمجية داخل التكرار طالما كان الشرط صحيحًا.", "ans": ["الشرطي", "التكرار الشرطي", "الشرطى", "while", "التكرار الشرطي (while)"], "ex": "الكلمة المخطوءة هي «المحدد». الكتاب (ص 160): التكرار الشرطي (while) ينفّذ اللبنات طالما كان الشرط صحيحًا. أما التكرار المحدد فينفّذها لعدد محدد من المرات.", "hint": "اكتب التصحيح فقط (الكلمة أو الرقم البديل)", "fig": "", "passage": "", "level": 2}, {"id": "c24", "topic": "s4", "t": "open", "num": "1", "q": "ما المقصود بالبرمجة المرئية؟", "model": "هي عملية برمجة تتم من خلال الإشارة والضغط والسحب والإفلات والاختيار من القوائم والكتابة لتحرير المقاطع البرمجية، وتنتج عنها رسوم ثلاثية الأبعاد وألعاب وقصص ممتعة.", "ansH": "هي عملية برمجة تتم من خلال الإشارة والضغط والسحب والإفلات والاختيار من القوائم والكتابة لتحرير المقاطع البرمجية، وتنتج عنها رسوم ثلاثية الأبعاد وألعاب وقصص ممتعة.", "ex": "التعريف من الكتاب (ص 116). الفكرة الأساسية: البرمجة بالسحب والإفلات والاختيار من القوائم بدل كتابة الأوامر النصية فقط.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c25", "topic": "s4", "t": "open", "num": "2", "q": "ما المقصود بالكائن Object في برنامج Alice؟", "model": "يُطلق مصطلح الكائن على كل ما هو موجود في عالم Alice يمكن تمييزه وتحديده، ويمثّل مكونات اللعبة من شخصيات وأماكن. لكل كائن اسم يميزه، وله خصائص ودوال وسلوكيات معينة.", "ansH": "يُطلق مصطلح الكائن على كل ما هو موجود في عالم Alice يمكن تمييزه وتحديده، ويمثّل مكونات اللعبة من شخصيات وأماكن. لكل كائن اسم يميزه، وله خصائص ودوال وسلوكيات معينة.", "ex": "التعريف من الكتاب (ص 131). قد يكون الكائن مركّبًا من أجزاء تُبرمج بشكل منفصل، مثل السيارة وعجلاتها.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c26", "topic": "s4", "t": "open", "num": "3", "q": "عرّف الحدث Event.", "model": "الحدث هو أي تفاعل للمستخدم مع البرنامج، ويُستجاب له بتنفيذ إجراء أو مجموعة إجراءات؛ مثل الضغط على الفأرة أو على أحد أزرار لوحة المفاتيح، فيستجيب البرنامج بتنفيذ مهام معينة.", "ansH": "الحدث هو أي تفاعل للمستخدم مع البرنامج، ويُستجاب له بتنفيذ إجراء أو مجموعة إجراءات؛ مثل الضغط على الفأرة أو على أحد أزرار لوحة المفاتيح، فيستجيب البرنامج بتنفيذ مهام معينة.", "ex": "التعريف من الكتاب (ص 148). Alice يقدّم أحداثًا جاهزة، وعند بدء أي عالم يوجد حدث افتراضي: When the world starts.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c27", "topic": "s4", "t": "open", "num": "4", "q": "عرّف الدالة Method.", "model": "الدالة هي مجموعة محددة مسبقًا من الأوامر البرمجية، تقدّم تعليمات لكائن ما للقيام بمهمة محددة. وقد يكون للكائن أكثر من دالة.", "ansH": "الدالة هي مجموعة محددة مسبقًا من الأوامر البرمجية، تقدّم تعليمات لكائن ما للقيام بمهمة محددة. وقد يكون للكائن أكثر من دالة.", "ex": "التعريف من الكتاب (ص 150). الدوال المرتبطة بالكائن توضح سلوك كائن معيّن، والدوال المرتبطة بالعالم توضح سلوك الكائنات المتعددة في العالم.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c28", "topic": "s4", "t": "open", "num": "5", "q": "اذكر سمات اللعبة الناجحة.", "model": "من أهم شروط اللعبة الناجحة في الكتاب: أن يكون لها هدف، وأن يكون لها قواعد، وأن تكون مثيرة للتحدي، وأن تستخدم نوعًا مناسبًا من وسائل التفاعل.", "ansH": "من أهم شروط اللعبة الناجحة في الكتاب: أن يكون لها هدف، وأن يكون لها قواعد، وأن تكون مثيرة للتحدي، وأن تستخدم نوعًا مناسبًا من وسائل التفاعل.", "ex": "السمات الأربع من الكتاب (ص 117). تنوع الزخارف والألوان ليس من سمات اللعبة الناجحة في هذا الدرس.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c29", "topic": "s4", "t": "open", "num": "6", "q": "عدّد مميزات برنامج Alice.", "model": "من مميزات برنامج Alice في الكتاب: تعزيز مهارات التفكير العلمي والمنطقي ومهارات حل المشكلات؛ وتعلم أساسيات كتابة برامج الحاسوب ومعرفة مفاهيم لغات البرمجة؛ وإتاحة بيئة افتراضية ثلاثية الأبعاد لإنشاء الألعاب بشكل يحاكي الواقع.", "ansH": "من مميزات برنامج Alice في الكتاب: تعزيز مهارات التفكير العلمي والمنطقي ومهارات حل المشكلات؛ وتعلم أساسيات كتابة برامج الحاسوب ومعرفة مفاهيم لغات البرمجة؛ وإتاحة بيئة افتراضية ثلاثية الأبعاد لإنشاء الألعاب بشكل يحاكي الواقع.", "ex": "المميزات الثلاث من الكتاب (ص 124). (اسم Alice إحياء لذكرى أليس في بلاد العجائب، وهذه لمحة تاريخية وليست ميزة تُعدّ ضمن القائمة).", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c30", "topic": "s4", "t": "open", "num": "7", "q": "اذكر ما يتم تحديده في مرحلة التخطيط والبحث عند تصميم اللعبة.", "model": "في مرحلة التخطيط والبحث نصوغ الفكرة العامة للعبة، وتشمل: تحديد الهدف من تصميم اللعبة؛ وتحديد الفئة المستهدفة (الفئة العمرية والنوع)؛ وتحديد الأجهزة التي ستعمل عليها اللعبة (الحواسيب أو الهواتف أو الأجهزة اللوحية)؛ وتحديد طريقة اللعب والتحديات والحوافز؛ وتحديد مستويات صعوبة اللعبة.", "ansH": "في مرحلة التخطيط والبحث نصوغ الفكرة العامة للعبة، وتشمل: تحديد الهدف من تصميم اللعبة؛ وتحديد الفئة المستهدفة (الفئة العمرية والنوع)؛ وتحديد الأجهزة التي ستعمل عليها اللعبة (الحواسيب أو الهواتف أو الأجهزة اللوحية)؛ وتحديد طريقة اللعب والتحديات والحوافز؛ وتحديد مستويات صعوبة اللعبة.", "ex": "العناصر من الكتاب (ص 118). وينبغي أن تكون طريقة اللعب واضحة للاعب منذ لحظة فتح اللعبة.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c31", "topic": "s5", "t": "open", "num": "5 / أ • محرر المشهد", "q": "قارن: ما وظيفة محرر المشهد في برنامج Alice؟", "model": "محرر المشهد هو نافذة عرض العالم الافتراضي؛ وفيه نرتب الكائنات ونستخدم أدوات التحكم في الكاميرا لاستكشاف عالم اللعبة أو القصة (تحريك الكاميرا واستدارتها)، مع أزرار مثل تراجع وإعادة.", "ansH": "عرض المشهد والعالم الافتراضي والتحكم في الكاميرا والكائنات لاستكشاف عالم اللعبة أو القصة.", "ex": "من واجهة Alice (ص 128–129 و139): محرر المشهد (ونافذة المشهد) لعرض العالم واستكشافه بالكاميرا وترتيب الكائنات. قارن ذلك بمحرر الكود الذي تُوضع فيه اللبنات.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c32", "topic": "s5", "t": "open", "num": "5 / أ • محرر الكود", "q": "قارن: ما وظيفة محرر الكود (Code editor) في برنامج Alice؟", "model": "محرر الكود هو مساحة وضع اللبنات البرمجية لكود البرنامج أو القصة.", "ansH": "مساحة وضع اللبنات البرمجية لكود البرنامج أو القصة.", "ex": "التعريف حرفي من الكتاب (ص 128). هنا نسحب اللبنات ونفلتها لبناء أوامر البرنامج.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c33", "topic": "s5", "t": "open", "num": "5 / ب • Object Level Method", "q": "قارن: ماذا توضّح الدوال المرتبطة بالكائن (Object Level Method)؟", "model": "توضّح سلوك كائن معيّن.", "ansH": "توضح سلوك كائن معيّن.", "ex": "الكتاب (ص 150): الدوال الافتراضية المرتبطة بالكائنات (Object Level Method) توضح سلوك كائن معيّن.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c34", "topic": "s5", "t": "open", "num": "5 / ب • World Level Method", "q": "قارن: ماذا توضّح الدوال المرتبطة بالعالم (World Level Method)؟", "model": "توضّح سلوك الكائنات المتعددة في العالم.", "ansH": "توضح سلوك الكائنات المتعددة في العالم.", "ex": "الكتاب (ص 150): الدوال المرتبطة بالعالم (World Level Method) توضح سلوك الكائنات المتعددة في العالم. مثالها الدالة الافتراضية world.my first method.", "hint": "اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية", "fig": "", "passage": "", "level": 2}, {"id": "c35a", "topic": "s5", "level": 2, "t": "mc", "num": "5 / ج • 1", "q": "صنّف: تطبيق ضوابط التحكم في اللعبة", "choices": ["مميزات أساسية", "مميزات ثانوية", "مراحل التصميم", "خصائص الكائن"], "ans": 0, "ex": "التصنيف من الكتاب (ص 118–119): ضوابط التحكم وآلية احتساب النقاط من المميزات الأساسية؛ وتصاميم وزخارف اللعبة والملفات الصوتية من المميزات الثانوية؛ والتخطيط والبحث والاختبار من مراحل تصميم اللعبة.", "fig": "", "passage": ""}, {"id": "c35b", "topic": "s5", "level": 2, "t": "mc", "num": "5 / ج • 2", "q": "صنّف: تصاميم وزخارف اللعبة", "choices": ["مميزات أساسية", "مميزات ثانوية", "مراحل التصميم", "خصائص الكائن"], "ans": 1, "ex": "التصنيف من الكتاب (ص 118–119): ضوابط التحكم وآلية احتساب النقاط من المميزات الأساسية؛ وتصاميم وزخارف اللعبة والملفات الصوتية من المميزات الثانوية؛ والتخطيط والبحث والاختبار من مراحل تصميم اللعبة.", "fig": "", "passage": ""}, {"id": "c35c", "topic": "s5", "level": 2, "t": "mc", "num": "5 / ج • 3", "q": "صنّف: الملفات الصوتية المستخدمة", "choices": ["مميزات أساسية", "مميزات ثانوية", "مراحل التصميم", "خصائص الكائن"], "ans": 1, "ex": "التصنيف من الكتاب (ص 118–119): ضوابط التحكم وآلية احتساب النقاط من المميزات الأساسية؛ وتصاميم وزخارف اللعبة والملفات الصوتية من المميزات الثانوية؛ والتخطيط والبحث والاختبار من مراحل تصميم اللعبة.", "fig": "", "passage": ""}, {"id": "c35d", "topic": "s5", "level": 2, "t": "mc", "num": "5 / ج • 4", "q": "صنّف: آلية احتساب النقاط", "choices": ["مميزات أساسية", "مميزات ثانوية", "مراحل التصميم", "خصائص الكائن"], "ans": 0, "ex": "التصنيف من الكتاب (ص 118–119): ضوابط التحكم وآلية احتساب النقاط من المميزات الأساسية؛ وتصاميم وزخارف اللعبة والملفات الصوتية من المميزات الثانوية؛ والتخطيط والبحث والاختبار من مراحل تصميم اللعبة.", "fig": "", "passage": ""}, {"id": "c35e", "topic": "s5", "level": 2, "t": "mc", "num": "5 / ج • 5", "q": "صنّف: الاختبار", "choices": ["مميزات أساسية", "مميزات ثانوية", "مراحل التصميم", "خصائص الكائن"], "ans": 2, "ex": "التصنيف من الكتاب (ص 118–119): ضوابط التحكم وآلية احتساب النقاط من المميزات الأساسية؛ وتصاميم وزخارف اللعبة والملفات الصوتية من المميزات الثانوية؛ والتخطيط والبحث والاختبار من مراحل تصميم اللعبة.", "fig": "", "passage": ""}, {"id": "c35f", "topic": "s5", "level": 2, "t": "mc", "num": "5 / ج • 6", "q": "صنّف: التخطيط والبحث", "choices": ["مميزات أساسية", "مميزات ثانوية", "مراحل التصميم", "خصائص الكائن"], "ans": 2, "ex": "التصنيف من الكتاب (ص 118–119): ضوابط التحكم وآلية احتساب النقاط من المميزات الأساسية؛ وتصاميم وزخارف اللعبة والملفات الصوتية من المميزات الثانوية؛ والتخطيط والبحث والاختبار من مراحل تصميم اللعبة.", "fig": "", "passage": ""}, {"id": "c36", "topic": "s6", "t": "order", "num": "6", "q": "رتّب مراحل تصميم اللعبة بالترتيب الصحيح:", "items": ["التخطيط والبحث", "تصميم النموذج الأولي", "التنفيذ", "الاختبار"], "ex": "الترتيب في الكتاب (ص 118–119): التخطيط والبحث، ثم تصميم النموذج الأولي (Prototype)، ثم التنفيذ، ثم الاختبار.", "fig": "", "passage": "", "level": 2}];
+var META = {"subject": "computing", "title": "ورقة الحاسوب الإثرائية — نهاية الفصل", "n": 41, "exam": "المقرر على الورقة: من ص 116 إلى 169. الاختبار التحريري: الثلاثاء 15 ديسمبر 2026، من 8:00 إلى 9:30. العملي حتى 3 ديسمبر.", "topics": [{"id": "s1", "title": "1 • اختر الإجابة الصحيحة", "points": ["البرمجة المرئية: إشارة وضغط وسحب وإفلات واختيار من القوائم.", "مراحل تصميم اللعبة أربعة: التخطيط والبحث، ثم النموذج الأولي، ثم التنفيذ، ثم الاختبار.", "تصنيف ESRB لفئة 13 سنة وما فوق هو للمراهقين الشباب."]}, {"id": "s2", "title": "2 • أكمل الفراغات", "points": ["مجلس ESRB يصنّف الألعاب إلى فئات عمرية.", "العالم في Alice هو البيئة الافتراضية التي تُدرج فيها الكائنات.", "خاصية vehicle في الكاميرا تربط كائنين لتتبع الحركة."]}, {"id": "s3", "title": "3 • صحّح ما تحته خط", "points": ["Alice (لا Scratch) هو أداة البرمجة المرئية للقصص والألعاب ثلاثية الأبعاد في هذا المقرر.", "فئة الشباب الناضجين في ESRB تبدأ من سن 17 سنة.", "دالة say تجعل الكائن يتحدث داخل فقاعة نصية، وprint للطباعة أسفل الشاشة.", "التكرار الشرطي (while) ينفَّذ طالما كان الشرط صحيحًا، أما المحدد فلعدد محدد من المرات."]}, {"id": "s4", "title": "4 • عرّف / اذكر / عدّد", "points": ["التعريفات والمميزات من كتاب الطالب: البرمجة المرئية، الكائن، الحدث، الدالة، سمات اللعبة الناجحة، مميزات Alice، وعناصر مرحلة التخطيط والبحث."]}, {"id": "s5", "title": "5 • قارن وصنّف", "points": ["محرر الكود: مساحة وضع اللبنات. محرر المشهد: عرض المشهد والتحكم في الكاميرا والكائنات.", "Object Level Method توضح سلوك كائن معيّن، وWorld Level Method توضح سلوك الكائنات المتعددة في العالم.", "ضوابط التحكم ومستويات الصعوبة وآلية النقاط مميزات أساسية؛ والزخارف والملفات الصوتية مميزات ثانوية؛ والتخطيط والاختبار مراحل تصميم."]}, {"id": "s6", "title": "6 • الخوارزميات", "points": ["ترتيب مراحل تصميم اللعبة: التخطيط والبحث ← تصميم النموذج الأولي ← التنفيذ ← الاختبار."]}]};
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var KINDS = {mc:'اختيار من متعدد', tf:'صح أو خطأ', fi:'أملأ الفراغ', match:'وصل', order:'رتّب', corr:'التصحيح الصحيح', open:'اكتب ثم قارن'};
+  var LEVELS = {1:'سهل', 2:'متوسط', 3:'متقدم'};
+  var GOOD = ['أحسنت يا يوسف! 🌟','ممتاز يا يوسف! 💪','إجابة صحيحة، بارك الله فيك ✨','رائع يا يوسف! 👏'];
+  var BAD = ['لا بأس يا يوسف، تعلّمنا شيئاً جديداً 💪','قريب! ركّز في السؤال التالي 🔍','الخطأ طريق التعلّم، أكمل 🌱'];
+  var state = {qs:[], i:0, score:0, answered:false, results:[], mode:'full', selectedTopic:null};
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function show(id){ ['start','quiz','end'].forEach(function(s){ $(s).classList.toggle('hidden', s!==id); }); window.scrollTo(0,0); }
+  function digits(s){ return String(s).replace(/[٠-٩]/g, function(d){ return '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]; }); }
+  function norm(s){
+    s = digits(String(s)).trim().toLowerCase();
+    s = s.replace(/[\u064B-\u065F\u0670\u0640]/g,'');
+    s = s.replace(/[أإآٱ]/g,'ا');
+    s = s.replace(/ة/g,'ه');
+    s = s.replace(/ى/g,'ي');
+    s = s.replace(/ؤ/g,'و');
+    s = s.replace(/ئ/g,'ي');
+    s = s.replace(/[.,،:;!?؟'"“”‘’()[\]{}]/g,'');
+    s = s.replace(/\s+/g,' ').trim();
+    return s;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); }); }
+  function topicById(id){
+    var t=(META.topics||[]).filter(function(x){ return x.id===id; })[0];
+    return t || {id:id, title:id, points:[]};
+  }
+  function byTopic(tid){ return BANK.filter(function(q){ return q.topic===tid; }); }
+
+  function prepareQ(q, idx){
+    var item = {id:q.id||('q'+idx), t:q.t, q:q.q, ex:q.ex, hint:q.hint||'', topic:q.topic, level:q.level||2, raw:q};
+    if(q.t==='tf'){
+      item.opts = shuffle([{h:'صح ✔',k:true},{h:'خطأ ✘',k:false}]);
+      item.ans = !!q.ans;
+      item.ansH = item.ans ? 'صح' : 'خطأ';
+    } else if(q.t==='fi'){
+      item.accepted = (q.ans instanceof Array ? q.ans : [q.ans]).map(function(x){ return String(x); });
+      item.ansH = item.accepted[0];
+    } else if(q.t==='match'){
+      item.left = q.pairs.map(function(p){ return p[0]; });
+      item.rightCorrect = q.pairs.map(function(p){ return p[1]; });
+      item.right = shuffle(item.rightCorrect.slice());
+      item.ansH = q.pairs.map(function(p){ return p[0]+' ← '+p[1]; }).join(' / ');
+    } else if(q.t==='order'){
+      item.correct = q.items.slice();
+      item.order = shuffle(q.items.slice());
+      // avoid starting already sorted
+      var same = item.order.join('\u0001')===item.correct.join('\u0001');
+      if(same && item.order.length>1){ var t=item.order[0]; item.order[0]=item.order[1]; item.order[1]=t; }
+      item.ansH = item.correct.join(' ← ');
+    } else if(q.t==='open'){
+      item.ansH = q.model || q.ansH || '';
+      item.model = q.model || q.ansH || '';
+    } else {
+      var opts = (q.choices||[]).map(function(h,i){ return {h:h, k:i}; });
+      item.opts = opts; // keep printed A–D order so Yusuf can follow the paper
+      item.ans = q.ans;
+      item.ansH = (q.choices && q.choices[q.ans] != null) ? q.choices[q.ans] : '';
+    }
+    item.num = q.num || '';
+    item.passage = q.passage || '';
+    item.fig = q.fig || '';
+    item.letters = 'ABCDEFGH';
+    return item;
+  }
+
+  function prepareList(list, group){
+    var out=[];
+    if(group){
+      (META.topics||[]).forEach(function(tp){
+        var qs = list.filter(function(q){ return q.topic===tp.id; });
+        if(!qs.length) return;
+        out.push({t:'section', topic:tp.id, title:tp.title, points:tp.points||[]});
+        qs.forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      });
+      // leftover topics not in META
+      var known={};
+      (META.topics||[]).forEach(function(tp){ known[tp.id]=1; });
+      var rest=list.filter(function(q){ return !known[q.topic]; });
+      if(rest.length){
+        out.push({t:'section', topic:'other', title:'أسئلة أخرى', points:[]});
+        rest.forEach(function(q,i){ out.push(prepareQ(q,i)); });
+      }
+    } else {
+      out = list.map(function(q,i){ return prepareQ(q,i); });
+    }
+    return out;
+  }
+
+  function countReal(qs){ return qs.filter(function(q){ return q.t!=='section'; }).length; }
+
+  function begin(list, mode, group){
+    state.qs = prepareList(list, !!group);
+    state.i = 0; state.score = 0; state.answered = false; state.results = []; state.mode = mode||'full';
+    if(!countReal(state.qs)){ return; }
+    show('quiz');
+    render();
+  }
+
+  function qProgress(){
+    var real=0, at=0, seen=0;
+    for(var i=0;i<state.qs.length;i++){
+      if(state.qs[i].t==='section') continue;
+      real++;
+      if(i<state.i) seen++;
+      if(i===state.i) at=seen+1;
+    }
+    return {at:at||1, n:real};
+  }
+
+  function render(){
+    var q = state.qs[state.i];
+    if(!q){ end(); return; }
+    state.answered = false;
+    var pg=qProgress();
+    $('prog').textContent = (q.t==='section') ? (topicById(q.topic).title||q.title) : ('سؤال ' + pg.at + ' / ' + pg.n);
+    $('sc').textContent = 'الدرجة: ' + state.score;
+    $('bar').style.width = (pg.n? ( (pg.at-1)/pg.n*100):0) + '%';
+    $('fb').innerHTML = '';
+    $('next').classList.add('hidden');
+    $('area').innerHTML = '';
+    if(q.t==='section'){
+      $('qmeta').innerHTML = '<span class="kind">أساسيات الدرس</span>';
+      $('qtext').innerHTML = '';
+      var pts=(q.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+      $('area').innerHTML = '<div class="sec"><h2>'+esc(q.title)+'</h2><div class="points"><h3>نقاط مهمة قبل الأسئلة</h3><ul>'+pts+'</ul></div></div>';
+      $('next').textContent = 'ابدأ أسئلة هذا الدرس ←';
+      $('next').classList.remove('hidden');
+      state.answered = true;
+      return;
+    }
+    var meta = '';
+    if(q.num) meta += '<span class="qnum">س '+esc(String(q.num))+'</span>';
+    meta += '<span class="kind">'+(KINDS[q.t]||'')+'</span>';
+    if(q.level) meta += '<span class="lvl">'+(LEVELS[q.level]||'')+'</span>';
+    $('qmeta').innerHTML = meta;
+    var head = '';
+    if(q.passage) head += '<div class="passage"><h3>النص</h3>'+q.passage+'</div>';
+    if(q.fig) head += '<div class="fig">'+q.fig+'</div>';
+    $('qtext').innerHTML = head + q.q;
+    $('next').textContent = (isLastReal()) ? 'إنهاء التدريب ←' : 'السؤال التالي ←';
+    if(q.t==='fi') renderFi(q);
+    else if(q.t==='match') renderMatch(q);
+    else if(q.t==='order') renderOrder(q);
+    else if(q.t==='open') renderOpen(q);
+    else renderOpts(q);
+  }
+
+  function isLastReal(){
+    for(var i=state.i+1;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function renderOpts(q){
+    var box=document.createElement('div'); box.className='opts';
+    q.opts.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt';
+      var letter = (q.letters||'ABCDEFGH')[o.k] || '';
+      b.innerHTML = (letter?('<span class="let">'+letter+'</span>'):'') + o.h;
+      b.addEventListener('click', function(){ choose(o.k, b); });
+      box.appendChild(b);
+    });
+    $('area').appendChild(box);
+  }
+  function renderFi(q){
+    var wrap=document.createElement('div'); wrap.className='fi';
+    var inp=document.createElement('input'); inp.type='text'; inp.id='fi'; inp.setAttribute('autocomplete','off'); inp.setAttribute('autocapitalize','off');
+    inp.setAttribute('enterkeyhint','done'); inp.placeholder = q.hint || 'اكتب إجابتك';
+    if(/[0-9٠-٩\-+=]/.test((q.accepted||[]).join(' '))) inp.setAttribute('inputmode','text');
+    var go=document.createElement('button'); go.type='button'; go.className='go'; go.id='figo'; go.textContent='تحقق';
+    wrap.appendChild(inp); wrap.appendChild(go); $('area').appendChild(wrap);
+    go.onclick=function(){ submitFi(); };
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submitFi(); } });
+    setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 200);
+  }
+  function renderMatch(q){
+    var box=document.createElement('div'); box.className='match'; box.id='matchbox';
+    q.picked = new Array(q.left.length).fill(null);
+    q.left.forEach(function(left, i){
+      var row=document.createElement('div'); row.className='mrow';
+      var lab=document.createElement('div'); lab.className='mleft'; lab.textContent=left;
+      var rights=document.createElement('div'); rights.className='mrights'; rights.setAttribute('data-i', i);
+      q.right.forEach(function(r){
+        var b=document.createElement('button'); b.type='button'; b.textContent=r; b.setAttribute('data-r', r);
+        b.addEventListener('click', function(){ pickMatch(q, i, r, box); });
+        rights.appendChild(b);
+      });
+      row.appendChild(lab); row.appendChild(rights); box.appendChild(row);
+    });
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='mgo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){ submitMatch(q); });
+    $('area').appendChild(go);
+  }
+  function pickMatch(q, i, r, box){
+    if(state.answered) return;
+    // exclusive: if another row had r, clear it
+    for(var j=0;j<q.picked.length;j++){ if(j!==i && q.picked[j]===r) q.picked[j]=null; }
+    q.picked[i]=r;
+    var rows=box.querySelectorAll('.mrights');
+    for(var a=0;a<rows.length;a++){
+      var btns=rows[a].querySelectorAll('button');
+      var sel=q.picked[a];
+      for(var b=0;b<btns.length;b++){
+        btns[b].classList.toggle('on', btns[b].getAttribute('data-r')===sel);
+      }
+    }
+  }
+  function submitMatch(q){
+    if(state.answered) return;
+    if(q.picked.some(function(x){ return x===null || x===''; })){ return; }
+    var ok=true;
+    for(var i=0;i<q.left.length;i++){ if(norm(q.picked[i])!==norm(q.rightCorrect[i])) ok=false; }
+    var yours=q.left.map(function(l,i){ return l+' ← '+(q.picked[i]||'—'); }).join(' / ');
+    // color
+    var rows=$('matchbox').querySelectorAll('.mrow');
+    for(var i=0;i<rows.length;i++){
+      var good=norm(q.picked[i])===norm(q.rightCorrect[i]);
+      rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+      rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+    }
+    var go=$('mgo'); if(go) go.disabled=true;
+    finish(ok, yours);
+  }
+  function renderOrder(q){
+    var box=document.createElement('div'); box.id='orderbox';
+    function draw(){
+      box.innerHTML='';
+      q.order.forEach(function(it, i){
+        var row=document.createElement('div'); row.className='orow';
+        var up=document.createElement('button'); up.type='button'; up.className='arrow'; up.textContent='▲'; up.disabled=(i===0);
+        var down=document.createElement('button'); down.type='button'; down.className='arrow'; down.textContent='▼'; down.disabled=(i===q.order.length-1);
+        up.addEventListener('click', function(){ if(state.answered||i===0) return; var t=q.order[i-1]; q.order[i-1]=q.order[i]; q.order[i]=t; draw(); });
+        down.addEventListener('click', function(){ if(state.answered||i===q.order.length-1) return; var t=q.order[i+1]; q.order[i+1]=q.order[i]; q.order[i]=t; draw(); });
+        var n=document.createElement('b'); n.textContent=String(i+1);
+        var sp=document.createElement('span'); sp.textContent=it;
+        row.appendChild(up); row.appendChild(down); row.appendChild(n); row.appendChild(sp);
+        box.appendChild(row);
+      });
+    }
+    draw();
+    $('area').appendChild(box);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='ogo'; go.textContent='تحقق';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var ok=true;
+      for(var i=0;i<q.correct.length;i++){ if(norm(q.order[i])!==norm(q.correct[i])) ok=false; }
+      var rows=box.querySelectorAll('.orow');
+      for(var i=0;i<rows.length;i++){
+        var good=norm(q.order[i])===norm(q.correct[i]);
+        rows[i].style.borderColor = good ? 'var(--ok)' : 'var(--bad)';
+        rows[i].style.background = good ? 'var(--okbg)' : 'var(--badbg)';
+      }
+      var arrows=box.querySelectorAll('.arrow'); for(var k=0;k<arrows.length;k++) arrows[k].disabled=true;
+      go.disabled=true;
+      finish(ok, q.order.join(' ← '));
+    });
+    $('area').appendChild(go);
+  }
+
+
+  function renderOpen(q){
+    var ta=document.createElement('textarea'); ta.className='ta'; ta.id='openans';
+    ta.placeholder = q.hint || 'اكتب إجابتك هنا، ثم أظهر الإجابة النموذجية';
+    $('area').appendChild(ta);
+    var go=document.createElement('button'); go.type='button'; go.className='chk'; go.id='opengo'; go.textContent='أظهر الإجابة النموذجية';
+    go.addEventListener('click', function(){
+      if(state.answered) return;
+      var yours=(ta.value||'').trim();
+      if(!yours){ ta.focus(); return; }
+      ta.disabled=true; go.disabled=true;
+      var model=document.createElement('div'); model.className='model';
+      model.innerHTML = '<b>الإجابة النموذجية:</b><br>'+(q.model||q.ansH||'');
+      $('area').appendChild(model);
+      var row=document.createElement('div'); row.className='markrow';
+      var okb=document.createElement('button'); okb.type='button'; okb.className='markok'; okb.textContent='إجابتي صحيحة ✓';
+      var badb=document.createElement('button'); badb.type='button'; badb.className='markbad'; badb.textContent='أخطأت، سأراجع ✗';
+      okb.addEventListener('click', function(){ if(state.answered) return; finish(true, yours); okb.disabled=true; badb.disabled=true; });
+      badb.addEventListener('click', function(){ if(state.answered) return; finish(false, yours); okb.disabled=true; badb.disabled=true; });
+      row.appendChild(okb); row.appendChild(badb);
+      $('area').appendChild(row);
+    });
+    $('area').appendChild(go);
+  }
+
+  function choose(k, btn){
+    if(state.answered) return;
+    var q=state.qs[state.i], ok = (k===q.ans);
+    finish(ok, q.t==='tf' ? (k?'صح':'خطأ') : (btn?btn.textContent:String(k)));
+    var buttons = document.querySelectorAll('#area .opt');
+    for(var i=0;i<buttons.length;i++){
+      buttons[i].disabled=true;
+      var kh = q.opts[i].k;
+      if(kh===q.ans) buttons[i].classList.add('ok');
+      else if(buttons[i]===btn && !ok) buttons[i].classList.add('bad');
+      else buttons[i].classList.add('dim');
+    }
+  }
+  function submitFi(){
+    if(state.answered) return;
+    var q=state.qs[state.i], inp=$('fi'), go=$('figo');
+    var val=(inp.value||'').trim();
+    if(!val){ inp.focus(); return; }
+    var ok=false, nval=norm(val);
+    for(var i=0;i<q.accepted.length;i++){
+      var acc=norm(q.accepted[i]);
+      if(acc===nval){ ok=true; break; }
+      // allow "س=5" vs "5" and "x=5"
+      var bare=nval.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      var abare=acc.replace(/^(س|ص|x|y)\s*=\s*/,'');
+      if(bare && bare===abare && /^[-\d./]+$/.test(bare)){ ok=true; break; }
+    }
+    inp.classList.add(ok?'ok':'bad'); inp.disabled=true; go.disabled=true;
+    finish(ok, val);
+  }
+
+  function finish(ok, yours){
+    state.answered=true;
+    if(ok) state.score++;
+    var q=state.qs[state.i];
+    state.results.push({q:q, ok:ok, yours:yours});
+    $('sc').textContent='الدرجة: '+state.score;
+    var fb=$('fb');
+    var ansLine = (q.t==='open') ? '' : (ok?'':'<div class="ans">الإجابة الصحيحة: '+q.ansH+'</div>');
+    fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><h3>'+(ok?pick(GOOD):pick(BAD))+'</h3>'
+      + ansLine
+      + '<div class="ex">'+(q.ex||'')+'</div></div>';
+    $('next').classList.remove('hidden');
+    try{ $('next').focus(); }catch(e){}
+  }
+
+  function next(){
+    if(!state.answered) return;
+    // skip trailing only-section if any by looping
+    do {
+      if(state.i>=state.qs.length-1){ end(); return; }
+      state.i++;
+    } while(state.qs[state.i] && state.qs[state.i].t==='section' && isLastRealFrom(state.i));
+    render();
+  }
+  function isLastRealFrom(idx){
+    for(var i=idx;i<state.qs.length;i++){ if(state.qs[i].t!=='section') return false; }
+    return true;
+  }
+
+  function end(){
+    var n=state.results.length, s=state.score, p=n?Math.round(s/n*100):0;
+    $('score').textContent=s+' / '+n;
+    $('pct').textContent=p+'٪';
+    $('msg').textContent = p>=90?'ما شاء الله يا يوسف! أنت جاهز للاختبار 🏆': p>=70?'أحسنت يا يوسف! أداء قوي، راجع الأخطاء 🌟': p>=50?'بداية جيدة، أعد الأخطاء ثم حاول مرة أخرى 🌱':'لا بأس، راجع الشروح وأعد المحاولة 💙';
+    $('bar').style.width='100%';
+    var missed=state.results.filter(function(r){ return !r.ok; });
+    $('retryMissed').style.display = missed.length ? 'block' : 'none';
+    $('revTitle').textContent = missed.length ? 'الأسئلة التي تحتاج مراجعة ('+missed.length+')' : 'لا توجد أخطاء! 🎉';
+    $('review').innerHTML = state.results.map(function(r,i){
+      return '<div class="rev '+(r.ok?'ok':'bad')+'"><b>'+(i+1)+'. </b>'+r.q.q
+        + (r.ok?'':'<div>إجابتك: '+esc(r.yours)+'</div><div>الصحيح: '+esc(r.q.ansH)+'</div>')
+        + '<div class="ex">💡 '+r.q.ex+'</div></div>';
+    }).join('');
+    // per-topic breakdown
+    var map={}, order=[];
+    state.results.forEach(function(r){
+      var id=r.q.topic||'other';
+      if(!map[id]){ map[id]={ok:0,n:0,title:(topicById(id).title||id)}; order.push(id); }
+      map[id].n++; if(r.ok) map[id].ok++;
+    });
+    $('breakdown').innerHTML = order.length? ('<h3 style="margin:8px 0">التفصيل حسب الدرس</h3>' + order.map(function(id){
+      var t=map[id], pct=t.n?Math.round(t.ok/t.n*100):0;
+      return '<div class="brow"><div class="lab"><span>'+esc(t.title)+'</span><span dir="ltr">'+t.ok+'/'+t.n+'</span></div><div class="bbar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join('')) : '';
+    show('end');
+  }
+
+  function pickMixed(n){
+    var list=shuffle(BANK);
+    return list.slice(0, Math.min(n, list.length));
+  }
+
+  // start UI
+  var n=BANK.length, nt=(META.topics||[]).length;
+  $('intro').textContent = 'في هذه الصفحة '+n+' عنصرًا من ورقة المدرسة، موزّعة على '+nt+' أقسام بنفس ترتيب الورقة المطبوعة. يمكنك حل الورقة كاملة أو قسمًا واحدًا أو مجموعة عشوائية من 20، ثم إعادة الأسئلة الغلط.';
+  var box=$('topics');
+  (META.topics||[]).forEach(function(tp){
+    var b=document.createElement('button'); b.type='button'; b.className='tchip';
+    b.textContent = tp.title + ' ('+byTopic(tp.id).length+')';
+    b.addEventListener('click', function(){ selectTopic(tp.id, b); });
+    box.appendChild(b);
+  });
+  function selectTopic(id, btn){
+    state.selectedTopic=id;
+    var chips=box.querySelectorAll('.tchip'); for(var i=0;i<chips.length;i++) chips[i].classList.remove('on');
+    btn.classList.add('on');
+    var tp=topicById(id);
+    var pts=(tp.points||[]).map(function(p){ return '<li>'+p+'</li>'; }).join('');
+    var el=$('topicPoints');
+    el.classList.remove('hidden');
+    el.innerHTML='<h3>أساسيات: '+esc(tp.title)+'</h3><ul>'+pts+'</ul>';
+    $('beginTopic').classList.remove('hidden');
+    $('beginTopic').textContent='ابدأ درس «'+tp.title+'» ←';
+  }
+
+  $('beginAll').addEventListener('click', function(){ begin(BANK, 'full', true); });
+  $('beginMix').addEventListener('click', function(){ begin(pickMixed(20), 'mixed', false); });
+  $('beginTopic').addEventListener('click', function(){
+    if(!state.selectedTopic) return;
+    begin(byTopic(state.selectedTopic), 'topic', true);
+  });
+  $('next').addEventListener('click', next);
+  $('restart').addEventListener('click', function(){
+    if(state.mode==='mixed') begin(pickMixed(20), 'mixed', false);
+    else if(state.mode==='topic' && state.selectedTopic) begin(byTopic(state.selectedTopic), 'topic', true);
+    else begin(BANK, 'full', true);
+  });
+  $('retryMissed').addEventListener('click', function(){
+    var miss=state.results.filter(function(r){ return !r.ok; }).map(function(r){ return r.q.raw || null; }).filter(Boolean);
+    if(miss.length) begin(miss, 'missed', false);
+  });
+  $('home').addEventListener('click', function(){
+    if(confirm('هل تريد الخروج من التدريب؟')) show('start');
+  });
+  window.__sheetState = state;
+})();
+</script>
+</body>
+</html>
